@@ -1,0 +1,112 @@
+KIT — BOTÃO COM BRILHO + WHATSAPP FLUTUANTE
+Vieira & Marques Sociedade de Advogados
+===========================================================
+
+ARQUIVOS
+-----------------------------------------------------------
+cta-shine.css      Animação de brilho dos botões + estilos do
+                   balão flutuante e do popup de formulário.
+wa-flutuante.js    Botão flutuante, balão rotativo, popup com
+                   formulário, envio para planilha e exit-intent.
+index.html         Página de exemplo funcionando. Abra no navegador.
+
+
+INSTALAÇÃO EM OUTRA LANDING PAGE
+-----------------------------------------------------------
+1) Copie cta-shine.css e wa-flutuante.js para a pasta do site.
+
+2) No <head>, antes do fechamento:
+
+   <link rel="stylesheet" href="cta-shine.css">
+
+3) Antes do </body>:
+
+   <script src="wa-flutuante.js"></script>
+   <script>
+     WAFlutuante.init({
+       telefone: '551533470189',
+       mensagemPadrao: 'Oi, vim pelo site e quero orientação jurídica.',
+       endpointPlanilha: 'https://script.google.com/macros/s/SEU_ID/exec',
+       origemForm: 'lp-nome-da-pagina',
+       logo: 'uploads/logo-vm.png',
+       rotulo: 'Falar pelo WhatsApp',
+       exitIntent: true,
+       frases: [
+         { titulo: 'Precisa de orientação?',  sub: 'Fale com um advogado e entenda seus direitos.' },
+         { titulo: 'Tem dúvidas sobre o caso?', sub: 'A primeira conversa é sem compromisso.' }
+       ]
+     });
+   </script>
+
+
+USANDO A ANIMAÇÃO NOS BOTÕES DA PÁGINA
+-----------------------------------------------------------
+Adicione a classe "cta-shine" em qualquer <a> ou <button>:
+
+   <a href="#" class="cta-shine"
+      style="color:#FFF; padding:18px 30px; border-radius:3px;
+             font-size:16px; font-weight:600;">
+     Solicitar orientação gratuita
+   </a>
+
+IMPORTANTE: não defina "background" nem "border" no style inline
+do botão — a classe cta-shine controla os dois. Defina apenas
+color, padding, border-radius, font-size e font-weight.
+
+
+ABRIR O POPUP EM VEZ DE IR DIRETO AO WHATSAPP
+-----------------------------------------------------------
+Adicione data-wa-msg ao botão. O clique abre o formulário e a
+mensagem informada segue junto para o WhatsApp:
+
+   <a href="#" class="cta-shine"
+      data-wa-msg="Oi, quero falar sobre o meu caso."
+      style="color:#FFF; padding:16px 26px; border-radius:999px;">
+     Falar com um advogado
+   </a>
+
+Funciona em qualquer quantidade de botões na página.
+
+
+CHAMANDO O POPUP POR CÓDIGO
+-----------------------------------------------------------
+   WAFlutuante.abrir('Mensagem que vai para o WhatsApp',
+                     'Título do popup',
+                     'Subtítulo do popup');
+   WAFlutuante.fechar();
+
+
+PERSONALIZAÇÃO DAS CORES
+-----------------------------------------------------------
+No cta-shine.css, na regra .cta-shine, altere:
+
+   --bg: #1EA94F;        cor de fundo do botão
+   --luz: #4ade80;       cor do brilho girando
+   --luzSuave: #a7f3c4;  cor do brilho no hover
+   --dur: 3s;            velocidade da rotação
+
+Ou sobrescreva só em um botão específico:
+
+   <a class="cta-shine" style="--bg:#0B0B0B; --luz:#FFFFFF;">…</a>
+
+
+PLANILHA (GOOGLE SHEETS)
+-----------------------------------------------------------
+O envio usa o mesmo Apps Script já configurado. Passe a URL
+que termina em /exec em endpointPlanilha. Se deixar vazio,
+o formulário funciona normalmente e só abre o WhatsApp.
+
+Campos gravados: nome, email, whatsapp, mensagem, origem_form,
+pagina e todos os UTMs (utm_source, utm_medium, utm_campaign,
+utm_term, utm_content, gclid, fbclid).
+
+
+OBSERVAÇÕES
+-----------------------------------------------------------
+- A fonte usada é Lexend Deca. Se a página já carrega outra
+  fonte, os componentes herdam sem problema.
+- O exit-intent só roda em telas acima de 900px e uma vez
+  por sessão do visitante.
+- O balão fechado no "x" não volta a aparecer naquela sessão.
+- Respeita "prefers-reduced-motion": animações desligadas
+  para quem configurou isso no sistema.

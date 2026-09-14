@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+  doc-page:not(:defined) { visibility: hidden; }
+  a { color: #101112; }
+  a:hover { color: #55585c; }
+</style>
+<script src="./doc-page.js"></script>
+</helmet>
+<doc-page margin="0.7in">
+  <div style="font-family: Archivo, Helvetica, Arial, sans-serif; color: #101112; font-size: 10.5pt; line-height: 1.55;">
+
+    <p style="font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt; letter-spacing: 0.14em; text-transform: uppercase; color: #6c6f73; margin: 0 0 10px;">Vieira &amp; Marques Sociedade de Advogados · Boituva e Sorocaba — SP</p>
+    <h1 style="font-family: Lora, Georgia, serif; font-weight: 500; font-size: 26pt; line-height: 1.12; margin: 0 0 14px;">Plano de SEO, arquitetura e conteúdo</h1>
+    <p style="font-size: 11pt; color: #3d4145; margin: 0 0 6px; max-width: 46em;">Documento de execução do novo site. Define a arquitetura de URLs, os clusters de busca por área, a ordem de prioridade, a especificação on-page de cada página comercial e o que ainda depende de informação do escritório.</p>
+    <p style="font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt; color: #6c6f73; margin: 0 0 28px;">Base: auditoria de vieiraemarquesadvogados.com (agosto/2026). Somente informação verificável do site atual foi usada como fato.</p>
+
+    <h2 style="font-family: Lora, Georgia, serif; font-weight: 500; font-size: 15pt; margin: 30px 0 10px; padding-top: 12px; border-top: 1.5px solid #101112;">1. Jornada que a arquitetura precisa cobrir</h2>
+    <p style="margin: 0 0 10px;">A pessoa raramente começa procurando um escritório: começa descrevendo um problema. A arquitetura precisa capturar as quatro etapas e conduzir todas ao mesmo destino comercial.</p>
+    <div style="display: grid; grid-template-columns: 90px 1fr 150px; gap: 1px; background: #dedddb; border: 1px solid #dedddb; break-inside: avoid; margin-bottom: 8px;">
+      <div style="background: #f2f1ef; padding: 8px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em;">Nível</div>
+      <div style="background: #f2f1ef; padding: 8px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em;">Exemplos de busca</div>
+      <div style="background: #f2f1ef; padding: 8px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em;">Destino</div>
+      <sc-for list="{{ niveis }}" as="n" hint-placeholder-count="4">
+        <div style="background: #fff; padding: 9px 10px; font-weight: 500;">{{ n.nome }}</div>
+        <div style="background: #fff; padding: 9px 10px; color: #3d4145;">{{ n.exemplos }}</div>
+        <div style="background: #fff; padding: 9px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt;">{{ n.destino }}</div>
+      </sc-for>
+    </div>
+    <p style="font-size: 9.5pt; color: #55585c; margin: 0;">Regra de priorização: intenção de contratação (35%), relevância para o escritório (25%), probabilidade de contato (20%), demanda (10%), oportunidade competitiva (10%). Volume nunca decide sozinho.</p>
+
+    <h2 style="font-family: Lora, Georgia, serif; font-weight: 500; font-size: 15pt; margin: 30px 0 10px; padding-top: 12px; border-top: 1.5px solid #101112;">2. Arquitetura de URLs</h2>
+    <pre style="font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt; line-height: 1.7; background: #f7f6f4; border: 1px solid #dedddb; padding: 14px 16px; margin: 0 0 10px; white-space: pre-wrap; break-inside: avoid;">/                                  Home — cluster local principal
+├── /o-escritorio/                 institucional, E-E-A-T
+├── /equipe/                       hub da equipe
+│   └── /equipe/oscar-moreira-vieira/   um perfil por advogado
+├── /areas-de-atuacao/             hub de áreas (URL já indexada — preservar)
+│   ├── /direito-de-familia/       pillar
+│   │   ├── /divorcio/             money page
+│   │   ├── /pensao-alimenticia/   money page
+│   │   ├── /guarda-dos-filhos/    money page
+│   │   └── /uniao-estavel/        money page
+│   ├── /direito-sucessorio/       pillar
+│   │   ├── /inventario/           money page
+│   │   ├── /inventario-extrajudicial/
+│   │   └── /planejamento-sucessorio/
+│   ├── /direito-criminal/
+│   ├── /direito-trabalhista/
+│   ├── /direito-previdenciario/
+│   └── /direito-civil-e-do-consumidor/
+├── /blog/                         URL já indexada — preservar
+│   ├── /blog/familia/  /blog/sucessoes/  /blog/criminal/
+│   ├── /blog/trabalhista/  /blog/previdenciario/  /blog/civil/
+│   └── artigos mantêm as URLs atuais (ex.: /advogados-desistem-o-que-fazer/)
+├── /contato/                      URL já indexada — preservar
+└── /politica-de-privacidade/      pendente de texto jurídico</pre>
+    <p style="font-size: 9.5pt; color: #55585c; margin: 0;">Páginas de área e de serviço não existem hoje: são criação nova, sem risco de perda de histórico. As URLs de <span style="font-family: 'IBM Plex Mono', monospace;">/sobre-nos/</span> devem receber 301 para <span style="font-family: 'IBM Plex Mono', monospace;">/o-escritorio/</span> caso o slug mude — ou, mais seguro, manter <span style="font-family: 'IBM Plex Mono', monospace;">/sobre-nos/</span> e apenas reescrever o conteúdo.</p>
+
+    <h2 style="font-family: Lora, Georgia, serif; font-weight: 500; font-size: 15pt; margin: 30px 0 10px; padding-top: 12px; border-top: 1.5px solid #101112;">3. Clusters por área</h2>
+    <p style="margin: 0 0 12px;">Cada bloco reúne a pillar, as money pages e os conteúdos de apoio que apontam para ela. Só entram no site as áreas confirmadas pelo escritório: Família, Sucessório, Criminal, Trabalhista, Previdenciário e Civil/Consumidor.</p>
+    <sc-for list="{{ clusters }}" as="c" hint-placeholder-count="6">
+      <div style="border: 1px solid #dedddb; padding: 14px 16px; margin-bottom: 10px; break-inside: avoid;">
+        <h3 style="font-family: Lora, Georgia, serif; font-weight: 500; font-size: 12.5pt; margin: 0 0 4px;">{{ c.nome }}</h3>
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt; color: #6c6f73; margin: 0 0 10px;">{{ c.pillar }}</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6c6f73; margin: 0 0 5px;">Busca com intenção de contratação</p>
+            <p style="margin: 0; font-size: 9.5pt; color: #3d4145;">{{ c.comercial }}</p>
+          </div>
+          <div>
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6c6f73; margin: 0 0 5px;">Conteúdo de apoio (blog)</p>
+            <p style="margin: 0; font-size: 9.5pt; color: #3d4145;">{{ c.conteudo }}</p>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+
+    <h2 style="font-family: Lora, Georgia, serif; font-weight: 500; font-size: 15pt; margin: 30px 0 10px; padding-top: 12px; border-top: 1.5px solid #101112;">4. Ordem de execução</h2>
+    <ol style="margin: 0 0 8px; padding-left: 20px;">
+      <sc-for list="{{ prioridades }}" as="p" hint-placeholder-count="8">
+        <li style="margin-bottom: 5px;"><strong style="font-weight: 500;">{{ p.item
+</x-dc>
+</body>
+</html>

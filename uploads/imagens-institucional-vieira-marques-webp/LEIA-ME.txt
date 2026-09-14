@@ -1,0 +1,3 @@
+41 imagens do site institucional, sem imagens do blog.
+Fotos convertidas para WebP com qualidade 88; PNGs e ícones com compressão sem perdas.
+Dimensões dos arquivos raster preservadas. Os dois ícones SVG foram rasterizados com largura de 512 px.

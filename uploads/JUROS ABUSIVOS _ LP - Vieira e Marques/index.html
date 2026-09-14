@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="./mapa-brasil.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #0B0B0B; }
+  * { box-sizing: border-box; }
+  a { color: #FFFFFF; text-decoration: none; }
+  a:hover { color: #BFBFBF; }
+  .grad-dark { background: linear-gradient(100deg, #FFFFFF 0%, #C8C8C8 52%, #9A9A9A 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+  @media (max-width: 940px) {
+    .split { grid-template-columns: 1fr !important; gap: 34px !important; }
+    .h2 { font-size: 29px !important; }
+    .sec { padding: 60px 24px !important; }
+  }
+  @media (max-width: 720px) {
+    .h2 { font-size: 26px !important; }
+    .sec { padding: 52px 20px !important; text-align: center; }
+    .bullets > div { justify-content: center; }
+    .bullets > div > span:first-child { margin-top: 0 !important; }
+    .sec-cta { width: 100%; text-align: center; }
+  }
+  @media (max-width: 420px) {
+    .h2 { font-size: 23px !important; }
+    .sec { padding: 44px 16px !important; }
+  }
+</style>
+</helmet>
+
+<div style="font-family: 'Lexend Deca', Helvetica, sans-serif; background: #0B0B0B; color: #EDEDED;">
+  <section class="sec" style="background: #0B0B0B; padding: 84px 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="split" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 54px; align-items: center;">
+      <div>
+        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #8A8A8A;">Onde atendemos</div>
+        <h2 class="h2" style="font-weight: 600; font-size: 40px; line-height: 1.15; letter-spacing: -0.02em; margin: 14px 0 0; color: #FFFFFF;">Atendimento <span class="grad-dark">em todo o Brasil</span></h2>
+        <p style="font-size: 16.5px; font-weight: 300; line-height: 1.72; color: #B4B4B4; margin: 22px 0 0; text-wrap: pretty;">Escritório físico em Boituva/SP, com atendimento online para clientes de qualquer estado. Ações revisionais podem ser conduzidas remotamente do início ao fim.</p>
+        <div class="bullets" style="display: grid; gap: 14px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 26px;">
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #1EA94F; flex: none; margin-top: 9px;"></span>
+            <span style="font-size: 16px; font-weight: 400; line-height: 1.55; color: #EDEDED;">Reuniões 100% online, sem necessidade de viajar.</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #1EA94F; flex: none; margin-top: 9px;"></span>
+            <span style="font-size: 16px; font-weight: 400; line-height: 1.55; color: #EDEDED;">Assinatura de documentos por meio digital.</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #1EA94F; flex: none; margin-top: 9px;"></span>
+            <span style="font-size: 16px; font-weight: 400; line-height: 1.55; color: #EDEDED;">Acompanhamento processual à distância, com atualizações claras.</span>
+          </div>
+        </div>
+        <a href="{{ waLink }}" target="_blank" rel="noopener" class="sec-cta" style="display: inline-block; margin-top: 30px; background: #1EA94F; color: #FFFFFF; padding: 18px 30px; border-radius: 3px; font-size: 16px; font-weight: 600; transition: background .25s ease, transform .25s ease, box-shadow .25s ease; box-shadow: 0 8px 22px -14px rgba(30,169,79,0.9);" style-hover="background: #25C45C; color: #FFFFFF; transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(30,169,79,0.95);" style-active="transform: translateY(0); box-shadow: 0 6px 16px -12px rgba(30,169,79,0.9);">Solicitar análise do meu contrato</a>
+      </div>
+      <div style="display: flex; justify-content: center;">
+        <div style="width: min(420px, 100%);">
+          <mapa-brasil style="display: block;"></mapa-brasil>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;telefoneWhatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;551533470189&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;mensagemWhatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Oi, quero uma análise do meu contrato — juros e parcelas que não diminuem.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const fone = (this.props.telefoneWhatsapp ?? "551533470189").replace(/\D/g, "");
+    const msg = this.props.mensagemWhatsapp ?? "Oi, quero uma análise do meu contrato — juros e parcelas que não diminuem.";
+    return { waLink: "https://wa.me/" + fone + "?text=" + encodeURIComponent(msg) };
+  }
+}
+
+</script>
+</body>
+</html>

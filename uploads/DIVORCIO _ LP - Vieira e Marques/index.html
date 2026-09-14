@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Botão CTA com brilho + WhatsApp flutuante — Vieira &amp; Marques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cta-shine.css">
+</head>
+<body style="margin:0; background:#0B0B0B; color:#EDEDED; font-family:'Lexend Deca',Helvetica,sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:40px; padding:80px 24px;">
+
+  <div style="text-align:center; max-width:620px;">
+    <h1 style="font-size:34px; font-weight:600; letter-spacing:-0.02em; margin:0 0 12px;">Botão com brilho + WhatsApp flutuante</h1>
+    <p style="font-size:16px; font-weight:300; line-height:1.65; color:#B4B4B4; margin:0;">Passe o mouse nos botões abaixo. O balão flutuante no canto troca de mensagem automaticamente e abre o formulário.</p>
+  </div>
+
+  <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+    <a href="#" class="cta-shine" data-wa-msg="Oi, vim pelo site e quero orientação jurídica."
+       style="color:#FFFFFF; padding:18px 30px; border-radius:3px; font-size:16px; font-weight:600;">
+      Solicitar orientação gratuita
+    </a>
+    <a href="#" class="cta-shine" data-wa-msg="Oi, vim pelo site e quero orientação jurídica."
+       style="color:#FFFFFF; padding:12px 22px; border-radius:3px; font-size:14px; font-weight:600;">
+      Falar no WhatsApp
+    </a>
+    <button type="button" class="cta-shine" data-wa-msg="Oi, vim pelo site e quero orientação jurídica."
+            style="color:#FFFFFF; padding:16px 26px; border-radius:999px; font-size:15px; font-weight:600; cursor:pointer;">
+      Botão pill
+    </button>
+  </div>
+
+  <p style="font-size:13px; color:#7A7A7A; font-weight:300; margin:0;">Leia o <strong style="color:#B4B4B4; font-weight:500;">LEIA-ME.txt</strong> para instalar em outra página.</p>
+
+  <script src="wa-flutuante.js"></script>
+  <script>
+    WAFlutuante.init({
+      telefone: '551533470189',
+      endpointPlanilha: '',
+      origemForm: 'lp-exemplo',
+      logo: '',
+      mensagemPadrao: 'Oi, vim pelo site e quero orientação jurídica.',
+      frases: [
+        { titulo: 'Precisa de orientação jurídica?', sub: 'Fale com um advogado e entenda seus direitos.' },
+        { titulo: 'Tem dúvidas sobre o seu caso?', sub: 'A primeira conversa é sem compromisso.' },
+        { titulo: 'Não sabe por onde começar?', sub: 'Conte o que está acontecendo — a gente te orienta.' }
+      ]
+    });
+  </script>
+</body>
+</html>
