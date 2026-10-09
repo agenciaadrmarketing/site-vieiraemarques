@@ -58,11 +58,11 @@
       root.innerHTML = `
         <style>
           :host{display:block;position:relative;width:100%;aspect-ratio:1/1.02;}
-          .halo{position:absolute;left:8%;top:10%;width:84%;height:80%;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(191,160,90,0.2),transparent 66%);filter:blur(34px);pointer-events:none;}
+          .halo{position:absolute;left:8%;top:10%;width:84%;height:80%;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,0.16),transparent 66%);filter:blur(34px);pointer-events:none;}
           svg{position:relative;width:100%;height:100%;display:block;overflow:visible;}
-          #contorno{fill:none;stroke:#E6CC8F;stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:tracar 2.6s cubic-bezier(.16,.84,.44,1) .15s forwards;}
+          #contorno{fill:none;stroke:#FFFFFF;stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:tracar 2.6s cubic-bezier(.16,.84,.44,1) .15s forwards;}
           #massa{opacity:0;animation:surgir 1.5s ease 1.1s forwards;}
-          #ufs path{fill:none;stroke:rgba(242,226,189,0.34);stroke-width:0.9;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+          #ufs path{fill:none;stroke:rgba(255,255,255,0.26);stroke-width:0.9;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
           #ufs{opacity:0;animation:surgir 1.4s ease 1.5s forwards;}
           .cap{opacity:0;animation:surgir .5s ease forwards;}
           .cid{opacity:0;animation:surgir .6s ease forwards;}
@@ -100,10 +100,10 @@
         svg.innerHTML =
           '<defs>' +
             '<linearGradient id="grad" x1="0" y1="0" x2="0.6" y2="1">' +
-              '<stop offset="0%" stop-color="#8A3240"/><stop offset="55%" stop-color="#6E1F2A"/><stop offset="100%" stop-color="#3A1219"/>' +
+              '<stop offset="0%" stop-color="#2E2E2E"/><stop offset="55%" stop-color="#1C1C1C"/><stop offset="100%" stop-color="#111111"/>' +
             '</linearGradient>' +
             '<filter id="sombra" x="-20%" y="-20%" width="140%" height="140%">' +
-              '<feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#150609" flood-opacity="0.65"/>' +
+              '<feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000000" flood-opacity="0.7"/>' +
             '</filter>' +
           '</defs>' +
             '<clipPath id="clipBR"><path d="' + d + '"/></clipPath>' +
@@ -128,7 +128,7 @@
           if (!p) return;
           const c = document.createElementNS(ns, "circle");
           c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", 1.8);
-          c.setAttribute("fill", "rgba(242,226,189,0.6)");
+          c.setAttribute("fill", "rgba(255,255,255,0.55)");
           c.setAttribute("class", "cid");
           c.style.animationDelay = (1.6 + (i % 20) * 0.05) + "s";
           gc.appendChild(c);
@@ -145,14 +145,14 @@
           if (nome === "Brasília") {
             const halo = document.createElementNS(ns, "circle");
             halo.setAttribute("cx", p[0]); halo.setAttribute("cy", p[1]); halo.setAttribute("r", 4);
-            halo.setAttribute("fill", "#E6CC8F"); halo.setAttribute("class", "pulso");
+            halo.setAttribute("fill", "#FFFFFF"); halo.setAttribute("class", "pulso");
             wrap.appendChild(halo);
           }
           const c = document.createElementNS(ns, "circle");
           c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]);
           c.setAttribute("r", nome === "Brasília" ? 4.4 : 3.2);
-          c.setAttribute("fill", "#F2E2BD");
-          c.setAttribute("stroke", "rgba(42,16,21,0.5)"); c.setAttribute("stroke-width", "1");
+          c.setAttribute("fill", "#FFFFFF");
+          c.setAttribute("stroke", "rgba(11,11,11,0.6)"); c.setAttribute("stroke-width", "1");
           const t = document.createElementNS(ns, "title");
           t.textContent = nome;
           c.appendChild(t);
