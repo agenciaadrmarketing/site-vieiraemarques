@@ -78,6 +78,7 @@ function head({ title, description, path, ogType = "website", schema = [], crumb
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/lexend-deca-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${join(preload, (p) => `<link rel="preload" as="image"${attrs(p)}>\n`)}<link rel="stylesheet" href="/assets/css/site.css?v=${ASSET_VERSION}">
+<noscript><style>.vm-loader{display:none}</style></noscript>
 ${jsonLd({ "@context": "https://schema.org", "@graph": graph })}
 </head>`;
 }
@@ -108,7 +109,7 @@ function header(current) {
     </button>
   </div>
 </header>
-<div class="mobile-menu" id="menu-mobile" hidden data-menu>
+<div class="mobile-menu" id="menu-mobile" hidden data-menu data-lenis-prevent>
   <div class="container">
     <nav aria-label="Menu">
       <ul class="mobile-menu__list">
@@ -123,6 +124,18 @@ function header(current) {
   </div>
 </div>`;
 }
+
+// Letreiro do rodapé em SVG: textLength garante que caiba exatamente na largura,
+// em qualquer tela e mesmo antes de a fonte carregar (antes era cortado nas bordas).
+const giantWordmark = () => {
+  // Cada SVG tem o próprio gradiente: o Chrome não pinta gradientes de um SVG oculto.
+  const defs = (id) => `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".1"/><stop offset="1" stop-color="#fff" stop-opacity=".015"/></linearGradient></defs>`;
+  const text = (id, x, y, len, t) => `<text x="${x}" y="${y}" fill="url(#${id})" text-anchor="middle" textLength="${len}" lengthAdjust="spacing">${t}</text>`;
+  return `<div class="site-footer__giant" aria-hidden="true" data-footer-giant>
+      <svg class="site-footer__giant-wide" viewBox="0 0 960 92" focusable="false">${defs("giant-w")}${text("giant-w", 480, 76, 948, "VIEIRA &amp; MARQUES")}</svg>
+      <svg class="site-footer__giant-stack" viewBox="0 0 480 180" focusable="false">${defs("giant-s")}${text("giant-s", 240, 76, 446, "VIEIRA &amp;")}${text("giant-s", 240, 164, 476, "MARQUES")}</svg>
+    </div>`;
+};
 
 // Rodapé global: fechamento editorial (frase + um CTA), colunas de navegação,
 // letreiro "VIEIRA & MARQUES" em baixo contraste e barra final com "voltar ao topo".
@@ -165,10 +178,18 @@ export function footer(whatsappMessage = waMessage()) {
       <p class="site-footer__notice">${esc(SITE.oabNotice)}</p>
       <button class="site-footer__top" type="button" data-back-to-top aria-label="Voltar ao topo">Topo <span aria-hidden="true">${icon.arrow(14)}</span></button>
     </div>
+    ${giantWordmark()}
   </div>
-  <p class="site-footer__giant" aria-hidden="true"><span data-footer-giant><span>Vieira &amp;</span> <span>Marques</span></span></p>
 </footer>`;
 }
+
+// Tela de carregamento (da LP Boituva): fundo preto com o monograma pulsando.
+// Cobre a página até o carregamento e reaparece nas trocas de página (site.js).
+// Sem JS, some sozinha (CSS) — e <noscript> a esconde de imediato.
+const loader = () => {
+  const m = images.monograma.variants[0];
+  return `<div class="vm-loader" role="status" aria-label="Carregando" data-loader><div class="vm-loader__card"><img src="${m.src}" alt="" width="62" height="62"></div></div>`;
+};
 
 export const waFloat = (message) =>
   `<a class="wa-float" href="${whatsappUrl(message)}" target="_blank" rel="noopener" data-wa-float data-hidden="true" aria-label="Conversar pelo WhatsApp">${icon.whatsapp(20)}<span>WhatsApp</span></a>`;
@@ -184,13 +205,14 @@ export function page({ title, description, path, crumbs, schema, preload, body, 
 <html lang="${SITE.lang}">
 ${head({ title, description, path, schema, crumbs, preload })}
 <body${SITE.forms ? " data-forms" : ""}>
+${loader()}
 ${header(path)}
 <main id="conteudo" tabindex="-1">
 ${body}
 </main>
 ${footer(whatsappMessage)}
 ${floatingWhatsapp ? waFloat(whatsappMessage) : ""}
-<script src="/assets/js/site.js?v=${ASSET_VERSION}" defer></script>
+<script src="/assets/js/site.js?v=${ASSET_VERSION}" data-lenis="/assets/js/vendor/lenis.min.js?v=${ASSET_VERSION}" defer></script>
 ${join(scripts, (s) => `<script src="${s}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
 </html>
 `;

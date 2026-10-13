@@ -346,6 +346,17 @@
       }
     ]
   },
+  "monograma": {
+    "width": 180,
+    "height": 180,
+    "variants": [
+      {
+        "src": "/assets/img/monograma-vieira-marques-124.webp",
+        "w": 124,
+        "h": 124
+      }
+    ]
+  },
   "logo-escuro": {
     "src": "/assets/img/logo-vieira-marques-advogados-preto-400.webp",
     "w": 603,

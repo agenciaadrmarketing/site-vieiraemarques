@@ -22,6 +22,99 @@
     try { return JSON.parse(sessionStorage.getItem("vm_origem") || "{}"); } catch (e) { return {}; }
   }
 
+  /* ---------- Tela de carregamento e transição entre páginas ---------- */
+  // Primeira visita: cobre a página até o "load" (mín. ~0,45 s, máx. 2,5 s).
+  // Vindo de outra página do site: sai assim que o conteúdo está pronto.
+  // Voltar/avançar (cache do navegador) e "reduzir movimento": sem tela.
+  function initLoader() {
+    var el = document.querySelector("[data-loader]");
+    var root = document.documentElement;
+    function ready() { root.classList.add("is-ready"); }
+    if (!el) { ready(); return; }
+    el.style.animation = "none"; // o JS assume o controle (cancela o fallback do CSS)
+    var start = Date.now();
+    var hidden = false;
+    function hide() {
+      if (hidden) return;
+      hidden = true;
+      el.classList.add("is-hidden");
+      ready();
+    }
+    var nav = (window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation")[0]) || {};
+    var internal = false;
+    try { internal = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) { /* referrer inválido */ }
+
+    if (reduceMotion || nav.type === "back_forward") hide();
+    else if (internal) requestAnimationFrame(function () { requestAnimationFrame(hide); });
+    else {
+      var done = function () { setTimeout(hide, Math.max(150, 450 - (Date.now() - start))); };
+      if (document.readyState === "complete") done();
+      else window.addEventListener("load", done);
+      setTimeout(hide, 2500);
+    }
+
+    // Página restaurada do cache (botão voltar): nunca deixar a tela por cima.
+    window.addEventListener("pageshow", function (e) { if (e.persisted) { el.classList.add("is-hidden"); hidden = true; ready(); } });
+
+    if (reduceMotion) return;
+    document.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download") || a.hasAttribute("data-no-transition")) return;
+      var url;
+      try { url = new URL(a.getAttribute("href"), location.href); } catch (err) { return; }
+      if (url.origin !== location.origin) return;
+      if (url.pathname === location.pathname && url.search === location.search) return; // âncora na mesma página
+      if (/\.[a-z0-9]{2,4}$/i.test(url.pathname) && !/\.html$/i.test(url.pathname)) return; // arquivos
+      e.preventDefault();
+      el.classList.remove("is-hidden");
+      hidden = false;
+      setTimeout(function () { location.href = url.href; }, 280);
+    });
+  }
+
+  /* ---------- Rolagem suave (Lenis) ---------- */
+  // Só com mouse/trackpad: no toque a rolagem nativa já é suave. Carrega sob demanda.
+  function initSmoothScroll() {
+    if (reduceMotion || !window.matchMedia || !window.matchMedia("(pointer: fine)").matches) return;
+    var me = document.querySelector("script[data-lenis]");
+    if (!me) return;
+    var s = document.createElement("script");
+    s.src = me.getAttribute("data-lenis");
+    s.async = true;
+    s.onload = function () {
+      if (!window.Lenis) return;
+      var lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true });
+      // Rolagem animada até uma posição absoluta. Sincroniza antes com a posição real,
+      // que pode ter mudado por teclado (foco) ou rolagem nativa.
+      lenis.vmScrollTo = function (y) {
+        lenis.scrollTo(window.scrollY, { immediate: true });
+        lenis.scrollTo(Math.max(0, y));
+      };
+      window.vmLenis = lenis;
+      function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      // Âncoras na mesma página: desliza respeitando a altura do cabeçalho.
+      document.addEventListener("click", function (e) {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+        var a = e.target.closest && e.target.closest('a[href*="#"]');
+        if (!a) return;
+        var url;
+        try { url = new URL(a.getAttribute("href"), location.href); } catch (err) { return; }
+        if (url.pathname !== location.pathname || !url.hash || url.hash === "#") return;
+        var target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+        if (!target) return;
+        e.preventDefault();
+        var offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+        lenis.vmScrollTo(target.getBoundingClientRect().top + window.scrollY - offset);
+        history.pushState(null, "", url.hash);
+        if (target.tabIndex < 0 && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA|SUMMARY)$/.test(target.tagName)) target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+      });
+    };
+    document.head.appendChild(s);
+  }
+
   /* ---------- Menu mobile ---------- */
   function initMenu() {
     var toggle = document.querySelector("[data-menu-toggle]");
@@ -34,6 +127,7 @@
       if (label) label.textContent = open ? "Fechar menu" : "Abrir menu";
       menu.hidden = !open;
       document.body.classList.toggle("menu-open", open);
+      if (window.vmLenis) window.vmLenis[open ? "stop" : "start"]();
       if (open) {
         var first = menu.querySelector("a");
         if (first) first.focus();
@@ -50,8 +144,28 @@
   }
 
   /* ---------- Revelação suave ---------- */
+  // Contêineres cujos itens entram em cascata e mídias que entram com leve aproximação.
+  var STAGGER = ".section-head > .stack-sm, .svc-head, .area-index, .services, .steps, .facts, .principles, .cards-grid, .article-list, " +
+    ".svc-related__list, .svc-list, .svc-timeline, .svc-docs, .svc-columns, .checklist, .recognitions, .profiles, .team-panels, " +
+    ".contact-list, .gallery, .wa-panel__choices, .faq";
+  var MEDIA = ".figure, .page-hero__media, .svc-trust__media, .svc-doc-figure";
+  function prepareReveal() {
+    document.querySelectorAll(STAGGER).forEach(function (el) {
+      if (el.closest(".page-hero, .hero, .site-footer")) return;
+      el.setAttribute("data-reveal-stagger", "");
+      if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
+      [].forEach.call(el.children, function (child, i) { child.style.setProperty("--i", Math.min(i, 9)); });
+    });
+    document.querySelectorAll(MEDIA).forEach(function (el) {
+      if (el.closest(".page-hero, .hero")) return;
+      el.setAttribute("data-reveal-media", "");
+      if (!el.hasAttribute("data-reveal") && !el.closest("[data-reveal]")) el.setAttribute("data-reveal", "");
+    });
+  }
+
   function initReveal() {
-    var items = document.querySelectorAll("[data-reveal]");
+    if (!reduceMotion) prepareReveal();
+    var items = document.querySelectorAll("[data-reveal], [data-reveal-media]");
     if (!items.length) return;
     if (reduceMotion || !("IntersectionObserver" in window)) {
       items.forEach(function (el) { el.classList.add("is-visible"); });
@@ -472,7 +586,8 @@
   function initFooter() {
     var top = document.querySelector("[data-back-to-top]");
     if (top) top.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+      if (window.vmLenis) window.vmLenis.vmScrollTo(0);
+      else window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
       var main = document.getElementById("conteudo");
       if (main) main.focus({ preventScroll: true });
     });
@@ -483,9 +598,9 @@
     function update() {
       ticking = false;
       var r = footer.getBoundingClientRect();
-      // 0 quando o rodapé entra na tela, 1 quando termina; o letreiro sobe até 40px.
+      // 0 quando o rodapé entra na tela, 1 quando termina; o letreiro sobe até 24px.
       var progress = Math.min(1, Math.max(0, (window.innerHeight - r.top) / (r.height || 1)));
-      giant.style.setProperty("--giant-y", (40 - progress * 40).toFixed(1) + "px");
+      giant.style.setProperty("--giant-y", (24 - progress * 24).toFixed(1) + "px");
     }
     new IntersectionObserver(function (entries) { active = entries[0].isIntersecting; if (active) update(); }).observe(footer);
     window.addEventListener("scroll", function () {
@@ -528,6 +643,8 @@
   }
 
   if (document.body.hasAttribute("data-forms")) captureOrigin();
+  initLoader();
+  initSmoothScroll();
   initMenu();
   initReveal();
   initFloat();

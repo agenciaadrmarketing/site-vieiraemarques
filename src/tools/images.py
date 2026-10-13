@@ -33,6 +33,8 @@ SOURCES = {
     "leticia-pereira-de-abreu": (f"{SRC}/leticia-pereira-de-abreu-advogada.webp", [360, 600, 900], "leticia-pereira-de-abreu-advogada"),
     "gledie-camargo": (f"{SRC}/gledie-camargo-advogada.webp", [360, 600, 900], "gledie-camargo-advogada"),
     "natalia-okumura": (f"{SRC}/natalia-okumura-advogada.webp", [360, 600], "natalia-okumura-advogada"),
+    # Monograma da tela de carregamento (LP Boituva).
+    "monograma": (f"{SRC}/monograma-vieira-marques.webp", [124], "monograma-vieira-marques"),
 }
 
 
