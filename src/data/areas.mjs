@@ -234,7 +234,7 @@ export const practiceAreas = [
     number: "05",
     title: "Direito Médico e da Saúde",
     shortTitle: "Médico e Saúde",
-    slug: "direito-medico-e-saude",
+    slug: "direito-medico-saude",
     summary:
       "Defesa de profissionais da saúde, planos de saúde, SUS e responsabilidade por erro médico.",
     description:
@@ -243,35 +243,35 @@ export const practiceAreas = [
       {
         id: "defesa-profissionais",
         title: "Defesa de médicos e dentistas",
-        slug: "defesa-de-medicos-e-dentistas",
+        slug: "defesa-medicos-dentistas",
         text: "Atuação em procedimentos que envolvem a prática profissional.",
         items: ["Judicial", "Extrajudicial", "Ético-profissional"],
       },
       {
         id: "reajuste-convenio",
         title: "Reajuste de convênio médico",
-        slug: "reajuste-de-convenio-medico",
+        slug: "reajuste-plano-saude",
         text: "Análise de reajustes por faixa etária, sinistralidade e cláusulas contratuais.",
         items: [],
       },
       {
         id: "erro-medico",
         title: "Indenização por erro médico ou odontológico",
-        slug: "erro-medico-e-odontologico",
+        slug: "erro-medico-odontologico",
         text: "Avaliação da responsabilidade a partir do prontuário e da documentação do atendimento.",
         items: [],
       },
       {
         id: "pos-bariatrica",
         title: "Cirurgia plástica pós-bariátrica",
-        slug: "cirurgia-plastica-pos-bariatrica",
+        slug: "cirurgia-pos-bariatrica",
         text: "Negativas de cobertura para cirurgias reparadoras indicadas após a bariátrica.",
         items: [],
       },
       {
         id: "tratamento-medicamento",
         title: "Tratamento ou medicamento",
-        slug: "tratamento-ou-medicamento",
+        slug: "tratamento-medicamento",
         text: "Pedidos de cobertura negados, com base na prescrição médica fundamentada.",
         items: ["Pelo SUS", "Pelo plano de saúde"],
       },
@@ -297,14 +297,14 @@ export const practiceAreas = [
       {
         id: "juros-abusivos",
         title: "Juros abusivos em financiamento de veículo",
-        slug: "juros-abusivos-financiamento-de-veiculo",
+        slug: "juros-abusivos-financiamento",
         text: "Revisão de contratos com taxas e encargos acima do permitido.",
         items: [],
       },
       {
         id: "busca-e-apreensao",
         title: "Busca e apreensão de veículo",
-        slug: "busca-e-apreensao-de-veiculo",
+        slug: "busca-apreensao-veiculo",
         text: "Defesa em ações movidas pela instituição financeira por atraso nas parcelas.",
         items: [],
       },
@@ -409,9 +409,7 @@ export const practiceAreas = [
 export const areaById = Object.fromEntries(practiceAreas.map((a) => [a.id, a]));
 
 export const AREAS_HUB = "/areas-de-atuacao/";
+// Enquanto as páginas-pilar /areas/<área>/ não existem, a área aponta para o hub.
 export const areaUrl = (area) => `${AREAS_HUB}#${area.id}`;
-export const serviceUrl = (area, service) => `${AREAS_HUB}#${area.id}-${service.id}`;
-// Destino futuro, já calculado para quando as páginas próprias existirem.
+export const servicePath = (area, service) => (service.slug ? `/areas/${area.slug}/${service.slug}/` : null);
 export const futureAreaPath = (area) => `/areas/${area.slug}/`;
-export const futureServicePath = (area, service) =>
-  service.slug ? `/areas/${area.slug}/${service.slug}/` : null;

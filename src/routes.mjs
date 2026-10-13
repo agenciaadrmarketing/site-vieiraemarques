@@ -4,6 +4,8 @@ import areas from "./pages/areas.mjs";
 import conhecimento from "./pages/conhecimento.mjs";
 import contato from "./pages/contato.mjs";
 import privacidade from "./pages/privacidade.mjs";
+import { servicePages } from "./data/services/index.mjs";
+import { renderService } from "./pages/service.mjs";
 
 export const ROUTES = [
   { path: "/", render: home, priority: "1.0" },
@@ -12,4 +14,5 @@ export const ROUTES = [
   { path: "/conhecimento/", render: conhecimento, priority: "0.7" },
   { path: "/contato/", render: contato, priority: "0.8" },
   { path: "/privacidade/", render: privacidade, priority: "0.2" },
+  ...servicePages.map((p) => ({ path: p.path, render: () => renderService(p), priority: "0.8" })),
 ];

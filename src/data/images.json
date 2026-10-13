@@ -188,6 +188,43 @@
       }
     ]
   },
+  "equipe-reuniao": {
+    "width": 1228,
+    "height": 819,
+    "variants": [
+      {
+        "src": "/assets/img/equipe-reuniao-480.webp",
+        "w": 480,
+        "h": 320
+      },
+      {
+        "src": "/assets/img/equipe-reuniao-800.webp",
+        "w": 800,
+        "h": 534
+      },
+      {
+        "src": "/assets/img/equipe-reuniao-1228.webp",
+        "w": 1228,
+        "h": 819
+      }
+    ]
+  },
+  "carteira-trabalho": {
+    "width": 744,
+    "height": 1080,
+    "variants": [
+      {
+        "src": "/assets/img/carteira-trabalho-360.webp",
+        "w": 360,
+        "h": 523
+      },
+      {
+        "src": "/assets/img/carteira-trabalho-600.webp",
+        "w": 600,
+        "h": 871
+      }
+    ]
+  },
   "escritorio-interno": {
     "width": 1600,
     "height": 900,

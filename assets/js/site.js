@@ -162,8 +162,21 @@
     if (initial && scope.querySelector('[data-filter="' + initial.replace(/[^a-z-]/g, "") + '"]')) apply(initial, false);
   }
 
-  /* ---------- Formulário de contato ---------- */
-  var LIMITS = { nome: 120, whatsapp: 30, email: 160, cidade: 80, mensagem: 2000 };
+  /* ---------- Rastreio (dataLayer) ---------- */
+  var pageCtx = (function () {
+    var el = document.querySelector("[data-service-page]");
+    return el ? { practice_area: el.getAttribute("data-practice-area"), service: el.getAttribute("data-service") } : null;
+  })();
+  function track(event, params) {
+    window.dataLayer = window.dataLayer || [];
+    var data = { event: event, page_path: window.location.pathname };
+    if (pageCtx) { data.practice_area = pageCtx.practice_area; data.service = pageCtx.service; }
+    Object.keys(params || {}).forEach(function (k) { data[k] = params[k]; });
+    window.dataLayer.push(data);
+  }
+
+  /* ---------- Formulário de lead (contato e serviços) ---------- */
+  var LIMITS = { nome: 120, whatsapp: 30, email: 160, cidade: 80, mensagem: 2000, text: 80 };
   var MIN_FILL_MS = 2500;
   var THROTTLE_MS = 30000;
 
@@ -178,23 +191,111 @@
   function initLeadForm() {
     var form = document.querySelector("[data-lead-form]");
     if (!form) return;
-    var success = document.querySelector("[data-success]");
+    var panel = form.parentNode;
+    var success = panel.querySelector("[data-success]");
     var statusEl = form.querySelector("[data-status]");
     var submit = form.querySelector("[data-submit]");
     var endpoint = (form.getAttribute("data-endpoint") || "").trim();
     var waNumber = form.getAttribute("data-whatsapp");
+    var formId = form.getAttribute("data-form-id") || "site_contato";
+    var ctx = {
+      practice_area: form.getAttribute("data-practice-area") || "",
+      service: form.getAttribute("data-service") || "",
+    };
     var startedAt = Date.now();
+    var started = false;
     var sending = false;
+    var questions = Array.prototype.slice.call(form.querySelectorAll("[data-question]"));
+    var areaSelect = form.elements.area && form.elements.area.tagName === "SELECT" ? form.elements.area : null;
 
-    var areaParam = new URLSearchParams(window.location.search).get("area");
-    if (areaParam && form.area.querySelector('option[value="' + areaParam.replace(/[^a-z-]/g, "") + '"]')) form.area.value = areaParam;
+    // Contato: ?area= e ?servico= chegam dos links das páginas de área e serviço.
+    var params = new URLSearchParams(window.location.search);
+    var map = {};
+    try { map = JSON.parse(form.getAttribute("data-service-map") || "{}"); } catch (e) { map = {}; }
+    var servicoParam = (params.get("servico") || "").replace(/[^a-z-]/g, "");
+    if (map[servicoParam]) {
+      ctx.service = map[servicoParam].t;
+      ctx.practice_area = map[servicoParam].at;
+      if (areaSelect) areaSelect.value = map[servicoParam].a;
+    }
+    var areaParam = (params.get("area") || "").replace(/[^a-z-]/g, "");
+    if (areaSelect && areaParam && areaSelect.querySelector('option[value="' + areaParam + '"]')) areaSelect.value = areaParam;
+
+    function valueOf(name) {
+      var el = form.elements[name];
+      if (!el) return "";
+      if (typeof RadioNodeList !== "undefined" && el instanceof RadioNodeList) return el.value || "";
+      return el.value || "";
+    }
+    function labelOf(name) {
+      var q = form.querySelector('[data-question="' + name + '"]');
+      if (!q) return name;
+      var lbl = q.tagName === "FIELDSET" ? q.querySelector("legend") : form.querySelector('label[for="lead-' + name + '"]');
+      return lbl ? lbl.childNodes[0].textContent.trim() : name;
+    }
+    function displayValue(name) {
+      var el = form.elements[name];
+      if (el && el.tagName === "SELECT") { var o = el.options[el.selectedIndex]; return o && o.value ? o.textContent : ""; }
+      return valueOf(name);
+    }
+
+    // Perguntas condicionais (showIf)
+    var conditionals = Array.prototype.slice.call(form.querySelectorAll("[data-show-if]"));
+    function updateConditionals() {
+      conditionals.forEach(function (el) {
+        var rule = {};
+        try { rule = JSON.parse(el.getAttribute("data-show-if")); } catch (e) { rule = {}; }
+        var show = Object.keys(rule).every(function (k) { return valueOf(k) === rule[k]; });
+        el.hidden = !show;
+        if (!show) el.querySelectorAll("input, select, textarea").forEach(function (i) {
+          if (i.type === "radio") i.checked = false; else i.value = "";
+        });
+      });
+    }
+    form.addEventListener("change", updateConditionals);
+    updateConditionals();
+
+    // Eventos de funil
+    if ("IntersectionObserver" in window) {
+      var seen = false;
+      var io = new IntersectionObserver(function (entries) {
+        if (!seen && entries[0].isIntersecting) { seen = true; track("service_form_open", { form_id: formId }); io.disconnect(); }
+      }, { threshold: 0.25 });
+      io.observe(form);
+    }
+    form.addEventListener("input", function () {
+      if (!started) { started = true; track("service_form_start", { form_id: formId }); }
+    });
 
     function setError(name, msg) {
-      var input = form.elements[name];
       var err = document.getElementById("lead-" + name + "-erro");
-      if (input) input.setAttribute("aria-invalid", msg ? "true" : "false");
-      if (input && err) input.setAttribute("aria-describedby", "lead-" + name + "-erro");
+      var input = form.elements[name];
+      if (input && input.setAttribute) {
+        input.setAttribute("aria-invalid", msg ? "true" : "false");
+        input.setAttribute("aria-describedby", "lead-" + name + "-erro");
+      }
       if (err) err.textContent = msg || "";
+    }
+
+    function collect() {
+      var d = {
+        nome: clean(valueOf("nome"), LIMITS.nome),
+        whatsapp: clean(valueOf("whatsapp"), LIMITS.whatsapp),
+        email: clean(valueOf("email"), LIMITS.email),
+        cidade: clean(valueOf("cidade"), LIMITS.cidade),
+        mensagem: clean(valueOf("mensagem"), LIMITS.mensagem),
+        answers: [],
+      };
+      questions.forEach(function (q) {
+        var name = q.getAttribute("data-question");
+        if (name === "area") return;
+        var holder = q.closest("[data-show-if]");
+        if (holder && holder.hidden) return;
+        var v = clean(displayValue(name), LIMITS.text);
+        if (v) d.answers.push({ id: name, label: labelOf(name), value: v });
+      });
+      if (areaSelect && !servicoParam) ctx.practice_area = displayValue("area");
+      return d;
     }
 
     function validate(d) {
@@ -203,26 +304,34 @@
       var digits = d.whatsapp.replace(/\D/g, "");
       if (digits.length < 10 || digits.length > 13) errors.whatsapp = "Informe um WhatsApp com DDD.";
       if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) errors.email = "Confira o e-mail informado.";
-      if (!d.area) errors.area = "Selecione o assunto principal.";
-      if (d.mensagem.length < 10) errors.mensagem = "Descreva brevemente a situação.";
+      questions.forEach(function (q) {
+        var name = q.getAttribute("data-question");
+        var required = q.hasAttribute("required") || q.hasAttribute("data-required");
+        var holder = q.closest("[data-show-if]");
+        if (required && !(holder && holder.hidden) && !valueOf(name)) errors[name] = "Selecione uma opção.";
+      });
+      if (form.elements.mensagem.required && d.mensagem.length < 10) errors.mensagem = "Descreva brevemente a situação.";
       return errors;
     }
 
-    function areaLabel(value) {
-      var opt = form.area.querySelector('option[value="' + value + '"]');
-      return opt ? opt.textContent : value;
+    function summary(d) {
+      var lines = [];
+      if (ctx.service) lines.push("Assunto: " + ctx.service + (ctx.practice_area ? " (" + ctx.practice_area + ")" : ""));
+      else if (ctx.practice_area) lines.push("Assunto: " + ctx.practice_area);
+      d.answers.forEach(function (a) { lines.push(a.label + ": " + a.value); });
+      if (d.cidade) lines.push("Cidade: " + d.cidade);
+      if (d.mensagem) lines.push("", d.mensagem);
+      return lines;
     }
 
     function composeWhatsApp(d) {
-      var lines = ["Olá, vim pelo site da Vieira & Marques.", "", "Nome: " + d.nome, "Assunto: " + areaLabel(d.area)];
-      if (d.cidade) lines.push("Cidade: " + d.cidade);
-      lines.push("", d.mensagem);
+      var lines = ["Olá, vim pelo site da Vieira & Marques.", "", "Nome: " + d.nome].concat(summary(d));
       return "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(lines.join("\n"));
     }
 
     function send(payload) {
-      // Mesmo contrato e mesmos mecanismos das landing pages: GET por imagem (segue o 302
-      // do Apps Script), POST no-cors e sendBeacon. O Apps Script deduplica envios repetidos.
+      // Mesmo contrato e mecanismos das landing pages: GET por imagem (segue o 302 do
+      // Apps Script), POST no-cors e sendBeacon. O Apps Script deduplica repetições.
       var qs = Object.keys(payload).map(function (k) { return encodeURIComponent(k) + "=" + encodeURIComponent(payload[k] || ""); }).join("&");
       try { new Image().src = endpoint + (endpoint.indexOf("?") < 0 ? "?" : "&") + qs; } catch (e) { /* segue */ }
       try { fetch(endpoint, { method: "POST", mode: "no-cors", body: JSON.stringify(payload) }); } catch (e) { /* segue */ }
@@ -237,7 +346,7 @@
       success.querySelector("[data-success-title]").textContent = "Obrigado, " + d.nome.split(" ")[0] + ".";
       success.querySelector("[data-success-text]").textContent = viaWhatsApp
         ? "Sua mensagem foi preparada no WhatsApp. Se a conversa não abriu, use o botão abaixo."
-        : "Sua mensagem foi encaminhada à equipe. O retorno é feito pelo WhatsApp ou e-mail informado.";
+        : "Suas informações foram encaminhadas à equipe. O retorno é feito pelo WhatsApp ou e-mail informado.";
       success.querySelector("[data-success-whatsapp]").href = waUrl;
       success.focus();
     }
@@ -247,35 +356,27 @@
       if (sending) return;
       statusEl.textContent = "";
       statusEl.className = "form__status";
+      if (form.elements.website.value) return; // honeypot preenchido: robô
 
-      if (form.website.value) return; // honeypot preenchido: robô
-      var d = {
-        nome: clean(form.nome.value, LIMITS.nome),
-        whatsapp: clean(form.whatsapp.value, LIMITS.whatsapp),
-        email: clean(form.email.value, LIMITS.email),
-        area: clean(form.area.value, 40),
-        cidade: clean(form.cidade.value, LIMITS.cidade),
-        mensagem: clean(form.mensagem.value, LIMITS.mensagem),
-      };
-
+      var d = collect();
       var errors = validate(d);
-      ["nome", "whatsapp", "email", "area", "mensagem"].forEach(function (k) { setError(k, errors[k]); });
+      ["nome", "whatsapp", "email", "mensagem"].concat(questions.map(function (q) { return q.getAttribute("data-question"); }))
+        .forEach(function (k) { setError(k, errors[k]); });
       var consent = form.querySelector("[data-consent]");
-      var consentErr = form.querySelector("[data-consent-error]");
-      consentErr.textContent = consent.checked ? "" : "É preciso autorizar o contato para enviar.";
+      form.querySelector("[data-consent-error]").textContent = consent.checked ? "" : "É preciso autorizar o contato para enviar.";
       var firstInvalid = Object.keys(errors)[0];
       if (firstInvalid || !consent.checked) {
-        (firstInvalid ? form.elements[firstInvalid] : consent).focus();
+        var target = firstInvalid ? form.elements[firstInvalid] : consent;
+        if (target && target.length && !target.focus) target = target[0];
+        if (target && target.focus) target.focus();
         return;
       }
-
       if (Date.now() - startedAt < MIN_FILL_MS) { // preenchimento instantâneo: provável robô
         statusEl.textContent = "Aguarde um instante e envie novamente.";
         return;
       }
       try {
-        var last = Number(sessionStorage.getItem("vm_lead_ts") || 0);
-        if (Date.now() - last < THROTTLE_MS) {
+        if (Date.now() - Number(sessionStorage.getItem("vm_lead_ts") || 0) < THROTTLE_MS) {
           statusEl.className = "form__status form__status--error";
           statusEl.textContent = "Sua mensagem acabou de ser enviada. Aguarde alguns segundos antes de enviar outra.";
           return;
@@ -288,12 +389,15 @@
 
       var waUrl = composeWhatsApp(d);
       var origin = readOrigin();
+      // "mensagem" reúne respostas e relato para caber na coluna existente da planilha.
       var payload = {
-        nome: d.nome, whatsapp: d.whatsapp, email: d.email, area: areaLabel(d.area), cidade: d.cidade,
-        mensagem: d.mensagem, origem_form: "site_contato", pagina: window.location.href,
-        timestamp: new Date().toISOString(), referrer: origin.referrer || document.referrer || "",
-        landing_page: origin.landing_page || "",
+        nome: d.nome, whatsapp: d.whatsapp, email: d.email, cidade: d.cidade,
+        mensagem: summary(d).join("\n"), relato: d.mensagem,
+        practice_area: ctx.practice_area, service: ctx.service,
+        origem_form: formId, pagina: window.location.href, page_url: window.location.href, page_title: document.title,
+        timestamp: new Date().toISOString(), referrer: origin.referrer || document.referrer || "", landing_page: origin.landing_page || "",
       };
+      d.answers.forEach(function (a) { payload["q_" + a.id] = a.value; });
       UTM_KEYS.forEach(function (k) { payload[k] = origin[k] || ""; });
 
       var viaWhatsApp = !endpoint;
@@ -301,8 +405,8 @@
       else window.open(waUrl, "_blank", "noopener");
 
       try { sessionStorage.setItem("vm_lead_ts", String(Date.now())); } catch (err) { /* segue */ }
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "lead_form_submitted", form_id: "site_contato", lead_area: d.area, lead_channel: viaWhatsApp ? "whatsapp" : "planilha" });
+      track(pageCtx ? "service_form_submit" : "lead_form_submitted", { form_id: formId, practice_area: ctx.practice_area, service: ctx.service, lead_channel: viaWhatsApp ? "whatsapp" : "planilha" });
+      if (viaWhatsApp) track("service_whatsapp_redirect", { form_id: formId, practice_area: ctx.practice_area, service: ctx.service });
 
       showSuccess(d, waUrl, viaWhatsApp);
       sending = false;
@@ -310,22 +414,56 @@
       submit.disabled = false;
     });
 
-    document.querySelector("[data-reset]").addEventListener("click", function () {
+    panel.querySelector("[data-reset]").addEventListener("click", function () {
       form.reset();
+      updateConditionals();
       success.hidden = true;
       form.hidden = false;
       startedAt = Date.now();
-      form.nome.focus();
+      form.elements.nome.focus();
     });
   }
 
-  /* ---------- Rastreio de cliques de contato ---------- */
+  /* ---------- Índice "Nesta página": aberto no desktop, recolhido no mobile ---------- */
+  function initToc() {
+    var toc = document.querySelector("[data-toc]");
+    if (toc && window.innerWidth >= 960) toc.open = true;
+  }
+
+  /* ---------- CTA fixo (mobile) nas páginas de serviço ---------- */
+  function initStickyCta() {
+    var cta = document.querySelector("[data-sticky-cta]");
+    var form = document.querySelector("[data-lead-form]");
+    var hero = document.querySelector(".svc-hero");
+    if (!cta || !form || !hero) return;
+    cta.hidden = false;
+    var formVisible = false;
+    function update() {
+      var pastHero = hero.getBoundingClientRect().bottom < 0;
+      var show = pastHero && !formVisible;
+      cta.setAttribute("data-hidden", show ? "false" : "true");
+      cta.tabIndex = show ? 0 : -1;
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) { formVisible = entries[0].isIntersecting; update(); }, { threshold: 0 })
+        .observe(form.closest("section") || form);
+    }
+    var ticking = false;
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); } }, { passive: true });
+    update();
+  }
+
+  /* ---------- Rastreio de cliques ---------- */
   function initClickTracking() {
+    if (pageCtx) track("service_page_view");
     document.addEventListener("click", function (e) {
-      var a = e.target.closest && e.target.closest('a[href^="https://wa.me/"], a[href^="tel:"]');
-      if (!a) return;
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: a.href.indexOf("tel:") === 0 ? "phone_click" : "whatsapp_click", link_url: a.href, page_path: window.location.pathname });
+      if (!e.target.closest) return;
+      var cta = e.target.closest("[data-cta]");
+      if (cta && pageCtx) track("service_cta_click", { cta_position: cta.getAttribute("data-cta") });
+      var tracked = e.target.closest("[data-track]");
+      if (tracked) track(tracked.getAttribute("data-track"), { link_url: tracked.href || "" });
+      var a = e.target.closest('a[href^="https://wa.me/"], a[href^="tel:"]');
+      if (a) track(a.href.indexOf("tel:") === 0 ? "phone_click" : "whatsapp_click", { link_url: a.href });
     });
   }
 
@@ -336,5 +474,7 @@
   initHub();
   initFilters();
   initLeadForm();
+  initToc();
+  initStickyCta();
   initClickTracking();
 })();

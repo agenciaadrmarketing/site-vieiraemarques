@@ -1,0 +1,27 @@
+import { areaById, servicePath, AREAS_HUB } from "../areas.mjs";
+import divorcio from "./divorcio.mjs";
+import verbasRescisorias from "./verbas-rescisorias.mjs";
+import jurosAbusivos from "./juros-abusivos.mjs";
+import golpeDoPix from "./golpe-do-pix.mjs";
+
+// Páginas de serviço publicadas. Para publicar uma nova: criar o arquivo de conteúdo
+// (planejamento editorial próprio) e incluí-lo aqui.
+const PAGES = [divorcio, verbasRescisorias, jurosAbusivos, golpeDoPix];
+
+export const servicePages = PAGES.map((p) => {
+  const area = areaById[p.area];
+  const service = area?.services.find((s) => s.id === p.service);
+  if (!area || !service) throw new Error(`Serviço inexistente: ${p.area}/${p.service}`);
+  return { ...p, areaData: area, serviceData: service, path: servicePath(area, service) };
+});
+
+const published = new Set(servicePages.map((p) => `${p.area}/${p.service}`));
+export const hasPage = (areaId, serviceId) => published.has(`${areaId}/${serviceId}`);
+
+// Destino de um serviço: a página própria, se publicada; senão, a âncora no hub.
+export function serviceHref(areaId, serviceId) {
+  const area = areaById[areaId];
+  const service = area?.services.find((s) => s.id === serviceId);
+  if (!service) throw new Error(`Serviço inexistente: ${areaId}/${serviceId}`);
+  return hasPage(areaId, serviceId) ? servicePath(area, service) : `${AREAS_HUB}#${areaId}-${serviceId}`;
+}

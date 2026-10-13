@@ -14,8 +14,8 @@ export const SITE = {
 
   phone: { display: "(15) 3347-0189", href: "tel:+551533470189", e164: "+551533470189" },
   whatsapp: { number: "551533470189", display: "(15) 3347-0189" },
-  email: PENDING,
-  hours: PENDING,
+  email: "vieiraemarques.advogados@gmail.com",
+  hours: "Segunda a sexta, das 8h às 18h",
 
   units: [
     {

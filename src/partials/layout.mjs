@@ -182,7 +182,7 @@ export function ctaBand({ title, text, primary = { href: "/contato/", label: "Fa
 </section>`;
 }
 
-export function page({ title, description, path, crumbs, schema, preload, body, scripts = [] }) {
+export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true }) {
   return `<!DOCTYPE html>
 <html lang="${SITE.lang}">
 ${head({ title, description, path, schema, crumbs, preload })}
@@ -192,7 +192,7 @@ ${header(path)}
 ${body}
 </main>
 ${footer()}
-${waFloat()}
+${floatingWhatsapp ? waFloat() : ""}
 <script src="/assets/js/site.js?v=${ASSET_VERSION}" defer></script>
 ${join(scripts, (s) => `<script src="${s}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
 </html>

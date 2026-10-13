@@ -22,6 +22,8 @@ SOURCES = {
     "equipe": ("assets/equipe-vieira-marques-advogados-boituva-sp-otm.webp", [480, 800, 1228]),
     "atendimento-mesa": (f"{INST}/16.webp", [480, 800, 1228]),
     "mesa-trabalho": (f"{INST}/IMG_20231023_103912675_HDR-scaled-1.webp", [480, 800, 1200]),
+    "equipe-reuniao": ("uploads/imagens-lp/equipe-reuniao-vieira-marques.webp", [480, 800, 1228]),
+    "carteira-trabalho": ("uploads/imagens-lp/carteira-de-trabalho.png", [360, 600]),
     "escritorio-interno": (f"{INST}/IMG_20231023_103618894_HDR-scaled-1.webp", [480, 800, 1200, 1600]),
     "oscar-moreira-vieira": ("assets/oscar-moreira-vieira-advogado-boituva-otm.webp", [360, 600, 900]),
     "jislana-marques": ("assets/jislana-marques-advogada-vieira-marques-otm.webp", [360, 600]),

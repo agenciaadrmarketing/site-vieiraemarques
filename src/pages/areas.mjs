@@ -1,5 +1,6 @@
 import { esc, join, when } from "../lib/html.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
+import { hasPage, serviceHref } from "../data/services/index.mjs";
 import { teamByArea } from "../data/team.mjs";
 import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
@@ -18,6 +19,7 @@ function service(area, s) {
   <h4 class="service__title">${esc(s.title)}</h4>
   <p class="service__text">${esc(s.text)}</p>
   ${when(s.items.length, `<ul class="service__items" aria-label="Situações em ${esc(s.title)}">${join(s.items, (i) => `<li>${esc(i)}</li>`)}</ul>`)}
+  ${when(hasPage(area.id, s.id), `<a class="service__link" href="${serviceHref(area.id, s.id)}">Ver ${esc(s.title.toLowerCase())} ${icon.arrow(14)}</a>`)}
 </li>`;
 }
 
