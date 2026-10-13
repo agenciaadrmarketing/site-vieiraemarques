@@ -33,8 +33,6 @@ SOURCES = {
     "leticia-pereira-de-abreu": (f"{SRC}/leticia-pereira-de-abreu-advogada.webp", [360, 600, 900], "leticia-pereira-de-abreu-advogada"),
     "gledie-camargo": (f"{SRC}/gledie-camargo-advogada.webp", [360, 600, 900], "gledie-camargo-advogada"),
     "natalia-okumura": (f"{SRC}/natalia-okumura-advogada.webp", [360, 600], "natalia-okumura-advogada"),
-    # Monograma da tela de carregamento (LP Boituva).
-    "monograma": (f"{SRC}/monograma-vieira-marques.webp", [124], "monograma-vieira-marques"),
 }
 
 
@@ -74,6 +72,24 @@ def logo_variants():
     return out
 
 
+def monogram_mask():
+    """Monograma VM com fundo transparente (alfa = luminância), usado como máscara
+    na tela de carregamento para animar a cor das letras."""
+    from PIL import ImageOps
+    im = Image.open(os.path.join(ROOT, f"{SRC}/monograma-vieira-marques.webp")).convert("L")
+    alpha = ImageOps.autocontrast(im, cutoff=2)
+    alpha = alpha.crop(alpha.point(lambda v: 255 if v > 40 else 0).getbbox())
+    side = max(alpha.size)
+    square = Image.new("L", (side, side), 0)
+    square.paste(alpha, ((side - alpha.width) // 2, (side - alpha.height) // 2))
+    square = square.resize((128, 128), Image.LANCZOS)
+    out = Image.new("RGBA", (128, 128), (255, 255, 255, 0))
+    out.putalpha(square)
+    name = "monograma-vieira-marques-mascara.webp"
+    out.save(os.path.join(OUT_DIR, name), "WEBP", lossless=True, method=6)
+    return {"src": f"/assets/img/{name}", "w": 128, "h": 128}
+
+
 def og_image():
     im = Image.open(os.path.join(ROOT, SOURCES["fachada"][0])).convert("RGB")
     target_ratio = 1200 / 630
@@ -95,6 +111,7 @@ def main():
     manifest = {name: save_variants(src, widths, slug) for name, (src, widths, slug) in SOURCES.items()}
     manifest.update(logo_variants())
     manifest["og"] = og_image()
+    manifest["monograma-mascara"] = monogram_mask()
     with open(MANIFEST, "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=2)
     print(f"{len(manifest)} imagens no manifesto")

@@ -1078,13 +1078,33 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
   animation: vm-loader-out .4s ease 2.5s forwards;
 }
 .vm-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.vm-loader__card {
-  width: 104px; height: 104px; border-radius: 22px; display: flex; align-items: center; justify-content: center;
-  background: var(--c-ink-3); border: 1px solid rgba(255,255,255,.12); animation: vm-pulse 1.6s ease-in-out infinite; will-change: transform;
+/* Anéis: cada um pulsa com atraso crescente; só transform anima (GPU), sem repintar sombras. */
+.vm-ripple { --size: min(56vw, 232px); --dur: 2s; position: relative; width: var(--size); aspect-ratio: 1; }
+.vm-ripple__ring {
+  position: absolute; border-radius: 50%;
+  background: linear-gradient(0deg, rgba(255,255,255,.025), rgba(255,255,255,.085));
+  border-top: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 14px 22px -10px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.04);
+  animation: vm-ripple var(--dur) ease-in-out infinite; will-change: transform;
 }
-.vm-loader__card img { width: 62px; height: 62px; border-radius: 10px; }
-.vm-loader.is-hidden .vm-loader__card { animation-play-state: paused; }
-@keyframes vm-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+.vm-ripple__ring:nth-child(1) { inset: 40%; z-index: 5; }
+.vm-ripple__ring:nth-child(2) { inset: 30%; z-index: 4; animation-delay: .2s; }
+.vm-ripple__ring:nth-child(3) { inset: 20%; z-index: 3; animation-delay: .4s; }
+.vm-ripple__ring:nth-child(4) { inset: 10%; z-index: 2; animation-delay: .6s; }
+.vm-ripple__ring:nth-child(5) { inset: 0; z-index: 1; animation-delay: .8s; }
+.vm-ripple__mark {
+  position: absolute; inset: 39%; z-index: 6;
+  background-color: #8A8A8A;
+  -webkit-mask: var(--mark) center / contain no-repeat; mask: var(--mark) center / contain no-repeat;
+  animation: vm-mark-color var(--dur) ease-in-out infinite;
+}
+.vm-loader.is-hidden .vm-ripple__ring, .vm-loader.is-hidden .vm-ripple__mark { animation-play-state: paused; }
+@keyframes vm-ripple { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+@keyframes vm-mark-color { 0%, 100% { background-color: #8A8A8A; } 50% { background-color: #FFFFFF; } }
+@media (prefers-reduced-motion: reduce) {
+  .vm-ripple__ring, .vm-ripple__mark { animation: none; }
+  .vm-ripple__mark { background-color: #FFFFFF; }
+}
 @keyframes vm-loader-out { to { opacity: 0; visibility: hidden; pointer-events: none; } }
 
 /* ---------- Rolagem suave (Lenis, só com mouse/trackpad) ---------- */

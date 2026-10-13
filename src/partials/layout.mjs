@@ -224,13 +224,16 @@ export function footer(whatsappMessage = waMessage()) {
 </footer>`;
 }
 
-// Tela de carregamento (da LP Boituva): fundo preto com o monograma pulsando.
+// Tela de carregamento: anéis concêntricos pulsando em sequência (inspirada no
+// "ripple pulse loader") e o monograma VM alternando entre cinza e branco.
 // Cobre a página até o carregamento e reaparece nas trocas de página (site.js).
 // Sem JS, some sozinha (CSS) — e <noscript> a esconde de imediato.
-const loader = () => {
-  const m = images.monograma.variants[0];
-  return `<div class="vm-loader" role="status" aria-label="Carregando" data-loader><div class="vm-loader__card"><img src="${m.src}" alt="" width="62" height="62"></div></div>`;
-};
+const loader = () => `<div class="vm-loader" role="status" aria-label="Carregando" data-loader>
+  <div class="vm-ripple" aria-hidden="true" style="--mark:url('${images["monograma-mascara"].src}')">
+    <span class="vm-ripple__ring"></span><span class="vm-ripple__ring"></span><span class="vm-ripple__ring"></span><span class="vm-ripple__ring"></span><span class="vm-ripple__ring"></span>
+    <span class="vm-ripple__mark"></span>
+  </div>
+</div>`;
 
 export const waFloat = (message) =>
   `<a class="wa-float" href="${whatsappUrl(message)}" target="_blank" rel="noopener" data-wa-float data-hidden="true" aria-label="Conversar pelo WhatsApp">${icon.whatsapp(20)}<span>WhatsApp</span></a>`;
