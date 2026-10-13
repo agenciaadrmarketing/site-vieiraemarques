@@ -2,11 +2,10 @@ import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
 import { practiceAreas, areaUrl, AREAS_HUB } from "../data/areas.mjs";
 import { hasPage, serviceHref } from "../data/services/index.mjs";
-import { teamByArea, teamRecognitions } from "../data/team.mjs";
+import { team, teamByArea } from "../data/team.mjs";
 import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
-import { img } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
 import { sectionHead, faqList, faqSchema, articleRow, teamPanels } from "../partials/components.mjs";
 import { whatsappPanel } from "../partials/whatsapp-panel.mjs";
@@ -31,18 +30,6 @@ function serviceCard(area, s) {
     : `<a class="service__link service__link--wa" href="${whatsappUrl(waMessage(s.title.toLowerCase()))}" target="_blank" rel="noopener">${icon.whatsapp(14)} Falar sobre ${esc(s.title.toLowerCase())}</a>`}
 </li>`;
 }
-
-// Com 1 ou 2 profissionais, os painéis expansíveis cortariam a foto: cartão de perfil.
-const teamCards = (people) => `<ul class="team-cards">${join(people, (p) => `<li class="team-card" data-reveal>
-  <figure class="team-card__photo">${img(p.photo, { alt: `${p.name}, ${p.role.toLowerCase()} da Vieira & Marques`, sizes: "(min-width: 760px) 240px, 100vw", style: `object-position:${p.position}` })}</figure>
-  <div class="team-card__body">
-    <p class="team-card__meta">${esc(p.role)} · ${esc(p.oab)}</p>
-    <h3 class="team-card__name">${esc(p.name)}</h3>
-    <p class="team-card__bio">${esc(p.bio)}</p>
-    ${when(p.tags?.length, `<ul class="team-panel__tags team-card__tags" aria-label="Temas">${join(p.tags ?? [], (t) => `<li>${esc(t)}</li>`)}</ul>`)}
-    <a class="link-arrow" href="/escritorio/#${p.id}">Formação completa ${icon.arrow(14)}</a>
-  </div>
-</li>`)}</ul>`;
 
 export function renderArea(area) {
   const path = areaUrl(area);
@@ -91,24 +78,12 @@ export function renderArea(area) {
   </div>
 </section>
 
-${people.length ? `<section class="section section--muted" aria-labelledby="equipe-titulo">
+<section class="section section--muted" aria-labelledby="equipe-titulo">
   <div class="container">
-    ${sectionHead({ eyebrow: "Equipe", id: "equipe-titulo", title: `Quem atua <span class="grad">nesta área.</span>`, lead: "Inscrição na OAB, formação e áreas de atuação de cada profissional." })}
-    ${people.length >= 3 ? teamPanels(people, { profileLinks: true }) : teamCards(people)}
+    ${sectionHead({ eyebrow: "Equipe", id: "equipe-titulo", title: `Quem conduz <span class="grad">o atendimento.</span>`, lead: people.length ? `Em ${esc(area.title)}: ${esc(people.map((p) => p.name).join(", "))}. Conheça também o restante da equipe.` : "Formação, inscrição na OAB e áreas de atuação de cada profissional — informação verificável." })}
+    ${teamPanels([...people, ...team.filter((p) => !people.includes(p))], { profileLinks: true })}
   </div>
-</section>` : `<section class="section section--dark svc-trust-section" aria-labelledby="escritorio-titulo">
-  <div class="container">
-    <div class="svc-trust" data-reveal>
-      <figure class="svc-trust__media">${img("equipe-reuniao", { alt: "Equipe da Vieira & Marques reunida no escritório em Boituva", sizes: "(min-width: 960px) 460px, 100vw" })}</figure>
-      <div class="stack">
-        <p class="eyebrow">Vieira &amp; Marques</p>
-        <h2 class="h-card" id="escritorio-titulo">Análise individual de cada situação, com advogados que respondem pela área.</h2>
-        <p class="muted">${esc(teamRecognitions[1])}</p>
-        <a class="link-arrow" href="/escritorio/#equipe">Conheça a equipe ${icon.arrow(14)}</a>
-      </div>
-    </div>
-  </div>
-</section>`}
+</section>
 
 ${faqs.length ? `<section class="section section--white" id="perguntas" aria-labelledby="perguntas-titulo">
   <div class="container container--narrow">

@@ -97,9 +97,9 @@ export const areaLink = (id) => {
   return a ? `<a class="text-link" href="${areaUrl(a)}">${esc(a.title)}</a>` : "";
 };
 
-// Equipe em painéis expansíveis (componente da Home, reutilizado no Escritório).
+// Equipe em painéis expansíveis (componente do design, usado na Home, no Escritório e nas áreas).
 // Desktop: painéis lado a lado; o ativo se expande e mostra cargo, OAB, atuação e temas.
-// Mobile: cartões com rolagem lateral. Sem JS, o primeiro painel fica aberto.
+// Mobile: carrossel com deslize, setas e indicadores. Sem JS, o primeiro painel fica aberto.
 export function teamPanels(people, { profileLinks = false, headingLevel = 3 } = {}) {
   const h = `h${headingLevel}`;
   return `<div class="team-panels" data-team-panels data-reveal>
@@ -115,7 +115,12 @@ export function teamPanels(people, { profileLinks = false, headingLevel = 3 } = 
     </div>
   </article>`)}
 </div>
-<p class="team-panels__hint"><span class="team-panels__hint-desktop">Passe o mouse ou use o teclado sobre cada profissional para ver formação e áreas de atuação.</span><span class="team-panels__hint-mobile">Deslize para conhecer a equipe →</span></p>`;
+<div class="team-carousel__controls" data-team-controls hidden>
+  <button class="team-carousel__arrow" type="button" data-team-prev aria-label="Profissional anterior">${icon.arrow(16)}</button>
+  <div class="team-carousel__dots">${join(people, (p, i) => `<button class="team-carousel__dot" type="button" data-team-dot="${i}" aria-label="Ver ${esc(p.name)}"${i === 0 ? ' aria-current="true"' : ""}></button>`)}</div>
+  <button class="team-carousel__arrow" type="button" data-team-next aria-label="Próximo profissional">${icon.arrow(16)}</button>
+</div>
+<p class="team-panels__hint"><span class="team-panels__hint-desktop">Passe o mouse sobre cada profissional para ver formação e áreas de atuação.</span><span class="team-panels__hint-mobile">Deslize ou use as setas para conhecer a equipe.</span></p>`;
 }
 
 export const recognitions = (items) => `<ul class="recognitions" data-reveal>${join(items, (t) => `<li>${esc(t)}</li>`)}</ul>`;

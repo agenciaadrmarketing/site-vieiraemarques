@@ -716,7 +716,49 @@
         panel.addEventListener("focusin", function () { activate(panel); });
         panel.addEventListener("click", function () { activate(panel); });
       });
+      initTeamCarousel(group, panels);
     });
+  }
+
+  // Mobile: carrossel com deslize (scroll-snap), setas e indicadores.
+  function initTeamCarousel(group, panels) {
+    var controls = group.nextElementSibling;
+    if (!controls || !controls.hasAttribute("data-team-controls")) return;
+    controls.hidden = false;
+    var prev = controls.querySelector("[data-team-prev]");
+    var next = controls.querySelector("[data-team-next]");
+    var dots = [].slice.call(controls.querySelectorAll("[data-team-dot]"));
+    var current = 0;
+    function isCarousel() { return window.matchMedia("(max-width: 899px)").matches; }
+    function go(i) {
+      i = Math.max(0, Math.min(panels.length - 1, i));
+      var pad = parseFloat(getComputedStyle(group).scrollPaddingLeft) || 0;
+      group.scrollTo({ left: panels[i].offsetLeft - group.offsetLeft - pad, behavior: reduceMotion ? "auto" : "smooth" });
+    }
+    function update() {
+      if (!isCarousel()) return;
+      var center = group.scrollLeft + group.clientWidth / 2;
+      var best = 0, bestDist = Infinity;
+      panels.forEach(function (p, i) {
+        var mid = p.offsetLeft - group.offsetLeft + p.offsetWidth / 2;
+        var d = Math.abs(mid - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      if (group.scrollLeft < 4) best = 0;
+      if (group.scrollLeft + group.clientWidth >= group.scrollWidth - 4) best = panels.length - 1;
+      current = best;
+      panels.forEach(function (p, i) { p.classList.toggle("is-current", i === current); });
+      dots.forEach(function (d, i) { if (i === current) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
+      prev.disabled = current === 0;
+      next.disabled = current === panels.length - 1;
+    }
+    prev.addEventListener("click", function () { go(current - 1); });
+    next.addEventListener("click", function () { go(current + 1); });
+    dots.forEach(function (d, i) { d.addEventListener("click", function () { go(i); }); });
+    var ticking = false;
+    group.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); } }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
   }
 
   /* ---------- Rastreio de cliques ---------- */
