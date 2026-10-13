@@ -83,7 +83,7 @@ function related(p) {
 
 function trust(p) {
   const person = p.trust?.person ? team.find((t) => t.id === p.trust.person) : null;
-  return `<section class="section section--white svc-trust-section" aria-labelledby="escritorio-titulo">
+  return `<section class="section section--dark svc-trust-section" aria-labelledby="escritorio-titulo">
   <div class="container">
     <div class="svc-trust" data-reveal>
       <figure class="svc-trust__media">${img(p.trust?.image ?? "equipe-reuniao", { alt: "Equipe da Vieira & Marques reunida no escritório em Boituva", sizes: "(min-width: 960px) 460px, 100vw" })}</figure>

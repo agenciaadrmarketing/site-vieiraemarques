@@ -117,7 +117,7 @@ ${when(b.note, `<p class="svc-note" data-reveal>${b.note}</p>`)}`);
   // Informação importante destacada.
   callout: (b) => {
     const link = b.service ? serviceLink(b.service) : b.link;
-    return section(b, `<div class="svc-callout svc-callout--${b.variant ?? "info"}" data-reveal>
+    return section(b, `<div class="svc-callout svc-callout--${b.variant ?? "info"}${b.variant === "warning" ? " on-dark" : ""}" data-reveal>
   <p class="eyebrow">${esc(b.eyebrow ?? "Importante")}</p>
   <h2 class="svc-callout__title" id="${b.id}-titulo">${b.title}</h2>
   <div class="prose">${paragraphs(b.paragraphs)}</div>

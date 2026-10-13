@@ -127,7 +127,7 @@ export default function escritorio() {
   </div>
 </section>
 
-<section class="section section--muted" aria-labelledby="estrutura-titulo">
+<section class="section section--dark" aria-labelledby="estrutura-titulo">
   <div class="container">
     ${sectionHead({ eyebrow: "Estrutura", id: "estrutura-titulo", title: `O escritório <span class="grad">por dentro.</span>`, lead: "Sede em Boituva, com salas de atendimento e de reunião. Para quem está em outra cidade, as reuniões acontecem por vídeo." })}
     <div class="gallery" data-reveal>
