@@ -1,0 +1,327 @@
+{
+  "fachada": {
+    "width": 1228,
+    "height": 819,
+    "variants": [
+      {
+        "src": "/assets/img/fachada-480.webp",
+        "w": 480,
+        "h": 320
+      },
+      {
+        "src": "/assets/img/fachada-800.webp",
+        "w": 800,
+        "h": 534
+      },
+      {
+        "src": "/assets/img/fachada-1228.webp",
+        "w": 1228,
+        "h": 819
+      }
+    ]
+  },
+  "recepcao": {
+    "width": 1228,
+    "height": 819,
+    "variants": [
+      {
+        "src": "/assets/img/recepcao-480.webp",
+        "w": 480,
+        "h": 320
+      },
+      {
+        "src": "/assets/img/recepcao-800.webp",
+        "w": 800,
+        "h": 534
+      },
+      {
+        "src": "/assets/img/recepcao-1228.webp",
+        "w": 1228,
+        "h": 819
+      }
+    ]
+  },
+  "sala-atendimento": {
+    "width": 1228,
+    "height": 819,
+    "variants": [
+      {
+        "src": "/assets/img/sala-atendimento-480.webp",
+        "w": 480,
+        "h": 320
+      },
+      {
+        "src": "/assets/img/sala-atendimento-800.webp",
+        "w": 800,
+        "h": 534
+      },
+      {
+        "src": "/assets/img/sala-atendimento-1228.webp",
+        "w": 1228,
+        "h": 819
+      }
+    ]
+  },
+  "sala-reuniao": {
+    "width": 1228,
+    "height": 819,
+    "variants": [
+      {
+        "src": "/assets/img/sala-reuniao-480.webp",
+        "w": 480,
+        "h": 320
+      },
+      {
+        "src": "/assets/img/sala-reuniao-800.webp",
+        "w": 800,
+        "h": 534
+      },
+      {
+        "src": "/assets/img/sala-reuniao-1228.webp",
+        "w": 1228,
+        "h": 819
+      }
+    ]
+  },
+  "estacao-trabalho": {
+    "width": 1228,
+    "height": 819,
+    "variants": [
+      {
+        "src": "/assets/img/estacao-trabalho-480.webp",
+        "w": 480,
+        "h": 320
+      },
+      {
+        "src": "/assets/img/estacao-trabalho-800.webp",
+        "w": 800,
+        "h": 534
+      },
+      {
+        "src": "/assets/img/estacao-trabalho-1228.webp",
+        "w": 1228,
+        "h": 819
+      }
+    ]
+  },
+  "letreiro": {
+    "width": 1920,
+    "height": 1440,
+    "variants": [
+      {
+        "src": "/assets/img/letreiro-480.webp",
+        "w": 480,
+        "h": 360
+      },
+      {
+        "src": "/assets/img/letreiro-800.webp",
+        "w": 800,
+        "h": 600
+      },
+      {
+        "src": "/assets/img/letreiro-1200.webp",
+        "w": 1200,
+        "h": 900
+      }
+    ]
+  },
+  "equipe": {
+    "width": 1228,
+    "height": 819,
+    "variants": [
+      {
+        "src": "/assets/img/equipe-480.webp",
+        "w": 480,
+        "h": 320
+      },
+      {
+        "src": "/assets/img/equipe-800.webp",
+        "w": 800,
+        "h": 534
+      },
+      {
+        "src": "/assets/img/equipe-1228.webp",
+        "w": 1228,
+        "h": 819
+      }
+    ]
+  },
+  "atendimento-mesa": {
+    "width": 1228,
+    "height": 819,
+    "variants": [
+      {
+        "src": "/assets/img/atendimento-mesa-480.webp",
+        "w": 480,
+        "h": 320
+      },
+      {
+        "src": "/assets/img/atendimento-mesa-800.webp",
+        "w": 800,
+        "h": 534
+      },
+      {
+        "src": "/assets/img/atendimento-mesa-1228.webp",
+        "w": 1228,
+        "h": 819
+      }
+    ]
+  },
+  "mesa-trabalho": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/img/mesa-trabalho-480.webp",
+        "w": 480,
+        "h": 270
+      },
+      {
+        "src": "/assets/img/mesa-trabalho-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/mesa-trabalho-1200.webp",
+        "w": 1200,
+        "h": 675
+      }
+    ]
+  },
+  "escritorio-interno": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/img/escritorio-interno-480.webp",
+        "w": 480,
+        "h": 270
+      },
+      {
+        "src": "/assets/img/escritorio-interno-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/escritorio-interno-1200.webp",
+        "w": 1200,
+        "h": 675
+      },
+      {
+        "src": "/assets/img/escritorio-interno-1600.webp",
+        "w": 1600,
+        "h": 900
+      }
+    ]
+  },
+  "oscar-moreira-vieira": {
+    "width": 1100,
+    "height": 1650,
+    "variants": [
+      {
+        "src": "/assets/img/oscar-moreira-vieira-360.webp",
+        "w": 360,
+        "h": 540
+      },
+      {
+        "src": "/assets/img/oscar-moreira-vieira-600.webp",
+        "w": 600,
+        "h": 900
+      },
+      {
+        "src": "/assets/img/oscar-moreira-vieira-900.webp",
+        "w": 900,
+        "h": 1350
+      }
+    ]
+  },
+  "jislana-marques": {
+    "width": 600,
+    "height": 520,
+    "variants": [
+      {
+        "src": "/assets/img/jislana-marques-360.webp",
+        "w": 360,
+        "h": 312
+      },
+      {
+        "src": "/assets/img/jislana-marques-600.webp",
+        "w": 600,
+        "h": 520
+      }
+    ]
+  },
+  "leticia-pereira-de-abreu": {
+    "width": 900,
+    "height": 793,
+    "variants": [
+      {
+        "src": "/assets/img/leticia-pereira-de-abreu-360.webp",
+        "w": 360,
+        "h": 317
+      },
+      {
+        "src": "/assets/img/leticia-pereira-de-abreu-600.webp",
+        "w": 600,
+        "h": 529
+      },
+      {
+        "src": "/assets/img/leticia-pereira-de-abreu-900.webp",
+        "w": 900,
+        "h": 793
+      }
+    ]
+  },
+  "gledie-camargo": {
+    "width": 900,
+    "height": 1350,
+    "variants": [
+      {
+        "src": "/assets/img/gledie-camargo-360.webp",
+        "w": 360,
+        "h": 540
+      },
+      {
+        "src": "/assets/img/gledie-camargo-600.webp",
+        "w": 600,
+        "h": 900
+      },
+      {
+        "src": "/assets/img/gledie-camargo-900.webp",
+        "w": 900,
+        "h": 1350
+      }
+    ]
+  },
+  "natalia-okumura": {
+    "width": 600,
+    "height": 520,
+    "variants": [
+      {
+        "src": "/assets/img/natalia-okumura-360.webp",
+        "w": 360,
+        "h": 312
+      },
+      {
+        "src": "/assets/img/natalia-okumura-600.webp",
+        "w": 600,
+        "h": 520
+      }
+    ]
+  },
+  "logo-escuro": {
+    "src": "/assets/img/logo-escuro.webp",
+    "w": 603,
+    "h": 131
+  },
+  "logo-claro": {
+    "src": "/assets/img/logo-claro.webp",
+    "w": 603,
+    "h": 131
+  },
+  "og": {
+    "src": "/assets/img/og-vieira-marques.jpg",
+    "w": 1200,
+    "h": 630
+  }
+}

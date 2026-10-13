@@ -1,1703 +1,351 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head>
+<html lang="pt-BR">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-  window.__resources = {
-    "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/react.production.min.js",
-    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/react-dom.production.min.js"
-  };
-</script>
-<script src="./support.js"></script>
-<meta name="robots" content="index, follow">
-<link rel="icon" href="uploads/favicon/favicon.ico?v=1" sizes="32x32">
-<link rel="icon" type="image/png" href="uploads/favicon/favicon-32.png?v=1" sizes="32x32">
-<link rel="icon" type="image/png" href="uploads/favicon/favicon-16.png?v=1" sizes="16x16">
-<link rel="apple-touch-icon" href="uploads/favicon/apple-touch-icon.png?v=1">
-<meta name="description" content="Orientação jurídica em Família, Sucessões, Criminal, Trabalhista, Previdenciário e Cível. Boituva e Sorocaba (SP) e atendimento online em todo o Brasil.">
-<title>Vieira &amp; Marques Advogados | Boituva e Sorocaba - SP</title>
+<title>Vieira &amp; Marques Sociedade de Advogados | Boituva e Sorocaba - SP</title>
+<meta name="description" content="Advogados em Boituva e Sorocaba (SP): Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário. Atendimento online no Brasil.">
 <link rel="canonical" href="https://vieiraemarquesadvogados.com/">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0B0B0B">
-<meta property="og:url" content="https://vieiraemarquesadvogados.com/">
-<meta property="og:site_name" content="Vieira &amp; Marques Sociedade de Advogados">
-<meta property="og:image" content="https://vieiraemarquesadvogados.com/assets/fachada-escritorio-vieira-marques-boituva-otm.webp">
-<meta property="og:image:alt" content="Fachada do escritório Vieira &amp; Marques em Boituva - SP">
-<meta name="twitter:image" content="https://vieiraemarquesadvogados.com/assets/fachada-escritorio-vieira-marques-boituva-otm.webp">
-<meta property="og:title" content="Vieira &amp; Marques Advogados | Boituva e Sorocaba - SP">
-<meta property="og:description" content="Orientação jurídica com estratégia, clareza e proximidade. Família e Sucessões, Criminal, Trabalhista, Previdenciário e Cível.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Vieira &amp; Marques Sociedade de Advogados">
+<meta property="og:title" content="Vieira &amp; Marques Sociedade de Advogados | Boituva e Sorocaba - SP">
+<meta property="og:description" content="Advogados em Boituva e Sorocaba (SP): Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário. Atendimento online no Brasil.">
+<meta property="og:url" content="https://vieiraemarquesadvogados.com/">
+<meta property="og:image" content="https://vieiraemarquesadvogados.com/assets/img/og-vieira-marques.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fachada do escritório Vieira &amp; Marques em Boituva - SP">
 <meta name="twitter:card" content="summary_large_image">
-
-<style>/* vietnamese */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-vietnamese.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-latin-ext.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-latin.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-vietnamese.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-latin-ext.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-latin.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-vietnamese.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-latin-ext.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-latin.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-vietnamese.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-latin-ext.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Lexend Deca';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("uploads/fonts/lexend-deca-latin.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-</style>
-<style>@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 300;
-  font-display: block;
-  src: url("uploads/fonts/material-symbols-outlined.woff2") format('woff2');
-}
-
-.material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-</style>
-<style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: #0B0B0B; }
-  a { color: #0B0B0B; text-decoration: none; }
-  a:hover { color: #4A4A4A; }
-  input, select, textarea, button { font: inherit; color: inherit; }
-  ::selection { background: #0B0B0B; color: #FFFFFF; }
-  @keyframes vmFade { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes vmIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
-  @keyframes vmZoom { from { transform: scale(1.1); } to { transform: scale(1); } }
-  @keyframes vmMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  html { scroll-behavior: smooth; scroll-padding-top: 112px; }
-  @keyframes vmAlvo { 0% { box-shadow: inset 0 0 0 0 rgba(255,255,255,0); } 22% { box-shadow: inset 0 3px 0 0 rgba(143,143,143,0.55); } 100% { box-shadow: inset 0 0 0 0 rgba(255,255,255,0); } }
-  .vm-alvo { animation: vmAlvo 1.5s cubic-bezier(.22,.61,.36,1) both; }
-  @property --ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
-  html { scroll-behavior: smooth; scroll-padding-top: 112px; }
-  @keyframes vmAlvo { 0% { box-shadow: inset 0 0 0 0 rgba(255,255,255,0); } 22% { box-shadow: inset 0 3px 0 0 rgba(143,143,143,0.55); } 100% { box-shadow: inset 0 0 0 0 rgba(255,255,255,0); } }
-  .vm-alvo { animation: vmAlvo 1.5s cubic-bezier(.22,.61,.36,1) both; }
-  @property --angOff { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
-  @property --pct { syntax: "<percentage>"; initial-value: 5%; inherits: false; }
-  @property --shine { syntax: "<color>"; initial-value: #ffffff; inherits: false; }
-  .cta-shine {
-    --bg: #1EA94F; --luz: #4ade80; --luzSuave: #a7f3c4; --dur: 3s;
-    isolation: isolate; position: relative; overflow: hidden; outline-offset: 4px;
-    white-space: nowrap; flex-shrink: 0; text-decoration: none;
-    border: 1px solid transparent !important;
-    background:
-      linear-gradient(var(--bg), var(--bg)) padding-box,
-      conic-gradient(from calc(var(--ang) - var(--angOff)), transparent, var(--luz) var(--pct), var(--shine) calc(var(--pct) * 2), var(--luz) calc(var(--pct) * 3), transparent calc(var(--pct) * 4)) border-box !important;
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18), 0 8px 22px -12px rgba(26,150,70,0.5);
-    transition: --angOff 700ms cubic-bezier(.22,1,.36,1), --pct 700ms cubic-bezier(.22,1,.36,1), --shine 700ms cubic-bezier(.22,1,.36,1), transform 420ms cubic-bezier(.22,1,.36,1), box-shadow 420ms cubic-bezier(.22,1,.36,1);
-    will-change: transform;
-  }
-  .cta-shine::before, .cta-shine::after { content: ""; pointer-events: none; position: absolute; left: 50%; top: 50%; translate: -50% -50%; z-index: 0; }
-  .cta-shine::before {
-    width: calc(100% - 6px); height: calc(100% - 6px); border-radius: inherit;
-    background: radial-gradient(circle at 2px 2px, #fff .5px, transparent 0) padding-box;
-    background-size: 4px 4px; background-repeat: space;
-    mask-image: conic-gradient(from calc(var(--ang) + 45deg), #000, transparent 10% 90%, #000);
-    -webkit-mask-image: conic-gradient(from calc(var(--ang) + 45deg), #000, transparent 10% 90%, #000);
-    opacity: .38; transition: opacity 420ms cubic-bezier(.22,1,.36,1);
-  }
-  .cta-shine::after {
-    width: 100%; aspect-ratio: 1;
-    background: linear-gradient(-50deg, transparent, var(--luz), transparent);
-    mask-image: radial-gradient(circle at bottom, transparent 40%, #000);
-    -webkit-mask-image: radial-gradient(circle at bottom, transparent 40%, #000);
-    opacity: .5; transition: opacity 420ms cubic-bezier(.22,1,.36,1);
-  }
-  .cta-shine > * { position: relative; z-index: 1; }
-  .cta-shine, .cta-shine::before, .cta-shine::after { animation: ctaShineAng var(--dur) linear infinite, ctaShineAng calc(var(--dur) / .4) linear infinite reverse paused; animation-composition: add; }
-  .cta-shine::after { animation: ctaShineGira var(--dur) linear infinite, ctaShineGira calc(var(--dur) / .4) linear infinite reverse paused; }
-  .cta-shine:is(:hover, :focus-visible) {
-    --pct: 20%; --angOff: 95deg; --shine: var(--luzSuave);
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18), 0 0 0 3px rgba(26,150,70,0.16), 0 16px 36px -12px rgba(26,150,70,0.65);
-    transition-duration: 260ms, 260ms, 260ms, 300ms, 300ms;
-  }
-  .cta-shine:is(:hover, :focus-visible), .cta-shine:is(:hover, :focus-visible)::before, .cta-shine:is(:hover, :focus-visible)::after { animation-play-state: running; }
-  .cta-shine:is(:hover, :focus-visible)::before { opacity: .5; }
-  .cta-shine:is(:hover, :focus-visible)::after { opacity: .68; }
-  .cta-shine:active { transform: translateY(0) scale(.99); transition-duration: 90ms; }
-  .cta-shine--escuro { --bg: #18913F; --luz: #4ade80; --luzSuave: #a7f3c4; }
-  @keyframes ctaShineAng { to { --ang: 360deg; } }
-  @keyframes ctaShineGira { to { rotate: 360deg; } }
-  @media (prefers-reduced-motion: reduce) { .cta-shine, .cta-shine::before, .cta-shine::after { animation: none !important; } .cta-shine::before, .cta-shine::after { display: none; } }
-  .vm-grad, .vm-grad-claro { background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
-  .vm-grad { background-image: linear-gradient(100deg, #FFFFFF 0%, #C4C4C4 34%, #7A7A7A 100%); }
-  .vm-grad-claro { background-image: linear-gradient(100deg, #0B0B0B 0%, #4A4A4A 36%, #9A9A9A 100%); }
-  .vm-bento { transition: transform .35s cubic-bezier(.22,.61,.36,1), border-color .3s ease; }
-  .vm-bento:hover { transform: scale(1.02); border-color: #4A4A4A; }
-  .vm-bento [data-foto] { transition: transform .6s cubic-bezier(.22,.61,.36,1); }
-  .vm-bento:hover [data-foto] { transform: scale(1.06); }
-  .vm-bento figcaption { opacity: 0; transition: opacity .3s ease; }
-  .vm-bento:hover figcaption, .vm-bento:focus-visible figcaption { opacity: 1; }
-  @keyframes vmVeu { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes vmModal { from { opacity: 0; transform: translateY(22px) scale(.97); } to { opacity: 1; transform: none; } }
-  .vm-post { transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease, border-color .3s ease; }
-  .vm-post:hover { transform: translateY(-5px); box-shadow: 0 26px 50px -34px rgba(11,11,11,0.45); border-color: #C9C9C9; }
-  .vm-post__titulo { background-image: linear-gradient(#0B0B0B, #0B0B0B); background-size: 0% 2px; background-position: left bottom; background-repeat: no-repeat; transition: background-size .5s cubic-bezier(.22,.61,.36,1); }
-  .vm-post:hover .vm-post__titulo { background-size: 100% 2px; }
-  .vm-post__foto { transition: transform .6s cubic-bezier(.22,.61,.36,1); }
-  .vm-post:hover .vm-post__foto { transform: scale(1.05); }
-  .vm-post__seta { transition: transform .3s ease; }
-  .vm-post:hover .vm-post__seta { transform: translateX(5px); }
-  @keyframes vmColunaSobe { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-  .vm-coluna:hover > div { animation-play-state: paused; }
-  @keyframes vmPulsoAnel { 0% { transform: scale(.86); opacity: 0; } 12% { opacity: .55; } 100% { transform: scale(1.55); opacity: 0; } }
-  @keyframes vmPulsoPonto { 0%, 100% { box-shadow: 0 0 0 0 rgba(30,169,79,0.55); } 60% { box-shadow: 0 0 0 6px rgba(30,169,79,0); } }
-  @keyframes vmRespira { 0%, 100% { opacity: .5; } 50% { opacity: .85; } }
-  @media (prefers-reduced-motion: reduce) { [data-pulso] { animation: none !important; opacity: 0 !important; } }
-  @keyframes vmPull { from { transform: translateY(105%); opacity: 0; } to { transform: none; opacity: 1; } }
-  @keyframes vmBarra { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  .vm-pill { transition: gap .35s cubic-bezier(.16,1,.3,1), transform 420ms cubic-bezier(.22,1,.36,1), box-shadow 420ms cubic-bezier(.22,1,.36,1) !important; }
-  .vm-pill:hover { gap: 18px; }
-  .vm-pill__seta { transition: transform .35s cubic-bezier(.16,1,.3,1); }
-  .vm-pill:hover .vm-pill__seta { transform: scale(1.1); }
-  @keyframes vmFaqInA { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-  @keyframes vmFaqInB { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-  @keyframes vmDash { to { stroke-dashoffset: -140; } }
-  @keyframes vmFooterMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @keyframes vmFooterRise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-  .vm-topo svg { transition: transform .32s cubic-bezier(.22,.61,.36,1); }
-  .vm-topo:hover svg { transform: translateY(-4px); }
-  [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .75s cubic-bezier(.22,.61,.36,1), transform .75s cubic-bezier(.22,.61,.36,1); }
-  [data-reveal].vm-vis { opacity: 1; transform: none; }
-  [data-reveal][data-delay="1"] { transition-delay: .09s; }
-  [data-reveal][data-delay="2"] { transition-delay: .18s; }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } [data-reveal] { opacity: 1 !important; transform: none !important; } }
-  .vm-fora * { animation-play-state: paused !important; }
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
- {"@type":"WebSite","@id":"https://vieiraemarquesadvogados.com/#website","url":"https://vieiraemarquesadvogados.com/","name":"Vieira & Marques Sociedade de Advogados","inLanguage":"pt-BR","publisher":{"@id":"https://vieiraemarquesadvogados.com/#org"}},
- {"@type":["LegalService","Organization"],"@id":"https://vieiraemarquesadvogados.com/#org","name":"Vieira & Marques Sociedade de Advogados","url":"https://vieiraemarquesadvogados.com/","telephone":"+551533470189","logo":"https://vieiraemarquesadvogados.com/assets/vieira-marques-advogados-logo-otm.webp","image":"https://vieiraemarquesadvogados.com/assets/fachada-escritorio-vieira-marques-boituva-otm.webp","hasMap":"https://share.google/jEfyu1wygOtuuH7kW","areaServed":["Boituva","Sorocaba","São Paulo","Brasil"],"address":{"@type":"PostalAddress","streetAddress":"Rua Benedita Sanson Labronici, 180 - Chácara Labronici","addressLocality":"Boituva","addressRegion":"SP","postalCode":"18556-048","addressCountry":"BR"},"sameAs":["https://www.facebook.com/vieiraemarques.advogados","https://www.instagram.com/vieiraemarques.advogados/"],"knowsAbout":["Direito de Família","Direito Sucessório","Direito Criminal","Direito Trabalhista","Direito Previdenciário","Direito Civil"],"employee":[
-   {"@type":"Person","name":"Oscar Moreira Vieira","jobTitle":"Advogado — sócio fundador","identifier":"OAB/SP 442.118"},
-   {"@type":"Person","name":"Jislana Marques","jobTitle":"Advogada — sócia fundadora","identifier":"OAB/SP 470.356"},
-   {"@type":"Person","name":"Leticia Pereira de Abreu","jobTitle":"Advogada","identifier":"OAB/SP 449.619"},
-   {"@type":"Person","name":"Glediê Camargo","jobTitle":"Advogada","identifier":"OAB/SP 453.152"},
-   {"@type":"Person","name":"Natália Okumura","jobTitle":"Advogada","identifier":"OAB/SP 460.641"}]},
- {"@type":"FAQPage","@id":"https://vieiraemarquesadvogados.com/#faq","mainEntity":[
-   {"@type":"Question","name":"Preciso de advogado para fazer um inventário?","acceptedAnswer":{"@type":"Answer","text":"Sim. Tanto no inventário judicial quanto no extrajudicial, feito em cartório, a lei exige a participação de advogado."}},
-   {"@type":"Question","name":"Divórcio precisa ir para a Justiça?","acceptedAnswer":{"@type":"Answer","text":"Não necessariamente. Havendo acordo e não existindo filhos menores ou incapazes, o divórcio pode ser feito em cartório."}},
-   {"@type":"Question","name":"O INSS negou meu pedido. Ainda posso fazer algo?","acceptedAnswer":{"@type":"Answer","text":"Em muitos casos sim. A negativa pode ser revista por recurso administrativo ou por ação judicial, conforme o motivo indicado pelo INSS e o histórico de contribuições."}},
-   {"@type":"Question","name":"O escritório atende quem mora em outra cidade ou estado?","acceptedAnswer":{"@type":"Answer","text":"Sim. Além das unidades de Boituva e Sorocaba, o atendimento é feito por videochamada e envio digital de documentos para clientes de todo o Brasil."}}]}
-]}
-</script>
+<link rel="icon" href="/uploads/favicon/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="/uploads/favicon/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/uploads/favicon/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="/uploads/favicon/apple-touch-icon.png">
+<link rel="preload" href="/uploads/fonts/lexend-deca-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="/assets/img/fachada-800.webp" imagesrcset="/assets/img/fachada-480.webp 480w, /assets/img/fachada-800.webp 800w, /assets/img/fachada-1228.webp 1228w" imagesizes="(min-width: 1240px) 1212px, 100vw" fetchpriority="high">
+<link rel="stylesheet" href="/assets/css/site.css?v=48bdb83568">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LegalService","Organization"],"@id":"https://vieiraemarquesadvogados.com/#org","name":"Vieira & Marques Sociedade de Advogados","url":"https://vieiraemarquesadvogados.com/","logo":"https://vieiraemarquesadvogados.com/assets/img/logo-escuro.webp","image":"https://vieiraemarquesadvogados.com/assets/img/og-vieira-marques.jpg","telephone":"+551533470189","address":{"@type":"PostalAddress","streetAddress":"Rua Benedita Sanson Labronici, 180","addressLocality":"Boituva","addressRegion":"SP","postalCode":"18556-048","addressCountry":"BR"},"areaServed":["Boituva","Sorocaba","São Paulo","Brasil"],"knowsAbout":["Direito de Família","Direito Sucessório e Herança","Direito Trabalhista","Direito Criminal","Direito Médico e da Saúde","Direito Bancário","Direito Imobiliário","Direito Previdenciário"],"sameAs":["https://www.instagram.com/vieiraemarques.advogados/","https://www.facebook.com/vieiraemarques.advogados"]},{"@type":"WebSite","@id":"https://vieiraemarquesadvogados.com/#website","url":"https://vieiraemarquesadvogados.com/","name":"Vieira & Marques Sociedade de Advogados","inLanguage":"pt-BR","publisher":{"@id":"https://vieiraemarquesadvogados.com/#org"}}]}</script>
 </head>
 <body>
-
-<x-dc>
-<div style="font-family: 'Lexend Deca', Helvetica, Arial, sans-serif; background: #0B0B0B; color: #EDEDED; overflow-x: hidden;">
-
-  <a href="#conteudo" style="position: absolute; left: 12px; top: -60px; z-index: 100; background: #FFFFFF; color: #0B0B0B; padding: 12px 18px; border-radius: 3px; font-size: 15px; font-weight: 600; text-decoration: none;" style-focus="top: 12px;">Pular para o conteúdo</a>
-  <header ref="{{ refHeader }}" style="position: fixed; top: 0; left: 0; right: 0; z-index: 55; width: 100%; max-width: 100%; margin: 0 auto; overflow: hidden; background: rgba(11,11,11,0.94); backdrop-filter: blur(12px); border: 1px solid transparent; border-bottom: 1px solid #262626; border-radius: 0; transition: max-width 520ms cubic-bezier(.22,.61,.36,1), top 520ms cubic-bezier(.22,.61,.36,1), border-radius 380ms cubic-bezier(.22,.61,.36,1), box-shadow 520ms cubic-bezier(.22,.61,.36,1);">
-    <sc-if value="{{ topoVisivel }}" hint-placeholder-val="{{ true }}">
-      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #FFFFFF; color: #0B0B0B; padding: 10px 20px; font-size: 13px; font-weight: 500; text-align: center;">
-        <span style="width: 7px; height: 7px; border-radius: 50%; background: #0B0B0B; flex: none;"></span>
-        <span>Boituva e Sorocaba — SP · atendimento presencial e online para todo o Brasil</span>
-      </div>
-    </sc-if>
-    <div ref="{{ refNav }}" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 92px; max-width: 1180px; margin: 0 auto; padding: 0 clamp(14px,4vw,24px); transition: padding 520ms cubic-bezier(.22,.61,.36,1), height 520ms cubic-bezier(.22,.61,.36,1);">
-      <a href="#top" sc-camel-on-click="{{ fechar }}" style="display: flex; align-items: center; flex: 0 0 auto;">
-        <img decoding="async" fetchpriority="high" width="155" height="64" src="assets/vieira-marques-advogados-logo-otm.webp" alt="Vieira &amp; Marques Sociedade de Advogados" style="height: 64px; width: auto; display: block; filter: invert(1);">
-      </a>
-      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-        <div style="display: flex; align-items: center; gap: 2px; font-size: 14px; font-weight: 400; flex-wrap: nowrap;">
-          <a href="#areas" style="padding: 9px 11px; color: #EDEDED; border-radius: 3px; white-space: nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08);">Áreas de Atuação</a>
-          <a href="#presenca" style="padding: 9px 11px; color: #EDEDED; border-radius: 3px; white-space: nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08);">Atendimento</a>
-          <a href="#escritorio" style="padding: 9px 11px; color: #EDEDED; border-radius: 3px; white-space: nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08);">O Escritório</a>
-          <a href="#equipe" style="padding: 9px 11px; color: #EDEDED; border-radius: 3px; white-space: nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08);">Equipe</a>
-          <a href="#conteudos" style="padding: 9px 11px; color: #EDEDED; border-radius: 3px; white-space: nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,0.08);">Conteúdos</a>
-          <a href="#contato" class="cta-shine" style="margin-left: 10px; color: #FFFFFF; padding: 12px 20px; border-radius: 3px; font-size: 14px; font-weight: 600;"><span>Falar com nossa equipe</span></a>
-        </div>
-      </sc-if>
-      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-        <button type="button" sc-camel-on-click="{{ alternar }}" aria-label="Abrir e fechar o menu" aria-expanded="{{ aberto }}" style="width: 46px; height: 46px; border: 1px solid rgba(255,255,255,0.28); border-radius: 3px; background: transparent; display: grid; place-items: center; cursor: pointer;">
-          <span style="display: grid; gap: 5px; width: 20px;">
-            <span style="{{ linha1 }}"></span>
-            <span style="{{ linha2 }}"></span>
-          </span>
-        </button>
-      </sc-if>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="topbar">
+  <div class="container">
+    <p class="topbar__note">Boituva e Sorocaba — SP · atendimento presencial e online em todo o Brasil</p>
+    <div class="topbar__links">
+      <a href="tel:+551533470189">(15) 3347-0189</a>
+      <a href="https://www.instagram.com/vieiraemarques.advogados/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/vieiraemarques.advogados" target="_blank" rel="noopener">Facebook</a>
     </div>
-    <sc-if value="{{ aberto }}" hint-placeholder-val="{{ false }}">
-      <div style="position: fixed; top: 92px; left: 0; right: 0; bottom: 0; z-index: 60; background: #0B0B0B; border-top: 1px solid #262626; padding: 18px clamp(16px,4vw,28px) 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; animation: vmFade 0.22s ease-out;">
-        <nav style="display: grid; gap: 2px;">
-          <a href="#areas" sc-camel-on-click="{{ fechar }}" style="font-size: 20px; font-weight: 500; padding: 17px 2px; border-bottom: 1px solid #262626; color: #FFFFFF;">Áreas de Atuação</a>
-          <a href="#escritorio" sc-camel-on-click="{{ fechar }}" style="font-size: 20px; font-weight: 500; padding: 17px 2px; border-bottom: 1px solid #262626; color: #FFFFFF;">O Escritório</a>
-          <a href="#equipe" sc-camel-on-click="{{ fechar }}" style="font-size: 20px; font-weight: 500; padding: 17px 2px; border-bottom: 1px solid #262626; color: #FFFFFF;">Equipe</a>
-          <a href="#presenca" sc-camel-on-click="{{ fechar }}" style="font-size: 20px; font-weight: 500; padding: 17px 2px; border-bottom: 1px solid #262626; color: #FFFFFF;">Atendimento</a>
-          <a href="#conteudos" sc-camel-on-click="{{ fechar }}" style="font-size: 20px; font-weight: 500; padding: 17px 2px; border-bottom: 1px solid #262626; color: #FFFFFF;">Conteúdos</a>
-          <a href="#faq" sc-camel-on-click="{{ fechar }}" style="font-size: 20px; font-weight: 500; padding: 17px 2px; border-bottom: 1px solid #262626; color: #FFFFFF;">Perguntas frequentes</a>
-          <a href="#contato" sc-camel-on-click="{{ fechar }}" style="font-size: 20px; font-weight: 500; padding: 17px 2px; border-bottom: 1px solid #262626; color: #FFFFFF;">Contato</a>
-        </nav>
-        <div style="display: grid; gap: 10px;">
-          <a href="#contato" sc-camel-on-click="{{ fechar }}" class="cta-shine" style="color: #FFFFFF; text-align: center; padding: 17px; border-radius: 3px; font-size: 15px; font-weight: 600;"><span>Falar com nossa equipe</span></a>
-          <a href="tel:+551533470189" style="text-align: center; padding: 16px; border-radius: 3px; font-size: 15px; font-weight: 500; border: 1px solid rgba(255,255,255,0.28); color: #EDEDED;">(15) 3347-0189</a>
-        </div>
-      </div>
-    </sc-if>
-  </header>
-
-  <main id="conteudo">
-  <section id="top" style="background: #0B0B0B; padding: clamp(118px,11vw,138px) clamp(8px,1.2vw,14px) clamp(8px,1.2vw,14px);">
-    <div style="position: relative; width: 100%; height: max(620px, calc(100svh - clamp(126px,12vw,152px))); overflow: hidden; border-radius: clamp(16px,2.2vw,30px); background: #141414;">
-      <sc-for list="{{ slides }}" as="s" hint-placeholder-count="1">
-        <div role="img" aria-label="{{ s.alt }}" style="{{ s.estilo }}"></div>
-      </sc-for>
-      <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' sc-camel-base-frequency='.85' sc-camel-num-octaves='3' sc-camel-stitch-tiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E&quot;);"></div>
-      <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.12) 26%, rgba(11,11,11,0.45) 52%, rgba(11,11,11,0.9) 78%, #0B0B0B 100%);"></div>
-      <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 70% at 0% 100%, rgba(11,11,11,0.85) 0%, rgba(11,11,11,0.4) 45%, transparent 75%), radial-gradient(80% 60% at 100% 100%, rgba(11,11,11,0.7) 0%, transparent 70%);"></div>
-
-      <div style="position: absolute; top: clamp(18px,2.4vw,30px); left: clamp(18px,2.6vw,40px); right: clamp(18px,2.6vw,40px); display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; animation: vmFade 1s .2s both;">
-        <div style="display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.28); background: rgba(11,11,11,0.32); backdrop-filter: blur(10px); border-radius: 999px; padding: 8px 15px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #EDEDED;">
-          <span style="width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF;"></span>Sociedade de Advogados — OAB/SP
-        </div>
-        <div style="display: flex; gap: 6px; align-items: center;">
-          <sc-for list="{{ slideBarras }}" as="b" hint-placeholder-count="6">
-            <button type="button" sc-camel-on-click="{{ b.ir }}" aria-label="{{ b.rotulo }}" style="{{ b.estilo }}"><span style="{{ b.preenchimento }}"></span></button>
-          </sc-for>
-        </div>
-      </div>
-
-      <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0 clamp(18px,2.6vw,40px) clamp(18px,2.4vw,34px);">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(20px,3vw,48px); align-items: end;">
-          <h1 style="margin: 0; color: #FFFFFF; font-weight: 600; line-height: 0.88; letter-spacing: -0.06em; font-size: clamp(60px, 10.5vw, 180px); text-shadow: 0 6px 40px rgba(0,0,0,0.45);">
-            <span style="display: block; overflow: hidden; padding-bottom: 0.04em;"><span style="display: inline-block; margin-right: 0.22em; animation: vmPull .9s cubic-bezier(.16,1,.3,1) 0.15s both;">Vieira</span><span style="display: inline-block; margin-right: 0.22em; animation: vmPull .9s cubic-bezier(.16,1,.3,1) 0.24s both; color: #B4B4B4; font-weight: 300;">&amp;</span></span>
-            <span style="display: block; overflow: hidden; padding-bottom: 0.04em;"><span style="display: inline-block; margin-right: 0.22em; animation: vmPull .9s cubic-bezier(.16,1,.3,1) 0.33s both;">Marques</span></span>
-            <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;">Sociedade de Advogados em Boituva e Sorocaba - SP</span>
-          </h1>
-          <div style="display: flex; flex-direction: column; gap: 18px; max-width: 480px; margin-bottom: clamp(4px,1vw,14px); padding: clamp(20px,2.2vw,28px); border-radius: 18px; background: rgba(11,11,11,0.62); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
-            <p style="margin: 0; font-size: clamp(19px,1.8vw,24px); font-weight: 500; line-height: 1.25; letter-spacing: -0.015em; color: #FFFFFF; text-wrap: pretty; animation: vmPull .9s cubic-bezier(.16,1,.3,1) .5s both;">{{ heroTitulo }}</p>
-            <p style="margin: 0; font-size: clamp(14.5px,1.15vw,16px); font-weight: 300; line-height: 1.6; color: #D6D6D6; animation: vmPull .9s cubic-bezier(.16,1,.3,1) .6s both;">Família e Sucessões, Criminal, Trabalhista, Previdenciário e Cível. Unidades em Boituva e Sorocaba e atendimento online para todo o Brasil.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; animation: vmPull .9s cubic-bezier(.16,1,.3,1) .72s both;">
-              <a href="#contato" class="cta-shine vm-pill" style="display: inline-flex; align-items: center; gap: 12px; color: #FFFFFF; border-radius: 999px; padding: 5px 5px 5px 22px; font-size: 15px; font-weight: 600;">
-                <span>Fale com nossa equipe</span>
-                <span class="vm-pill__seta" style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #0B0B0B; color: #FFFFFF;"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
-              </a>
-              <a href="#areas" style="display: inline-flex; align-items: center; padding: 15px 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.32); background: rgba(11,11,11,0.25); backdrop-filter: blur(10px); color: #F4F4F4; font-size: 15px; font-weight: 500;" style-hover="background:rgba(255,255,255,0.12);">Conheça nossa atuação</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="areas" style="background: #F4F4F4; color: #0B0B0B; padding: clamp(58px,7vw,84px) clamp(16px,4vw,24px);">
-    <div style="max-width: 1180px; margin: 0 auto;">
-      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Áreas de atuação</div>
-        <h2 style="font-weight: 600; font-size: clamp(28px,4vw,40px); line-height: 1.15; letter-spacing: -0.02em; margin: 14px 0 0;">Áreas de atuação <span class="vm-grad-claro">do escritório</span></h2>
-        <p style="font-size: 17px; font-weight: 300; line-height: 1.7; color: #4A4A4A; margin: 16px 0 0;">Cada área reúne situações concretas que atendemos. Se você não souber onde seu caso se encaixa, comece por qualquer uma delas — na conversa inicial identificamos o caminho aplicável.</p>
-      </div>
-      <div data-reveal="" data-delay="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 20px; margin-top: 44px;">
-        <sc-for list="{{ areas }}" as="a" hint-placeholder-count="6">
-          <article sc-camel-on-pointer-enter="{{ a.entrar }}" sc-camel-on-pointer-move="{{ a.mover }}" sc-camel-on-pointer-leave="{{ a.sair }}" style="position: relative; overflow: hidden; background: #0B0B0B; border: 1px solid #1F1F1F; border-radius: 10px; padding: 28px 26px; display: flex; flex-direction: column; gap: 12px; transform: perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1); transform-style: preserve-3d; will-change: transform; transition: transform .2s ease-out, border-color .25s ease, box-shadow .25s ease;">
-            <div data-brilho="" aria-hidden="true" style="position: absolute; inset: 0; z-index: 1; overflow: hidden; opacity: 0; transition: opacity .3s ease; pointer-events: none;">
-              <div data-luz="" style="position: absolute; left: 50%; top: 50%; width: 200%; height: 200%; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(255,255,255,0.16) 0%, transparent 42%);"></div>
-            </div>
-            <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; height: 100%;">
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
-                <div style="width: 42px; height: 42px; border-radius: 9px; border: 1px solid #2A2A2A; background: #141414; display: flex; align-items: center; justify-content: center; flex: none;">
-                  <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 22px; font-weight: 300; line-height: 1; color: #FFFFFF;">{{ a.glifo }}</span>
-                </div>
-                <div style="font-size: 12px; font-weight: 600; color: #6E6E6E; letter-spacing: 0.08em;">{{ a.num }}</div>
-              </div>
-              <h3 style="font-size: 19px; font-weight: 600; color: #FFFFFF; margin: 2px 0 0; line-height: 1.35;">{{ a.nome }}</h3>
-              <p style="font-size: 14.5px; font-weight: 300; line-height: 1.65; color: #B4B4B4; margin: 0; text-wrap: pretty;">{{ a.texto }}</p>
-              <ul style="list-style: none; padding: 0; margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 7px;">
-                <sc-for list="{{ a.itens }}" as="item" hint-placeholder-count="4">
-                  <li style="font-size: 12px; font-weight: 400; color: #D6D6D6; border: 1px solid #2A2A2A; border-radius: 999px; padding: 5px 11px;">{{ item }}</li>
-                </sc-for>
-              </ul>
-              <a href="{{ a.url }}" style="margin-top: auto; padding-top: 18px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #FFFFFF;" style-hover="color:#B4B4B4;">Conheça a área →</a>
-            </div>
-          </article>
-        </sc-for>
-      </div>
-      <p style="font-size: 15px; font-weight: 300; color: #4A4A4A; margin: 30px 0 0; text-align: center;">Não sabe em qual área o seu caso se encaixa? <a href="#contato" style="font-weight: 500; border-bottom: 1px solid #BFBFBF;">Descreva sua situação para a nossa equipe</a>.</p>
-    </div>
-  </section>
-
-  <section id="escritorio" style="background: #0B0B0B; color: #EDEDED; padding: clamp(58px,7vw,84px) clamp(16px,4vw,24px);">
-    <div data-reveal="" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(32px,4vw,56px); align-items: center;">
-      <div>
-        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A;">O escritório</div>
-        <h2 style="font-weight: 600; font-size: clamp(26px,3.6vw,38px); line-height: 1.15; letter-spacing: -0.02em; color: #FFFFFF; margin: 14px 0 0; text-wrap: pretty;">Uma advocacia construída sobre proximidade, conhecimento e <span class="vm-grad">responsabilidade</span></h2>
-        <p style="font-size: 17px; font-weight: 300; line-height: 1.7; color: #B4B4B4; margin: 20px 0 0;">A maior parte das dúvidas jurídicas não começa em um processo: começa em uma conversa. Divórcios, inventários, acusações criminais, demissões e pedidos negados pelo INSS chegam ao escritório cercados de urgência e informação desencontrada.</p>
-        <p style="font-size: 17px; font-weight: 300; line-height: 1.7; color: #B4B4B4; margin: 16px 0 0;">Nosso trabalho começa por organizar o cenário: o que a lei prevê, quais caminhos existem e quais consequências cada um deles carrega. A partir disso, a atuação pode ser preventiva, extrajudicial ou judicial — sempre com o dever de informar antes de agir e sem prometer resultados.</p>
-        <div style="display: grid; gap: 14px; margin-top: 28px;">
-          <div style="display: flex; gap: 12px; align-items: flex-start;">
-            <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 20px; color: #FFFFFF; flex: none;">check_small</span>
-            <span style="font-size: 15px; font-weight: 300; color: #EDEDED;">Escuta antes de estratégia: todo atendimento começa pelos fatos e documentos existentes.</span>
-          </div>
-          <div style="display: flex; gap: 12px; align-items: flex-start;">
-            <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 20px; color: #FFFFFF; flex: none;">check_small</span>
-            <span style="font-size: 15px; font-weight: 300; color: #EDEDED;">Prazos, etapas e riscos explicados em português claro, sem juridiquês desnecessário.</span>
-          </div>
-          <div style="display: flex; gap: 12px; align-items: flex-start;">
-            <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 20px; color: #FFFFFF; flex: none;">check_small</span>
-            <span style="font-size: 15px; font-weight: 300; color: #EDEDED;">Duas unidades — Boituva e Sorocaba — com atendimento online equivalente ao presencial.</span>
-          </div>
-        </div>
-      </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-        <figure style="margin: 0; grid-column: span 2;">
-          <img loading="lazy" decoding="async" src="assets/fachada-escritorio-vieira-marques-boituva-otm.webp" alt="Fachada do escritório Vieira &amp; Marques Sociedade de Advogados em Boituva - SP" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; border-radius: 6px; filter: saturate(1.04) contrast(1.02);">
-          <figcaption style="font-size: 12.5px; font-weight: 300; color: #7A7A7A; margin-top: 10px;">Fachada — unidade Boituva/SP</figcaption>
-        </figure>
-        <figure style="margin: 0;">
-          <img loading="lazy" decoding="async" src="assets/recepcao-vieira-marques-advogados-otm.webp" alt="Recepção do escritório Vieira &amp; Marques, com diplomas e certificados na parede" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; border-radius: 6px; filter: saturate(1.04) contrast(1.02);">
-          <figcaption style="font-size: 12.5px; font-weight: 300; color: #7A7A7A; margin-top: 10px;">Recepção</figcaption>
-        </figure>
-        <figure style="margin: 0;">
-          <img loading="lazy" decoding="async" src="assets/sala-de-atendimento-vieira-marques-otm.webp" alt="Sala de atendimento do escritório Vieira &amp; Marques" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; border-radius: 6px; filter: saturate(1.04) contrast(1.02);">
-          <figcaption style="font-size: 12.5px; font-weight: 300; color: #7A7A7A; margin-top: 10px;">Sala de atendimento</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="posicionamento" style="background: #FFFFFF; color: #0B0B0B; padding: clamp(64px,8vw,104px) clamp(16px,4vw,24px);">
-    <div style="max-width: 1180px; margin: 0 auto;">
-      <div data-reveal="" style="max-width: 980px;">
-        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Vieira &amp; Marques Sociedade de Advogados</div>
-        <p style="font-weight: 600; font-size: clamp(26px,3.8vw,44px); line-height: 1.22; letter-spacing: -0.025em; margin: 22px 0 0; text-wrap: pretty;">Um escritório organizado por núcleos de conhecimento, com advogados inscritos na OAB/SP respondendo diretamente por cada área.<span style="color: #9A9A9A;"> A orientação vem antes da estratégia — e a estratégia vem antes do processo.</span></p>
-      </div>
-      <div data-reveal="" data-delay="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(max(46%, 210px), 1fr)); gap: 0; margin-top: clamp(38px,5vw,58px); border-top: 1px solid #E0E0E0; border-left: 1px solid #E0E0E0;">
-        <div style="background: #FFFFFF; padding: 26px 24px; border-right: 1px solid #E0E0E0; border-bottom: 1px solid #E0E0E0;">
-          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #9A9A9A;">Sede</div>
-          <div style="font-size: 19px; font-weight: 600; margin: 10px 0 6px;">Boituva — SP</div>
-          <p style="font-size: 14px; font-weight: 300; line-height: 1.6; color: #4A4A4A; margin: 0;">Rua Benedita Sanson Labronici, 180 — Chácara Labronici.</p>
-        </div>
-        <div style="background: #FFFFFF; padding: 26px 24px; border-right: 1px solid #E0E0E0; border-bottom: 1px solid #E0E0E0;">
-          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #9A9A9A;">Segunda unidade</div>
-          <div style="font-size: 19px; font-weight: 600; margin: 10px 0 6px;">Sorocaba — SP</div>
-          <p style="font-size: 14px; font-weight: 300; line-height: 1.6; color: #4A4A4A; margin: 0;">Atendimento presencial na região metropolitana de Sorocaba.</p>
-        </div>
-        <div style="background: #FFFFFF; padding: 26px 24px; border-right: 1px solid #E0E0E0; border-bottom: 1px solid #E0E0E0;">
-          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #9A9A9A;">Alcance</div>
-          <div style="font-size: 19px; font-weight: 600; margin: 10px 0 6px;">Todo o Brasil</div>
-          <p style="font-size: 14px; font-weight: 300; line-height: 1.6; color: #4A4A4A; margin: 0;">Reuniões por vídeo e envio digital de documentos.</p>
-        </div>
-        <div style="background: #FFFFFF; padding: 26px 24px; border-right: 1px solid #E0E0E0; border-bottom: 1px solid #E0E0E0;">
-          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #9A9A9A;">Corpo profissional</div>
-          <div style="font-size: 19px; font-weight: 600; margin: 10px 0 6px;">5 advogados</div>
-          <p style="font-size: 14px; font-weight: 300; line-height: 1.6; color: #4A4A4A; margin: 0;">Todos com inscrição ativa na OAB/SP e áreas definidas de atuação.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contato" style="background: #0B0B0B; color: #EDEDED; padding: clamp(58px,7vw,84px) clamp(16px,4vw,24px);">
-    <div data-reveal="" style="max-width: 1180px; margin: 0 auto clamp(38px,4vw,54px); text-align: center;">
-      <p style="font-weight: 600; font-size: clamp(26px,4vw,44px); line-height: 1.18; letter-spacing: -0.025em; color: #FFFFFF; margin: 0 auto; max-width: 24ch; text-wrap: pretty;">Precisa de orientação jurídica?</p>
-      <p style="font-size: 17px; font-weight: 300; line-height: 1.7; color: #B4B4B4; margin: 18px auto 0; max-width: 52ch;">Converse com nossa equipe para entendermos sua situação e apresentarmos os caminhos aplicáveis ao seu caso.</p>
-    </div>
-
-    <div data-reveal="" data-delay="1" style="position: relative; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); background: #101010; border: 1px solid #262626; box-shadow: 0 30px 70px -50px rgba(0,0,0,0.9);">
-      <span aria-hidden="true" style="position: absolute; top: -11px; left: -11px; width: 22px; height: 22px; color: #6E6E6E;"><svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="width: 100%; height: 100%; display: block;"><path d="M12 5v14M5 12h14"></path></svg></span>
-      <span aria-hidden="true" style="position: absolute; top: -11px; right: -11px; width: 22px; height: 22px; color: #6E6E6E;"><svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="width: 100%; height: 100%; display: block;"><path d="M12 5v14M5 12h14"></path></svg></span>
-      <span aria-hidden="true" style="position: absolute; bottom: -11px; left: -11px; width: 22px; height: 22px; color: #6E6E6E;"><svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="width: 100%; height: 100%; display: block;"><path d="M12 5v14M5 12h14"></path></svg></span>
-      <span aria-hidden="true" style="position: absolute; bottom: -11px; right: -11px; width: 22px; height: 22px; color: #6E6E6E;"><svg sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="width: 100%; height: 100%; display: block;"><path d="M12 5v14M5 12h14"></path></svg></span>
-
-      <div style="display: flex; flex-direction: column; justify-content: space-between; padding: clamp(26px,3.4vw,44px);">
-        <div>
-          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A;">Contato</div>
-          <h2 style="font-weight: 600; font-size: clamp(26px,3.4vw,40px); line-height: 1.15; letter-spacing: -0.025em; color: #FFFFFF; margin: 14px 0 0;">Como podemos <span class="vm-grad">orientar você?</span></h2>
-          <p style="font-size: 16.5px; font-weight: 300; line-height: 1.7; color: #B4B4B4; margin: 16px 0 0; max-width: 46ch;">Preencha o formulário ao lado e conte brevemente sua situação. Um advogado do escritório avalia a mensagem e retorna com os próximos passos aplicáveis ao seu caso.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 4px 24px; margin-top: clamp(24px,3vw,34px); padding-top: 18px; border-top: 1px solid #1C1C1C;">
-          <div style="display: flex; align-items: flex-start; gap: 13px; padding: 12px 0;">
-            <span style="flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9px; background: rgba(255,255,255,0.06); border: 1px solid #262626;">
-              <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 21px; font-weight: 300; line-height: 1; color: #FFFFFF;">location_on</span>
-            </span>
-            <span style="display: block;">
-              <span style="display: block; font-size: 14.5px; font-weight: 500; color: #FFFFFF; line-height: 1.35;">Unidade Boituva</span>
-              <span style="display: block; font-size: 13px; font-weight: 300; color: #B4B4B4; line-height: 1.5; margin-top: 3px;">Rua Benedita Sanson Labronici, 180 — Chácara Labronici, 18556-048</span>
-            </span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 13px; padding: 12px 0;">
-            <span style="flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9px; background: rgba(255,255,255,0.06); border: 1px solid #262626;">
-              <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 21px; font-weight: 300; line-height: 1; color: #FFFFFF;">call</span>
-            </span>
-            <span style="display: block;">
-              <span style="display: block; font-size: 14.5px; font-weight: 500; color: #FFFFFF; line-height: 1.35;">Telefone</span>
-              <span style="display: block; font-size: 13px; font-weight: 300; color: #B4B4B4; line-height: 1.5; margin-top: 3px;"><a href="tel:+551533470189" style="color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.35);">(15) 3347-0189</a></span>
-            </span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 13px; padding: 12px 0;">
-            <span style="flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9px; background: rgba(255,255,255,0.06); border: 1px solid #262626;">
-              <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 21px; font-weight: 300; line-height: 1; color: #FFFFFF;">apartment</span>
-            </span>
-            <span style="display: block;">
-              <span style="display: block; font-size: 14.5px; font-weight: 500; color: #FFFFFF; line-height: 1.35;">Unidade Sorocaba</span>
-              <span style="display: block; font-size: 13px; font-weight: 300; color: #B4B4B4; line-height: 1.5; margin-top: 3px;"><span style="background: #FFFFFF; color: #0B0B0B; border-radius: 999px; padding: 2px 9px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em;">pendente</span> endereço e telefone da unidade</span>
-            </span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 13px; padding: 12px 0;">
-            <span style="flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9px; background: rgba(255,255,255,0.06); border: 1px solid #262626;">
-              <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 21px; font-weight: 300; line-height: 1; color: #FFFFFF;">schedule</span>
-            </span>
-            <span style="display: block;">
-              <span style="display: block; font-size: 14.5px; font-weight: 500; color: #FFFFFF; line-height: 1.35;">E-mail e horários</span>
-              <span style="display: block; font-size: 13px; font-weight: 300; color: #B4B4B4; line-height: 1.5; margin-top: 3px;"><span style="background: #FFFFFF; color: #0B0B0B; border-radius: 999px; padding: 2px 9px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em;">pendente</span> e-mail institucional e horário de atendimento</span>
-            </span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 13px; padding: 12px 0;">
-            <span style="flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9px; background: rgba(255,255,255,0.06); border: 1px solid #262626;">
-              <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 21px; font-weight: 300; line-height: 1; color: #FFFFFF;">videocam</span>
-            </span>
-            <span style="display: block;">
-              <span style="display: block; font-size: 14.5px; font-weight: 500; color: #FFFFFF; line-height: 1.35;">Atendimento online</span>
-              <span style="display: block; font-size: 13px; font-weight: 300; color: #B4B4B4; line-height: 1.5; margin-top: 3px;">Reuniões por vídeo para clientes de todo o Brasil, com envio digital de documentos.</span>
-            </span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 13px; padding: 12px 0;">
-            <span style="flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9px; background: rgba(255,255,255,0.06); border: 1px solid #262626;">
-              <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 21px; font-weight: 300; line-height: 1; color: #FFFFFF;">map</span>
-            </span>
-            <span style="display: block;">
-              <span style="display: block; font-size: 14.5px; font-weight: 500; color: #FFFFFF; line-height: 1.35;">Localização</span>
-              <span style="display: block; font-size: 13px; font-weight: 300; color: #B4B4B4; line-height: 1.5; margin-top: 3px;"><a href="#localizacao" style="color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.35);">Ver as unidades no mapa</a></span>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div style="background: rgba(255,255,255,0.03); border-left: 1px solid #1C1C1C; display: flex; align-items: center; padding: clamp(24px,3vw,36px); min-width: 0;">
-        <sc-if value="{{ enviado }}" hint-placeholder-val="{{ false }}">
-          <div style="width: 100%; padding: 24px 0;">
-            <h3 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; color: #FFFFFF; margin: 0 0 12px;">Mensagem registrada</h3>
-            <p style="font-size: 15.5px; font-weight: 300; line-height: 1.7; color: #B4B4B4; margin: 0 0 24px;">Obrigado, {{ nomeEnviado }}. Sua mensagem foi encaminhada à equipe. O retorno é feito pelo canal que você informou, em ordem de chegada.</p>
-            <button type="button" sc-camel-on-click="{{ novaMensagem }}" style="border: 1px solid #3A3A3A; border-radius: 8px; background: transparent; color: #EDEDED; padding: 13px 22px; font-size: 14.5px; font-weight: 500; cursor: pointer;">Enviar outra mensagem</button>
-          </div>
-        </sc-if>
-        <sc-if value="{{ naoEnviado }}" hint-placeholder-val="{{ true }}">
-          <form sc-camel-on-submit="{{ enviar }}" style="width: 100%; display: grid; gap: 15px;">
-            <div style="display: grid; gap: 7px;">
-              <label for="vm-nome" style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55);">Nome</label>
-              <input id="vm-nome" name="nome" required="" style="width: 100%; padding: 13px 15px; font-size: 15px; font-weight: 300; color: #FFFFFF; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; outline: none;" style-focus="border-color:#FFFFFF;background:rgba(255,255,255,0.08);">
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 13px;">
-              <div style="display: grid; gap: 7px;">
-                <label for="vm-tel" style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55);">WhatsApp</label>
-                <input id="vm-tel" name="telefone" sc-camel-input-mode="tel" required="" style="width: 100%; padding: 13px 15px; font-size: 15px; font-weight: 300; color: #FFFFFF; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; outline: none;" style-focus="border-color:#FFFFFF;background:rgba(255,255,255,0.08);">
-              </div>
-              <div style="display: grid; gap: 7px;">
-                <label for="vm-email" style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55);">E-mail</label>
-                <input id="vm-email" name="email" type="email" style="width: 100%; padding: 13px 15px; font-size: 15px; font-weight: 300; color: #FFFFFF; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; outline: none;" style-focus="border-color:#FFFFFF;background:rgba(255,255,255,0.08);">
-              </div>
-            </div>
-            <div style="display: grid; gap: 7px;">
-              <label for="vm-area" style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55);">Área da dúvida</label>
-              <sc-raw-select id="vm-area" name="area" style="width: 100%; padding: 13px 15px; font-size: 15px; font-weight: 300; color: #FFFFFF; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; outline: none;">
-                <option style="color: #0B0B0B;">Não tenho certeza</option>
-                <option style="color: #0B0B0B;">Direito de Família</option>
-                <option style="color: #0B0B0B;">Direito Sucessório</option>
-                <option style="color: #0B0B0B;">Direito Criminal</option>
-                <option style="color: #0B0B0B;">Direito Trabalhista</option>
-                <option style="color: #0B0B0B;">Direito Previdenciário</option>
-                <option style="color: #0B0B0B;">Direito Civil e do Consumidor</option>
-              </sc-raw-select>
-            </div>
-            <div style="display: grid; gap: 7px;">
-              <label for="vm-msg" style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55);">Sua situação</label>
-              <textarea id="vm-msg" name="mensagem" rows="4" required="" placeholder="Conte brevemente o que aconteceu e o que você precisa decidir." style="width: 100%; padding: 13px 15px; font-size: 15px; font-weight: 300; color: #FFFFFF; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; outline: none; resize: vertical; font-family: inherit;" style-focus="border-color:#FFFFFF;background:rgba(255,255,255,0.08);"></textarea>
-            </div>
-            <label style="display: flex; gap: 11px; align-items: flex-start; font-size: 12.5px; font-weight: 300; line-height: 1.55; color: #B4B4B4;">
-              <input type="checkbox" name="privacidade" required="" style="margin-top: 3px;">
-              <span>Autorizo o contato do escritório e o tratamento dos meus dados para essa finalidade.</span>
-            </label>
-            <button type="submit" class="cta-shine" style="width: 100%; color: #FFFFFF; border-radius: 999px; padding: 16px 22px; font-size: 15px; font-weight: 600; cursor: pointer;"><span>Enviar mensagem</span></button>
-            <p style="font-size: 11.5px; font-weight: 300; line-height: 1.5; color: rgba(255,255,255,0.5); text-align: center; margin: 0;">O envio não constitui contratação de serviços nem estabelece, por si só, relação advogado-cliente.</p>
-          </form>
-        </sc-if>
-      </div>
-    </div>
-  </section>
-
-  <section id="equipe" style="background: #F4F4F4; color: #0B0B0B; padding: clamp(58px,7vw,84px) clamp(16px,4vw,24px);">
-    <div style="max-width: 1180px; margin: 0 auto;">
-      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Equipe</div>
-        <h2 style="font-weight: 600; font-size: clamp(28px,4vw,40px); line-height: 1.15; letter-spacing: -0.02em; margin: 14px 0 0;">Quem conduz <span class="vm-grad-claro">o atendimento</span></h2>
-        <p style="font-size: 17px; font-weight: 300; line-height: 1.7; color: #4A4A4A; margin: 16px 0 0;">Formação, inscrição na OAB e áreas de atuação de cada profissional — informação verificável, não adjetivos.</p>
-      </div>
-
-      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-        <div style="display: flex; gap: 10px; margin-top: 44px; height: 460px;">
-          <sc-for list="{{ equipe }}" as="p" hint-placeholder-count="5">
-            <article sc-camel-on-mouse-enter="{{ p.selecionar }}" sc-camel-on-click="{{ p.selecionar }}" style="{{ p.painel }}">
-              <div style="{{ p.retrato }}"></div>
-              <sc-if value="{{ p.semFoto }}" hint-placeholder-val="{{ false }}">
-                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, #1A1A1A 0 10px, #232323 10px 20px);"></div>
-              </sc-if>
-              <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,11,11,0.92) 0%, rgba(11,11,11,0.35) 45%, rgba(11,11,11,0.1) 100%);"></div>
-              <div style="{{ p.vertical }}">{{ p.nome }}</div>
-              <div style="{{ p.info }}">
-                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #B4B4B4;">{{ p.cargo }} · {{ p.oab }}</div>
-                <h3 style="font-size: 22px; font-weight: 600; letter-spacing: -0.01em; color: #FFFFFF; margin: 8px 0 10px;">{{ p.nome }}</h3>
-                <p style="font-size: 14px; font-weight: 300; line-height: 1.6; color: #EDEDED; margin: 0 0 12px; max-width: 46ch;">{{ p.atuacao }}</p>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px;">
-                  <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="3">
-                    <li style="font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: #EDEDED; border: 1px solid rgba(255,255,255,0.28); border-radius: 999px; padding: 4px 10px; white-space: nowrap;">{{ t }}</li>
-                  </sc-for>
-                </ul>
-              </div>
-            </article>
-          </sc-for>
-        </div>
-        <p style="font-size: 12.5px; font-weight: 300; color: #6E6E6E; margin: 14px 0 0;">Passe o mouse sobre cada profissional para ver formação e áreas de atuação.</p>
-      </sc-if>
-
-      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-        <div style="display: grid; gap: 16px; margin-top: 36px;">
-          <sc-for list="{{ equipe }}" as="p" hint-placeholder-count="5">
-            <article style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 6px; overflow: hidden;">
-              <div role="img" aria-label="{{ p.alt }}" style="{{ p.retratoMobile }}"></div>
-              <div style="padding: 20px; display: flex; flex-direction: column; gap: 8px;">
-                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #9A9A9A;">{{ p.cargo }} · {{ p.oab }}</span>
-                <h3 style="font-size: 18px; font-weight: 600; margin: 0;">{{ p.nome }}</h3>
-                <p style="font-size: 13.5px; font-weight: 300; line-height: 1.6; color: #4A4A4A; margin: 0;">{{ p.atuacao }}</p>
-                <ul style="list-style: none; padding: 0; margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 6px;">
-                  <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="3">
-                    <li style="font-size: 11.5px; font-weight: 400; color: #4A4A4A; border: 1px solid #E0E0E0; border-radius: 999px; padding: 4px 10px;">{{ t }}</li>
-                  </sc-for>
-                </ul>
-              </div>
-            </article>
-          </sc-for>
-        </div>
-      </sc-if>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 18px; margin-top: 30px;">
-        <p style="font-size: 14px; font-weight: 300; line-height: 1.65; color: #4A4A4A; margin: 0; border-left: 2px solid #DCDCDC; padding-left: 14px;">Presidência da Comissão de Direito de Família e Sucessões da OAB de Boituva (2022/2024) — Dr. Oscar Moreira Vieira.</p>
-        <p style="font-size: 14px; font-weight: 300; line-height: 1.65; color: #4A4A4A; margin: 0; border-left: 2px solid #DCDCDC; padding-left: 14px;">Pós-graduações concluídas e em curso em Família e Sucessões, Direito Penal, Processo Penal, Previdenciário, Advocacia Cível e Direito Médico.</p>
-        <p style="font-size: 14px; font-weight: 300; line-height: 1.65; color: #4A4A4A; margin: 0; border-left: 2px solid #DCDCDC; padding-left: 14px;">Títulos de Jovem Inspirador e Jovem Inspiradora concedidos pela Câmara Municipal de Boituva.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="atendimento" style="position: relative; background: #0B0B0B; color: #EDEDED; padding: clamp(58px,7vw,84px) clamp(16px,4vw,24px) clamp(52px,6vw,76px); overflow: hidden;">
-    <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px); background-size: 100% 34px; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);"></div>
-    <div style="position: relative; z-index: 2; max-width: 1180px; margin: 0 auto;">
-      <div data-reveal="" style="max-width: 720px; margin: 0 auto; text-align: center;">
-        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A;">Atendimento</div>
-        <h2 style="font-weight: 600; font-size: clamp(26px,3.6vw,38px); line-height: 1.15; letter-spacing: -0.02em; color: #FFFFFF; margin: 14px 0 0;">Como funciona o <span class="vm-grad">primeiro contato</span></h2>
-        <p style="font-size: 17px; font-weight: 300; line-height: 1.7; color: #B4B4B4; margin: 16px 0 0;">Nenhuma etapa exige que você já saiba nomear o seu problema jurídico.</p>
-      </div>
-
-      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-        <div data-reveal="" data-delay="1" style="position: relative; width: 100%; max-width: 1120px; margin: clamp(40px,5vw,64px) auto 0; height: 880px;">
-          <svg sc-camel-view-box="0 0 1000 700" sc-camel-preserve-aspect-ratio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
-            <path d="M 320 150 C 560 150, 620 280, 760 300 C 900 320, 540 400, 320 500 C 320 580, 600 660, 780 690" fill="none" stroke="#3A3A3A" stroke-width="1.5" stroke-dasharray="8 6" stroke-linecap="round" vector-effect="non-scaling-stroke" style="animation: vmDash 3s linear infinite;"></path>
-          </svg>
-          <sc-for list="{{ etapas }}" as="e" hint-placeholder-count="4">
-            <article style="{{ e.cartao }}">
-              <div style="background: #141414; border: 1px solid #2A2A2A; border-radius: 14px; padding: 8px;">
-                <span aria-hidden="true" style="font-family: 'Material Symbols Outlined'; font-size: 26px; font-weight: 300; line-height: 1; color: #8F8F8F; display: block; text-align: center; padding: 10px 0 14px;">push_pin</span>
-                <div style="background: #0F0F0F; border: 1px solid #262626; border-radius: 9px; padding: 20px 20px 22px;">
-                  <span style="display: block; font-size: 32px; font-weight: 600; letter-spacing: -0.03em; color: #FFFFFF; line-height: 1; margin-bottom: 16px;">{{ e.num }}</span>
-                  <h3 style="font-size: 19px; font-weight: 600; color: #FFFFFF; margin: 0 0 10px; line-height: 1.28;">{{ e.titulo }}</h3>
-                  <p style="font-size: 14px; font-weight: 300; line-height: 1.6; color: #B4B4B4; margin: 0;">{{ e.texto }}</p>
-                </div>
-              </div>
-            </article>
-          </sc-for>
-        </div>
-      </sc-if>
-
-      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-        <ol style="list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 14px;">
-          <sc-for list="{{ etapas }}" as="e" hint-placeholder-count="4">
-            <li style="background: #141414; border: 1px solid #2A2A2A; border-radius: 12px; padding: 8px;">
-              <div style="background: #0F0F0F; border: 1px solid #262626; border-radius: 8px; padding: 22px 20px;">
-                <span style="display: block; font-size: 26px; font-weight: 600; letter-spacing: -0.03em; color: #FFFFFF; line-height: 1; margin-bottom: 12px;">{{ e.num }}</span>
-                <h3 style="font-size: 18px; font-weight: 600; color: #FFFFFF; margin: 0 0 9px; line-height: 1.3;">{{ e.titulo }}</h3>
-                <p style="font-size: 14px; font-weight: 300; line-height: 1.62; color: #B4B4B4; margin: 0;">{{ e.texto }}</p>
-              </div>
-            </li>
-          </sc-for>
-        </ol>
-      </sc-if>
-    </div>
-  </section>
-
-  <sc-if value="{{ mostrarAvaliacoes }}" hint-placeholder-val="{{ true }}">
-    <section id="depoimentos" style="position: relative; background: #F4F4F4; color: #0B0B0B; padding: clamp(58px,7vw,84px) clamp(16px,4vw,24px); overflow: hidden;">
-      <div style="max-width: 1180px; margin: 0 auto;">
-        <div data-reveal="" style="max-width: 560px; margin: 0 auto; text-align: center;">
-          <div style="display: inline-block; border: 1px solid #DCDCDC; border-radius: 8px; padding: 5px 15px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Depoimentos</div>
-          <h2 style="font-weight: 600; font-size: clamp(28px,4vw,40px); line-height: 1.15; letter-spacing: -0.025em; margin: 20px 0 0;">O que dizem <span class="vm-grad-claro">os clientes do escritório</span></h2>
-          <p style="font-size: 16.5px; font-weight: 300; line-height: 1.7; color: #4A4A4A; margin: 16px 0 0;">Avaliações públicas no perfil do escritório no Google — 147 no total.</p>
-        </div>
-
-        <div data-reveal="" data-delay="1" style="display: flex; justify-content: center; gap: 22px; margin-top: 40px; max-height: 620px; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);">
-          <sc-for list="{{ colunas }}" as="col" hint-placeholder-count="3">
-            <div class="vm-coluna" style="{{ col.envolvente }}">
-              <div style="{{ col.trilha }}">
-                <sc-for list="{{ col.itens }}" as="d" hint-placeholder-count="4">
-                  <figure style="margin: 0; background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 20px; padding: 30px 28px; max-width: 330px; width: 100%; box-shadow: 0 22px 44px -34px rgba(11,11,11,0.4);">
-                    <blockquote style="font-size: 15.5px; font-weight: 300; line-height: 1.68; color: #0B0B0B; margin: 0;">“{{ d.texto }}”</blockquote>
-                    <figcaption style="display: flex; align-items: center; gap: 12px; margin-top: 20px;">
-                      <span aria-hidden="true" style="width: 40px; height: 40px; border-radius: 50%; background: #0B0B0B; color: #FFFFFF; display: grid; place-items: center; font-size: 14px; font-weight: 600; flex: none;">{{ d.iniciais }}</span>
-                      <span style="display: flex; flex-direction: column;">
-                        <span style="font-size: 14.5px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3;">{{ d.autor }}</span>
-                        <span style="font-size: 13px; font-weight: 300; color: #6E6E6E; line-height: 1.3;">Avaliação no Google</span>
-                      </span>
-                    </figcaption>
-                  </figure>
-                </sc-for>
-              </div>
-            </div>
-          </sc-for>
-        </div>
-
-        <p style="text-align: center; font-size: 14px; font-weight: 300; color: #6E6E6E; margin: 26px 0 0;"><span style="background: #0B0B0B; color: #FFFFFF; border-radius: 999px; padding: 3px 10px; font-size: 11.5px; font-weight: 600;">pendente</span> importar mais avaliações reais do perfil do Google para preencher as colunas.</p>
-      </div>
-    </section>
-  </sc-if>
-
-  <section id="presenca" style="background: #0B0B0B; color: #EDEDED; border-top: 1px solid #1C1C1C; padding: clamp(58px,7vw,88px) clamp(16px,4vw,24px);">
-    <div data-reveal="" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(34px,4vw,54px); align-items: center;">
-      <div>
-        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A;">Onde atendemos</div>
-        <h2 style="font-weight: 600; font-size: clamp(26px,3.6vw,38px); line-height: 1.15; letter-spacing: -0.02em; color: #FFFFFF; margin: 14px 0 0;">Duas unidades em São Paulo e <span class="vm-grad">atendimento em todo o Brasil</span></h2>
-        <p style="font-size: 16.5px; font-weight: 300; line-height: 1.72; color: #B4B4B4; margin: 20px 0 0; max-width: 46ch; text-wrap: pretty;">A sede em Boituva atende presencialmente a região; Sorocaba concentra o atendimento na região metropolitana. Para clientes de outras cidades e estados, o acompanhamento é feito integralmente à distância.</p>
-        <div style="display: grid; gap: 13px; margin-top: 28px; border-top: 1px solid #1C1C1C; padding-top: 26px;">
-          <div style="display: flex; align-items: flex-start; gap: 13px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; flex: none; margin-top: 9px;"></span>
-            <span style="font-size: 15.5px; font-weight: 300; line-height: 1.55; color: #EDEDED;">Reuniões por videochamada, sem necessidade de deslocamento.</span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 13px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; flex: none; margin-top: 9px;"></span>
-            <span style="font-size: 15.5px; font-weight: 300; line-height: 1.55; color: #EDEDED;">Envio e assinatura de documentos por meio digital.</span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 13px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; flex: none; margin-top: 9px;"></span>
-            <span style="font-size: 15.5px; font-weight: 300; line-height: 1.55; color: #EDEDED;">Acompanhamento processual à distância, com atualizações claras.</span>
-          </div>
-        </div>
-        <a href="#localizacao" style="display: inline-block; margin-top: 28px; font-size: 13.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 4px;">Ver a localização das unidades →</a>
-      </div>
-      <div style="display: flex; justify-content: center;">
-        <div style="width: min(430px, 100%);">
-          <x-import component-from-global-scope="mapa-brasil" from="./mapa-brasil.js" hint-size="100%,430px" style="display: block;"></x-import>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="conteudos" style="background: #FFFFFF; color: #0B0B0B; padding: clamp(58px,7vw,88px) clamp(16px,4vw,24px);">
-    <div style="max-width: 1180px; margin: 0 auto;">
-      <div data-reveal="" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: end; justify-content: space-between;">
-        <div style="max-width: 640px;">
-          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Conhecimento</div>
-          <h2 style="font-weight: 600; font-size: clamp(26px,3.6vw,38px); line-height: 1.15; letter-spacing: -0.02em; margin: 14px 0 0;">Análises e orientações <span class="vm-grad-claro">sobre dúvidas concretas</span></h2>
-        </div>
-        <a href="https://vieiraemarquesadvogados.com/blog/" style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid #BFBFBF; padding-bottom: 4px;">Ver todos os conteúdos →</a>
-      </div>
-
-      <article data-reveal="" data-delay="1" class="vm-post" style="position: relative; display: flex; flex-wrap: wrap; overflow: hidden; border: 1px solid #E0E0E0; border-radius: 10px; background: #FFFFFF; margin-top: clamp(30px,4vw,44px);">
-        <a href="{{ destaque.url }}" aria-label="Ler o artigo em destaque" style="position: absolute; inset: 0; z-index: 10;"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);">Ler artigo</span></a>
-        <div style="position: relative; overflow: hidden; flex: 1 1 340px; min-height: 260px;">
-          <img class="vm-post__foto" loading="lazy" decoding="async" src="assets/estacao-trabalho-vieira-marques-otm.webp" alt="Escritório Vieira &amp; Marques em Boituva - SP" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.04) contrast(1.02);">
-        </div>
-        <div style="flex: 1 1 340px; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(26px,3.4vw,40px);">
-          <div>
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6E6E6E; margin-bottom: 16px;">
-              <span style="background: rgba(11,11,11,0.07); color: #0B0B0B; border-radius: 999px; padding: 5px 13px;">{{ destaque.categoria }}</span>
-              <span>{{ destaque.data }}</span>
-            </div>
-            <h3 style="font-weight: 600; font-size: clamp(21px,2.6vw,27px); line-height: 1.25; letter-spacing: -0.02em; margin: 0 0 14px;"><span class="vm-post__titulo">{{ destaque.titulo }}</span></h3>
-            <p style="font-size: 16px; font-weight: 300; line-height: 1.7; color: #4A4A4A; margin: 0; max-width: 50ch;">{{ destaque.resumo }}</p>
-          </div>
-          <span style="display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; margin-top: 28px; background: #0B0B0B; color: #FFFFFF; border-radius: 3px; padding: 14px 22px; font-size: 14.5px; font-weight: 600;">Ler o artigo completo <span class="vm-post__seta" aria-hidden="true">→</span></span>
-        </div>
-      </article>
-
-      <div data-reveal="" data-delay="2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px; margin-top: 20px;">
-        <sc-for list="{{ secundarios }}" as="art" hint-placeholder-count="3">
-          <article class="vm-post" style="position: relative; display: flex; flex-direction: column; border: 1px solid #E0E0E0; border-radius: 10px; background: #FFFFFF; padding: 26px 24px; min-height: 210px;">
-            <a href="{{ art.url }}" aria-label="Ler artigo" style="position: absolute; inset: 0; z-index: 10;"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);">Ler artigo</span></a>
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6E6E6E; margin-bottom: 14px;">
-              <span style="background: rgba(11,11,11,0.07); color: #0B0B0B; border-radius: 999px; padding: 4px 11px;">{{ art.categoria }}</span>
-              <span>{{ art.data }}</span>
-            </div>
-            <h3 style="font-size: 17.5px; font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; margin: 0;"><span class="vm-post__titulo">{{ art.titulo }}</span></h3>
-            <span style="display: inline-flex; align-items: center; gap: 9px; margin-top: auto; padding-top: 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #0B0B0B;">Ler artigo <span class="vm-post__seta" aria-hidden="true">→</span></span>
-          </article>
-        </sc-for>
-      </div>
-    </div>
-  </section>
-
-  <section id="galeria" style="background: #0B0B0B; color: #EDEDED; padding: clamp(52px,6vw,80px) clamp(16px,4vw,24px); border-top: 1px solid #1C1C1C;">
-    <div style="max-width: 1180px; margin: 0 auto;">
-      <div data-reveal="" style="max-width: 640px;">
-        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A;">Galeria</div>
-        <h2 style="font-weight: 600; font-size: clamp(24px,3.2vw,34px); line-height: 1.18; letter-spacing: -0.02em; color: #FFFFFF; margin: 14px 0 0;">O escritório <span class="vm-grad">por dentro</span></h2>
-        <p style="font-size: 16px; font-weight: 300; line-height: 1.68; color: #B4B4B4; margin: 14px 0 0;">Clique em qualquer imagem para ampliar e navegar pela galeria.</p>
-      </div>
-      <div data-reveal="" data-delay="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(max(22%, 200px), 1fr)); grid-auto-rows: clamp(150px, 17vw, 210px); gap: 14px; margin-top: clamp(28px,3.4vw,40px);">
-        <sc-for list="{{ galeria }}" as="g" hint-placeholder-count="5">
-          <figure class="vm-bento" sc-camel-tab-index="0" role="button" aria-label="{{ g.titulo }}" sc-camel-on-click="{{ g.abrir }}" sc-camel-on-key-down="{{ g.tecla }}" style="{{ g.peca }}">
-            <div data-foto="" style="{{ g.imagem }}"></div>
-            <figcaption style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; background: linear-gradient(to top, rgba(11,11,11,0.86), rgba(11,11,11,0.25) 48%, transparent);">
-              <span style="font-size: 14.5px; font-weight: 500; color: #FFFFFF; line-height: 1.35;">{{ g.titulo }}</span>
-              <span style="font-size: 12.5px; font-weight: 300; color: #B4B4B4; margin-top: 3px;">{{ g.desc }}</span>
-            </figcaption>
-          </figure>
-        </sc-for>
-      </div>
-    </div>
-    <sc-if value="{{ galeriaAberta }}" hint-placeholder-val="{{ false }}">
-      <div role="dialog" aria-modal="true" aria-label="Galeria ampliada" style="position: fixed; inset: 0; z-index: 9990; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); animation: vmVeu .3s ease both;">
-        <div sc-camel-on-click="{{ fecharGaleria }}" style="position: absolute; inset: 0; cursor: pointer;"></div>
-        <div style="position: relative; width: 100%; max-width: 940px; animation: vmModal .42s cubic-bezier(.16,.84,.44,1) both;">
-          <div style="position: relative; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.14); background: #141414;">
-            <div role="img" aria-label="{{ galeriaAtual.titulo }}" style="{{ galeriaAtual.moldura }}"></div>
-            <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 24px; background: linear-gradient(to top, rgba(11,11,11,0.9), transparent);">
-              <h3 style="font-size: 19px; font-weight: 600; color: #FFFFFF; margin: 0;">{{ galeriaAtual.titulo }}</h3>
-              <p style="font-size: 13.5px; font-weight: 300; color: #B4B4B4; margin: 5px 0 0;">{{ galeriaAtual.desc }}</p>
-            </div>
-          </div>
-          <button type="button" sc-camel-on-click="{{ fecharGaleria }}" aria-label="Fechar galeria" style="position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(11,11,11,0.6); color: #FFFFFF; font-size: 17px; line-height: 1; cursor: pointer;">×</button>
-          <div style="display: flex; justify-content: center; gap: 10px; margin-top: 18px; flex-wrap: wrap;">
-            <sc-for list="{{ galeria }}" as="g" hint-placeholder-count="5">
-              <button type="button" sc-camel-on-click="{{ g.abrir }}" aria-label="{{ g.titulo }}" style="{{ g.miniatura }}"></button>
-            </sc-for>
-          </div>
-        </div>
-      </div>
-    </sc-if>
-  </section>
-
-  <section id="faq" style="position: relative; background: #F4F4F4; color: #0B0B0B; padding: clamp(58px,7vw,84px) clamp(16px,4vw,24px); overflow: hidden;">
-    <div style="position: relative; z-index: 2; max-width: 1180px; margin: 0 auto;">
-      <div data-reveal="" style="max-width: 720px; margin: 0 auto; text-align: center;">
-        <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Perguntas frequentes</div>
-        <h2 style="font-weight: 600; font-size: clamp(28px,4vw,40px); line-height: 1.15; letter-spacing: -0.02em; margin: 14px 0 0;">Dúvidas que aparecem <span class="vm-grad-claro">no primeiro contato</span></h2>
-        <p style="font-size: 16.5px; font-weight: 300; line-height: 1.7; color: #4A4A4A; margin: 16px 0 0;">Respostas gerais, de caráter informativo. A avaliação de cada caso depende dos documentos e das circunstâncias concretas.</p>
-      </div>
-
-      <div data-reveal="" data-delay="1" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: clamp(28px,3.4vw,40px);">
-        <sc-for list="{{ faqAbas }}" as="ab" hint-placeholder-count="6">
-          <button type="button" sc-camel-on-click="{{ ab.selecionar }}" aria-pressed="{{ ab.ativa }}" style="{{ ab.estilo }}">{{ ab.rotulo }}</button>
-        </sc-for>
-      </div>
-
-      <div style="{{ faqListaEstilo }}">
-        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
-          <div style="{{ f.caixa }}">
-            <button type="button" sc-camel-on-click="{{ f.alternar }}" aria-expanded="{{ f.aberta }}" style="width: 100%; background: transparent; border: 0; text-align: left; padding: 20px 22px; display: flex; gap: 18px; align-items: center; justify-content: space-between; cursor: pointer;">
-              <span style="{{ f.tituloEstilo }}">{{ f.pergunta }}</span>
-              <span aria-hidden="true" style="{{ f.maisEstilo }}">
-                <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
-              </span>
-            </button>
-            <div style="{{ f.painel }}">
-              <div style="overflow: hidden; min-height: 0;">
-                <p style="font-size: 15.5px; font-weight: 300; line-height: 1.72; color: #B4B4B4; margin: 0; padding: 0 22px 22px; max-width: 64ch;">{{ f.resposta }}</p>
-              </div>
-            </div>
-          </div>
-        </sc-for>
-      </div>
-
-      <p style="text-align: center; font-size: 15px; font-weight: 300; color: #4A4A4A; margin: 30px 0 0;">Sua dúvida não está aqui? <a href="#contato" style="font-weight: 500; border-bottom: 1px solid #BFBFBF;">Descreva sua situação para a nossa equipe</a>.</p>
-    </div>
-  </section>
-
-  <section id="localizacao" style="position: relative; background: #0B0B0B; color: #EDEDED; border-top: 1px solid #1C1C1C;">
-    <div style="max-width: 1180px; margin: 0 auto; padding: clamp(52px,6vw,76px) clamp(16px,4vw,24px) 0;">
-      <div data-reveal="" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: end; justify-content: space-between;">
-        <div style="max-width: 620px;">
-          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A;">Localização</div>
-          <h2 style="font-weight: 600; font-size: clamp(24px,3.2vw,34px); line-height: 1.18; letter-spacing: -0.02em; color: #FFFFFF; margin: 14px 0 0;">Onde estamos <span class="vm-grad">em São Paulo</span></h2>
-        </div>
-        <div role="tablist" aria-label="Unidades" style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <button type="button" role="tab" aria-selected="{{ boituvaAtiva }}" sc-camel-on-click="{{ verBoituva }}" style="{{ abaBoituva }}">Boituva — sede</button>
-          <button type="button" role="tab" aria-selected="{{ sorocabaAtiva }}" sc-camel-on-click="{{ verSorocaba }}" style="{{ abaSorocaba }}">Sorocaba — segunda unidade</button>
-        </div>
-      </div>
-      <div style="position: relative; margin-top: 30px; border: 1px solid #262626; border-radius: 6px; overflow: hidden; background: #101010;">
-        <div style="{{ mapaBoituva }}">
-          <iframe title="Mapa da sede da Vieira &amp; Marques Sociedade de Advogados em Boituva - SP" src="https://www.google.com/maps?q=Vieira%20e%20Marques%20Sociedade%20de%20Advogados%2C%20Rua%20Benedita%20Sanson%20Labronici%2C%20180%2C%20Boituva%20-%20SP%2C%2018556-048&amp;hl=pt-BR&amp;z=16&amp;output=embed" loading="lazy" sc-camel-referrer-policy="no-referrer-when-downgrade" style="width: 100%; height: clamp(300px, 42vh, 440px); border: 0; display: block; filter: invert(0.92) hue-rotate(180deg) saturate(0.72) contrast(0.92) brightness(0.94);"></iframe>
-        </div>
-        <div style="{{ mapaSorocaba }}">
-          <iframe title="Mapa da região de atendimento da Vieira &amp; Marques em Sorocaba - SP" src="https://www.google.com/maps?q=Sorocaba%20-%20SP%2C%20Brasil&amp;hl=pt-BR&amp;z=12&amp;output=embed" loading="lazy" sc-camel-referrer-policy="no-referrer-when-downgrade" style="width: 100%; height: clamp(300px, 42vh, 440px); border: 0; display: block; filter: invert(0.92) hue-rotate(180deg) saturate(0.72) contrast(0.92) brightness(0.94);"></iframe>
-        </div>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 16px; align-items: center;">
-        <a href="https://share.google/jEfyu1wygOtuuH7kW" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; font-weight: 500; color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 3px;">Ver o perfil no Google Maps →</a>
-        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Vieira+e+Marques+Sociedade+de+Advogados+Rua+Benedita+Sanson+Labronici+180+Boituva+SP" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; font-weight: 500; color: #B4B4B4; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 3px;">Traçar rota até a sede</a>
-        <span style="font-size: 12.5px; font-weight: 300; color: #7A7A7A;">O mapa acompanha a unidade selecionada acima.</span>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(max(46%, 220px), 1fr)); margin-top: 20px; border-top: 1px solid #1C1C1C; border-left: 1px solid #1C1C1C;">
-        <div sc-camel-on-click="{{ verBoituva }}" style="{{ cartaoBoituva }}">
-          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #7A7A7A; margin-bottom: 9px;">Sede — Boituva/SP</div>
-          <p style="font-size: 15px; font-weight: 300; line-height: 1.6; color: #EDEDED; margin: 0;">Rua Benedita Sanson Labronici, 180 — Chácara Labronici, 18556-048<br><a href="tel:+551533470189" style="color: #FFFFFF; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.35);">(15) 3347-0189</a></p>
-        </div>
-        <div sc-camel-on-click="{{ verSorocaba }}" style="{{ cartaoSorocaba }}">
-          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #7A7A7A; margin-bottom: 9px;">Segunda unidade — Sorocaba/SP</div>
-          <p style="font-size: 15px; font-weight: 300; line-height: 1.6; color: #EDEDED; margin: 0;"><span style="background: #FFFFFF; color: #0B0B0B; border-radius: 999px; padding: 3px 10px; font-size: 11.5px; font-weight: 600;">pendente</span> endereço completo e telefone da unidade</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  </main>
-
-  <div ref="{{ refCortina }}" style="position: relative; z-index: 1;">
-    <footer ref="{{ refRodape }}" style="position: relative; background: #0B0B0B; color: #7A7A7A; border-top: 1px solid #262626; overflow: hidden;">
-      <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-size: 62px 62px; background-image: linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 26%, #000 74%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 26%, #000 74%, transparent);"></div>
-      <div aria-hidden="true" style="position: absolute; left: 50%; bottom: -1.2vw; transform: translateX(-50%); width: max-content; max-width: none; white-space: nowrap; pointer-events: none; user-select: none; font-size: min(9.4vw, 140px); line-height: 0.92; font-weight: 600; letter-spacing: -0.045em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.07); background: linear-gradient(180deg, rgba(255,255,255,0.075) 0%, transparent 62%); -webkit-background-clip: text; background-clip: text;">VIEIRA &amp; MARQUES</div>
-
-      <div style="position: relative; z-index: 2; border-bottom: 1px solid #1C1C1C; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);">
-        <div style="display: flex; gap: 34px; width: max-content; padding: 16px 20px; animation: vmFooterMarquee 52s linear infinite;">
-          <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="12">
-            <span style="display: flex; align-items: center; gap: 12px; white-space: nowrap; font-size: 11.5px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #6E6E6E;">{{ m }}<span aria-hidden="true" style="color: #3A3A3A;">·</span></span>
-          </sc-for>
-        </div>
-      </div>
-
-      <div style="position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: clamp(44px,5vw,68px) clamp(16px,4vw,24px) 34px;">
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 36px; padding-bottom: 40px; border-bottom: 1px solid #262626;">
-        <div>
-          <img loading="lazy" decoding="async" width="112" height="46" src="assets/vieira-marques-advogados-logo-otm.webp" alt="Vieira &amp; Marques Sociedade de Advogados" style="height: 46px; width: auto; display: block; filter: invert(1); margin-bottom: 20px;">
-          <p style="font-size: 17px; font-weight: 300; line-height: 1.55; color: #EDEDED; margin: 0 0 18px; max-width: 34ch;">Orientação jurídica pautada por responsabilidade, conhecimento e proximidade.</p>
-          <p style="font-size: 13.5px; font-weight: 300; line-height: 1.65; margin: 0;">Rua Benedita Sanson Labronici, 180 — Boituva/SP<br><a href="tel:+551533470189" style="color: #EDEDED;">(15) 3347-0189</a></p>
-        </div>
-        <div>
-          <p style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A; margin: 0 0 16px;">Navegação</p>
-          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14px; font-weight: 300;">
-            <li><a href="#areas" style="color: #EDEDED;">Áreas de Atuação</a></li>
-            <li><a href="#escritorio" style="color: #EDEDED;">O Escritório</a></li>
-            <li><a href="#equipe" style="color: #EDEDED;">Equipe</a></li>
-            <li><a href="#presenca" style="color: #EDEDED;">Atendimento e presença</a></li>
-            <li><a href="#conteudos" style="color: #EDEDED;">Conteúdos</a></li>
-            <li><a href="#faq" style="color: #EDEDED;">Perguntas frequentes</a></li>
-            <li><a href="#contato" style="color: #EDEDED;">Contato</a></li>
-          </ul>
-        </div>
-        <div>
-          <p style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A; margin: 0 0 16px;">Atendimento</p>
-          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14px; font-weight: 300;">
-            <li>Boituva — SP</li>
-            <li>Sorocaba — SP</li>
-            <li>Online, todo o Brasil</li>
-            <li><a href="https://www.instagram.com/vieiraemarques.advogados/" style="color: #EDEDED;">Instagram</a></li>
-            <li><a href="https://www.facebook.com/vieiraemarques.advogados" style="color: #EDEDED;">Facebook</a></li>
-          </ul>
-        </div>
-      </div>
-      <sc-if value="{{ mostrarCidades }}" hint-placeholder-val="{{ true }}">
-        <div style="padding: 30px 0; border-bottom: 1px solid #262626;">
-          <p style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #7A7A7A; margin: 0 0 16px;">Regiões atendidas no estado de São Paulo</p>
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; font-weight: 300;">
-            <sc-for list="{{ cidades }}" as="c" hint-placeholder-count="12">
-              <li><a href="{{ c.url }}" style="color: #B4B4B4;">{{ c.nome }}</a></li>
-            </sc-for>
-          </ul>
-        </div>
-      </sc-if>
-      <div style="padding-top: 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-size: 12px; font-weight: 300; line-height: 1.6;">
-        <span style="max-width: 78ch;">© 2026 Vieira &amp; Marques Sociedade de Advogados. Esta página tem caráter meramente informativo, em conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021. Não há oferta de serviços, captação de clientela ou promessa de resultado. Cada caso é analisado individualmente.</span>
-        <span>Política de Privacidade · pendente</span>
-      </div>
-        <div class="vm-topo" style="display: flex; justify-content: flex-end; margin-top: 22px;">
-          <button type="button" sc-camel-on-click="{{ voltarAoTopo }}" aria-label="Voltar ao topo da página" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid #2F2F2F; background: rgba(255,255,255,0.04); color: #B4B4B4; display: grid; place-items: center; cursor: pointer; transition: border-color .3s ease, color .3s ease, background-color .3s ease;" style-hover="border-color:#FFFFFF;color:#FFFFFF;background:rgba(255,255,255,0.09);">
-            <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
-          </button>
-        </div>
-      </div>
-    </footer>
   </div>
-
-  <a href="#contato" ref="{{ refFlutuante }}" aria-label="Falar com nossa equipe" title="Falar com nossa equipe" style="position: fixed; right: clamp(16px,3vw,28px); bottom: clamp(16px,3vw,28px); z-index: 70; width: 68px; height: 68px; display: grid; place-items: center; border-radius: 50%; opacity: 0; pointer-events: none; translate: 0 16px; transition: opacity .4s cubic-bezier(.22,.61,.36,1), translate .45s cubic-bezier(.22,.61,.36,1), transform .35s cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.06);">
-    <span data-pulso="" aria-hidden="true" style="position: absolute; inset: -2px; border-radius: 50%; border: 1.5px solid #1EA94F; opacity: 0; animation: vmPulsoAnel 3.2s cubic-bezier(.16,.84,.44,1) infinite;"></span>
-    <span data-pulso="" aria-hidden="true" style="position: absolute; inset: -2px; border-radius: 50%; border: 1.5px solid #1EA94F; opacity: 0; animation: vmPulsoAnel 3.2s cubic-bezier(.16,.84,.44,1) 1.6s infinite;"></span>
-    <span aria-hidden="true" style="position: absolute; inset: -9px; border-radius: 50%; border: 1px solid rgba(30,169,79,0.45); animation: vmRespira 3.2s ease-in-out infinite;"></span>
-    <span style="position: relative; width: 68px; height: 68px; border-radius: 50%; overflow: hidden; border: 2px solid #0B0B0B; box-shadow: 0 14px 30px -14px rgba(0,0,0,0.7); background-color: #FFFFFF; background-image: url(&quot;assets/atendimento-vieira-marques-avatar-otm.webp&quot;); background-size: 250% auto; background-position: 66% 0%; background-repeat: no-repeat;"></span>
-    <span aria-hidden="true" style="position: absolute; right: 1px; bottom: 3px; width: 16px; height: 16px; border-radius: 50%; background: #1EA94F; border: 2.5px solid #0B0B0B; animation: vmPulsoPonto 2.4s ease-out infinite;"></span>
-  </a>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;heroVariante&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Orientação com estratégia&quot;,&quot;Decisões que exigem segurança&quot;,&quot;Questões importantes&quot;],&quot;default&quot;:&quot;Orientação com estratégia&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Conteúdo&quot;},&quot;mostrarAvaliacoes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seções&quot;},&quot;mostrarCidades&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seções&quot;}}">
-class Component extends DCLogic {
-  state = { enviado: false, nomeEnviado: "", rolou: false, aberto: false, desktop: true, faqAberta: -1, equipeAtiva: 0, faqCategoria: 0, galeriaIndice: -1, unidade: 0, slide: 0 };
+<header class="site-header" data-header>
+  <div class="container site-header__bar">
+    <a class="site-header__logo" href="/" aria-label="Vieira &amp; Marques Sociedade de Advogados — página inicial"><img src="/assets/img/logo-claro.webp" width="170" height="37" alt="Vieira &amp; Marques Sociedade de Advogados" decoding="async"></a>
+    <nav class="nav" aria-label="Principal">
+      <ul class="nav__list"><li><a class="nav__link" href="/" aria-current="page">Início</a></li><li><a class="nav__link" href="/escritorio/">O Escritório</a></li><li><a class="nav__link" href="/areas-de-atuacao/">Áreas de Atuação</a></li><li><a class="nav__link" href="/conhecimento/">Base de Conhecimento</a></li><li><a class="nav__link" href="/contato/">Contato</a></li></ul>
+    </nav>
+    <a class="btn btn--light btn--plain site-header__cta" href="/contato/">Falar com a equipe</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" data-menu-toggle>
+      <span class="menu-toggle__lines" aria-hidden="true"></span><span class="sr-only">Abrir menu</span>
+    </button>
+  </div>
+</header>
+<div class="mobile-menu" id="menu-mobile" hidden data-menu>
+  <div class="container">
+    <nav aria-label="Menu">
+      <ul class="mobile-menu__list">
+        <li><a href="/" aria-current="page">Início<span>01</span></a></li><li><a href="/escritorio/">O Escritório<span>02</span></a></li><li><a href="/areas-de-atuacao/">Áreas de Atuação<span>03</span></a></li><li><a href="/conhecimento/">Base de Conhecimento<span>04</span></a></li><li><a href="/contato/">Contato<span>05</span></a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a class="btn btn--light" href="/contato/">Falar com a equipe <span class="btn__arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="tel:+551533470189">(15) 3347-0189</a>
+      <p>Rua Benedita Sanson Labronici, 180 — Boituva/SP</p>
+    </div>
+  </div>
+</div>
+<main id="conteudo" tabindex="-1">
 
-  componentDidMount() {
-    document.documentElement.lang = "pt-BR";
-    this.rolouAtual = window.scrollY > 10;
-    this.medir = () => {
-      const desktop = window.innerWidth >= 1040;
-      if (desktop !== this.state.desktop) this.setState({ desktop, aberto: desktop ? false : this.state.aberto });
-      this.aplicarHeader();
-      this.aplicarFlutuante();
-    };
-    this.aoRolar = () => {
-      if (this.rafRolar) return;
-      this.rafRolar = requestAnimationFrame(() => { this.rafRolar = 0; this.processarRolagem(); });
-    };
-    this.processarRolagem = () => {
-      const rolou = window.scrollY > 10;
-      if (rolou !== this.rolouAtual) { this.rolouAtual = rolou; this.setState({ rolou }); }
-      this.aplicarHeader();
-      this.aplicarFlutuante();
-    };
-    this.medir();
-    this.aoRolar();
-    window.addEventListener("resize", this.medir);
-    window.addEventListener("scroll", this.aoRolar, { passive: true });
-    this.iniciarReveal();
-    setTimeout(() => this.iniciarPausaAnimacoes(), 400);
-    this.timerSlide = setInterval(() => {
-      if (document.hidden) return;
-      this.setState(s => ({ slide: (s.slide + 1) % this.slidesBase().length }));
-    }, 6000);
-    this.iniciarAncoras();
-    this.teclado = (ev) => this.aoTeclar(ev);
-    window.addEventListener("keydown", this.teclado);
-    this.medirCortina();
-    if (typeof ResizeObserver === "function") {
-      this.roCortina = new ResizeObserver(() => this.medirCortina());
-      if (this.rodapeEl) this.roCortina.observe(this.rodapeEl);
-    }
-    window.addEventListener("resize", () => this.medirCortina());
-  }
+<section class="hero on-dark" aria-labelledby="hero-titulo">
+  <div class="hero__frame">
+    <div class="hero__media"><img src="/assets/img/fachada-800.webp" srcset="/assets/img/fachada-480.webp 480w, /assets/img/fachada-800.webp 800w, /assets/img/fachada-1228.webp 1228w" sizes="(min-width: 1240px) 1212px, 100vw" width="1228" height="819" alt="Fachada do escritório Vieira &amp; Marques em Boituva - SP" loading="eager" decoding="sync" fetchpriority="high"></div>
+    <p class="hero__badge">Sociedade de Advogados · OAB/SP</p>
+    <div class="hero__inner">
+      <h1 class="hero__title" id="hero-titulo">
+        <span>Vieira <span class="hero__amp">&amp;</span></span>
+        <span>Marques</span>
+        <span class="sr-only">Sociedade de Advogados em Boituva e Sorocaba - SP</span>
+      </h1>
+      <div class="hero__panel">
+        <p class="hero__lede">Clareza jurídica antes de qualquer decisão.</p>
+        <p class="hero__text">Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário. Sede em Boituva, unidade em Sorocaba e atendimento online em todo o Brasil.</p>
+        <div class="btn-row">
+          <a class="btn btn--light" href="/areas-de-atuacao/">Conheça nossas áreas <span class="btn__arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="btn btn--ghost-light" href="/contato/">Falar com a equipe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  categoriaAtual() {
-    const i = this.state.faqCategoria || 0;
-    return i < this.grupos().length ? i : 0;
-  }
+<section class="section section--white" aria-labelledby="intro-titulo">
+  <div class="container">
+    <div class="split split--center">
+      <div class="stack" data-reveal>
+        <p class="eyebrow">Vieira &amp; Marques Sociedade de Advogados</p>
+        <h2 class="h-section" id="intro-titulo">A orientação vem antes da estratégia — <span class="grad">e a estratégia, antes do processo.</span></h2>
+        <p class="lead">Um escritório organizado por áreas, com advogados inscritos na OAB/SP respondendo diretamente por cada uma delas. Sede em Boituva, unidade em Sorocaba e atendimento online para clientes de todo o Brasil.</p>
+      </div>
+      <div data-reveal>
+        <dl class="facts ">
+  <div class="fact"><dt class="fact__label">Sede</dt><dd class="fact__value">Boituva — SP</dd><dd class="fact__text">Rua Benedita Sanson Labronici, 180 — Chácara Labronici.</dd></div><div class="fact"><dt class="fact__label">Segunda unidade</dt><dd class="fact__value">Sorocaba — SP</dd><dd class="fact__text">Atendimento presencial na região de Sorocaba.</dd></div><div class="fact"><dt class="fact__label">Alcance</dt><dd class="fact__value">Todo o Brasil</dd><dd class="fact__text">Reuniões por vídeo e envio digital de documentos.</dd></div><div class="fact"><dt class="fact__label">Corpo profissional</dt><dd class="fact__value">5 advogados</dd><dd class="fact__text">Inscrição ativa na OAB/SP e áreas definidas de atuação.</dd></div>
+</dl>
+      </div>
+    </div>
+  </div>
+</section>
 
-  grupos() {
-    return [
-      { rotulo: "Atendimento", itens: [
-        ["Como começa o atendimento no escritório?", "Pelo formulário do site ou por telefone. A mensagem é lida por um advogado da área correspondente, que retorna indicando quais documentos são necessários e qual o caminho aplicável ao caso."],
-        ["O escritório atende quem mora em outra cidade ou estado?", "Sim. Além das unidades de Boituva e Sorocaba, o atendimento é feito por videochamada e envio digital de documentos para clientes de todo o Brasil."],
-        ["O primeiro contato pelo site já é uma contratação?", "Não. O envio da mensagem não constitui contratação de serviços nem estabelece, por si só, relação advogado-cliente. Condições e escopo do trabalho são combinados por escrito depois da análise."],
-        ["Preciso saber em qual área meu caso se encaixa?", "Não. Descreva a situação em linguagem comum: identificar a área correta faz parte do nosso trabalho na primeira análise."],
-        ["Quais documentos devo levar na primeira reunião?", "Tudo o que já existir sobre o caso: contratos, comprovantes, notificações, decisões recebidas e mensagens relevantes. Se não houver nada em mãos, a conversa começa mesmo assim."],
-        ["A reunião pode ser por vídeo?", "Sim. O atendimento online é equivalente ao presencial, com envio de documentos por meio digital e acompanhamento do andamento pelos mesmos canais."],
-        ["Como sei o andamento do meu processo?", "O acompanhamento é feito diretamente com o advogado responsável pela área, nos canais combinados no início do trabalho."]
-      ]},
-      { rotulo: "Família", itens: [
-        ["Divórcio precisa ir para a Justiça?", "Não necessariamente. Havendo acordo e não existindo filhos menores ou incapazes, o divórcio pode ser feito em cartório. Quando há filhos menores ou disputa sobre guarda, pensão e patrimônio, o caminho é judicial."],
-        ["Como é definido o valor da pensão alimentícia?", "A lei não fixa percentual único: o valor é definido pela necessidade de quem recebe e pela capacidade de quem paga. Comprovação de renda e de despesas da criança são os elementos centrais da discussão."],
-        ["Guarda compartilhada significa dividir a semana ao meio?", "Não. Guarda compartilhada trata da divisão das decisões sobre a vida do filho; a convivência é organizada em um regime próprio, que pode ou não ser equilibrado em dias."],
-        ["É possível revisar uma pensão já fixada?", "Sim, quando há mudança comprovada na necessidade de quem recebe ou na capacidade de quem paga — desemprego, nova renda, despesas médicas ou escolares, entre outras situações."],
-        ["O que fazer quando a pensão não é paga?", "Existe ação própria de execução de alimentos, com medidas que variam conforme o período em atraso. Reunir os comprovantes de pagamento e de inadimplência é o primeiro passo."],
-        ["União estável dá os mesmos direitos do casamento?", "Em boa parte das situações patrimoniais e sucessórias, sim. A discussão costuma envolver a comprovação da união, seu período e o regime de bens aplicável."],
-        ["Como funciona a partilha de bens?", "Depende do regime de bens do casamento ou da união estável. A partilha define o que é comum e o que é particular antes de dividir — inclusive dívidas."]
-      ]},
-      { rotulo: "Sucessões", itens: [
-        ["Preciso de advogado para fazer um inventário?", "Sim. Tanto no inventário judicial quanto no extrajudicial, feito em cartório, a lei exige a participação de advogado."],
-        ["Quando o inventário pode ser feito em cartório?", "Quando todos os herdeiros são maiores, capazes e estão de acordo com a partilha. Havendo herdeiro incapaz, litígio ou situações específicas envolvendo testamento, o inventário segue pela via judicial."],
-        ["Existe prazo para abrir o inventário?", "Sim. A abertura deve ocorrer em até 60 dias do falecimento; o atraso pode gerar multa sobre o imposto de transmissão, conforme a legislação estadual aplicável."],
-        ["Quais documentos são necessários?", "Certidão de óbito, documentos pessoais do falecido e dos herdeiros, certidão de casamento ou união estável, documentos dos bens e certidões negativas de débitos."],
-        ["Quanto tempo demora um inventário?", "O extrajudicial costuma ser mais rápido por depender apenas do consenso e da documentação. O judicial varia conforme a complexidade do patrimônio e a existência de litígio — não há prazo garantido."],
-        ["E se um herdeiro não quiser assinar?", "Sem consenso, o inventário segue pela via judicial. A recusa de um herdeiro não impede a abertura nem paralisa o procedimento."],
-        ["Vale a pena fazer planejamento sucessório?", "Em muitos casos sim. Testamento, doação em vida e outros instrumentos podem reduzir litígio futuro e organizar a transmissão do patrimônio — sempre dentro dos limites legais da legítima."]
-      ]},
-      { rotulo: "Criminal", itens: [
-        ["Recebi uma intimação em processo criminal. O que fazer?", "Não prestar declarações antes de falar com um advogado. Prazos em matéria penal são curtos e a defesa começa já na fase de investigação."],
-        ["A defesa só começa depois da denúncia?", "Não. A atuação pode começar no inquérito policial, acompanhando depoimentos e requerendo diligências — fase em que muitas decisões relevantes do caso são tomadas."],
-        ["Familiares podem procurar o escritório pelo investigado?", "Sim. É comum que o primeiro contato seja feito por familiares, especialmente em prisão em flagrante e audiência de custódia, quando o tempo de resposta é decisivo."],
-        ["O que é audiência de custódia?", "É a apresentação do preso em flagrante a um juiz em até 24 horas, para avaliar a legalidade da prisão e a necessidade de mantê-la. A presença da defesa nesse ato é essencial."],
-        ["Fui chamado para depor. Sou obrigado a falar?", "Ninguém é obrigado a produzir prova contra si. A orientação prévia define o que pode ser dito, em qual condição a pessoa está sendo ouvida e quais são seus direitos no ato."],
-        ["O escritório atua na execução da pena?", "Sim. A execução penal envolve pedidos de progressão de regime, livramento condicional e outros incidentes que dependem de acompanhamento contínuo."]
-      ]},
-      { rotulo: "Trabalhista", itens: [
-        ["Fui demitido e não recebi as verbas. Qual o prazo?", "A regra geral é de dois anos após o fim do contrato para ingressar com a ação, alcançando os últimos cinco anos de direitos."],
-        ["Quais documentos ajudam na análise do caso?", "Contrato de trabalho, holerites, cartões de ponto, extrato de FGTS, termo de rescisão e mensagens relacionadas à rotina de trabalho."],
-        ["Trabalhei sem registro. Ainda tenho direitos?", "A ausência de registro em carteira não elimina direitos. Comprovado o vínculo por provas documentais e testemunhais, é possível pleitear o reconhecimento e as verbas correspondentes."],
-        ["Horas extras não pagas podem ser cobradas?", "Sim, dentro do período prescricional. Cartões de ponto, escalas, registros de acesso e testemunhas costumam ser as provas centrais dessa discussão."],
-        ["O que caracteriza assédio moral no trabalho?", "Condutas abusivas repetidas que atingem a dignidade do trabalhador. A análise depende do contexto, da frequência e das provas disponíveis — mensagens, testemunhas e registros internos."],
-        ["Fui demitido por justa causa. Posso questionar?", "Sim. A justa causa exige falta grave comprovada e proporcionalidade. Não demonstrados esses requisitos, a demissão pode ser revertida com as verbas correspondentes."],
-        ["O escritório também orienta empregadores?", "Sim, em rotinas de contratação, rescisão e adequação de práticas internas, com foco na prevenção de passivos."]
-      ]},
-      { rotulo: "Previdenciário", itens: [
-        ["O INSS negou meu pedido. Ainda posso fazer algo?", "Em muitos casos sim. A negativa pode ser revista por recurso administrativo ou por ação judicial, conforme o motivo indicado pelo INSS e o histórico de contribuições."],
-        ["O que analisamos antes de recorrer?", "A carta de decisão do INSS e o extrato do CNIS, para verificar tempo de contribuição, períodos faltantes e o fundamento exato da negativa."],
-        ["Quem recebe BPC/LOAS precisa ter contribuído?", "Não. O BPC é um benefício assistencial: depende de requisitos de idade ou deficiência e da situação de renda do grupo familiar, não de tempo de contribuição."],
-        ["Como saber se já posso me aposentar?", "É preciso cruzar idade, tempo de contribuição e as regras de transição aplicáveis ao seu caso. A análise do CNIS mostra o que já está reconhecido e o que ainda falta."],
-        ["Vale a pena revisar um benefício já concedido?", "Depende. Existem revisões possíveis quando períodos não foram computados ou o cálculo não considerou corretamente as contribuições — a viabilidade é avaliada caso a caso."],
-        ["Quem tem direito à pensão por morte?", "Dependentes previstos em lei, como cônjuge, companheiro e filhos, observados os requisitos de qualidade de segurado e as regras de duração do benefício."]
-      ]},
-      { rotulo: "Cível", itens: [
-        ["Recebi uma cobrança que considero indevida. O que fazer?", "Reunir contrato, comprovantes de pagamento e registros da cobrança. A partir daí é possível avaliar a contestação, a exclusão de restrição no nome e eventual reparação."],
-        ["Meu nome foi negativado por engano. Tenho direito a indenização?", "A inscrição indevida pode gerar dever de indenizar, mas a análise depende da existência de outras restrições e da comprovação do erro."],
-        ["Tenho um problema com contrato. Preciso ir à Justiça?", "Nem sempre. Muitos conflitos contratuais se resolvem por notificação e negociação — caminho avaliado antes de propor qualquer ação."],
-        ["Plano de saúde negou meu procedimento. É possível reverter?", "Em diversas situações sim, especialmente quando a negativa contraria o contrato, o rol aplicável ou a prescrição médica. O relatório do médico é documento central."],
-        ["Como funciona uma ação contra o SUS por medicamento?", "Depende de prescrição médica fundamentada, comprovação da negativa administrativa e documentos sobre a condição de saúde do paciente."],
-        ["Quem responde por defeito em produto ou serviço?", "O Código de Defesa do Consumidor prevê responsabilidade do fornecedor, com prazos próprios para reclamar. Notas fiscais e registros de atendimento são essenciais."]
-      ]}
-    ];
-  }
+<section class="section section--muted" aria-labelledby="areas-titulo">
+  <div class="container">
+    <div class="section-head section-head--row" data-reveal>
+  <div class="stack-sm">
+    <p class="eyebrow">Áreas de atuação</p>
+    <h2 class="h-section" id="areas-titulo">Oito áreas, <span class="grad">um mesmo método de análise.</span></h2>
+    <p class="lead">Se você não souber onde o seu caso se encaixa, comece por qualquer uma delas — identificar o caminho aplicável faz parte da primeira conversa.</p>
+  </div>
+  <a class="link-arrow" href="/areas-de-atuacao/">Ver todas as áreas <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+    <ol class="area-index" data-reveal>
+      <li class="area-index__item"><a href="/areas-de-atuacao/#familia">
+        <span class="area-index__num">01</span>
+        <h3 class="area-index__title">Direito de Família</h3>
+        <p class="area-index__text">Divórcio, pensão, guarda e união estável — decisões que seguem pela vida inteira da família.</p>
+        <span class="area-index__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li><li class="area-index__item"><a href="/areas-de-atuacao/#sucessorio">
+        <span class="area-index__num">02</span>
+        <h3 class="area-index__title">Direito Sucessório e Herança</h3>
+        <p class="area-index__text">Inventário, herança, testamento e planejamento da transmissão do patrimônio.</p>
+        <span class="area-index__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li><li class="area-index__item"><a href="/areas-de-atuacao/#trabalhista">
+        <span class="area-index__num">03</span>
+        <h3 class="area-index__title">Direito Trabalhista</h3>
+        <p class="area-index__text">Rescisão, verbas, vínculo, horas extras e condições de trabalho.</p>
+        <span class="area-index__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li><li class="area-index__item"><a href="/areas-de-atuacao/#criminal">
+        <span class="area-index__num">04</span>
+        <h3 class="area-index__title">Direito Criminal</h3>
+        <p class="area-index__text">Defesa desde o inquérito policial até a execução da pena.</p>
+        <span class="area-index__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li><li class="area-index__item"><a href="/areas-de-atuacao/#saude">
+        <span class="area-index__num">05</span>
+        <h3 class="area-index__title">Direito Médico e da Saúde</h3>
+        <p class="area-index__text">Defesa de profissionais da saúde, planos de saúde, SUS e responsabilidade por erro médico.</p>
+        <span class="area-index__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li><li class="area-index__item"><a href="/areas-de-atuacao/#bancario">
+        <span class="area-index__num">06</span>
+        <h3 class="area-index__title">Direito Bancário</h3>
+        <p class="area-index__text">Juros abusivos, busca e apreensão de veículo e fraudes como o golpe do Pix.</p>
+        <span class="area-index__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li><li class="area-index__item"><a href="/areas-de-atuacao/#imobiliario">
+        <span class="area-index__num">07</span>
+        <h3 class="area-index__title">Direito Imobiliário</h3>
+        <p class="area-index__text">Locação, atraso na entrega de obra e usucapião.</p>
+        <span class="area-index__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li><li class="area-index__item"><a href="/areas-de-atuacao/#previdenciario">
+        <span class="area-index__num">08</span>
+        <h3 class="area-index__title">Direito Previdenciário</h3>
+        <p class="area-index__text">Benefícios do INSS, BPC/LOAS e pedidos negados.</p>
+        <span class="area-index__arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></li>
+    </ol>
+  </div>
+</section>
 
-  slidesBase() {
-    return [
-      { url: "assets/fachada-escritorio-vieira-marques-boituva-otm.webp", alt: "Fachada do escritório Vieira & Marques em Boituva - SP", pos: "50% 50%" },
-      { url: "assets/recepcao-vieira-marques-advogados-otm.webp", alt: "Recepção da Vieira & Marques Sociedade de Advogados", pos: "50% 50%" },
-      { url: "assets/equipe-vieira-marques-advogados-boituva-sp-otm.webp", alt: "Equipe de advogados da Vieira & Marques", pos: "50% 32%" },
-      { url: "assets/sala-reuniao-vieira-marques-boituva-otm.webp", alt: "Sala de reunião do escritório em Boituva", pos: "50% 50%" },
-      { url: "assets/sala-de-atendimento-vieira-marques-otm.webp", alt: "Sala de atendimento da Vieira & Marques", pos: "50% 50%" },
-      { url: "assets/letreiro-vm-vieira-marques-advogados-otm.webp", alt: "Letreiro VM — Vieira & Marques Advogados", pos: "50% 50%" }
-    ];
-  }
+<section class="section section--dark" aria-labelledby="escritorio-titulo">
+  <div class="container">
+    <div class="split split--reverse split--center">
+      <div class="stack" data-reveal>
+        <p class="eyebrow">O escritório</p>
+        <h2 class="h-section" id="escritorio-titulo">A maior parte das dúvidas jurídicas não começa em um processo. <span class="grad">Começa em uma conversa.</span></h2>
+        <div class="prose">
+          <p>Divórcios, inventários, acusações criminais, demissões e pedidos negados pelo INSS chegam ao escritório cercados de urgência e informação desencontrada. O trabalho começa por organizar o cenário: o que a lei prevê, quais caminhos existem e quais consequências cada um carrega.</p>
+        </div>
+        <ul class="checklist">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Escuta antes de estratégia: todo atendimento começa pelos fatos e documentos existentes.</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Prazos, etapas e riscos explicados em linguagem direta.</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Atuação preventiva, extrajudicial ou judicial, conforme o que o caso exige.</span></li>
+        </ul>
+        <a class="btn btn--light" href="/escritorio/">Conheça o escritório <span class="btn__arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+      <div class="mosaic" data-reveal>
+        <figure class="figure figure--hover"><img src="/assets/img/recepcao-800.webp" srcset="/assets/img/recepcao-480.webp 480w, /assets/img/recepcao-800.webp 800w, /assets/img/recepcao-1228.webp 1228w" sizes="(min-width: 960px) 640px, 100vw" width="1228" height="819" alt="Recepção do escritório, com diplomas e certificados na parede" loading="lazy" decoding="async"><figcaption>Recepção — Boituva/SP</figcaption></figure>
+        <figure class="figure figure--hover"><img src="/assets/img/sala-atendimento-800.webp" srcset="/assets/img/sala-atendimento-480.webp 480w, /assets/img/sala-atendimento-800.webp 800w, /assets/img/sala-atendimento-1228.webp 1228w" sizes="(min-width: 960px) 320px, 50vw" width="1228" height="819" alt="Sala de atendimento do escritório" loading="lazy" decoding="async"></figure>
+        <figure class="figure figure--hover"><img src="/assets/img/estacao-trabalho-800.webp" srcset="/assets/img/estacao-trabalho-480.webp 480w, /assets/img/estacao-trabalho-800.webp 800w, /assets/img/estacao-trabalho-1228.webp 1228w" sizes="(min-width: 960px) 320px, 50vw" width="1228" height="819" alt="Estação de trabalho com a identidade Vieira &amp; Marques" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+  </div>
+</section>
 
-  estiloAba(ativa) {
-    return {
-      whiteSpace: "nowrap",
-      borderRadius: 999,
-      border: "1px solid " + (ativa ? "#FFFFFF" : "#2F2F2F"),
-      background: ativa ? "#FFFFFF" : "transparent",
-      color: ativa ? "#0B0B0B" : "#B4B4B4",
-      padding: "9px 16px",
-      fontSize: 13,
-      fontWeight: 500,
-      cursor: "pointer",
-      transition: "background-color .35s cubic-bezier(.22,.61,.36,1), color .25s ease, border-color .25s ease"
-    };
-  }
+<section class="section section--white" aria-labelledby="equipe-titulo">
+  <div class="container">
+    <div class="section-head section-head--row" data-reveal>
+  <div class="stack-sm">
+    <p class="eyebrow">Equipe</p>
+    <h2 class="h-section" id="equipe-titulo">Quem conduz <span class="grad">o atendimento.</span></h2>
+    <p class="lead">Formação, inscrição na OAB e área de atuação de cada profissional — informação verificável.</p>
+  </div>
+  <a class="link-arrow" href="/escritorio/#equipe">Conheça a equipe <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+    <ul class="people"><li class="person" data-reveal>
+  <figure class="person__photo"><img src="/assets/img/oscar-moreira-vieira-900.webp" srcset="/assets/img/oscar-moreira-vieira-360.webp 360w, /assets/img/oscar-moreira-vieira-600.webp 600w, /assets/img/oscar-moreira-vieira-900.webp 900w" sizes="(min-width: 1100px) 220px, (min-width: 640px) 33vw, 50vw" width="900" height="1350" alt="Dr. Oscar Moreira Vieira, sócio fundador da Vieira &amp; Marques" loading="lazy" decoding="async" style="object-position:50% 18%"></figure>
+  <div class="stack-sm">
+    <p class="person__meta"><span>Sócio fundador</span><span>OAB/SP 442.118</span></p>
+    <h3 class="person__name">Dr. Oscar Moreira Vieira</h3>
+    <p class="person__focus">Família e Sucessões</p>
+  </div>
+</li><li class="person" data-reveal>
+  <figure class="person__photo"><img src="/assets/img/jislana-marques-600.webp" srcset="/assets/img/jislana-marques-360.webp 360w, /assets/img/jislana-marques-600.webp 600w" sizes="(min-width: 1100px) 220px, (min-width: 640px) 33vw, 50vw" width="600" height="520" alt="Dra. Jislana Marques, sócia fundadora da Vieira &amp; Marques" loading="lazy" decoding="async" style="object-position:50% 22%"></figure>
+  <div class="stack-sm">
+    <p class="person__meta"><span>Sócia fundadora</span><span>OAB/SP 470.356</span></p>
+    <h3 class="person__name">Dra. Jislana Marques</h3>
+    <p class="person__focus">Penal e Previdenciário</p>
+  </div>
+</li><li class="person" data-reveal>
+  <figure class="person__photo"><img src="/assets/img/leticia-pereira-de-abreu-900.webp" srcset="/assets/img/leticia-pereira-de-abreu-360.webp 360w, /assets/img/leticia-pereira-de-abreu-600.webp 600w, /assets/img/leticia-pereira-de-abreu-900.webp 900w" sizes="(min-width: 1100px) 220px, (min-width: 640px) 33vw, 50vw" width="900" height="793" alt="Dra. Leticia Pereira de Abreu, advogada da Vieira &amp; Marques" loading="lazy" decoding="async" style="object-position:52% 22%"></figure>
+  <div class="stack-sm">
+    <p class="person__meta"><span>Advogada</span><span>OAB/SP 449.619</span></p>
+    <h3 class="person__name">Dra. Leticia Pereira de Abreu</h3>
+    <p class="person__focus">Processo Penal e Execução Penal</p>
+  </div>
+</li><li class="person" data-reveal>
+  <figure class="person__photo"><img src="/assets/img/gledie-camargo-900.webp" srcset="/assets/img/gledie-camargo-360.webp 360w, /assets/img/gledie-camargo-600.webp 600w, /assets/img/gledie-camargo-900.webp 900w" sizes="(min-width: 1100px) 220px, (min-width: 640px) 33vw, 50vw" width="900" height="1350" alt="Dra. Glediê Camargo, advogada da Vieira &amp; Marques" loading="lazy" decoding="async" style="object-position:62% 30%"></figure>
+  <div class="stack-sm">
+    <p class="person__meta"><span>Advogada</span><span>OAB/SP 453.152</span></p>
+    <h3 class="person__name">Dra. Glediê Camargo</h3>
+    <p class="person__focus">Direito Penal e Processo Penal</p>
+  </div>
+</li><li class="person" data-reveal>
+  <figure class="person__photo"><img src="/assets/img/natalia-okumura-600.webp" srcset="/assets/img/natalia-okumura-360.webp 360w, /assets/img/natalia-okumura-600.webp 600w" sizes="(min-width: 1100px) 220px, (min-width: 640px) 33vw, 50vw" width="600" height="520" alt="Dra. Natália Okumura, advogada da Vieira &amp; Marques" loading="lazy" decoding="async" style="object-position:50% 18%"></figure>
+  <div class="stack-sm">
+    <p class="person__meta"><span>Advogada</span><span>OAB/SP 460.641</span></p>
+    <h3 class="person__name">Dra. Natália Okumura</h3>
+    <p class="person__focus">Cível, Consumidor e Saúde</p>
+  </div>
+</li></ul>
+  </div>
+</section>
 
-  estiloCartao(ativa) {
-    return {
-      padding: "22px 22px",
-      borderRight: "1px solid #1C1C1C",
-      borderBottom: "1px solid #1C1C1C",
-      background: ativa ? "rgba(255,255,255,0.045)" : "transparent",
-      cursor: "pointer",
-      transition: "background-color .3s ease"
-    };
-  }
+<section class="section section--muted" aria-labelledby="conhecimento-titulo">
+  <div class="container">
+    <div class="section-head section-head--row" data-reveal>
+  <div class="stack-sm">
+    <p class="eyebrow">Base de conhecimento</p>
+    <h2 class="h-section" id="conhecimento-titulo">Informação jurídica <span class="grad">sobre dúvidas concretas.</span></h2>
+    
+  </div>
+  <a class="link-arrow" href="/conhecimento/">Explorar conteúdos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+    <div class="articles articles--home">
+      <a class="article-feature" href="https://vieiraemarquesadvogados.com/construcao-no-terreno-do-avo-inventario/" data-reveal data-area="sucessorio">
+  <p class="meta"><span>Sucessório</span><time datetime="2026-08-24">24 ago 2026</time></p>
+  <h3 class="article-feature__title">Construção no terreno do avô: como evitar surpresas no inventário</h3>
+  <p class="article-feature__excerpt">Benfeitorias feitas em imóvel de família costumam aparecer só na hora da partilha. O artigo explica o que precisa estar documentado antes da abertura do inventário.</p>
+  <span class="link-arrow">Ler o artigo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+      <ul class="article-list" data-reveal><li class="article-row" data-area="criminal"><a href="https://vieiraemarquesadvogados.com/advogados-desistem-o-que-fazer/">
+  <p class="meta"><span>Criminal</span><time datetime="2026-08-27">27 ago 2026</time></p>
+  <h3 class="article-row__title">Advogados desistem: o que fazer em casos criminais?</h3>
+</a></li><li class="article-row" data-area="previdenciario"><a href="https://vieiraemarquesadvogados.com/pagamentos-de-julho-beneficio-negado/">
+  <p class="meta"><span>Previdenciário</span><time datetime="2026-08-27">27 ago 2026</time></p>
+  <h3 class="article-row__title">Pagamentos de julho: o que fazer se seu benefício for negado?</h3>
+</a></li><li class="article-row" data-area="trabalhista"><a href="https://vieiraemarquesadvogados.com/fim-da-justica-do-trabalho-afeta-direitos/">
+  <p class="meta"><span>Trabalhista</span><time datetime="2026-08-26">26 ago 2026</time></p>
+  <h3 class="article-row__title">Fim da Justiça do Trabalho afeta seus direitos?</h3>
+</a></li></ul>
+    </div>
+  </div>
+</section>
 
-  medirCortina() {
-    const cort = this.cortinaEl, rod = this.rodapeEl;
-    if (!cort || !rod) return;
-    const alturaRodape = rod.offsetHeight;
-    const cabe = alturaRodape <= window.innerHeight - 8 && window.innerWidth >= 1040;
-    if (cabe) {
-      rod.style.position = "fixed";
-      rod.style.left = "0";
-      rod.style.right = "0";
-      rod.style.bottom = "0";
-      rod.style.zIndex = "1";
-      cort.style.height = alturaRodape + "px";
-      cort.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)";
-    } else {
-      rod.style.position = "relative";
-      rod.style.left = rod.style.right = rod.style.bottom = rod.style.zIndex = "";
-      cort.style.height = "";
-      cort.style.clipPath = "";
-    }
-  }
+<section class="section section--dark" aria-labelledby="atendimento-titulo">
+  <div class="container">
+    <div class="section-head" data-reveal>
+  <div class="stack-sm">
+    <p class="eyebrow">Atendimento</p>
+    <h2 class="h-section" id="atendimento-titulo">Como funciona <span class="grad">o primeiro contato.</span></h2>
+    <p class="lead">Nenhuma etapa exige que você já saiba nomear o seu problema jurídico. O envio da mensagem não constitui contratação: condições são combinadas por escrito depois da análise.</p>
+  </div>
+  
+</div>
+    <ol class="steps">
+  <li class="step" data-reveal>
+    <span class="step__num">01</span>
+    <h3 class="step__title">Você descreve a situação</h3>
+    <p class="step__text">Pelo formulário, pelo WhatsApp ou por telefone, em linguagem comum. Não é preciso saber nomear a área do Direito.</p>
+  </li><li class="step" data-reveal>
+    <span class="step__num">02</span>
+    <h3 class="step__title">Um advogado analisa</h3>
+    <p class="step__text">A mensagem é lida por um profissional da área correspondente, que verifica o que já é possível avaliar com o que foi enviado.</p>
+  </li><li class="step" data-reveal>
+    <span class="step__num">03</span>
+    <h3 class="step__title">Reunião presencial ou por vídeo</h3>
+    <p class="step__text">Em Boituva, em Sorocaba ou por videochamada. Nessa conversa são apresentados os caminhos aplicáveis e os documentos necessários.</p>
+  </li><li class="step" data-reveal>
+    <span class="step__num">04</span>
+    <h3 class="step__title">Definição do caminho</h3>
+    <p class="step__text">Orientação preventiva, tentativa de acordo ou atuação judicial — com etapas e condições combinadas por escrito.</p>
+  </li>
+</ol>
+  </div>
+</section>
 
-  aoTeclar(ev) {
-    if (this.state.galeriaIndice < 0) return;
-    const total = this.itensGaleria().length;
-    if (ev.key === "Escape") this.setState({ galeriaIndice: -1 });
-    if (ev.key === "ArrowRight") this.setState({ galeriaIndice: (this.state.galeriaIndice + 1) % total });
-    if (ev.key === "ArrowLeft") this.setState({ galeriaIndice: (this.state.galeriaIndice - 1 + total) % total });
-  }
-
-  itensGaleria() {
-    return [
-      { url: "assets/equipe-vieira-marques-advogados-boituva-sp-otm.webp", titulo: "A equipe", desc: "Advogados e time de atendimento", area: "span 2 / span 2" },
-      { url: "assets/fachada-escritorio-vieira-marques-boituva-otm.webp", titulo: "Fachada", desc: "Unidade Boituva/SP", area: "span 1 / span 1" },
-      { url: "assets/recepcao-vieira-marques-advogados-otm.webp", titulo: "Recepção", desc: "Diplomas e certificados do escritório", area: "span 1 / span 1" },
-      { url: "assets/sala-de-atendimento-vieira-marques-otm.webp", titulo: "Sala de atendimento", desc: "Reuniões presenciais e por vídeo", area: "span 1 / span 1" },
-      { url: "assets/letreiro-vm-vieira-marques-advogados-otm.webp", titulo: "Identidade no escritório", desc: "Letreiro Vieira & Marques", area: "span 1 / span 1" }
-    ];
-  }
-
-  iniciarAncoras() {
-    if (this.ancorasProntas) return;
-    this.ancorasProntas = true;
-    this.clicarAncora = (ev) => {
-      const link = ev.target.closest && ev.target.closest('a[href^="#"]');
-      if (!link) return;
-      const id = link.getAttribute("href");
-      if (!id || id === "#") return;
-      const alvo = document.querySelector(id);
-      if (!alvo) return;
-      ev.preventDefault();
-      if (this.state.aberto) this.setState({ aberto: false });
-      const inicio = window.pageYOffset;
-      const destino = alvo.getBoundingClientRect().top + inicio - 104;
-      const dist = destino - inicio;
-      const dur = Math.min(1100, Math.max(480, Math.abs(dist) * 0.6));
-      const reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const marcar = () => {
-        alvo.classList.remove("vm-alvo");
-        void alvo.offsetWidth;
-        alvo.classList.add("vm-alvo");
-        setTimeout(() => alvo.classList.remove("vm-alvo"), 1600);
-        if (history.replaceState) history.replaceState(null, "", id);
-      };
-      if (reduz) { window.scrollTo(0, destino); marcar(); return; }
-      const t0 = performance.now();
-      const passo = (agora) => {
-        const t = Math.min(1, (agora - t0) / dur);
-        const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        window.scrollTo(0, inicio + dist * e);
-        if (t < 1) requestAnimationFrame(passo); else marcar();
-      };
-      requestAnimationFrame(passo);
-    };
-    document.addEventListener("click", this.clicarAncora);
-  }
-
-  iniciarPausaAnimacoes() {
-    if (typeof IntersectionObserver !== "function") return;
-    this.ioPausa = new IntersectionObserver((entradas) => {
-      entradas.forEach(e => e.target.classList.toggle("vm-fora", !e.isIntersecting));
-    }, { rootMargin: "120px 0px" });
-    ["top", "atendimento", "depoimentos"].forEach(id => { const el = document.getElementById(id); if (el) this.ioPausa.observe(el); });
-    const rod = this.rodapeEl; if (rod) this.ioPausa.observe(rod);
-  }
-
-  iniciarReveal() {
-    if (typeof IntersectionObserver !== "function") {
-      document.querySelectorAll("[data-reveal]").forEach(el => el.classList.add("vm-vis"));
-      return;
-    }
-    this.io = new IntersectionObserver((entradas) => {
-      entradas.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add("vm-vis"); this.io.unobserve(e.target); }
-      });
-    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.05 });
-    const observar = () => document.querySelectorAll("[data-reveal]:not(.vm-vis)").forEach(el => this.io.observe(el));
-    observar();
-    let voltas = 0;
-    this.timerReveal = setInterval(() => { observar(); if (++voltas > 6) clearInterval(this.timerReveal); }, 800);
-  }
-
-  aplicarFlutuante() {
-    const el = this.flutuanteEl;
-    if (!el) return;
-    const hero = document.getElementById("top");
-    const limite = hero ? hero.offsetTop + hero.offsetHeight - window.innerHeight * 0.35 : window.innerHeight;
-    const visivel = window.scrollY > limite && !this.state.aberto && this.state.galeriaIndice < 0;
-    el.style.opacity = visivel ? "1" : "0";
-    el.style.translate = visivel ? "0 0" : "0 16px";
-    el.style.pointerEvents = visivel ? "auto" : "none";
-    el.setAttribute("aria-hidden", visivel ? "false" : "true");
-    el.tabIndex = visivel ? 0 : -1;
-  }
-
-  aplicarHeader() {
-    const el = this.headerEl, nav = this.navEl;
-    if (!el) return;
-    const flutuando = (this.rolouAtual ?? window.scrollY > 10) && !this.state.aberto && window.innerWidth >= 1040;
-    el.style.maxWidth = flutuando ? "1060px" : "100%";
-    el.style.top = flutuando ? "14px" : "0px";
-    el.style.borderRadius = flutuando ? "6px" : "0px";
-    el.style.borderColor = flutuando ? "#262626" : "transparent";
-    el.style.borderBottomColor = "#262626";
-    el.style.boxShadow = flutuando ? "0 16px 36px -22px rgba(0,0,0,0.75)" : "none";
-    el.style.background = this.state.aberto ? "#0B0B0B" : "rgba(11,11,11,0.94)";
-    if (nav) {
-      nav.style.height = flutuando ? "84px" : "92px";
-      nav.style.padding = flutuando ? "0 12px" : "0 clamp(14px,4vw,24px)";
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.medir);
-    window.removeEventListener("scroll", this.aoRolar);
-    clearInterval(this.timerReveal);
-    if (this.roCortina) this.roCortina.disconnect();
-    if (this.ioPausa) this.ioPausa.disconnect();
-    if (this.rafRolar) cancelAnimationFrame(this.rafRolar);
-    clearInterval(this.timerSlide);
-    if (this.clicarAncora) document.removeEventListener("click", this.clicarAncora);
-    if (this.teclado) window.removeEventListener("keydown", this.teclado);
-    if (this.io) this.io.disconnect();
-    document.body.style.overflow = "";
-  }
-
-  componentDidUpdate() {
-    document.body.style.overflow = (this.state.aberto || this.state.galeriaIndice >= 0) ? "hidden" : "";
-    this.aplicarHeader();
-    this.aplicarFlutuante();
-  }
-
-  renderVals() {
-    const { rolou, aberto, desktop } = this.state;
-    const flutuando = rolou && !aberto;
-    const linhaBase = { display: "block", height: 1.5, width: 20, background: "#EDEDED", transition: "transform 220ms ease-out" };
-    const heroTitulos = {
-      "Orientação com estratégia": "Orientação jurídica com estratégia, clareza e proximidade.",
-      "Decisões que exigem segurança": "Conhecimento jurídico para decisões que exigem segurança.",
-      "Questões importantes": "Questões importantes exigem orientação jurídica responsável."
-    };
-    const areasBase = [
-      { num: "01", nome: "Direito de Família", url: "/direito-de-familia/", glifo: "family_restroom", texto: "Separações e decisões sobre filhos envolvem convivência, patrimônio e responsabilidades que seguem por anos. A orientação começa por definir o que pode ser acordado e o que dependerá de decisão judicial.", itens: ["Divórcio", "Guarda e convivência", "Pensão alimentícia", "União estável", "Partilha de bens"] },
-      { num: "02", nome: "Direito Sucessório", url: "/direito-sucessorio/", glifo: "history_edu", texto: "Inventários reúnem interesses diferentes dentro da mesma família. Antes de abrir o processo é preciso saber quais bens entram, quem são os herdeiros e se o caminho extrajudicial é possível.", itens: ["Inventário judicial", "Inventário em cartório", "Partilha de herança", "Testamento"] },
-      { num: "03", nome: "Direito Criminal", url: "/direito-criminal/", glifo: "gavel", texto: "Investigações e acusações penais têm prazos curtos e efeitos imediatos sobre a liberdade. A atuação é técnica e acompanha o caso desde a fase policial até a execução da pena.", itens: ["Defesa em inquérito", "Processo penal", "Audiência de custódia", "Execução penal"] },
-      { num: "04", nome: "Direito Trabalhista", url: "/direito-trabalhista/", glifo: "work", texto: "Demissões e verbas em aberto envolvem contas, prazos e provas. O primeiro passo é conferir o que foi pago e o que a lei ou a convenção coletiva ainda garante.", itens: ["Rescisão e verbas", "Horas extras", "Vínculo não registrado", "Assédio no trabalho"] },
-      { num: "05", nome: "Direito Previdenciário", url: "/direito-previdenciario/", glifo: "elderly", texto: "Pedidos negados pelo INSS raramente terminam ali. Analisamos o histórico de contribuições e o motivo da negativa antes de indicar recurso administrativo ou ação judicial.", itens: ["Aposentadorias", "Benefício negado", "Auxílio por incapacidade", "Pensão por morte"] },
-      { num: "06", nome: "Direito Civil e do Consumidor", url: "/direito-civil-e-do-consumidor/", glifo: "handshake", texto: "Contratos, imóveis, dívidas e relações de consumo geram conflitos que costumam ter solução antes do litígio — quando avaliados com o contrato e os documentos em mãos.", itens: ["Contratos", "Cobranças indevidas", "Questões imobiliárias", "Ações de saúde"] }
-    ];
-    const nomesAreas = areasBase.map(a => a.nome);
-    const LIMITE = 9, ESCALA = 1.03;
-    const tilt = {
-      entrar: (e) => {
-        const brilho = e.currentTarget.querySelector("[data-brilho]");
-        if (brilho) brilho.style.opacity = "1";
-        e.currentTarget.style.boxShadow = "0 30px 60px -36px rgba(11,11,11,0.6)";
-        e.currentTarget.style.borderColor = "#3A3A3A";
-      },
-      mover: (e) => {
-        const el = e.currentTarget;
-        const r = el.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width;
-        const py = (e.clientY - r.top) / r.height;
-        el.style.transform = "perspective(1200px) rotateX(" + ((py - 0.5) * LIMITE * -2).toFixed(2) + "deg) rotateY(" + ((px - 0.5) * LIMITE * 2).toFixed(2) + "deg) scale3d(" + ESCALA + "," + ESCALA + "," + ESCALA + ")";
-        const luz = el.querySelector("[data-luz]");
-        if (luz) { luz.style.left = (px * 100).toFixed(1) + "%"; luz.style.top = (py * 100).toFixed(1) + "%"; }
-      },
-      sair: (e) => {
-        const el = e.currentTarget;
-        el.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)";
-        el.style.boxShadow = "none";
-        el.style.borderColor = "#1F1F1F";
-        const brilho = el.querySelector("[data-brilho]");
-        if (brilho) brilho.style.opacity = "0";
-      }
-    };
-    return {
-      refHeader: (el) => { this.headerEl = el; this.aplicarHeader && this.aplicarHeader(); },
-      refNav: (el) => { this.navEl = el; this.aplicarHeader && this.aplicarHeader(); },
-      refFlutuante: (el) => { this.flutuanteEl = el; this.aplicarFlutuante && this.aplicarFlutuante(); },
-      refCortina: (el) => { this.cortinaEl = el; this.medirCortina && this.medirCortina(); },
-      refRodape: (el) => { this.rodapeEl = el; this.medirCortina && this.medirCortina(); },
-      voltarAoTopo: () => window.scrollTo({ top: 0, behavior: "smooth" }),
-      slides: this.slidesBase().map((s, i) => {
-        const ativo = (this.state.slide || 0) === i;
-        return {
-          alt: s.alt,
-          estilo: {
-            position: "absolute",
-            inset: 0,
-            backgroundImage: "url(" + s.url + ")",
-            backgroundSize: "cover",
-            backgroundPosition: s.pos,
-            opacity: ativo ? 1 : 0,
-            transform: ativo ? "scale(1)" : "scale(1.08)",
-            filter: "brightness(0.78) saturate(0.92)",
-            transition: "opacity 1.6s ease, transform 7s cubic-bezier(.16,1,.3,1)",
-            contain: "strict"
-          }
-        };
-      }),
-      slideBarras: this.slidesBase().map((s, i) => {
-        const ativo = (this.state.slide || 0) === i;
-        return {
-          rotulo: "Mostrar imagem " + (i + 1),
-          ir: () => this.setState({ slide: i }),
-          estilo: { position: "relative", width: ativo ? 34 : 18, height: 3, padding: 0, border: 0, borderRadius: 3, overflow: "hidden", background: "rgba(255,255,255,0.3)", cursor: "pointer", transition: "width .5s cubic-bezier(.16,1,.3,1)" },
-          preenchimento: { position: "absolute", inset: 0, background: "#FFFFFF", transformOrigin: "left", transform: ativo ? undefined : "scaleX(0)", animation: ativo ? "vmBarra 6s linear both" : "none" }
-        };
-      }),
-      boituvaAtiva: this.state.unidade === 0,
-      sorocabaAtiva: this.state.unidade === 1,
-      verBoituva: () => this.setState({ unidade: 0 }),
-      verSorocaba: () => this.setState({ unidade: 1 }),
-      abaBoituva: this.estiloAba(this.state.unidade === 0),
-      abaSorocaba: this.estiloAba(this.state.unidade === 1),
-      mapaBoituva: { display: this.state.unidade === 0 ? "block" : "none", animation: "vmFade .34s ease both" },
-      mapaSorocaba: { display: this.state.unidade === 1 ? "block" : "none", animation: "vmFade .34s ease both" },
-      cartaoBoituva: this.estiloCartao(this.state.unidade === 0),
-      cartaoSorocaba: this.estiloCartao(this.state.unidade === 1),
-      galeriaAberta: this.state.galeriaIndice >= 0,
-      galeriaAtual: (() => {
-        const g = this.itensGaleria()[Math.max(0, this.state.galeriaIndice)];
-        return { ...g, moldura: { width: "100%", height: "min(68vh, 620px)", backgroundImage: "url(" + g.url + ")", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", background2: "#0B0B0B", backgroundColor: "#0B0B0B" } };
-      })(),
-      fecharGaleria: () => this.setState({ galeriaIndice: -1 }),
-      galeria: this.itensGaleria().map((g, i) => ({
-        ...g,
-        abrir: () => this.setState({ galeriaIndice: i }),
-        tecla: (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); this.setState({ galeriaIndice: i }); } },
-        imagem: {
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "url(" + g.url + ")",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "saturate(1.04) contrast(1.02)"
-        },
-        peca: {
-          position: "relative",
-          overflow: "hidden",
-          margin: 0,
-          borderRadius: 12,
-          border: "1px solid #262626",
-          cursor: "pointer",
-          gridArea: g.area,
-          outlineOffset: 3
-        },
-        miniatura: {
-          width: 54,
-          height: 54,
-          borderRadius: 9,
-          overflow: "hidden",
-          padding: 0,
-          cursor: "pointer",
-          border: "1px solid " + (this.state.galeriaIndice === i ? "#FFFFFF" : "rgba(255,255,255,0.22)"),
-          opacity: this.state.galeriaIndice === i ? 1 : 0.6,
-          transform: this.state.galeriaIndice === i ? "translateY(-5px) scale(1.06)" : "none",
-          transition: "transform .3s cubic-bezier(.22,.61,.36,1), opacity .25s ease, border-color .25s ease",
-          backgroundImage: "url(" + g.url + ")",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }
-      })),
-      desktop,
-      mobile: !desktop,
-      aberto,
-      topoVisivel: !(flutuando && desktop),
-      linha1: { ...linhaBase, transform: aberto ? "translateY(3.25px) rotate(45deg)" : "none" },
-      linha2: { ...linhaBase, transform: aberto ? "translateY(-3.25px) rotate(-45deg)" : "none" },
-      alternar: () => this.setState({ aberto: !this.state.aberto }),
-      fechar: () => { if (this.state.aberto) this.setState({ aberto: false }); },
-      heroTitulo: heroTitulos[this.props.heroVariante] ?? heroTitulos["Orientação com estratégia"],
-      mostrarAvaliacoes: this.props.mostrarAvaliacoes ?? true,
-      mostrarCidades: this.props.mostrarCidades ?? true,
-      marquee: [...nomesAreas, ...nomesAreas],
-      areas: areasBase.map(a => ({ ...a, ...tilt })),
-      enviado: this.state.enviado,
-      naoEnviado: !this.state.enviado,
-      nomeEnviado: this.state.nomeEnviado,
-      enviar: (e) => {
-        e.preventDefault();
-        const nome = (new FormData(e.target).get("nome") || "").toString().trim().split(" ")[0];
-        this.setState({ enviado: true, nomeEnviado: nome || "obrigado" });
-      },
-      novaMensagem: () => this.setState({ enviado: false, nomeEnviado: "" }),
-      faqAbas: this.grupos().map((g, i) => {
-        const ativa = this.categoriaAtual() === i;
-        return {
-          rotulo: g.rotulo,
-          ativa,
-          selecionar: () => this.setState({ faqCategoria: i, faqAberta: -1 }),
-          estilo: {
-            whiteSpace: "nowrap",
-            borderRadius: 3,
-            border: "1px solid " + (ativa ? "#0B0B0B" : "#DCDCDC"),
-            background: ativa ? "#0B0B0B" : "transparent",
-            color: ativa ? "#FFFFFF" : "#4A4A4A",
-            padding: "10px 16px",
-            fontSize: 13.5,
-            fontWeight: 500,
-            cursor: "pointer",
-            transition: "background-color .38s cubic-bezier(.22,.61,.36,1), color .3s ease, border-color .3s ease"
-          }
-        };
-      }),
-      faqListaEstilo: {
-        maxWidth: 820,
-        margin: "clamp(26px,3vw,36px) auto 0",
-        display: "grid",
-        gap: 0,
-        background: "#0B0B0B",
-        border: "1px solid #0B0B0B",
-        borderRadius: 10,
-        overflow: "hidden",
-        boxShadow: "0 26px 60px -40px rgba(11,11,11,0.65)",
-        animation: (this.categoriaAtual() % 2 === 0 ? "vmFaqInA" : "vmFaqInB") + " .46s cubic-bezier(.22,.61,.36,1) both"
-      },
-      faqs: this.grupos()[this.categoriaAtual()].itens.map(([pergunta, resposta], i) => {
-        const aberta = this.state.faqAberta === i;
-        return {
-          pergunta,
-          resposta,
-          aberta,
-          alternar: () => this.setState({ faqAberta: aberta ? -1 : i }),
-          caixa: {
-            background: aberta ? "#141414" : "#0B0B0B",
-            borderTop: i === 0 ? "0" : "1px solid #232323",
-            transition: "background-color .3s ease"
-          },
-          tituloEstilo: {
-            fontSize: 16.5,
-            fontWeight: 500,
-            lineHeight: 1.45,
-            color: aberta ? "#FFFFFF" : "#D6D6D6",
-            transition: "color .25s ease"
-          },
-          painel: {
-            display: "grid",
-            gridTemplateRows: aberta ? "1fr" : "0fr",
-            opacity: aberta ? 1 : 0,
-            transition: "grid-template-rows .42s cubic-bezier(.22,.61,.36,1), opacity .3s ease" + (aberta ? " .06s" : "")
-          },
-          maisEstilo: {
-            flex: "none",
-            display: "grid",
-            placeItems: "center",
-            width: 30,
-            height: 30,
-            borderRadius: "50%",
-            border: "1px solid " + (aberta ? "#FFFFFF" : "#3A3A3A"),
-            color: aberta ? "#FFFFFF" : "#9A9A9A",
-            transform: aberta ? "rotate(45deg)" : "none",
-            transition: "transform .28s cubic-bezier(.22,.61,.36,1), border-color .25s ease, color .25s ease"
-          }
-        };
-      }),
-      equipe: [
-        { nome: "Dr. Oscar Moreira Vieira", oab: "OAB/SP 442.118", cargo: "Sócio fundador", atuacao: "Família e Sucessões; Direito Público. Presidente da Comissão de Direito de Família e Sucessões da OAB de Boituva (2022/2024). Pós-graduado pela Escola Brasileira de Direito.", tags: ["Divórcio", "Inventário", "Guarda", "Pensão"], foto: "assets/oscar-moreira-vieira-advogado-boituva-otm.webp", pos: "50% 20%", posAtiva: "38% 58%", alt: "Dr. Oscar Moreira Vieira, advogado sócio fundador da Vieira & Marques" },
-        { nome: "Dra. Jislana Marques", oab: "OAB/SP 470.356", cargo: "Sócia fundadora", atuacao: "Direito Penal e Previdenciário. Graduada pela Universidade Paulista; pós-graduanda em Previdenciário. Diploma de Jovem Inspiradora pela Câmara Municipal de Boituva.", tags: ["Defesa criminal", "INSS", "Benefícios"], foto: "assets/jislana-marques-advogada-vieira-marques-otm.webp", pos: "50% 18%", posAtiva: "50% 12%", alt: "Dra. Jislana Marques, advogada sócia fundadora da Vieira & Marques" },
-        { nome: "Dra. Leticia Pereira de Abreu", oab: "OAB/SP 449.619", cargo: "Advogada", atuacao: "Processos criminais e execução penal. Graduada em Direito pela ESAMC-Sorocaba / UNISO.", tags: ["Processo penal", "Execução penal"], foto: "assets/leticia-pereira-de-abreu-advogada-otm.webp", pos: "50% 20%", posAtiva: "52% 14%", alt: "Dra. Leticia Pereira de Abreu, advogada da Vieira & Marques" },
-        { nome: "Dra. Glediê Camargo", oab: "OAB/SP 453.152", cargo: "Advogada", atuacao: "Direito Penal e Processo Penal, com pós-graduação em ambos; execução penal. Graduada pela UNISO.", tags: ["Direito Penal", "Processo Penal", "Execução"], foto: "assets/gledie-camargo-advogada-otm.webp", pos: "62% 42%", posAtiva: "62% 34%", alt: "Dra. Glediê Camargo, advogada da Vieira & Marques" },
-        { nome: "Dra. Natália Okumura", oab: "OAB/SP 460.641", cargo: "Advogada", atuacao: "Direito Civil e Consumerista; ações de saúde contra SUS e planos. Graduada pela FADI; pós-graduanda pela FMP e USP.", tags: ["Contratos", "Consumidor", "Saúde"], foto: "assets/natalia-okumura-advogada-otm.webp", pos: "50% 16%", posAtiva: "50% 10%", alt: "Dra. Natália Okumura, advogada da Vieira & Marques" }
-      ].map((p, i) => {
-        const ativa = this.state.equipeAtiva === i;
-        return {
-          ...p,
-          temFoto: !!p.foto,
-          semFoto: !p.foto,
-          alt: p.alt || p.nome,
-          retrato: {
-            position: "absolute",
-            inset: 0,
-            backgroundImage: p.foto ? "url(" + p.foto + ")" : "repeating-linear-gradient(135deg, #1A1A1A 0 10px, #232323 10px 20px)",
-            backgroundSize: "cover",
-            backgroundPosition: ativa ? (p.posAtiva || p.pos || "50% 18%") : (p.pos || "50% 22%"),
-            transition: "background-position 620ms cubic-bezier(.22,.61,.36,1)",
-            filter: p.foto ? "saturate(1.04) contrast(1.02)" : "none"
-          },
-          retratoMobile: {
-            width: "100%",
-            aspectRatio: "4 / 3",
-            backgroundImage: p.foto ? "url(" + p.foto + ")" : "repeating-linear-gradient(135deg, #ECECEC 0 10px, #F4F4F4 10px 20px)",
-            backgroundSize: "cover",
-            backgroundPosition: p.pos || "50% 22%",
-            filter: p.foto ? "saturate(1.04) contrast(1.02)" : "none"
-          },
-          ativa,
-          selecionar: () => { if (this.state.equipeAtiva !== i) this.setState({ equipeAtiva: i }); },
-          painel: {
-            position: "relative",
-            overflow: "hidden",
-            borderRadius: 6,
-            cursor: "pointer",
-            flex: ativa ? "3.2 1 0%" : "1 1 0%",
-            minWidth: 0,
-            background: "#141414",
-            transition: "flex 620ms cubic-bezier(.22,.61,.36,1)"
-          },
-          vertical: {
-            position: "absolute",
-            left: 18,
-            bottom: 20,
-            writingMode: "vertical-rl",
-            transform: "rotate(180deg)",
-            fontSize: 14,
-            fontWeight: 500,
-            letterSpacing: "0.04em",
-            color: "#EDEDED",
-            opacity: ativa ? 0 : 1,
-            transition: "opacity 300ms ease",
-            pointerEvents: "none",
-            whiteSpace: "nowrap"
-          },
-          info: {
-            position: "absolute",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            padding: "26px 24px",
-            background: "linear-gradient(to top, rgba(11,11,11,0.94) 12%, rgba(11,11,11,0.55) 62%, transparent)",
-            opacity: ativa ? 1 : 0,
-            transform: ativa ? "none" : "translateY(14px)",
-            transition: "opacity 380ms ease 120ms, transform 480ms cubic-bezier(.22,.61,.36,1) 120ms",
-            pointerEvents: "none"
-          }
-        };
-      }),
-      etapas: [
-        { num: "01", titulo: "Você descreve a situação", texto: "Pelo formulário ou por telefone, em linguagem comum. Não é necessário nomear a área do Direito." },
-        { num: "02", titulo: "Um advogado analisa", texto: "A mensagem é lida por um profissional da área correspondente, que verifica o que já é possível avaliar." },
-        { num: "03", titulo: "Reunião presencial ou online", texto: "Boituva, Sorocaba ou vídeo. Nessa conversa são apresentados os caminhos aplicáveis e os documentos necessários." },
-        { num: "04", titulo: "Definição do caminho", texto: "Orientação preventiva, tentativa de acordo ou atuação judicial — com etapas, prazos estimados e condições combinadas por escrito." }
-      ].map((e, i) => {
-        const pos = [
-          { left: "2%", top: 0, rot: "2.2deg" },
-          { left: "56%", top: 180, rot: "-2.4deg" },
-          { left: "4%", top: 420, rot: "-1.6deg" },
-          { left: "58%", top: 580, rot: "2.6deg" }
-        ][i] || { left: "2%", top: 0, rot: "0deg" };
-        return {
-          ...e,
-          cartao: {
-            position: "absolute",
-            left: pos.left,
-            top: pos.top,
-            width: "min(340px, 36%)",
-            transform: "rotate(" + pos.rot + ")",
-            transition: "transform .35s cubic-bezier(.22,.61,.36,1)"
-          }
-        };
-      }),
-      colunas: (() => {
-        const base = [
-          { texto: "Muito atenciosos, respondem todas as dúvidas em qualquer horário.", autor: "João Carlos Seribeli" },
-          { texto: "Excelentes profissionais. Eu como cliente estou grata pelo belo trabalho executado!", autor: "Meire Tânia" },
-          { texto: "Só tenho que agradecer, pois um profissional humilde, uma atenção nota 10.", autor: "Gilvanessa Evaristo" }
-        ].map(d => ({ ...d, iniciais: d.autor.split(" ").filter(Boolean).slice(0, 2).map(p => p[0]).join("").toUpperCase() }));
-        return [0, 1, 2].map(c => {
-          const ordenada = base.slice(c).concat(base.slice(0, c));
-          return {
-            itens: ordenada.concat(ordenada),
-            envolvente: {
-              flex: "0 1 330px",
-              minWidth: 0,
-              display: c === 0 ? "block" : (c === 1 ? (window.innerWidth >= 760 ? "block" : "none") : (window.innerWidth >= 1040 ? "block" : "none"))
-            },
-            trilha: {
-              display: "flex",
-              flexDirection: "column",
-              gap: 22,
-              paddingBottom: 22,
-              animation: "vmColunaSobe " + [26, 33, 29][c] + "s linear infinite",
-              willChange: "transform"
-            }
-          };
-        });
-      })(),
-      destaque: { titulo: "Construção no terreno do avô: como evitar surpresas no inventário", categoria: "Sucessões", data: "24 ago 2026", url: "https://vieiraemarquesadvogados.com/construcao-no-terreno-do-avo-inventario/", resumo: "Benfeitorias feitas em imóvel de família costumam aparecer só na hora da partilha. O artigo explica o que precisa estar documentado antes da abertura do inventário." },
-      secundarios: [
-        { titulo: "Advogados desistem: o que fazer em casos criminais?", categoria: "Criminal", data: "27 ago 2026", url: "https://vieiraemarquesadvogados.com/advogados-desistem-o-que-fazer/" },
-        { titulo: "Pagamentos de julho: o que fazer se seu benefício for negado?", categoria: "Previdenciário", data: "27 ago 2026", url: "https://vieiraemarquesadvogados.com/pagamentos-de-julho-beneficio-negado/" },
-        { titulo: "Fim da Justiça do Trabalho afeta seus direitos?", categoria: "Trabalhista", data: "26 ago 2026", url: "https://vieiraemarquesadvogados.com/fim-da-justica-do-trabalho-afeta-direitos/" }
-      ],
-      artigos: [
-        { titulo: "Advogados desistem: o que fazer em casos criminais?", categoria: "Criminal", data: "27 ago 2026", url: "https://vieiraemarquesadvogados.com/advogados-desistem-o-que-fazer/" },
-        { titulo: "Construção no terreno do avô: como evitar surpresas no inventário", categoria: "Sucessões", data: "24 ago 2026", url: "https://vieiraemarquesadvogados.com/construcao-no-terreno-do-avo-inventario/" },
-        { titulo: "Pagamentos de julho: o que fazer se seu benefício for negado?", categoria: "Previdenciário", data: "27 ago 2026", url: "https://vieiraemarquesadvogados.com/pagamentos-de-julho-beneficio-negado/" },
-        { titulo: "Fim da Justiça do Trabalho afeta seus direitos?", categoria: "Trabalhista", data: "26 ago 2026", url: "https://vieiraemarquesadvogados.com/fim-da-justica-do-trabalho-afeta-direitos/" }
-      ],
-      cidades: [
-        ["Boituva", "advogado-boituva"], ["Sorocaba", "advogado-sorocaba"], ["Tatuí", "advogado-tatui"], ["São Roque", "adcogado-sao-rogue"], ["Iperó", "advogado-ipero"], ["Alambari", "advogado-alambari"], ["Alumínio", "advogado-aluminio"], ["Araçariguama", "advogado-aracariguama"], ["Araçoiaba da Serra", "advogado-aracoiaba"], ["Capela do Alto", "advogado-capela-do-alto"], ["Cerquilho", "advogado-cerquilho"], ["Cesário Lange", "advogado-cesario-lange"], ["Ibiúna", "advogado-ibiuna"], ["Itapetininga", "advogado-itapetininga"], ["Itu", "advogado-itu"], ["Jumirim", "advogado-jumirim"], ["Mairinque", "advogado-mairinque"], ["Piedade", "advogado-piedade"], ["Pilar do Sul", "advogado-pilar-do-sul"], ["Porto Feliz", "advogado-porto-feliz"], ["Salto", "advogado-salto"], ["Salto de Pirapora", "advogado-salto-de-pirapora"], ["São Miguel Arcanjo", "advogado-sao-miguel-arcanjo"], ["Sarapuí", "advogado-sarapui"], ["Tapiraí", "advogado-em-tapirai-sp"], ["Tietê", "advogado-tiete"], ["Votorantim", "advogado-em-votorantim-sp"], ["São Paulo", "advogado-sao-paulo"], ["Campinas", "advogado-campinas"], ["Santos", "advogado-santos"], ["São José dos Campos", "advogado-sao-jose-dos-campos"], ["Ribeirão Preto", "advogado-ribeirao-preto"]
-      ].map(([nome, slug]) => ({ nome: nome + "/SP", url: "https://vieiraemarquesadvogados.com/" + slug + "/" }))
-    };
-  }
-}
-</script>
-
-
-</body></html>
+<section class="cta-band on-dark" aria-labelledby="cta-titulo">
+  <div class="container cta-band__inner" data-reveal>
+    <div class="stack">
+      <p class="eyebrow">Primeiro contato</p>
+      <h2 class="cta-band__title" id="cta-titulo">Conte o que aconteceu. <span class="grad">A análise começa pelos fatos.</span></h2>
+      <p class="lead">Um advogado da área correspondente lê a sua mensagem e retorna com os próximos passos aplicáveis.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--light" href="/contato/">Falar com a equipe <span class="btn__arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="btn btn--ghost-light" href="/areas-de-atuacao/">Ver áreas de atuação</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer on-dark">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a href="/" aria-label="Vieira &amp; Marques Sociedade de Advogados — página inicial"><img src="/assets/img/logo-claro.webp" width="190" height="41" alt="Vieira &amp; Marques Sociedade de Advogados" decoding="async"></a>
+        <p>Sociedade de advogados com sede em Boituva, unidade em Sorocaba e atendimento online em todo o Brasil.</p>
+      </div>
+      <nav aria-label="Rodapé">
+        <h2 class="site-footer__title">Navegação</h2>
+        <ul class="site-footer__list"><li><a href="/">Início</a></li><li><a href="/escritorio/">O Escritório</a></li><li><a href="/areas-de-atuacao/">Áreas de Atuação</a></li><li><a href="/conhecimento/">Base de Conhecimento</a></li><li><a href="/contato/">Contato</a></li></ul>
+      </nav>
+      <div>
+        <h2 class="site-footer__title">Áreas de atuação</h2>
+        <ul class="site-footer__list"><li><a href="/areas-de-atuacao/#familia">Direito de Família</a></li><li><a href="/areas-de-atuacao/#sucessorio">Direito Sucessório e Herança</a></li><li><a href="/areas-de-atuacao/#trabalhista">Direito Trabalhista</a></li><li><a href="/areas-de-atuacao/#criminal">Direito Criminal</a></li><li><a href="/areas-de-atuacao/#saude">Direito Médico e da Saúde</a></li><li><a href="/areas-de-atuacao/#bancario">Direito Bancário</a></li><li><a href="/areas-de-atuacao/#imobiliario">Direito Imobiliário</a></li><li><a href="/areas-de-atuacao/#previdenciario">Direito Previdenciário</a></li></ul>
+      </div>
+      <div>
+        <h2 class="site-footer__title">Contato</h2>
+        <ul class="site-footer__list">
+          <li>Rua Benedita Sanson Labronici, 180<br>Chácara Labronici — Boituva/SP</li>
+          <li><a href="tel:+551533470189">(15) 3347-0189</a></li>
+          <li><a href="https://wa.me/551533470189" target="_blank" rel="noopener">WhatsApp</a></li>
+          
+          <li><a href="https://www.instagram.com/vieiraemarques.advogados/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/vieiraemarques.advogados" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p>© 2026 Vieira &amp; Marques Sociedade de Advogados. Conteúdo de caráter informativo, em conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021. Não há oferta de serviços, captação de clientela ou promessa de resultado. Cada caso é analisado individualmente.</p>
+      <p><a href="/privacidade/">Privacidade e termos de uso</a></p>
+    </div>
+  </div>
+</footer>
+<a class="wa-float" href="https://wa.me/551533470189?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Vieira%20%26%20Marques%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" data-wa-float data-hidden="true" aria-label="Conversar pelo WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 00-8.5 15l-1.4 5 5.1-1.3A9.9 9.9 0 1012.04 2zm0 18.1a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1114.4-4.6 8.2 8.2 0 01-7.5 8.4zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 000-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>WhatsApp</span></a>
+<script src="/assets/js/site.js?v=48bdb83568" defer></script>
+</body>
+</html>

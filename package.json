@@ -1,0 +1,15 @@
+{
+  "name": "site-vieiraemarques",
+  "private": true,
+  "type": "module",
+  "description": "Site institucional da Vieira & Marques Sociedade de Advogados (HTML estático gerado a partir de src/).",
+  "scripts": {
+    "images": "python3 -I src/tools/images.py",
+    "build": "node src/build.mjs",
+    "check": "node --check assets/js/site.js && node src/check.mjs",
+    "verify": "npm run build && npm run check"
+  },
+  "engines": {
+    "node": ">=20.10"
+  }
+}
