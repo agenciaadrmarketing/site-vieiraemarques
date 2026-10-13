@@ -177,22 +177,6 @@ export function breadcrumbs(crumbs) {
 </nav>`;
 }
 
-export function ctaBand({ title, text, primary = { href: "/contato/", label: "Falar com a equipe" }, secondary }) {
-  return `<section class="cta-band on-dark" aria-labelledby="cta-titulo">
-  <div class="container cta-band__inner" data-reveal>
-    <div class="stack">
-      <p class="eyebrow">Primeiro contato</p>
-      <h2 class="cta-band__title" id="cta-titulo">${title}</h2>
-      ${when(text, `<p class="lead">${text}</p>`)}
-    </div>
-    <div class="btn-row">
-      <a class="btn btn--light" href="${primary.href}">${esc(primary.label)} <span class="btn__arrow">${icon.arrow(16)}</span></a>
-      ${secondary ?`<a class="btn btn--ghost-light" href="${secondary.href}"${secondary.external ? ' target="_blank" rel="noopener"' : ""}>${esc(secondary.label)}</a>` : ""}
-    </div>
-  </div>
-</section>`;
-}
-
 export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true }) {
   return `<!DOCTYPE html>
 <html lang="${SITE.lang}">

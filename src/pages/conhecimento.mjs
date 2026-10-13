@@ -3,7 +3,7 @@ import { SITE } from "../data/site.mjs";
 import { practiceAreas, areaById, areaUrl } from "../data/areas.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
-import { page, breadcrumbs, ctaBand } from "../partials/layout.mjs";
+import { page, breadcrumbs } from "../partials/layout.mjs";
 import { icon } from "../partials/icons.mjs";
 import { sectionHead, articleFeature, articleCard } from "../partials/components.mjs";
 
@@ -98,12 +98,7 @@ export default function conhecimento() {
       aside: `<a class="btn" href="${SITE.blogBase}/blog/" target="_blank" rel="noopener">Abrir o blog <span class="btn__arrow">${icon.arrowUpRight(16)}</span></a>`,
     })}
   </div>
-</section>
-
-${ctaBand({
-  title: `Não encontrou a sua dúvida? <span class="grad">Pergunte à equipe.</span>`,
-  text: "Conteúdo informativo não substitui a análise do seu caso. Envie a sua situação e um advogado da área responde.",
-})}`;
+</section>`;
 
   return page({
     title: "Base de Conhecimento Jurídico | Vieira & Marques",

@@ -517,12 +517,6 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
 .contact-item__value a:hover { text-decoration-color: var(--c-paper); }
 .contact-item__note { font-size: 14px; color: var(--c-text-light-2); margin-top: 2px; }
 
-/* ---------- Faixa de CTA ---------- */
-.cta-band { background: var(--c-ink); color: var(--c-text-light); padding-block: clamp(72px, 10vw, 120px); border-top: 1px solid var(--c-line-dark); }
-.cta-band__inner { display: grid; gap: 28px; }
-@media (min-width: 900px) { .cta-band__inner { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 48px; } }
-.cta-band__title { font-size: clamp(30px, 4.6vw, 54px); line-height: 1.05; letter-spacing: -0.035em; color: var(--c-paper); max-width: 18ch; }
-
 /* ---------- Rodapé ---------- */
 .site-footer {
   position: relative; overflow: hidden; isolation: isolate; background: var(--c-ink); color: var(--c-text-light-2);
@@ -659,7 +653,7 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
   .js [data-reveal] { opacity: 1; transform: none; }
 }
 @media print {
-  .site-header, .topbar, .mobile-menu, .wa-float, .cta-band { display: none !important; }
+  .site-header, .topbar, .mobile-menu, .wa-float { display: none !important; }
 }
 
 /* ---------- Variantes ---------- */

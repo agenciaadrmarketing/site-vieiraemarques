@@ -4,7 +4,7 @@ import { hasPage, serviceHref } from "../data/services/index.mjs";
 import { teamByArea } from "../data/team.mjs";
 import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
-import { page, breadcrumbs, ctaBand } from "../partials/layout.mjs";
+import { page, breadcrumbs } from "../partials/layout.mjs";
 import { icon } from "../partials/icons.mjs";
 import { faqList, faqSchema, linkArrow } from "../partials/components.mjs";
 
@@ -88,12 +88,7 @@ export default function areas() {
       ${join(practiceAreas, areaBlock)}
     </div>
   </div>
-</div>
-
-${ctaBand({
-  title: `Seu caso não está listado? <span class="grad">Descreva a situação.</span>`,
-  text: "A lista reúne as situações mais frequentes. Outros assuntos dentro de cada área também são avaliados.",
-})}`;
+</div>`;
 
   return page({
     title: "Áreas de Atuação | Vieira & Marques",

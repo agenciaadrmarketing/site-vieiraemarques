@@ -1,7 +1,7 @@
 import { esc, join, when } from "../lib/html.mjs";
 import { team } from "../data/team.mjs";
 import { areaById, areaUrl, AREAS_HUB } from "../data/areas.mjs";
-import { page, breadcrumbs, ctaBand } from "../partials/layout.mjs";
+import { page, breadcrumbs } from "../partials/layout.mjs";
 import { img } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
 import { sectionHead, facts } from "../partials/components.mjs";
@@ -134,14 +134,7 @@ export default function escritorio() {
       <figure class="figure figure--hover">${img("mesa-trabalho", { alt: "Mesas de trabalho da equipe no escritório", sizes: "(min-width: 960px) 390px, 100vw" })}<figcaption>Área de trabalho da equipe</figcaption></figure>
     </div>
   </div>
-</section>
-
-${ctaBand({
-  title: `Conheça as áreas <span class="grad">em que o escritório atua.</span>`,
-  text: "Ou descreva a sua situação diretamente para a equipe — identificar a área faz parte da análise.",
-  primary: { href: AREAS_HUB, label: "Áreas de atuação" },
-  secondary: { href: "/contato/", label: "Falar com a equipe" },
-})}`;
+</section>`;
 
   return page({
     title: "O Escritório | Vieira & Marques",

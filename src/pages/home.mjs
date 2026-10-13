@@ -3,7 +3,7 @@ import { SITE } from "../data/site.mjs";
 import { practiceAreas, areaUrl, AREAS_HUB } from "../data/areas.mjs";
 import { team } from "../data/team.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
-import { page, ctaBand } from "../partials/layout.mjs";
+import { page } from "../partials/layout.mjs";
 import { img, imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
 import { sectionHead, linkArrow, btn, personCard, articleFeature, articleRow, facts, steps } from "../partials/components.mjs";
@@ -139,13 +139,7 @@ export default function home() {
     })}
     ${steps()}
   </div>
-</section>
-
-${ctaBand({
-  title: `Conte o que aconteceu. <span class="grad">A análise começa pelos fatos.</span>`,
-  text: "Um advogado da área correspondente lê a sua mensagem e retorna com os próximos passos aplicáveis.",
-  secondary: { href: AREAS_HUB, label: "Ver áreas de atuação" },
-})}`;
+</section>`;
 
   return page({
     title: "Vieira & Marques Sociedade de Advogados | Boituva e Sorocaba - SP",
