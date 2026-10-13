@@ -698,6 +698,12 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
 .svc-toc--desktop { display: none; }
 .svc-toc--desktop .svc-toc__title { cursor: default; }
 @media (min-width: 960px) { .svc-toc--desktop { display: block; } .svc-toc--mobile { display: none; } }
+.svc-toc--mobile { padding: 0 18px; }
+.svc-toc--mobile .svc-toc__title { display: flex; align-items: center; justify-content: space-between; min-height: 50px; }
+.svc-toc--mobile .svc-toc__title::after { content: "+"; font-size: 18px; font-weight: 300; letter-spacing: 0; }
+.svc-toc--mobile[open] .svc-toc__title::after { content: "–"; }
+.svc-toc--mobile ol { margin-top: 0; padding-bottom: 12px; }
+.svc-toc--mobile a { min-height: 44px; align-items: center; }
 .svc-toc ol { list-style: none; margin-top: 12px; display: grid; gap: 2px; counter-reset: toc; }
 .svc-toc li { counter-increment: toc; }
 .svc-toc a { display: grid; grid-template-columns: 28px minmax(0, 1fr); padding: 6px 0; font-size: 14.5px; color: var(--c-text-light-2); transition: color .25s var(--ease); }
@@ -849,16 +855,24 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
 .svc-sticky-cta svg { flex: none; }
 .svc-sticky-cta[data-hidden="true"] { opacity: 0; transform: translateY(16px); pointer-events: none; }
 @media (min-width: 900px) { .svc-sticky-cta { display: none; } }
+.svc-table-hint { display: none; }
 @media (max-width: 719px) {
-  .svc-table-wrap { overflow: visible; border: 0; background: transparent; }
-  .svc-table { min-width: 0; display: block; }
-  .svc-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .svc-table tbody { display: grid; gap: 12px; }
-  .svc-table tr { display: grid; border: 1px solid var(--c-line-light); border-radius: var(--radius); background: var(--c-paper); overflow: hidden; }
-  .svc-table th, .svc-table td { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--c-line-light); }
-  .svc-table tr > :last-child { border-bottom: 0; }
-  .svc-table__rowhead { display: block !important; background: var(--c-paper-2); font-size: 15.5px; }
-  .svc-table td::before { content: attr(data-label); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-text-dark-3); padding-top: 2px; }
+  .svc-table-wrap:not(.svc-table-wrap--wide) { overflow: visible; border: 0; background: transparent; }
+  .svc-table-wrap:not(.svc-table-wrap--wide) .svc-table { min-width: 0; display: block; }
+  .svc-table-wrap:not(.svc-table-wrap--wide) thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .svc-table-wrap:not(.svc-table-wrap--wide) tbody { display: grid; gap: 12px; }
+  .svc-table-wrap:not(.svc-table-wrap--wide) tr { display: grid; border: 1px solid var(--c-line-light); border-radius: var(--radius); background: var(--c-paper); overflow: hidden; }
+  .svc-table-wrap:not(.svc-table-wrap--wide) :is(th, td) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--c-line-light); }
+  .svc-table-wrap:not(.svc-table-wrap--wide) tr > :last-child { border-bottom: 0; }
+  .svc-table-wrap:not(.svc-table-wrap--wide) .svc-table__rowhead { display: block; background: var(--c-paper-2); font-size: 15.5px; }
+  .svc-table-wrap:not(.svc-table-wrap--wide) td::before { content: attr(data-label); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-text-dark-3); padding-top: 2px; }
+  /* Tabela larga: rolagem horizontal com a primeira coluna fixa. */
+  .svc-table-hint { display: block; margin-bottom: 10px; font-size: 13px; color: var(--c-text-dark-3); }
+  .svc-table-wrap--wide { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+  .svc-table-wrap--wide .svc-table { min-width: 560px; font-size: 14px; }
+  .svc-table-wrap--wide :is(th, td) { padding: 11px 12px; }
+  .svc-table-wrap--wide .svc-table__rowhead { position: sticky; left: 0; z-index: 1; width: 128px; min-width: 128px; background: var(--c-paper); box-shadow: 1px 0 0 var(--c-line-light), 6px 0 10px -8px rgba(0,0,0,.18); }
+  .svc-table-wrap--wide thead .svc-table__rowhead { background: var(--c-paper-2); }
 }
 
 /* ---------- Páginas legais ---------- */
@@ -870,7 +884,7 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
   .legal__aside { position: sticky; top: calc(var(--header-h) + 28px); max-height: calc(100vh - var(--header-h) - 56px); overflow-y: auto; }
 }
 .legal-toc { border: 1px solid var(--c-line-light); border-radius: var(--radius); padding: 14px 18px; background: var(--c-paper); }
-.legal-toc__title { cursor: pointer; display: flex; justify-content: space-between; align-items: center; min-height: 32px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-text-dark-3); list-style: none; }
+.legal-toc__title { cursor: pointer; display: flex; justify-content: space-between; align-items: center; min-height: 44px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-text-dark-3); list-style: none; }
 .legal-toc__title::-webkit-details-marker { display: none; }
 .legal-toc__title::after { content: "+"; font-size: 18px; font-weight: 300; letter-spacing: 0; }
 .legal-toc[open] .legal-toc__title::after { content: "–"; }
@@ -914,3 +928,75 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
 }
 .legal__foot { padding-top: 28px; border-top: 1px solid var(--c-line-light); display: grid; gap: 8px; font-size: 15px; color: var(--c-text-dark-2); }
 .legal__foot .legal-updated { color: var(--c-text-dark-3); }
+
+/* ---------- Mobile: menos cromo, mais conteúdo, toques confortáveis ---------- */
+@media (max-width: 899px) {
+  :root { --header-h: 64px; --section-y: clamp(56px, 14vw, 72px); }
+  /* A faixa superior repetia o que está no rodapé e ocupava 2 linhas. */
+  .topbar { display: none; }
+  .site-footer__notice { font-size: 13px; }
+  /* Área de toque de 44 px sem mudar o desenho dos links sublinhados. */
+  .link-arrow, .service__link, .svc-list__link, .svc-related__more { position: relative; }
+  .link-arrow::before, .service__link::before, .svc-list__link::before { content: ""; position: absolute; inset: -10px -6px -8px; }
+  .area-block__team { gap: 0 18px; }
+  .area-block__team a { padding-block: 10px; }
+  .legal-toc a, .svc-toc--mobile a { min-height: 44px; align-items: center; }
+}
+@media (max-width: 559px) {
+  .svc-hero .btn-row { flex-direction: column; align-items: stretch; }
+  .svc-hero .btn-row .btn { justify-content: center; }
+}
+
+/* ---------- Mobile: textos principais centralizados ----------
+   Só títulos, chamadas e introduções. Texto corrido, listas, tabelas e FAQ
+   continuam alinhados à esquerda, que é mais fácil de ler em blocos longos. */
+@media (max-width: 719px) {
+  /* Hero da Home */
+  .hero__badge { left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  .hero__inner { justify-items: center; text-align: center; }
+  .hero__panel { justify-items: center; }
+  .hero__panel .btn-row { justify-content: center; }
+
+  /* Hero das páginas internas */
+  .page-hero .breadcrumbs ol { justify-content: center; }
+  .page-hero__grid { text-align: center; }
+  .page-hero__grid .stack > * { margin-inline: auto; }
+  .page-hero__grid .eyebrow, .page-hero__grid .btn-row { justify-content: center; }
+  .page-hero__grid .eyebrow { display: flex; }
+  .page-hero__aside .lead { margin-inline: auto; }
+  .page-hero__aside { justify-items: center; }
+  .page-hero__aside > .link-arrow { justify-self: center; }
+  .svc-facts dd { margin-inline: auto; }
+  .svc-toc, .legal-toc { text-align: left; }
+
+  /* Cabeçalhos de seção (eyebrow + título + introdução) */
+  .section-head, .svc-head { justify-items: center; text-align: center; margin-inline: auto; }
+  .section-head .lead, .svc-head .lead { margin-inline: auto; }
+  .section-head .eyebrow, .svc-head .eyebrow { display: flex; justify-content: center; }
+  .section-head--row > :last-child { justify-self: center; }
+  .stack:has(> .h-section) > :is(.eyebrow, .h-section, .lead) { text-align: center; margin-inline: auto; }
+  .stack:has(> .h-section) > .eyebrow { display: flex; justify-content: center; }
+  .stack:has(> .h-section) > .link-arrow { justify-self: center; align-self: center; margin-inline: auto; }
+
+  /* Botões que fecham um bloco de texto */
+  .stack:has(> .h-section) > .btn,
+  .stack:has(> .h-section) > .btn-row { display: flex; width: fit-content; margin-inline: auto; justify-content: center; }
+  .area-block__foot .btn-row { justify-content: center; }
+  .svc-trust .stack { text-align: center; }
+  .svc-trust .stack .eyebrow { display: flex; justify-content: center; }
+  .svc-trust .stack > .link-arrow { display: flex; width: fit-content; margin-inline: auto; }
+  .svc-related__more { display: flex; width: fit-content; margin-inline: auto; }
+  .page-hero__grid .btn-row { justify-content: center; }
+
+  /* Fechamento do rodapé */
+  .site-footer__close { justify-items: center; text-align: center; }
+  .site-footer__close .eyebrow { justify-content: center; }
+
+  /* Rótulo centralizado: traço dos dois lados, para não pender à esquerda. */
+  :is(.page-hero__grid, .section-head, .svc-head, .site-footer__close) .eyebrow,
+  .stack:has(> .h-section) > .eyebrow { text-wrap: balance; }
+  :is(.page-hero__grid, .section-head, .svc-head, .site-footer__close) .eyebrow::before,
+  .stack:has(> .h-section) > .eyebrow::before { flex: none; }
+  :is(.page-hero__grid, .section-head, .svc-head, .site-footer__close) .eyebrow::after,
+  .stack:has(> .h-section) > .eyebrow::after { content: ""; flex: none; width: 18px; height: 1px; background: currentColor; }
+}

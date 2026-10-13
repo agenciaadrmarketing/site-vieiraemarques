@@ -52,10 +52,12 @@ const BLOCKS = {
   </article>`)}
 </div>`),
 
-  // Tabela simples e acessível, rolável no mobile.
+  // Tabela acessível. No mobile: até 3 colunas vira cartões; 4 ou mais rolam na
+  // horizontal com a primeira coluna fixa (cartões ficavam longos demais).
   table: (b) =>
     section(b, `${head(b)}
-<div class="svc-table-wrap" data-reveal role="region" aria-labelledby="${b.id}-titulo" tabindex="0">
+${when(b.columns.length > 3, `<p class="svc-table-hint" aria-hidden="true">Deslize para ver todas as colunas →</p>`)}
+<div class="svc-table-wrap${b.columns.length > 3 ? " svc-table-wrap--wide" : ""}" data-reveal role="region" aria-labelledby="${b.id}-titulo" tabindex="0">
   <table class="svc-table">
     ${when(b.caption, `<caption class="sr-only">${esc(b.caption)}</caption>`)}
     <thead><tr>${join(b.columns, (c, i) => `<th scope="col"${i === 0 ? ' class="svc-table__rowhead"' : ""}>${esc(c)}</th>`)}</tr></thead>

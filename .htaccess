@@ -30,6 +30,8 @@ ErrorDocument 404 /404.html
 
   # URLs institucionais anteriores.
   RewriteRule ^privacidade/?$ /politica-de-privacidade/ [R=301,L]
+  # Canonical antigo da LP "Divórcio SP" apontava para esta URL no domínio principal.
+  RewriteRule ^divorcio-sao-paulo/?$ /areas/direito-de-familia/divorcio/ [R=301,L]
   RewriteRule ^sobre-nos/?$ /escritorio/ [R=301,L]
   RewriteRule ^o-escritorio/?$ /escritorio/ [R=301,L]
   RewriteRule ^equipe/?$ /escritorio/#equipe [R=301,NE,L]
