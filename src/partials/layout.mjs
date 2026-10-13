@@ -72,11 +72,11 @@ function head({ title, description, path, ogType = "website", schema = [], crumb
 <meta property="og:image:height" content="${images.og.h}">
 <meta property="og:image:alt" content="Fachada do escritório Vieira &amp; Marques em Boituva - SP">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/uploads/favicon/favicon.ico" sizes="32x32">
-<link rel="icon" type="image/png" href="/uploads/favicon/favicon-32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/uploads/favicon/favicon-16.png" sizes="16x16">
-<link rel="apple-touch-icon" href="/uploads/favicon/apple-touch-icon.png">
-<link rel="preload" href="/uploads/fonts/lexend-deca-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/assets/icons/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/lexend-deca-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${join(preload, (p) => `<link rel="preload" as="image"${attrs(p)}>\n`)}<link rel="stylesheet" href="/assets/css/site.css?v=${ASSET_VERSION}">
 ${jsonLd({ "@context": "https://schema.org", "@graph": graph })}
 </head>`;

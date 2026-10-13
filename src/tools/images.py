@@ -10,30 +10,33 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT_DIR = os.path.join(ROOT, "assets", "img")
 MANIFEST = os.path.join(ROOT, "src", "data", "images.json")
-INST = "uploads/imagens-institucional-vieira-marques-webp"
+# Originais ficam fora da área pública (src/ responde 404 no servidor).
+SRC = "src/media/fotos"
 
+# chave interna (usada em img("...")) -> (original, larguras, nome do arquivo publicado)
+# Os nomes publicados descrevem a imagem para busca de imagens; a largura vai no sufixo.
 SOURCES = {
-    "fachada": ("assets/fachada-escritorio-vieira-marques-boituva-otm.webp", [480, 800, 1228]),
-    "recepcao": ("assets/recepcao-vieira-marques-advogados-otm.webp", [480, 800, 1228]),
-    "sala-atendimento": ("assets/sala-de-atendimento-vieira-marques-otm.webp", [480, 800, 1228]),
-    "sala-reuniao": ("assets/sala-reuniao-vieira-marques-boituva-otm.webp", [480, 800, 1228]),
-    "estacao-trabalho": ("assets/estacao-trabalho-vieira-marques-otm.webp", [480, 800, 1228]),
-    "letreiro": ("assets/letreiro-vm-vieira-marques-advogados-otm.webp", [480, 800, 1200]),
-    "equipe": ("assets/equipe-vieira-marques-advogados-boituva-sp-otm.webp", [480, 800, 1228]),
-    "atendimento-mesa": (f"{INST}/16.webp", [480, 800, 1228]),
-    "mesa-trabalho": (f"{INST}/IMG_20231023_103912675_HDR-scaled-1.webp", [480, 800, 1200]),
-    "equipe-reuniao": ("uploads/imagens-lp/equipe-reuniao-vieira-marques.webp", [480, 800, 1228]),
-    "carteira-trabalho": ("uploads/imagens-lp/carteira-de-trabalho.png", [360, 600]),
-    "escritorio-interno": (f"{INST}/IMG_20231023_103618894_HDR-scaled-1.webp", [480, 800, 1200, 1600]),
-    "oscar-moreira-vieira": ("assets/oscar-moreira-vieira-advogado-boituva-otm.webp", [360, 600, 900]),
-    "jislana-marques": ("assets/jislana-marques-advogada-vieira-marques-otm.webp", [360, 600]),
-    "leticia-pereira-de-abreu": ("assets/leticia-pereira-de-abreu-advogada-otm.webp", [360, 600, 900]),
-    "gledie-camargo": ("assets/gledie-camargo-advogada-otm.webp", [360, 600, 900]),
-    "natalia-okumura": ("assets/natalia-okumura-advogada-otm.webp", [360, 600]),
+    "fachada": (f"{SRC}/fachada-escritorio-vieira-marques-advogados-boituva.webp", [480, 800, 1228], "fachada-escritorio-vieira-marques-advogados-boituva-sp"),
+    "recepcao": (f"{SRC}/recepcao-escritorio-vieira-marques-advogados.webp", [480, 800, 1228], "recepcao-escritorio-de-advocacia-vieira-marques"),
+    "sala-atendimento": (f"{SRC}/sala-de-atendimento-vieira-marques-advogados.webp", [480, 800, 1228], "sala-de-atendimento-advogados-boituva"),
+    "sala-reuniao": (f"{SRC}/sala-de-reuniao-vieira-marques-advogados.webp", [480, 800, 1228], "sala-de-reuniao-vieira-marques-advogados"),
+    "estacao-trabalho": (f"{SRC}/estacao-de-trabalho-escritorio-vieira-marques.webp", [480, 800, 1228], "estacao-de-trabalho-escritorio-de-advocacia"),
+    "letreiro": (f"{SRC}/letreiro-vieira-marques-sociedade-de-advogados.webp", [480, 800, 1200], "letreiro-vieira-marques-sociedade-de-advogados"),
+    "equipe": (f"{SRC}/equipe-advogados-vieira-marques-boituva.webp", [480, 800, 1228], "equipe-de-advogados-vieira-marques-boituva"),
+    "atendimento-mesa": (f"{SRC}/atendimento-juridico-vieira-marques.webp", [480, 800, 1228], "atendimento-juridico-vieira-marques-advogados"),
+    "mesa-trabalho": (f"{SRC}/mesa-de-trabalho-escritorio-vieira-marques.webp", [480, 800, 1200], "mesa-de-trabalho-escritorio-de-advocacia-boituva"),
+    "equipe-reuniao": (f"{SRC}/reuniao-equipe-vieira-marques-advogados.webp", [480, 800, 1228], "reuniao-equipe-vieira-marques-advogados"),
+    "carteira-trabalho": (f"{SRC}/carteira-de-trabalho-ctps.webp", [360, 600], "carteira-de-trabalho-ctps-verbas-rescisorias"),
+    "escritorio-interno": (f"{SRC}/escritorio-interno-vieira-marques-advogados.webp", [480, 800, 1200, 1600], "escritorio-de-advocacia-vieira-marques-boituva-sp"),
+    "oscar-moreira-vieira": (f"{SRC}/oscar-moreira-vieira-advogado.webp", [360, 600, 900], "oscar-moreira-vieira-advogado"),
+    "jislana-marques": (f"{SRC}/jislana-marques-advogada.webp", [360, 600], "jislana-marques-advogada"),
+    "leticia-pereira-de-abreu": (f"{SRC}/leticia-pereira-de-abreu-advogada.webp", [360, 600, 900], "leticia-pereira-de-abreu-advogada"),
+    "gledie-camargo": (f"{SRC}/gledie-camargo-advogada.webp", [360, 600, 900], "gledie-camargo-advogada"),
+    "natalia-okumura": (f"{SRC}/natalia-okumura-advogada.webp", [360, 600], "natalia-okumura-advogada"),
 }
 
 
-def save_variants(name, src, widths):
+def save_variants(src, widths, slug):
     im = Image.open(os.path.join(ROOT, src))
     im.load()
     im = im.convert("RGB")
@@ -41,14 +44,14 @@ def save_variants(name, src, widths):
     for w in widths:
         w = min(w, im.width)
         h = round(im.height * w / im.width)
-        out = f"{name}-{w}.webp"
+        out = f"{slug}-{w}.webp"
         im.resize((w, h), Image.LANCZOS).save(os.path.join(OUT_DIR, out), "WEBP", quality=78, method=6)
         variants.append({"src": f"/assets/img/{out}", "w": w, "h": h})
     return {"width": im.width, "height": im.height, "variants": variants}
 
 
 def logo_variants():
-    im = Image.open(os.path.join(ROOT, "assets/vieira-marques-advogados-logo-otm.webp")).convert("RGBA")
+    im = Image.open(os.path.join(ROOT, f"{SRC}/logo-vieira-marques-advogados.webp")).convert("RGBA")
     bbox = im.getbbox()
     im = im.crop(bbox)
     dark = im.copy()
@@ -56,8 +59,9 @@ def logo_variants():
     r, g, b, a = im.split()
     light = Image.merge("RGBA", (*[c.point(lambda v: 255 - v) for c in (r, g, b)], a))
     out = {}
+    files = {"logo-escuro": "logo-vieira-marques-advogados-preto", "logo-claro": "logo-vieira-marques-advogados-branco"}
     for label, img in (("logo-escuro", dark), ("logo-claro", light)):
-        path = f"{label}.webp"
+        path = f"{files[label]}.webp"
         img.save(os.path.join(OUT_DIR, path), "WEBP", quality=90, method=6)
         out[label] = {"src": f"/assets/img/{path}", "w": img.width, "h": img.height}
     return out
@@ -70,13 +74,18 @@ def og_image():
     new_h = round(w / target_ratio)
     top = max(0, (h - new_h) // 2)
     im = im.crop((0, top, w, top + new_h)).resize((1200, 630), Image.LANCZOS)
-    im.save(os.path.join(OUT_DIR, "og-vieira-marques.jpg"), "JPEG", quality=82, optimize=True, progressive=True)
-    return {"src": "/assets/img/og-vieira-marques.jpg", "w": 1200, "h": 630}
+    # JPEG de propósito: prévias de link (WhatsApp, Facebook, LinkedIn) não aceitam WebP de forma confiável.
+    name = "vieira-marques-advogados-boituva-sp.jpg"
+    im.save(os.path.join(OUT_DIR, name), "JPEG", quality=82, optimize=True, progressive=True)
+    return {"src": f"/assets/img/{name}", "w": 1200, "h": 630}
 
 
 def main():
     os.makedirs(OUT_DIR, exist_ok=True)
-    manifest = {name: save_variants(name, src, widths) for name, (src, widths) in SOURCES.items()}
+    # Saída 100% gerada: limpa variantes antigas antes de gerar.
+    for f in os.listdir(OUT_DIR):
+        os.remove(os.path.join(OUT_DIR, f))
+    manifest = {name: save_variants(src, widths, slug) for name, (src, widths, slug) in SOURCES.items()}
     manifest.update(logo_variants())
     manifest["og"] = og_image()
     with open(MANIFEST, "w", encoding="utf-8") as f:
