@@ -347,14 +347,38 @@
     ]
   },
   "logo-escuro": {
-    "src": "/assets/img/logo-vieira-marques-advogados-preto.webp",
+    "src": "/assets/img/logo-vieira-marques-advogados-preto-400.webp",
     "w": 603,
-    "h": 131
+    "h": 131,
+    "variants": [
+      {
+        "src": "/assets/img/logo-vieira-marques-advogados-preto-400.webp",
+        "w": 400,
+        "h": 87
+      },
+      {
+        "src": "/assets/img/logo-vieira-marques-advogados-preto-603.webp",
+        "w": 603,
+        "h": 131
+      }
+    ]
   },
   "logo-claro": {
-    "src": "/assets/img/logo-vieira-marques-advogados-branco.webp",
+    "src": "/assets/img/logo-vieira-marques-advogados-branco-400.webp",
     "w": 603,
-    "h": 131
+    "h": 131,
+    "variants": [
+      {
+        "src": "/assets/img/logo-vieira-marques-advogados-branco-400.webp",
+        "w": 400,
+        "h": 87
+      },
+      {
+        "src": "/assets/img/logo-vieira-marques-advogados-branco-603.webp",
+        "w": 603,
+        "h": 131
+      }
+    ]
   },
   "og": {
     "src": "/assets/img/vieira-marques-advogados-boituva-sp.jpg",

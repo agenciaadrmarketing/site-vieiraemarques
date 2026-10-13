@@ -29,6 +29,8 @@
   --c-text-light-2: #B4B4B4;
   --c-text-light-3: #8F8F8F;
   --c-whatsapp: #1EA94F;
+  /* Fundo de botão com texto branco: contraste 5:1 (WCAG AA). */
+  --c-whatsapp-btn: #15803D;
 
   --font: "Lexend Deca", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --fs-xs: 12px;
@@ -150,7 +152,7 @@ ul, ol { margin: 0; padding: 0; }
 .btn--ghost:hover { --btn-line: var(--c-ink); }
 .btn--ghost-light { --btn-bg: transparent; --btn-fg: var(--c-paper); --btn-line: rgba(255,255,255,.34); padding: 12px 22px; }
 .btn--ghost-light:hover { --btn-line: var(--c-paper); background: rgba(255,255,255,.06); }
-.btn--whatsapp { --btn-bg: var(--c-whatsapp); --btn-fg: #FFFFFF; --btn-line: var(--c-whatsapp); padding: 12px 22px; }
+.btn--whatsapp { --btn-bg: var(--c-whatsapp-btn); --btn-fg: #FFFFFF; --btn-line: var(--c-whatsapp-btn); padding: 12px 22px; }
 .btn--block { width: 100%; }
 .btn[disabled], .btn[aria-busy="true"] { opacity: .6; cursor: progress; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
@@ -693,6 +695,9 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
 .svc-toc { border: 1px solid var(--c-line-dark); border-radius: var(--radius); padding: 16px 18px; }
 .svc-toc__title { cursor: pointer; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-text-light-3); list-style: none; }
 .svc-toc__title::-webkit-details-marker { display: none; }
+.svc-toc--desktop { display: none; }
+.svc-toc--desktop .svc-toc__title { cursor: default; }
+@media (min-width: 960px) { .svc-toc--desktop { display: block; } .svc-toc--mobile { display: none; } }
 .svc-toc ol { list-style: none; margin-top: 12px; display: grid; gap: 2px; counter-reset: toc; }
 .svc-toc li { counter-increment: toc; }
 .svc-toc a { display: grid; grid-template-columns: 28px minmax(0, 1fr); padding: 6px 0; font-size: 14.5px; color: var(--c-text-light-2); transition: color .25s var(--ease); }

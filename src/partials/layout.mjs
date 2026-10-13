@@ -25,7 +25,7 @@ export const organizationSchema = () => {
     "@id": `${SITE.origin}/#org`,
     name: SITE.name,
     url: `${SITE.origin}/`,
-    logo: abs(images["logo-escuro"].src),
+    logo: abs(images["logo-escuro"].variants.at(-1).src),
     image: abs(images.og.src),
     telephone: SITE.phone.e164,
     email: SITE.email,

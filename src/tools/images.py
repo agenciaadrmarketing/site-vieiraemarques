@@ -61,9 +61,14 @@ def logo_variants():
     out = {}
     files = {"logo-escuro": "logo-vieira-marques-advogados-preto", "logo-claro": "logo-vieira-marques-advogados-branco"}
     for label, img in (("logo-escuro", dark), ("logo-claro", light)):
-        path = f"{files[label]}.webp"
-        img.save(os.path.join(OUT_DIR, path), "WEBP", quality=90, method=6)
-        out[label] = {"src": f"/assets/img/{path}", "w": img.width, "h": img.height}
+        # 400 px cobre o logo do cabeçalho em telas 2x; a versão cheia fica para 3x.
+        variants = []
+        for w in (400, img.width):
+            h = round(img.height * w / img.width)
+            path = f"{files[label]}-{w}.webp"
+            img.resize((w, h), Image.LANCZOS).save(os.path.join(OUT_DIR, path), "WEBP", quality=90, method=6)
+            variants.append({"src": f"/assets/img/{path}", "w": w, "h": h})
+        out[label] = {"src": variants[0]["src"], "w": img.width, "h": img.height, "variants": variants}
     return out
 
 

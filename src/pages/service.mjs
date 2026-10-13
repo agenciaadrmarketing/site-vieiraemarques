@@ -20,6 +20,14 @@ const contactCta = (p, cta, cls, label) =>
     ? `<a class="${cls}" href="#formulario" data-cta="${cta}">${esc(p.hero.cta ?? "Entender meu caso")} ${label}</a>`
     : `<a class="${cls}" href="${whatsappUrl(waMsg(p))}" target="_blank" rel="noopener" data-cta="${cta}">${icon.whatsapp(18)} Conversar pelo WhatsApp</a>`;
 
+// Índice: lista aberta no desktop e acordeão no mobile, decididos só por CSS
+// (abrir o <details> via JS depois do carregamento deslocava o conteúdo).
+function tocNav(toc) {
+  const items = `<ol>${join(toc, (b) => `<li><a href="#${b.id}">${esc(b.toc)}</a></li>`)}<li><a href="#${SITE.forms ? "formulario" : "contato"}">${SITE.forms ? "Enviar informações" : "Falar com a equipe"}</a></li></ol>`;
+  return `<nav class="svc-toc svc-toc--desktop" aria-label="Nesta página"><p class="svc-toc__title">Nesta página</p>${items}</nav>
+        <details class="svc-toc svc-toc--mobile"><summary class="svc-toc__title">Nesta página</summary>${items}</details>`;
+}
+
 function hero(p, crumbs) {
   const toc = p.blocks.filter((b) => b.toc);
   return `<section class="page-hero svc-hero on-dark" aria-labelledby="page-titulo">
@@ -37,10 +45,7 @@ function hero(p, crumbs) {
       </div>
       <aside class="svc-hero__aside" aria-label="Resumo">
         ${when(p.hero.facts, `<dl class="svc-facts">${join(p.hero.facts ?? [], (f) => `<div><dt>${esc(f.label)}</dt><dd>${f.text}</dd></div>`)}</dl>`)}
-        ${when(toc.length, `<details class="svc-toc" data-toc>
-          <summary class="svc-toc__title">Nesta página</summary>
-          <ol>${join(toc, (b) => `<li><a href="#${b.id}">${esc(b.toc)}</a></li>`)}<li><a href="#${SITE.forms ? "formulario" : "contato"}">${SITE.forms ? "Enviar informações" : "Falar com a equipe"}</a></li></ol>
-        </details>`)}
+        ${when(toc.length, tocNav(toc))}
       </aside>
     </div>
   </div>

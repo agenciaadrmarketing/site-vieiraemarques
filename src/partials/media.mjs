@@ -37,5 +37,6 @@ export const imgPreload = (name, sizes = "100vw") => {
 export function logo(variant, width) {
   const entry = images[`logo-${variant}`];
   const height = Math.round((entry.h * width) / entry.w);
-  return `<img src="${entry.src}" width="${width}" height="${height}" alt="${esc("Vieira & Marques Sociedade de Advogados")}" decoding="async">`;
+  const srcset = entry.variants ? ` srcset="${entry.variants.map((v) => `${v.src} ${v.w}w`).join(", ")}" sizes="${width}px"` : "";
+  return `<img src="${entry.src}"${srcset} width="${width}" height="${height}" alt="${esc("Vieira & Marques Sociedade de Advogados")}" decoding="async">`;
 }
