@@ -51,7 +51,7 @@ export default function escritorio() {
         <h1 class="page-hero__title" id="page-titulo">Orientar antes de agir. <span class="grad">Agir com responsabilidade.</span></h1>
       </div>
       <div class="page-hero__aside">
-        <p class="lead">A Vieira &amp; Marques Sociedade de Advogados nasceu com o propósito de oferecer atendimento jurídico ético, eficiente e acolhedor — com sede em Boituva, unidade em Sorocaba e atendimento online em todo o Brasil.</p>
+        <p class="lead">A Vieira &amp; Marques Sociedade de Advogados nasceu com o propósito de oferecer atendimento jurídico ético, eficiente e acolhedor — com sede em Boituva, atendimento na região de Sorocaba e online em todo o Brasil.</p>
       </div>
     </div>
     <figure class="page-hero__media">${img("equipe", { alt: "Equipe de advogados da Vieira & Marques no escritório de Boituva", sizes: "(min-width: 1240px) 1180px, 100vw", priority: true, style: "object-position:50% 30%" })}</figure>
@@ -73,7 +73,7 @@ export default function escritorio() {
         </div>
         ${facts([
           { label: "Sede", value: "Boituva — SP" },
-          { label: "Segunda unidade", value: "Sorocaba — SP" },
+          { label: "Região", value: "Sorocaba e região" },
           { label: "Alcance", value: "Todo o Brasil, online" },
           { label: "Equipe", value: `${team.length} advogados` },
         ])}
@@ -139,9 +139,10 @@ export default function escritorio() {
   return page({
     title: "O Escritório | Vieira & Marques",
     description:
-      "História, forma de atuação, princípios e equipe da Vieira & Marques Sociedade de Advogados, com sede em Boituva, unidade em Sorocaba e atendimento online.",
+      "História, forma de atuação, princípios e equipe da Vieira & Marques Sociedade de Advogados, com sede em Boituva, atendimento na região de Sorocaba e online.",
     path: PATH,
     crumbs: CRUMBS,
+    whatsappMessage: "Olá! Vim pelo site da Vieira & Marques, conheci o escritório e gostaria de orientação.",
     schema: [
       { "@type": "AboutPage", "@id": `https://vieiraemarquesadvogados.com${PATH}#pagina`, name: "O Escritório", about: { "@id": "https://vieiraemarquesadvogados.com/#org" } },
       ...team.map((p) => ({ "@type": "Person", name: p.name.replace(/^Dra?\. /, ""), jobTitle: `${p.role} — ${p.focus}`, identifier: p.oab, worksFor: { "@id": "https://vieiraemarquesadvogados.com/#org" } })),

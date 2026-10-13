@@ -431,7 +431,7 @@
   /* ---------- CTA fixo (mobile) nas páginas de serviço ---------- */
   function initStickyCta() {
     var cta = document.querySelector("[data-sticky-cta]");
-    var form = document.querySelector("[data-lead-form]");
+    var form = document.querySelector("[data-lead-form]") || document.getElementById("contato");
     var hero = document.querySelector(".svc-hero");
     if (!cta || !form || !hero) return;
     cta.hidden = false;
@@ -503,11 +503,15 @@
       var tracked = e.target.closest("[data-track]");
       if (tracked) track(tracked.getAttribute("data-track"), { link_url: tracked.href || "" });
       var a = e.target.closest('a[href^="https://wa.me/"], a[href^="tel:"]');
-      if (a) track(a.href.indexOf("tel:") === 0 ? "phone_click" : "whatsapp_click", { link_url: a.href });
+      if (a) {
+        var isPhone = a.href.indexOf("tel:") === 0;
+        track(isPhone ? "phone_click" : "whatsapp_click", { link_url: a.href, cta_position: a.getAttribute("data-cta") || "" });
+        if (!isPhone && pageCtx) track("service_whatsapp_redirect", { cta_position: a.getAttribute("data-cta") || "" });
+      }
     });
   }
 
-  captureOrigin();
+  if (document.body.hasAttribute("data-forms")) captureOrigin();
   initMenu();
   initReveal();
   initFloat();

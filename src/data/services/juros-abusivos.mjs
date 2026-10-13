@@ -101,7 +101,7 @@ export default {
       tracks: [
         {
           steps: [
-            { title: "Envio do contrato", text: "Contrato, comprovantes e dados da operação, pelo formulário ou WhatsApp." },
+            { title: "Envio do contrato", text: "Contrato, comprovantes e dados da operação, pelo WhatsApp." },
             { title: "Comparação técnica", text: "Taxa e CET comparados com a média do Banco Central; verificação de tarifas, seguros e encargos." },
             { title: "Explicação do resultado", text: "Inclusive quando a taxa está dentro do mercado e não há o que discutir." },
             { title: "Definição do caminho", text: "Negociação, notificação ou ação revisional, quando cabível — sempre com os riscos explicados." },
@@ -130,6 +130,8 @@ export default {
   related: {
     services: [["bancario", "busca-e-apreensao"], ["bancario", "golpe-do-pix"]],
   },
+  // Mensagem inicial dos botões de WhatsApp desta página.
+  whatsapp: { message: "Olá! Vim pelo site da Vieira & Marques e gostaria de entender se há juros abusivos no meu financiamento." },
   form: {
     heading: `Envie as informações <span class="grad">do seu contrato.</span>`,
     lead: "Com o tipo de contrato e a situação atual dos pagamentos, o advogado indica o que é preciso para a análise.",

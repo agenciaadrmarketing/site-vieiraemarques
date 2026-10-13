@@ -1,10 +1,11 @@
 import { esc, join, when } from "../lib/html.mjs";
-import { SITE, isPending, whatsappUrl } from "../data/site.mjs";
+import { SITE, isPending, whatsappUrl, waMessage } from "../data/site.mjs";
 import { practiceAreas } from "../data/areas.mjs";
 import { faqAtendimento } from "../data/faq.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { icon } from "../partials/icons.mjs";
 import { leadForm } from "../partials/lead-form.mjs";
+import { whatsappPanel } from "../partials/whatsapp-panel.mjs";
 import { sectionHead, faqList, faqSchema, steps } from "../partials/components.mjs";
 
 const PATH = "/contato/";
@@ -20,10 +21,6 @@ const contactItem = (ic, label, value, note = "") => `<li class="contact-item">
 
 export default function contato() {
   const sede = SITE.units[0];
-  const sorocaba = SITE.units[1];
-  const sorocabaValue = isPending(sorocaba.street)
-    ? "Sorocaba — SP"
-    : `${esc(sorocaba.street)} — ${esc(sorocaba.district)}, ${esc(sorocaba.city)}/${esc(sorocaba.region)}`;
 
   const body = `
 <section class="page-hero on-dark" aria-labelledby="page-titulo">
@@ -41,22 +38,22 @@ export default function contato() {
   </div>
 </section>
 
-<section class="section section--dark section--flush-top" aria-labelledby="formulario-titulo">
+<section class="section section--dark section--flush-top" aria-labelledby="${SITE.forms ? "formulario" : "whatsapp"}-titulo">
   <div class="container">
     <div class="split">
       <div class="stack" data-reveal>
-        <h2 class="h-card">Canais e unidades</h2>
+        <h2 class="h-card">Canais e endereço</h2>
         <ul class="contact-list">
           ${contactItem(icon.pin(18), sede.label, `${esc(sede.street)} — ${esc(sede.district)}<br>${esc(sede.city)}/${esc(sede.region)}, ${esc(sede.postalCode)}`, `<a class="text-link" href="${esc(sede.mapsUrl)}" target="_blank" rel="noopener">Abrir no Google Maps</a>`)}
           ${contactItem(icon.phone(18), "Telefone", `<a href="${SITE.phone.href}">${SITE.phone.display}</a>`)}
-          ${contactItem(icon.whatsapp(18), "WhatsApp", `<a href="${whatsappUrl("Olá, vim pelo site da Vieira & Marques e gostaria de orientação.")}" target="_blank" rel="noopener">${SITE.whatsapp.display}</a>`)}
-          ${contactItem(icon.building(18), sorocaba.label, sorocabaValue, isPending(sorocaba.street) ? "Atendimento presencial na região de Sorocaba." : "")}
+          ${contactItem(icon.whatsapp(18), "WhatsApp", `<a href="${whatsappUrl(waMessage())}" target="_blank" rel="noopener">${SITE.whatsapp.display}</a>`)}
+          ${contactItem(icon.building(18), "Região de Sorocaba", "Sorocaba e cidades vizinhas", "Atendimento na região; reuniões na sede ou por vídeo.")}
           ${contactItem(icon.video(18), "Atendimento online", "Todo o Brasil", "Reuniões por vídeo e envio digital de documentos.")}
           ${when(!isPending(SITE.email), contactItem(icon.mail(18), "E-mail", `<a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`))}
           ${when(!isPending(SITE.hours), contactItem(icon.clock(18), "Horário", esc(SITE.hours)))}
         </ul>
       </div>
-      ${leadForm({
+      ${SITE.forms ? leadForm({
         id: "formulario",
         title: "Envie sua mensagem",
         intro: "Campos obrigatórios: nome, WhatsApp, assunto e mensagem.",
@@ -70,6 +67,10 @@ export default function contato() {
           },
         ],
         serviceMap: true,
+      }) : whatsappPanel({
+        intro: "Toque no assunto para abrir a conversa com uma mensagem inicial já direcionada, ou fale direto com a equipe. Você pode editar a mensagem antes de enviar.",
+        message: waMessage(),
+        choices: practiceAreas.map((a) => ({ label: a.title, message: waMessage(a.title) })),
       })}
     </div>
   </div>
@@ -84,7 +85,7 @@ export default function contato() {
 
 <section class="section section--dark" aria-labelledby="etapas-titulo">
   <div class="container">
-    ${sectionHead({ eyebrow: "Depois do envio", id: "etapas-titulo", title: `O que acontece <span class="grad">a seguir.</span>` })}
+    ${sectionHead({ eyebrow: "Depois do contato", id: "etapas-titulo", title: `O que acontece <span class="grad">a seguir.</span>` })}
     ${steps()}
   </div>
 </section>`;
@@ -92,9 +93,10 @@ export default function contato() {
   return page({
     title: "Contato | Vieira & Marques Sociedade de Advogados",
     description:
-      "Fale com a Vieira & Marques: sede em Boituva, unidade em Sorocaba e atendimento online em todo o Brasil. Telefone e WhatsApp (15) 3347-0189.",
+      "Fale com a Vieira & Marques: sede em Boituva, atendimento na região de Sorocaba e online em todo o Brasil. Telefone e WhatsApp (15) 3347-0189.",
     path: PATH,
     crumbs: CRUMBS,
+    floatingWhatsapp: SITE.forms,
     schema: [{ "@type": "ContactPage", name: "Contato", about: { "@id": "https://vieiraemarquesadvogados.com/#org" } }, faqSchema(faqAtendimento)],
     body,
   });

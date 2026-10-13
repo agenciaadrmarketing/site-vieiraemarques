@@ -191,6 +191,8 @@ export default {
     articleAreas: ["familia"],
     faqArea: "familia",
   },
+  // Mensagem inicial dos botões de WhatsApp desta página.
+  whatsapp: { message: "Olá! Vim pelo site da Vieira & Marques e gostaria de orientação sobre divórcio." },
   form: {
     heading: `Conte a situação. <span class="grad">A análise começa pelos fatos.</span>`,
     lead: "Não é preciso ter tudo decidido. As respostas abaixo ajudam o advogado a entender o cenário antes da primeira conversa.",

@@ -1,8 +1,8 @@
 // Perguntas frequentes já publicadas na Home anterior, reorganizadas por área.
 // Respostas de caráter geral e informativo.
 export const faqAtendimento = [
-  ["Como começa o atendimento no escritório?", "Pelo formulário do site, pelo WhatsApp ou por telefone. A mensagem é lida por um advogado da área correspondente, que retorna indicando quais documentos são necessários e qual o caminho aplicável ao caso."],
-  ["O escritório atende quem mora em outra cidade ou estado?", "Sim. Além das unidades de Boituva e Sorocaba, o atendimento é feito por videochamada e envio digital de documentos para clientes de todo o Brasil."],
+  ["Como começa o atendimento no escritório?", "Pelo WhatsApp, por telefone ou por e-mail. A mensagem é lida por um advogado da área correspondente, que retorna indicando quais documentos são necessários e qual o caminho aplicável ao caso."],
+  ["O escritório atende quem mora em outra cidade ou estado?", "Sim. Além do atendimento presencial na sede, em Boituva, e na região de Sorocaba, o atendimento é feito por videochamada e envio digital de documentos para clientes de todo o Brasil."],
   ["O primeiro contato pelo site já é uma contratação?", "Não. O envio da mensagem não constitui contratação de serviços nem estabelece, por si só, relação advogado-cliente. Condições e escopo do trabalho são combinados por escrito depois da análise."],
   ["Preciso saber em qual área meu caso se encaixa?", "Não. Descreva a situação em linguagem comum: identificar a área correta faz parte do trabalho na primeira análise."],
   ["Quais documentos devo levar na primeira reunião?", "Tudo o que já existir sobre o caso: contratos, comprovantes, notificações, decisões recebidas e mensagens relevantes. Se não houver nada em mãos, a conversa começa mesmo assim."],

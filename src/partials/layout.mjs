@@ -1,5 +1,5 @@
 import { esc, attrs, join, jsonLd, when } from "../lib/html.mjs";
-import { SITE, NAV, isPending, whatsappUrl } from "../data/site.mjs";
+import { SITE, NAV, isPending, whatsappUrl, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
 import { LEGAL_PATHS } from "../data/legal.mjs";
 import { img, logo } from "./media.mjs";
@@ -28,6 +28,8 @@ export const organizationSchema = () => {
     logo: abs(images["logo-escuro"].src),
     image: abs(images.og.src),
     telephone: SITE.phone.e164,
+    email: SITE.email,
+    taxID: SITE.cnpj,
     address: {
       "@type": "PostalAddress",
       streetAddress: sede.street,
@@ -87,7 +89,7 @@ function header(current) {
   return `<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <div class="topbar">
   <div class="container">
-    <p class="topbar__note">Boituva e Sorocaba — SP · atendimento presencial e online em todo o Brasil</p>
+    <p class="topbar__note">Sede em Boituva — SP · atendimento na região de Sorocaba e online em todo o Brasil</p>
     <div class="topbar__links">
       <a href="${SITE.phone.href}">${SITE.phone.display}</a>
       ${join(SITE.social, (s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`)}
@@ -125,7 +127,7 @@ function header(current) {
 // Rodapé global: fechamento editorial (frase + um CTA), colunas de navegação,
 // letreiro "VIEIRA & MARQUES" em baixo contraste e barra final com "voltar ao topo".
 // Movimento só por CSS + IntersectionObserver (site.js), respeitando prefers-reduced-motion.
-export function footer() {
+export function footer(whatsappMessage = waMessage()) {
   const sede = SITE.units[0];
   const col = (title, inner, extra = "") => `<div class="site-footer__col${extra}" data-reveal>
         <h2 class="site-footer__title">${title}</h2>
@@ -148,7 +150,7 @@ export function footer() {
       ${col("Contato", `<ul class="site-footer__list">
           <li class="site-footer__address">${esc(sede.street)}<br>${esc(sede.city)}/${esc(sede.region)}</li>
           <li><a class="site-footer__link" href="${SITE.phone.href}">${SITE.phone.display}</a></li>
-          <li>${ext(whatsappUrl(), "WhatsApp")}</li>
+          <li>${ext(whatsappUrl(whatsappMessage), "WhatsApp")}</li>
           ${when(!isPending(SITE.email), `<li><a class="site-footer__link site-footer__email" href="mailto:${esc(SITE.email)}">${esc(SITE.email).replace("@", "<wbr>@")}</a></li>`)}
         </ul>`, " site-footer__col--contact")}
       ${col("Legal", `<ul class="site-footer__list">
@@ -159,7 +161,7 @@ export function footer() {
     </div>
 
     <div class="site-footer__bottom">
-      <p>© ${new Date().getFullYear()} ${esc(SITE.name)}.</p>
+      <p>© ${new Date().getFullYear()} ${esc(SITE.name)}.<br>CNPJ ${esc(SITE.cnpj)}</p>
       <p class="site-footer__notice">${esc(SITE.oabNotice)}</p>
       <button class="site-footer__top" type="button" data-back-to-top aria-label="Voltar ao topo">Topo <span aria-hidden="true">${icon.arrow(14)}</span></button>
     </div>
@@ -168,8 +170,8 @@ export function footer() {
 </footer>`;
 }
 
-export const waFloat = () =>
-  `<a class="wa-float" href="${whatsappUrl("Olá, vim pelo site da Vieira & Marques e gostaria de orientação.")}" target="_blank" rel="noopener" data-wa-float data-hidden="true" aria-label="Conversar pelo WhatsApp">${icon.whatsapp(20)}<span>WhatsApp</span></a>`;
+export const waFloat = (message) =>
+  `<a class="wa-float" href="${whatsappUrl(message)}" target="_blank" rel="noopener" data-wa-float data-hidden="true" aria-label="Conversar pelo WhatsApp">${icon.whatsapp(20)}<span>WhatsApp</span></a>`;
 
 export function breadcrumbs(crumbs) {
   return `<nav class="breadcrumbs" aria-label="Você está em">
@@ -177,17 +179,17 @@ export function breadcrumbs(crumbs) {
 </nav>`;
 }
 
-export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true }) {
+export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage() }) {
   return `<!DOCTYPE html>
 <html lang="${SITE.lang}">
 ${head({ title, description, path, schema, crumbs, preload })}
-<body>
+<body${SITE.forms ? " data-forms" : ""}>
 ${header(path)}
 <main id="conteudo" tabindex="-1">
 ${body}
 </main>
-${footer()}
-${floatingWhatsapp ? waFloat() : ""}
+${footer(whatsappMessage)}
+${floatingWhatsapp ? waFloat(whatsappMessage) : ""}
 <script src="/assets/js/site.js?v=${ASSET_VERSION}" defer></script>
 ${join(scripts, (s) => `<script src="${s}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
 </html>

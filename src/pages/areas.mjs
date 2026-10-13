@@ -1,4 +1,5 @@
 import { esc, join, when } from "../lib/html.mjs";
+import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
 import { hasPage, serviceHref } from "../data/services/index.mjs";
 import { teamByArea } from "../data/team.mjs";
@@ -50,7 +51,9 @@ function areaBlock(area) {
         <ul class="checklist">${join(related, (a) => `<li>${icon.arrowUpRight(16)}<a class="text-link" href="${esc(a.url)}">${esc(a.title)}</a></li>`)}</ul>
       </div>`)}
       <div class="btn-row">
-        <a class="btn" href="/contato/?area=${area.id}">Falar sobre ${esc(area.shortTitle === "Médico e Saúde" ? "Saúde" : area.shortTitle)} <span class="btn__arrow">${icon.arrow(16)}</span></a>
+        ${SITE.forms
+          ? `<a class="btn" href="/contato/?area=${area.id}">Falar sobre ${esc(area.shortTitle === "Médico e Saúde" ? "Saúde" : area.shortTitle)} <span class="btn__arrow">${icon.arrow(16)}</span></a>`
+          : `<a class="btn" href="${whatsappUrl(waMessage(area.title))}" target="_blank" rel="noopener">${icon.whatsapp(18)} Falar sobre ${esc(area.shortTitle === "Médico e Saúde" ? "Saúde" : area.shortTitle)}</a>`}
       </div>
     </div>
   </div>

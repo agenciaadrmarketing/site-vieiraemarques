@@ -1,5 +1,5 @@
 import { esc, join, when } from "../lib/html.mjs";
-import { SITE } from "../data/site.mjs";
+import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
 import { areaUrl, AREAS_HUB, areaById } from "../data/areas.mjs";
 import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
@@ -11,6 +11,14 @@ import { icon } from "../partials/icons.mjs";
 import { faqSchema, articleRow } from "../partials/components.mjs";
 import { renderBlock } from "../partials/service-blocks.mjs";
 import { leadForm } from "../partials/lead-form.mjs";
+import { whatsappPanel } from "../partials/whatsapp-panel.mjs";
+
+const waMsg = (p) => p.whatsapp?.message ?? waMessage(p.serviceData.title.toLowerCase());
+// Destino do contato: formulário (SITE.forms) ou WhatsApp direto com a mensagem da página.
+const contactCta = (p, cta, cls, label) =>
+  SITE.forms
+    ? `<a class="${cls}" href="#formulario" data-cta="${cta}">${esc(p.hero.cta ?? "Entender meu caso")} ${label}</a>`
+    : `<a class="${cls}" href="${whatsappUrl(waMsg(p))}" target="_blank" rel="noopener" data-cta="${cta}">${icon.whatsapp(18)} Conversar pelo WhatsApp</a>`;
 
 function hero(p, crumbs) {
   const toc = p.blocks.filter((b) => b.toc);
@@ -23,7 +31,7 @@ function hero(p, crumbs) {
         <h1 class="page-hero__title" id="page-titulo">${esc(p.hero.h1)}</h1>
         <p class="lead svc-hero__lede">${p.hero.lede}</p>
         <div class="btn-row">
-          <a class="btn btn--light" href="#formulario" data-cta="hero">${esc(p.hero.cta ?? "Entender meu caso")} <span class="btn__arrow">${icon.arrow(16)}</span></a>
+          ${contactCta(p, "hero", SITE.forms ? "btn btn--light" : "btn btn--whatsapp", SITE.forms ? `<span class="btn__arrow">${icon.arrow(16)}</span>` : "")}
           ${p.hero.secondary ? `<a class="btn btn--ghost-light" href="${p.hero.secondary.href}">${esc(p.hero.secondary.label)}</a>` : ""}
         </div>
       </div>
@@ -31,7 +39,7 @@ function hero(p, crumbs) {
         ${when(p.hero.facts, `<dl class="svc-facts">${join(p.hero.facts ?? [], (f) => `<div><dt>${esc(f.label)}</dt><dd>${f.text}</dd></div>`)}</dl>`)}
         ${when(toc.length, `<details class="svc-toc" data-toc>
           <summary class="svc-toc__title">Nesta página</summary>
-          <ol>${join(toc, (b) => `<li><a href="#${b.id}">${esc(b.toc)}</a></li>`)}<li><a href="#formulario">Enviar informações</a></li></ol>
+          <ol>${join(toc, (b) => `<li><a href="#${b.id}">${esc(b.toc)}</a></li>`)}<li><a href="#${SITE.forms ? "formulario" : "contato"}">${SITE.forms ? "Enviar informações" : "Falar com a equipe"}</a></li></ol>
         </details>`)}
       </aside>
     </div>
@@ -77,7 +85,7 @@ function trust(p) {
       <div class="stack">
         <p class="eyebrow">Vieira &amp; Marques</p>
         <h2 class="h-card" id="escritorio-titulo">${esc(p.trust?.title ?? "Análise individual de cada situação, com advogados que respondem pela área.")}</h2>
-        <p class="muted">${p.trust?.text ?? "Sociedade de advogados com sede em Boituva, unidade em Sorocaba e reuniões por vídeo. O caminho de cada caso — preventivo, extrajudicial ou judicial — é definido depois da análise dos documentos."}</p>
+        <p class="muted">${p.trust?.text ?? "Sociedade de advogados com sede em Boituva, atendimento na região de Sorocaba e reuniões por vídeo. O caminho de cada caso — preventivo, extrajudicial ou judicial — é definido depois da análise dos documentos."}</p>
         ${person ? `<p class="svc-trust__person"><a class="text-link" href="/escritorio/#${person.id}">${esc(person.name)}</a> · ${esc(person.oab)}<br><span class="muted">${esc(person.bio)}</span></p>` : ""}
         <a class="link-arrow" href="/escritorio/">Conheça o escritório ${icon.arrow(14)}</a>
       </div>
@@ -112,6 +120,30 @@ function formSection(p) {
 </section>`;
 }
 
+function whatsappSection(p) {
+  const f = p.form;
+  return `<section class="section section--dark svc-form-section" id="contato" aria-labelledby="contato-titulo">
+  <div class="container">
+    <div class="split">
+      <div class="stack" data-reveal>
+        <p class="eyebrow">Contato</p>
+        <h2 class="h-section" id="contato-titulo">${f.heading}</h2>
+        <p class="lead">${f.lead}</p>
+        <ul class="checklist">${join(f.points, (pt) => `<li>${icon.check(18)}<span>${pt}</span></li>`)}</ul>
+      </div>
+      ${whatsappPanel({
+        id: "whatsapp",
+        level: 3,
+        intro: `A conversa abre com uma mensagem sobre ${esc(p.serviceData.title.toLowerCase())}. Você pode editá-la antes de enviar.`,
+        message: waMsg(p),
+        topics: f.questions.filter((q) => !q.showIf).map((q) => q.label),
+        warning: f.warning,
+      })}
+    </div>
+  </div>
+</section>`;
+}
+
 export function renderService(p) {
   const crumbs = [
     { label: "Início", href: "/" },
@@ -125,8 +157,8 @@ ${hero(p, crumbs)}
 ${join(p.blocks, renderBlock)}
 ${trust(p)}
 ${related(p)}
-${formSection(p)}
-<a class="svc-sticky-cta" href="#formulario" data-cta="sticky" data-sticky-cta hidden>${esc(p.hero.cta ?? "Entender meu caso")} ${icon.arrow(16)}</a>
+${SITE.forms ? formSection(p) : whatsappSection(p)}
+${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").replace("<a ", '<a data-sticky-cta data-hidden="true" hidden ')}
 </div>`;
 
   const url = SITE.origin + p.path;
@@ -136,6 +168,7 @@ ${formSection(p)}
     path: p.path,
     crumbs,
     floatingWhatsapp: false,
+    whatsappMessage: waMsg(p),
     schema: [
       {
         "@type": "Service",

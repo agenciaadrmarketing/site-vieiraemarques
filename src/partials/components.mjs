@@ -88,9 +88,9 @@ export function facts(list, cls = "") {
 }
 
 export const STEPS = [
-  { title: "Você descreve a situação", text: "Pelo formulário, pelo WhatsApp ou por telefone, em linguagem comum. Não é preciso saber nomear a área do Direito." },
+  { title: "Você descreve a situação", text: "Pelo WhatsApp ou por telefone, em linguagem comum. Não é preciso saber nomear a área do Direito." },
   { title: "Um advogado analisa", text: "A mensagem é lida por um profissional da área correspondente, que verifica o que já é possível avaliar com o que foi enviado." },
-  { title: "Reunião presencial ou por vídeo", text: "Em Boituva, em Sorocaba ou por videochamada. Nessa conversa são apresentados os caminhos aplicáveis e os documentos necessários." },
+  { title: "Reunião presencial ou por vídeo", text: "Na sede, em Boituva, ou por videochamada. Nessa conversa são apresentados os caminhos aplicáveis e os documentos necessários." },
   { title: "Definição do caminho", text: "Orientação preventiva, tentativa de acordo ou atuação judicial — com etapas e condições combinadas por escrito." },
 ];
 

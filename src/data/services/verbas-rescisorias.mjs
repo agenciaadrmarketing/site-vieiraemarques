@@ -136,6 +136,8 @@ export default {
   related: {
     services: [["trabalhista", "rescisao-indireta"], ["trabalhista", "horas-extras"], ["trabalhista", "vinculo"], ["trabalhista", "gestante"]],
   },
+  // Mensagem inicial dos botões de WhatsApp desta página.
+  whatsapp: { message: "Olá! Vim pelo site da Vieira & Marques e gostaria de conferir as verbas da minha rescisão." },
   form: {
     heading: `Envie as informações <span class="grad">da sua rescisão.</span>`,
     lead: "Com a forma de desligamento, as datas e os documentos disponíveis, o advogado verifica o que já é possível conferir.",

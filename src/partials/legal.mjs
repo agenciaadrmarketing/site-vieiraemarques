@@ -20,7 +20,7 @@ export const table = ({ caption, head, rows }) => `<div class="legal-table"><tab
 
 const updated = () => `<p class="legal-updated">Última atualização: <time datetime="${LEGAL.lastUpdated}">${formatDate(LEGAL.lastUpdated)}</time></p>`;
 
-export function legalPage({ path, label, title, description, eyebrow, h1, intro, sections, related }) {
+export function legalPage({ path, label, title, description, eyebrow, h1, intro, sections, related, whatsappMessage }) {
   const crumbs = [
     { label: "Início", href: "/" },
     { label, href: path },
@@ -68,6 +68,7 @@ export function legalPage({ path, label, title, description, eyebrow, h1, intro,
     description,
     path,
     crumbs,
+    whatsappMessage,
     schema: [{ "@type": "WebPage", name: label, url: `${SITE.origin}${path}`, dateModified: LEGAL.lastUpdated, inLanguage: "pt-BR" }],
     body,
   });

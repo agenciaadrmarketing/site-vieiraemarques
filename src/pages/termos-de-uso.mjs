@@ -38,7 +38,7 @@ export default function termosDeUso() {
       id: "relacao-profissional",
       title: "Contato inicial e relação advogado-cliente",
       body: p(
-        "Acessar o site, ler um artigo, consultar um guia ou enviar uma mensagem pelo formulário não estabelece, por si só, relação advogado-cliente, nem obriga o escritório a aceitar o caso ou a adotar qualquer providência.",
+        "Acessar o site, ler um artigo, consultar um guia ou enviar uma mensagem pelos canais de contato não estabelece, por si só, relação advogado-cliente, nem obriga o escritório a aceitar o caso ou a adotar qualquer providência.",
         "A eventual prestação de serviços depende de análise prévia e da formalização da contratação pelos procedimentos adotados pelo escritório, com definição de escopo e condições."
       ),
     },
@@ -46,7 +46,7 @@ export default function termosDeUso() {
       id: "informacoes",
       title: "Informações que você envia",
       body:
-        p("Ao usar os formulários, você se compromete a fornecer informações verdadeiras e a enviar dados de outras pessoas apenas quando necessário para descrever a situação.") +
+        p("Ao entrar em contato pelos canais do site, você se compromete a fornecer informações verdadeiras e a enviar dados de outras pessoas apenas quando necessário para descrever a situação.") +
         list([
           "Não envie senhas, tokens, códigos de verificação ou dados bancários e de cartão completos.",
           "Não envie documentos ou informações sensíveis que não sejam necessários para o primeiro contato.",
@@ -60,7 +60,7 @@ export default function termosDeUso() {
         p("Você pode navegar pelo site e utilizar seus conteúdos para fins pessoais, informativos e legítimos. Não é permitido:") +
         list([
           "tentar acessar áreas restritas, invadir sistemas ou explorar vulnerabilidades;",
-          "enviar mensagens automatizadas, em massa ou com conteúdo ilícito pelos formulários;",
+          "enviar mensagens automatizadas, em massa ou com conteúdo ilícito pelos canais de contato;",
           "realizar coleta automatizada abusiva de conteúdo ou sobrecarregar o site;",
           "interferir na disponibilidade ou no funcionamento do site;",
           "usar o site de forma fraudulenta, inclusive se passando por outra pessoa;",
@@ -121,8 +121,8 @@ export default function termosDeUso() {
     },
     {
       id: "legislacao",
-      title: "Legislação aplicável",
-      body: p(`Estes Termos são regidos pela ${esc(LEGAL.applicableLaw)}.`),
+      title: "Legislação aplicável e foro",
+      body: p(esc(LEGAL.lawAndForum)),
     },
   ];
 
@@ -135,6 +135,7 @@ export default function termosDeUso() {
     h1: `Termos de <span class="grad">Uso</span>`,
     intro: "As condições para utilizar o site institucional e a Base de Conhecimento da Vieira &amp; Marques: finalidade do conteúdo, contato inicial, uso permitido e propriedade intelectual.",
     sections,
+    whatsappMessage: "Olá! Vim pelo site da Vieira & Marques e tenho uma dúvida sobre os Termos de Uso do site.",
     related: `O tratamento de dados pessoais está descrito na ${privacy}.`,
   });
 }

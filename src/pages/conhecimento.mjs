@@ -106,6 +106,7 @@ export default function conhecimento() {
       "Artigos e perguntas frequentes sobre Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário, pela equipe da Vieira & Marques.",
     path: PATH,
     crumbs: CRUMBS,
+    whatsappMessage: "Olá! Vim pela Base de Conhecimento do site da Vieira & Marques e gostaria de orientação sobre o meu caso.",
     schema: [
       {
         "@type": "CollectionPage",

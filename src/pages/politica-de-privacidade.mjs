@@ -3,13 +3,13 @@ import { SITE, isPending } from "../data/site.mjs";
 import { LEGAL, DATA_FLOWS, LEGAL_PATHS } from "../data/legal.mjs";
 import { legalPage, p, h3, list, steps, callout, table } from "../partials/legal.mjs";
 
-// Texto baseado na auditoria do código do site (formulário, armazenamento de sessão,
-// ausência de cookies próprios e de ferramentas de medição). Ao mudar o funcionamento
-// do site, atualizar DATA_FLOWS em src/data/legal.mjs e esta página.
+// Texto baseado na auditoria do código do site (contato por WhatsApp, formulário quando
+// ativo, armazenamento de sessão, ausência de cookies próprios e de ferramentas de medição).
+// O texto acompanha SITE.forms e SITE.leadEndpoint via DATA_FLOWS (src/data/legal.mjs).
 export default function politicaDePrivacidade() {
   const sede = SITE.units[0];
-  const sheet = DATA_FLOWS.leadSheet;
-  const mail = `<a class="text-link" href="mailto:${esc(LEGAL.privacyEmail)}">${esc(LEGAL.privacyEmail)}</a>`;
+  const { forms, leadSheet: sheet } = DATA_FLOWS;
+  const mail = `<a class="text-link" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`;
   const phone = `<a class="text-link" href="${SITE.phone.href}">${SITE.phone.display}</a>`;
   const terms = `<a class="text-link" href="${LEGAL_PATHS.terms}">Termos de Uso</a>`;
 
@@ -23,7 +23,7 @@ export default function politicaDePrivacidade() {
         ) +
         list([
           `Endereço: ${esc(sede.street)}, ${esc(sede.district)}, ${esc(sede.city)}/${esc(sede.region)}, CEP ${esc(sede.postalCode)}`,
-          ...(isPending(LEGAL.cnpj) ? [] : [`CNPJ: ${esc(LEGAL.cnpj)}`]),
+          ...(isPending(SITE.cnpj) ? [] : [`CNPJ: ${esc(SITE.cnpj)}`]),
           `E-mail: ${mail}`,
           `Telefone: ${phone}`,
         ]),
@@ -33,21 +33,28 @@ export default function politicaDePrivacidade() {
       title: "Quais dados podem ser tratados",
       body:
         h3("Dados que você informa") +
-        p("Ao preencher um formulário do site, você informa:") +
-        list([
-          "nome e número de WhatsApp;",
-          "e-mail, cidade e estado, se quiser informá-los;",
-          "o assunto ou a área de interesse;",
-          "as respostas às perguntas da página — por exemplo, se já houve desligamento da empresa, o tipo de contrato ou a faixa de valor envolvida;",
-          "a mensagem que você escrever.",
-        ]) +
-        h3("Dados sobre a origem do acesso") +
-        p(
-          "Para identificar como o contato chegou ao site, o navegador guarda, durante a sessão, a primeira página acessada, o endereço da página anterior (quando o navegador o informa) e, se estiverem presentes no link, parâmetros de campanha: utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid e fbclid.",
-          sheet
-            ? "Essas informações são enviadas ao escritório junto com o formulário, além do título e do endereço da página em que ele foi preenchido e da data e hora do envio."
-            : "Atualmente, essas informações permanecem no seu navegador e não são enviadas ao escritório."
-        ) +
+        (forms
+          ? p("Ao preencher um formulário do site, você informa:") +
+            list([
+              "nome e número de WhatsApp;",
+              "e-mail, cidade e estado, se quiser informá-los;",
+              "o assunto ou a área de interesse;",
+              "as respostas às perguntas da página — por exemplo, se já houve desligamento da empresa, o tipo de contrato ou a faixa de valor envolvida;",
+              "a mensagem que você escrever.",
+            ])
+          : p(
+              "O site não tem formulário de contato. Quando você conversa com o escritório pelo WhatsApp, por telefone ou por e-mail, são tratados os dados que você decidir compartilhar — normalmente nome, número de telefone, o assunto e o relato da situação.",
+              "Os botões de WhatsApp do site abrem a conversa com uma mensagem inicial que indica o assunto da página visitada (por exemplo, “divórcio” ou “golpe do Pix”). Essa mensagem só é enviada se você a confirmar no aplicativo."
+            )) +
+        (forms
+          ? h3("Dados sobre a origem do acesso") +
+            p(
+              "Para identificar como o contato chegou ao site, o navegador guarda, durante a sessão, a primeira página acessada, o endereço da página anterior (quando o navegador o informa) e, se estiverem presentes no link, parâmetros de campanha: utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid e fbclid.",
+              sheet
+                ? "Essas informações são enviadas ao escritório junto com o formulário, além do título e do endereço da página em que ele foi preenchido e da data e hora do envio."
+                : "Atualmente, essas informações permanecem no seu navegador e não são enviadas ao escritório."
+            )
+          : "") +
         h3("Dados técnicos da conexão") +
         p(
           "Para exibir as páginas, o servidor de hospedagem recebe dados técnicos da conexão, como endereço IP, data e hora, página solicitada e tipo de navegador. Esses registros podem ser mantidos pelo provedor de hospedagem por razões de segurança e funcionamento, conforme as regras aplicáveis."
@@ -58,12 +65,12 @@ export default function politicaDePrivacidade() {
       title: "Informações sensíveis e dados de terceiros",
       body:
         p(
-          "Por se tratar de um escritório de advocacia, uma mensagem pode envolver situações pessoais, de saúde, familiares ou financeiras. O formulário serve apenas para o primeiro contato: o necessário é uma descrição breve, suficiente para entender o assunto."
+          "Por se tratar de um escritório de advocacia, uma mensagem pode envolver situações pessoais, de saúde, familiares ou financeiras. O primeiro contato serve para entender o assunto: basta uma descrição breve."
         ) +
         callout(
           "Antes de enviar",
           p(
-            "Evite enviar, pelo formulário inicial, documentos, senhas, dados bancários completos ou outras informações sensíveis que não sejam necessárias para o primeiro contato. O escritório nunca solicita senhas, tokens, códigos de verificação ou números completos de cartão."
+            "Evite enviar, no primeiro contato, documentos, senhas, dados bancários completos ou outras informações sensíveis que não sejam necessárias para o primeiro contato. O escritório nunca solicita senhas, tokens, códigos de verificação ou números completos de cartão."
           )
         ) +
         p(
@@ -72,8 +79,16 @@ export default function politicaDePrivacidade() {
     },
     {
       id: "formularios",
-      title: "Como funcionam os formulários",
-      body: sheet
+      title: forms ? "Como funcionam os formulários" : "Como funciona o contato pelo site",
+      body: !forms
+        ? p("O contato pelo site é feito diretamente pelo WhatsApp:") +
+          steps([
+            "Você toca em um botão de WhatsApp. O aplicativo (ou o WhatsApp Web) abre uma conversa com o número do escritório e uma mensagem inicial sobre o assunto da página.",
+            "Você pode revisar, alterar ou apagar essa mensagem — ou desistir do envio. Nada é transmitido ao escritório pelo site.",
+            "Se decidir enviar, a conversa continua no WhatsApp, e o escritório passa a tratar as informações que você compartilhar ali.",
+          ]) +
+          p("O site não coleta nem armazena mensagens, nomes ou números de telefone.")
+        : sheet
         ? p("O caminho das informações enviadas pelo site é este:") +
           steps([
             "Você preenche o formulário. Os campos são conferidos no próprio navegador antes do envio.",
@@ -112,7 +127,9 @@ export default function politicaDePrivacidade() {
             ["Responder à sua solicitação e organizar o primeiro atendimento", "Procedimentos preliminares relacionados a contrato, a pedido do titular"],
             ["Encaminhar o contato à área de atuação adequada", "Procedimentos preliminares relacionados a contrato, a pedido do titular"],
             ...(sheet ? [["Identificar a origem do contato (página e campanha)", "Legítimo interesse do escritório em entender como é encontrado, com dados limitados ao necessário"]] : []),
-            ["Evitar envios automáticos e abusos nos formulários", "Legítimo interesse, para a segurança do site e de quem o utiliza"],
+            forms
+              ? ["Evitar envios automáticos e abusos nos formulários", "Legítimo interesse, para a segurança do site e de quem o utiliza"]
+              : ["Manter o site seguro e disponível", "Legítimo interesse, para a segurança do site e de quem o utiliza"],
             ["Guardar registros técnicos de acesso, quando exigido", "Cumprimento de obrigação legal ou regulatória"],
             ["Informações sensíveis que você decida incluir na mensagem", "Tratamento limitado ao necessário para avaliar a solicitação, nas hipóteses do art. 11 da LGPD, como o exercício regular de direitos"],
             ["Defender direitos em eventual processo administrativo ou judicial", "Exercício regular de direitos"],
@@ -127,13 +144,15 @@ export default function politicaDePrivacidade() {
         p(
           "O site não cria cookies próprios e não utiliza, atualmente, ferramentas de análise de audiência, de publicidade, de mapas de calor ou de gravação de sessão — como Google Analytics, Google Tag Manager, Google Ads ou Meta Pixel. As fontes, imagens e scripts são servidos pelo próprio site, sem bibliotecas ou incorporações de terceiros."
         ) +
-        p("O site usa o armazenamento de sessão do navegador (sessionStorage), que é apagado quando a aba é fechada, para:") +
-        list([
-          "<strong>Origem do acesso</strong> — guardar a página de entrada, a página anterior e os parâmetros de campanha descritos na seção 2;",
-          "<strong>Proteção contra envios repetidos</strong> — registrar o horário do último envio de formulário, evitando duplicidades.",
-        ]) +
+        (forms
+          ? p("O site usa o armazenamento de sessão do navegador (sessionStorage), que é apagado quando a aba é fechada, para:") +
+            list([
+              "<strong>Origem do acesso</strong> — guardar a página de entrada, a página anterior e os parâmetros de campanha descritos na seção 2;",
+              "<strong>Proteção contra envios repetidos</strong> — registrar o horário do último envio de formulário, evitando duplicidades.",
+            ])
+          : p("O site também não grava informações no armazenamento do navegador (como localStorage ou sessionStorage).")) +
         p(
-          "O site também registra eventos de navegação — como cliques em botões e envio de formulário — em uma variável interna da página, preparada para uma futura ferramenta de medição. Hoje esses eventos não são enviados a nenhum serviço.",
+          "O site registra eventos de navegação — como cliques em botões — em uma variável interna da página, preparada para uma futura ferramenta de medição. Esses eventos não saem do seu navegador e não são enviados a nenhum serviço.",
           "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
         ),
     },
@@ -160,14 +179,9 @@ export default function politicaDePrivacidade() {
       id: "retencao",
       title: "Por quanto tempo mantemos os dados",
       body:
-        p("Os dados são mantidos pelo tempo necessário para cumprir a finalidade que justificou a coleta. Para definir esse período, consideram-se:") +
-        list([
-          "o andamento da solicitação e de eventual atendimento posterior;",
-          "obrigações legais, regulatórias e profissionais aplicáveis à advocacia;",
-          "a necessidade de preservar informações para o exercício regular de direitos;",
-          "razões de segurança.",
-        ]) +
-        p("Encerrada a necessidade, os dados são eliminados ou anonimizados, salvo nas hipóteses em que a lei autoriza sua conservação."),
+        p(
+          "Os dados pessoais serão mantidos pelo período necessário para o cumprimento das finalidades que justificaram sua coleta e tratamento, bem como pelo período necessário ao cumprimento de obrigações legais ou regulatórias e ao exercício regular de direitos. Encerrada a finalidade e inexistindo fundamento para sua conservação, os dados serão eliminados ou anonimizados, observados os limites técnicos e legais aplicáveis."
+        ),
     },
     {
       id: "direitos",
@@ -194,7 +208,9 @@ export default function politicaDePrivacidade() {
       id: "contato",
       title: "Como falar conosco sobre seus dados",
       body:
-        p(`Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato pelo e-mail ${mail}, indicando no assunto “Privacidade”. Também é possível usar o telefone ${phone}.`) +
+        (LEGAL.privacyChannelApproved
+          ? p(`Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato pelo e-mail ${mail}, indicando no assunto “Privacidade”. Também é possível usar o telefone ${phone}.`)
+          : p(`Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato com o escritório pelo telefone ${phone} (${esc(SITE.hours.toLowerCase())}) ou na sede indicada na seção 1, informando que o assunto é privacidade e dados pessoais.`)) +
         p("Para proteger seus dados, poderemos pedir informações que confirmem sua identidade antes de atender à solicitação."),
     },
     {
@@ -223,6 +239,7 @@ export default function politicaDePrivacidade() {
     h1: `Política de <span class="grad">Privacidade</span>`,
     intro: "Este documento explica como os dados pessoais podem ser tratados durante a utilização dos canais digitais da Vieira &amp; Marques: o que é coletado, para quê, com quem é compartilhado e como você pode exercer seus direitos.",
     sections,
+    whatsappMessage: "Olá! Vim pelo site da Vieira & Marques e tenho uma dúvida sobre privacidade e meus dados pessoais.",
     related: `As condições de uso do site estão nos ${terms}.`,
   });
 }

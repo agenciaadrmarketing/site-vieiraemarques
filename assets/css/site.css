@@ -806,6 +806,20 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
 /* formulário contextual */
 .svc-form-section { scroll-margin-top: var(--header-h); }
 .svc-form__alt { font-size: 14.5px; }
+.wa-panel { display: grid; gap: 18px; align-content: start; }
+.wa-panel .panel-dark__intro { margin: 0; }
+.wa-panel__label { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--c-text-light-3); }
+.wa-panel__topics { list-style: none; display: grid; gap: 10px; margin-top: -6px; }
+.wa-panel__topics li { position: relative; padding-left: 22px; font-size: 15.5px; line-height: 1.5; color: var(--c-text-light-2); }
+.wa-panel__topics li::before { content: ""; position: absolute; left: 0; top: .75em; width: 10px; height: 1px; background: var(--c-text-light-3); }
+.wa-panel__choices { list-style: none; display: grid; margin-top: -6px; border-top: 1px solid var(--c-line-dark); }
+@media (min-width: 560px) { .wa-panel__choices { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; } }
+.wa-panel__choice { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; padding: 10px 0; border-bottom: 1px solid var(--c-line-dark); font-size: 15px; color: var(--c-text-light-2); transition: color .25s var(--ease); }
+.wa-panel__choice span { transition: transform .3s var(--ease); }
+.wa-panel__choice:hover, .wa-panel__choice:focus-visible { color: var(--c-paper); }
+.wa-panel__choice:hover span { transform: translate(2px, -2px); }
+.wa-panel .btn--whatsapp { justify-content: center; padding-block: 16px; margin-top: 4px; }
+.wa-panel__alt { font-size: 14.5px; }
 .lead-panel { scroll-margin-top: calc(var(--header-h) + 12px); }
 .choice { border: 0; padding: 0; margin: 0; min-width: 0; }
 .choice legend { padding: 0; margin-bottom: 10px; }
@@ -826,6 +840,8 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
   box-shadow: 0 18px 40px -16px rgba(0,0,0,.55); border: 1px solid var(--c-line-light-2);
   transition: transform .35s var(--ease), opacity .35s var(--ease);
 }
+.svc-sticky-cta[hidden] { display: none; }
+.svc-sticky-cta svg { flex: none; }
 .svc-sticky-cta[data-hidden="true"] { opacity: 0; transform: translateY(16px); pointer-events: none; }
 @media (min-width: 900px) { .svc-sticky-cta { display: none; } }
 @media (max-width: 719px) {

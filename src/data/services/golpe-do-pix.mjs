@@ -121,6 +121,8 @@ export default {
   related: {
     services: [["bancario", "juros-abusivos"], ["bancario", "busca-e-apreensao"]],
   },
+  // Mensagem inicial dos botões de WhatsApp desta página.
+  whatsapp: { message: "Olá! Vim pelo site da Vieira & Marques. Fui vítima de um golpe envolvendo Pix e gostaria de orientação." },
   form: {
     heading: `Envie as informações <span class="grad">sobre a fraude.</span>`,
     lead: "Com o tipo de fraude, a data e o que já foi comunicado ao banco, o advogado avalia quais medidas ainda são possíveis.",
