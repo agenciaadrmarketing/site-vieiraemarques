@@ -1658,3 +1658,9 @@ html { interpolate-size: allow-keywords; }
 .lp-about__team { margin-top: clamp(56px, 7vw, 84px); padding-top: 28px; border-top: 1px solid rgba(255,255,255,.12); font-size: 11.5px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: #8F8F8F; }
 @media (max-width: 940px) { .lp-about__photo { margin-inline: auto; max-height: 460px; } }
 @media (max-width: 720px) { .lp-about__team { text-align: center; } .lp-proof__frame { transform: none; } .lp-proof__cta .btn-wa { width: 100%; white-space: normal; } }
+
+/* Hero: no celular, a imagem vertical (picture) usa o próprio enquadramento. */
+.lp-hero__media picture { display: block; width: 100%; height: 100%; }
+@media (max-width: 720px) { .lp-hero__bg { object-position: var(--pos-m, 50% 50%) !important; } }
+.lp-proof__frame--tall { max-width: 400px; aspect-ratio: 3 / 4; }
+@media (max-width: 720px) { .lp-proof__frame--tall { max-width: 300px; } }

@@ -509,6 +509,414 @@
       }
     ]
   },
+  "area-familia-wide": {
+    "width": 1536,
+    "height": 508,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-de-familia-boituva-768.webp",
+        "w": 768,
+        "h": 254
+      },
+      {
+        "src": "/assets/img/advogado-direito-de-familia-boituva-1152.webp",
+        "w": 1152,
+        "h": 381
+      },
+      {
+        "src": "/assets/img/advogado-direito-de-familia-boituva-1536.webp",
+        "w": 1536,
+        "h": 508
+      }
+    ]
+  },
+  "area-familia-tall": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-de-familia-boituva-sp-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/advogado-direito-de-familia-boituva-sp-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-sucessorio-wide": {
+    "width": 1536,
+    "height": 508,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-768.webp",
+        "w": 768,
+        "h": 254
+      },
+      {
+        "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-1152.webp",
+        "w": 1152,
+        "h": 381
+      },
+      {
+        "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-1536.webp",
+        "w": 1536,
+        "h": 508
+      }
+    ]
+  },
+  "area-sucessorio-tall": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-sp-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-sp-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-trabalhista-wide": {
+    "width": 1536,
+    "height": 500,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-trabalhista-boituva-768.webp",
+        "w": 768,
+        "h": 250
+      },
+      {
+        "src": "/assets/img/advogado-direito-trabalhista-boituva-1152.webp",
+        "w": 1152,
+        "h": 375
+      },
+      {
+        "src": "/assets/img/advogado-direito-trabalhista-boituva-1536.webp",
+        "w": 1536,
+        "h": 500
+      }
+    ]
+  },
+  "area-trabalhista-tall": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-trabalhista-boituva-sp-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/advogado-direito-trabalhista-boituva-sp-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-criminal-wide": {
+    "width": 1536,
+    "height": 500,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-criminal-defesa-boituva-768.webp",
+        "w": 768,
+        "h": 250
+      },
+      {
+        "src": "/assets/img/advogado-direito-criminal-defesa-boituva-1152.webp",
+        "w": 1152,
+        "h": 375
+      },
+      {
+        "src": "/assets/img/advogado-direito-criminal-defesa-boituva-1536.webp",
+        "w": 1536,
+        "h": 500
+      }
+    ]
+  },
+  "area-criminal-tall": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-criminal-defesa-boituva-sp-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/advogado-direito-criminal-defesa-boituva-sp-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-saude-wide": {
+    "width": 1536,
+    "height": 500,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-768.webp",
+        "w": 768,
+        "h": 250
+      },
+      {
+        "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-1152.webp",
+        "w": 1152,
+        "h": 375
+      },
+      {
+        "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-1536.webp",
+        "w": 1536,
+        "h": 500
+      }
+    ]
+  },
+  "area-saude-tall": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-sp-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-sp-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-bancario-wide": {
+    "width": 1536,
+    "height": 500,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-768.webp",
+        "w": 768,
+        "h": 250
+      },
+      {
+        "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-1152.webp",
+        "w": 1152,
+        "h": 375
+      },
+      {
+        "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-1536.webp",
+        "w": 1536,
+        "h": 500
+      }
+    ]
+  },
+  "area-bancario-tall": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-sp-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-sp-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-imobiliario-wide": {
+    "width": 1536,
+    "height": 500,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-768.webp",
+        "w": 768,
+        "h": 250
+      },
+      {
+        "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-1152.webp",
+        "w": 1152,
+        "h": 375
+      },
+      {
+        "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-1536.webp",
+        "w": 1536,
+        "h": 500
+      }
+    ]
+  },
+  "area-imobiliario-tall": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-sp-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-sp-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-previdenciario-wide": {
+    "width": 1536,
+    "height": 500,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-768.webp",
+        "w": 768,
+        "h": 250
+      },
+      {
+        "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-1152.webp",
+        "w": 1152,
+        "h": 375
+      },
+      {
+        "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-1536.webp",
+        "w": 1536,
+        "h": 500
+      }
+    ]
+  },
+  "area-previdenciario-tall": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-sp-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-sp-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-familia-detalhe": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/direito-de-familia-vieira-marques-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/direito-de-familia-vieira-marques-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-sucessorio-detalhe": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/heranca-inventario-testamento-vieira-marques-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/heranca-inventario-testamento-vieira-marques-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-criminal-detalhe": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/justica-direito-criminal-vieira-marques-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/justica-direito-criminal-vieira-marques-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-saude-detalhe": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/direito-medico-saude-vieira-marques-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/direito-medico-saude-vieira-marques-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-bancario-detalhe": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/revisao-contrato-bancario-vieira-marques-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/revisao-contrato-bancario-vieira-marques-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-imobiliario-detalhe": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/direito-imobiliario-chaves-imovel-vieira-marques-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/direito-imobiliario-chaves-imovel-vieira-marques-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
+  "area-previdenciario-detalhe": {
+    "width": 768,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/beneficio-inss-previdenciario-vieira-marques-384.webp",
+        "w": 384,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/beneficio-inss-previdenciario-vieira-marques-768.webp",
+        "w": 768,
+        "h": 1024
+      }
+    ]
+  },
   "logo-escuro": {
     "src": "/assets/img/logo-vieira-marques-advogados-preto-400.webp",
     "w": 603,

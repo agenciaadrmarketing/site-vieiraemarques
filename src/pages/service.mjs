@@ -5,7 +5,7 @@ import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { team, teamByArea } from "../data/team.mjs";
 import { AREA_LP } from "../data/area-lp.mjs";
-import { lpHero, lpCta, lpTeam, lpStructure, lpReach } from "../partials/lp.mjs";
+import { HERO_MOBILE, lpHero, lpCta, lpTeam, lpStructure, lpReach } from "../partials/lp.mjs";
 import { imgPreload } from "../partials/media.mjs";
 import { serviceHref } from "../data/services/index.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
@@ -47,6 +47,8 @@ function hero(p, crumbs) {
     image: p.hero.image ?? lp.image,
     alt: p.hero.imageAlt ?? lp.alt,
     position: lp.position,
+    imageMobile: p.hero.image ? undefined : lp.imageMobile,
+    positionMobile: lp.positionMobile,
     aside: p.hero.facts || toc.length ? aside : "",
   }).replace('class="lp-hero on-dark"', 'class="lp-hero svc-hero on-dark"');
 }
@@ -159,7 +161,10 @@ ${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").re
     path: p.path,
     crumbs,
     floatingWhatsapp: false,
-    preload: [imgPreload(p.hero.image ?? AREA_LP[p.area].image, "100vw")],
+    preload: [
+      { ...imgPreload(p.hero.image ?? AREA_LP[p.area].image, "100vw"), media: "(min-width: 721px)" },
+      { ...imgPreload(AREA_LP[p.area].imageMobile, "100vw"), media: HERO_MOBILE },
+    ],
     whatsappMessage: waMsg(p),
     schema: [
       {

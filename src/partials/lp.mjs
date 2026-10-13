@@ -36,9 +36,15 @@ const dots = (items) =>
 /* ---------- Hero ---------- */
 // Foto em tela cheia com véu escuro, selo, título com degradê, texto e CTA verde.
 // aside: conteúdo opcional à direita (ex.: resumo e índice das páginas de serviço).
-export function lpHero({ crumbs, badge, title, text, message, cta = "Falar no WhatsApp", secondary, note = [], image, alt, position = "60% 40%", aside }) {
+// imageMobile: versão vertical para telas estreitas (enquadramento próprio, via <picture>).
+export const HERO_MOBILE = "(max-width: 720px)";
+export function lpHero({ crumbs, badge, title, text, message, cta = "Falar no WhatsApp", secondary, note = [], image, alt, position = "60% 40%", imageMobile, positionMobile = "50% 50%", aside }) {
+  const mobile = imageMobile ? images[imageMobile] : null;
+  const bg = img(image, { alt, sizes: "100vw", priority: true, className: "lp-hero__bg", style: `object-position:${position};--pos-m:${positionMobile}` });
   return `<section class="lp-hero on-dark" aria-labelledby="page-titulo">
-  <div class="lp-hero__media" aria-hidden="true">${img(image, { alt, sizes: "100vw", priority: true, className: "lp-hero__bg", style: `object-position:${position}` })}</div>
+  <div class="lp-hero__media" aria-hidden="true">${mobile
+    ? `<picture><source media="${HERO_MOBILE}" srcset="${mobile.variants.map((v) => `${v.src} ${v.w}w`).join(", ")}" sizes="100vw" width="${mobile.variants.at(-1).w}" height="${mobile.variants.at(-1).h}">${bg}</picture>`
+    : bg}</div>
   <div class="lp-hero__veil" aria-hidden="true"></div>
   <div class="container lp-hero__container">
     ${crumbs ? breadcrumbs(crumbs) : ""}
@@ -127,7 +133,7 @@ export function lpSteps({ id = "como-funciona", eyebrow = "Como funciona", title
 
 /* ---------- Documentos (a "principal prova" das LPs) ---------- */
 // Texto, lista e CTA à esquerda; à direita, a imagem em destaque (livro 3D para a CTPS).
-export function lpProof({ id = "documentos", eyebrow = "Antes da primeira conversa", title, text, points, message, cta = "Enviar documentos para análise inicial", image, alt, book = false, tex }) {
+export function lpProof({ id = "documentos", eyebrow = "Antes da primeira conversa", title, text, points, message, cta = "Enviar documentos para análise inicial", image, alt, book = false, tall = false, tex }) {
   return `<section class="lp-sec lp-sec--dark lp-proof on-dark" id="${id}" aria-labelledby="${id}-titulo">
   ${tex ? texture(tex) : ""}
   <div class="container">
@@ -142,7 +148,7 @@ export function lpProof({ id = "documentos", eyebrow = "Antes da primeira conver
       <div class="lp-proof__visual" data-reveal>
         ${book
           ? `<div class="lp-book"><div class="lp-book__inner"><div class="lp-book__cover">${img(image, { alt, sizes: "300px" })}</div><div class="lp-book__pages" aria-hidden="true"></div></div></div>`
-          : `<figure class="lp-proof__frame">${img(image, { alt, sizes: "(min-width: 940px) 520px, 100vw" })}</figure>`}
+          : `<figure class="lp-proof__frame${tall ? " lp-proof__frame--tall" : ""}">${img(image, { alt, sizes: tall ? "(min-width: 940px) 400px, 80vw" : "(min-width: 940px) 520px, 100vw" })}</figure>`}
       </div>
     </div>
   </div>

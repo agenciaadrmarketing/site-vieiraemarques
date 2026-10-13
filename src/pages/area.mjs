@@ -10,7 +10,7 @@ import { page } from "../partials/layout.mjs";
 import { imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
 import { faqSchema, articleRow } from "../partials/components.mjs";
-import { lpHero, lpServices, lpSteps, lpProof, lpAbout, lpStructure, lpCta, lpSignals, lpReach, lpFaq, lpHead, lpOtherAreas } from "../partials/lp.mjs";
+import { HERO_MOBILE, lpHero, lpServices, lpSteps, lpProof, lpAbout, lpStructure, lpCta, lpSignals, lpReach, lpFaq, lpHead, lpOtherAreas } from "../partials/lp.mjs";
 
 // Página própria de cada área (página-pilar), no mesmo desenho das landing pages
 // publicadas: hero com a pergunta do cliente, serviços, como funciona, equipe,
@@ -62,6 +62,8 @@ ${lpHero({
   image: lp.image,
   alt: lp.alt,
   position: lp.position,
+  imageMobile: lp.imageMobile,
+  positionMobile: lp.positionMobile,
 })}
 
 ${lpServices({
@@ -83,7 +85,7 @@ ${lpAbout({ person: people[0], areaTitle: area.title, people: [...people, ...tea
 
 ${lpStructure()}
 
-${lpCta({ title: lp.band.title, text: lp.band.text, message: msg })}
+${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandImage ? { image: lp.bandImage, position: "center 55%" } : {}) })}
 
 ${lpSignals({ title: lp.signalsTitle, items: lp.signals })}
 
@@ -106,7 +108,10 @@ ${lpOtherAreas(area.id)}`;
     description: description(area),
     path,
     crumbs,
-    preload: [imgPreload(lp.image, "100vw")],
+    preload: [
+      { ...imgPreload(lp.image, "100vw"), media: "(min-width: 721px)" },
+      { ...imgPreload(lp.imageMobile, "100vw"), media: HERO_MOBILE },
+    ],
     whatsappMessage: msg,
     floatPhrases: lp.phrases,
     schema: [
