@@ -12,6 +12,7 @@ export default {
   },
   hero: {
     h1: "Verbas rescisórias",
+    grad: "Confira o que entra na sua rescisão.",
     lede: "Entenda quais parcelas podem fazer parte do encerramento do contrato de trabalho e quais informações são analisadas quando há diferença no pagamento.",
     cta: "Enviar informações",
     secondary: { href: "#parcelas", label: "O que entra na rescisão" },
@@ -140,7 +141,7 @@ export default {
   whatsapp: { message: "Olá! Vim pelo site da Vieira & Marques e gostaria de conferir as verbas da minha rescisão." },
   form: {
     heading: `Envie as informações <span class="grad">da sua rescisão.</span>`,
-    lead: "Com a forma de desligamento, as datas e os documentos disponíveis, o advogado verifica o que já é possível conferir.",
+    lead: "Com a forma de desligamento, as datas e os documentos disponíveis, a equipe encaminha o caso para a conferência do que já é possível verificar.",
     points: ["Análise sigilosa dos documentos", "Explicação clara, inclusive quando não há diferença", "Reunião presencial ou por vídeo"],
     questions: [
       { id: "desligado", type: "choice", label: "Você já foi desligado da empresa?", options: ["Sim", "Estou cumprindo aviso prévio", "Não, ainda trabalho"] },

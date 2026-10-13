@@ -237,11 +237,11 @@
   // Contêineres cujos itens entram em cascata e mídias que entram com leve aproximação.
   var STAGGER = ".section-head > .stack-sm, .svc-head, .area-index, .services, .steps, .facts, .principles, .cards-grid, .article-list, " +
     ".svc-related__list, .svc-list, .svc-timeline, .svc-docs, .svc-columns, .checklist, .recognitions, .profiles, .team-panels, " +
-    ".contact-list, .gallery, .wa-panel__choices, .faq";
+    ".contact-list, .gallery, .wa-panel__choices, .faq, .lp-cards, .lp-tiles, .lp-dots, .lp-others__list";
   var MEDIA = ".figure, .page-hero__media, .svc-trust__media, .svc-doc-figure";
   function prepareReveal() {
     document.querySelectorAll(STAGGER).forEach(function (el) {
-      if (el.closest(".page-hero, .hero, .site-footer")) return;
+      if (el.closest(".page-hero, .hero, .lp-hero, .site-footer")) return;
       el.setAttribute("data-reveal-stagger", "");
       if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
       [].forEach.call(el.children, function (child, i) { child.style.setProperty("--i", Math.min(i, 9)); });
@@ -278,21 +278,146 @@
     });
   }
 
-  /* ---------- WhatsApp flutuante ---------- */
+  /* ---------- WhatsApp flutuante (botão + balão) ---------- */
+  // O botão aparece depois da primeira dobra. O balão surge alguns segundos depois e
+  // alterna as frases da página; o "×" fecha o balão só nesta página (nada é gravado).
   function initFloat() {
     var el = document.querySelector("[data-wa-float]");
     if (!el) return;
-    var ticking = false;
+    var link = el.querySelector("a");
+    var bubble = el.querySelector("[data-wa-bubble]");
+    var shown = false, ticking = false, closed = false, timer = null, rotate = null, index = 0;
+    var phrases = [];
+    try { phrases = JSON.parse((bubble && bubble.getAttribute("data-phrases")) || "[]"); } catch (e) { phrases = []; }
+
+    function setPhrase(i) {
+      var p = phrases[i];
+      if (!p || !bubble) return;
+      bubble.querySelector("[data-wa-bubble-title]").textContent = p.t;
+      bubble.querySelector("[data-wa-bubble-text]").textContent = p.s;
+      bubble.classList.remove("is-swap");
+      void bubble.offsetWidth; // reinicia a animação de entrada
+      bubble.classList.add("is-swap");
+    }
+    function openBubble() {
+      if (!bubble || closed || !shown) return;
+      bubble.hidden = false;
+      if (phrases.length > 1 && !reduceMotion && !rotate) {
+        rotate = setInterval(function () { index = (index + 1) % phrases.length; setPhrase(index); }, 7000);
+      }
+    }
     function update() {
       ticking = false;
       var show = window.scrollY > window.innerHeight * 0.6;
+      if (show === shown) return;
+      shown = show;
       el.setAttribute("data-hidden", show ? "false" : "true");
-      el.tabIndex = show ? 0 : -1;
+      if (link) link.tabIndex = show ? 0 : -1;
+      if (show && !timer && !closed) timer = setTimeout(openBubble, 3500);
     }
+    if (bubble) {
+      bubble.querySelector("[data-wa-bubble-close]").addEventListener("click", function () {
+        closed = true;
+        bubble.hidden = true;
+        clearInterval(rotate);
+        if (link) link.focus({ preventScroll: true });
+      });
+    }
+    if (link) link.tabIndex = -1;
     window.addEventListener("scroll", function () {
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     }, { passive: true });
     update();
+  }
+
+  /* ---------- Pontos de atenção (carrossel das áreas) ---------- */
+  function initSignals() {
+    document.querySelectorAll("[data-signals]").forEach(function (panel) {
+      var slides = panel.querySelectorAll("[data-signal]");
+      if (slides.length < 2) return;
+      var dots = panel.querySelectorAll("[data-signals-dot]");
+      var big = panel.querySelector("[data-signals-big]");
+      var bar = panel.querySelector("[data-signals-progress]");
+      var controls = panel.querySelector("[data-signals-controls]");
+      var current = 0, auto = null, touched = false;
+      function go(i) {
+        current = (i + slides.length) % slides.length;
+        slides.forEach(function (s, k) {
+          var on = k === current;
+          s.classList.toggle("is-active", on);
+          s.setAttribute("aria-hidden", on ? "false" : "true");
+        });
+        dots.forEach(function (d, k) { if (k === current) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
+        if (big) big.textContent = (current + 1 < 10 ? "0" : "") + (current + 1);
+        if (bar) bar.style.height = ((current + 1) / slides.length) * 100 + "%";
+      }
+      function stop() { touched = true; clearInterval(auto); }
+      panel.setAttribute("data-ready", "");
+      controls.hidden = false;
+      panel.querySelector("[data-signals-prev]").addEventListener("click", function () { stop(); go(current - 1); });
+      panel.querySelector("[data-signals-next]").addEventListener("click", function () { stop(); go(current + 1); });
+      dots.forEach(function (d) { d.addEventListener("click", function () { stop(); go(+d.getAttribute("data-signals-dot")); }); });
+      panel.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") { stop(); go(current + 1); }
+        else if (e.key === "ArrowLeft") { stop(); go(current - 1); }
+      });
+      go(0);
+      // Avança sozinho enquanto visível, até a primeira interação (pausa com mouse ou foco dentro).
+      if (reduceMotion || !("IntersectionObserver" in window)) return;
+      var paused = false;
+      panel.addEventListener("mouseenter", function () { paused = true; });
+      panel.addEventListener("mouseleave", function () { paused = false; });
+      panel.addEventListener("focusin", function () { paused = true; });
+      panel.addEventListener("focusout", function () { paused = false; });
+      new IntersectionObserver(function (entries) {
+        clearInterval(auto);
+        if (entries[0].isIntersecting && !touched) auto = setInterval(function () { if (!paused) go(current + 1); }, 6500);
+      }, { threshold: 0.5 }).observe(panel);
+    });
+  }
+
+  /* ---------- Fotos da estrutura ampliadas ---------- */
+  function initLightbox() {
+    var links = document.querySelectorAll("[data-lightbox]");
+    if (!links.length || typeof HTMLDialogElement !== "function") return;
+    var dlg = null, opener = null;
+    function build() {
+      dlg = document.createElement("dialog");
+      dlg.className = "lp-lightbox";
+      dlg.setAttribute("aria-label", "Foto ampliada");
+      dlg.innerHTML = '<button class="lp-lightbox__close" type="button" aria-label="Fechar">×</button><img alt=""><div class="lp-lightbox__cap"><p class="lp-lightbox__title"></p><p class="lp-lightbox__text"></p></div>';
+      document.body.appendChild(dlg);
+      dlg.querySelector("button").addEventListener("click", function () { dlg.close(); });
+      dlg.addEventListener("click", function (e) { if (e.target === dlg || e.target.tagName === "IMG") dlg.close(); });
+      dlg.addEventListener("close", function () { if (opener) opener.focus({ preventScroll: true }); });
+    }
+    links.forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+        e.preventDefault();
+        if (!dlg) build();
+        opener = a;
+        var im = dlg.querySelector("img");
+        var thumb = a.querySelector("img");
+        im.src = a.getAttribute("href");
+        im.alt = thumb ? thumb.alt : "";
+        dlg.querySelector(".lp-lightbox__title").textContent = a.getAttribute("data-title") || "";
+        dlg.querySelector(".lp-lightbox__text").textContent = a.getAttribute("data-caption") || "";
+        dlg.showModal();
+      });
+    });
+  }
+
+  /* ---------- Mapa de SP: divisas municipais carregadas só perto da tela ---------- */
+  function initMap() {
+    var meshes = document.querySelectorAll("[data-map-mesh]");
+    if (!meshes.length) return;
+    function load(el) { el.setAttribute("href", el.getAttribute("data-map-mesh")); el.removeAttribute("data-map-mesh"); }
+    if (!("IntersectionObserver" in window)) { meshes.forEach(load); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { load(en.target); io.unobserve(en.target); } });
+    }, { rootMargin: "400px" });
+    meshes.forEach(function (m) { io.observe(m); });
   }
 
   /* ---------- Hub de áreas: índice ativo ---------- */
@@ -641,7 +766,7 @@
   function initStickyCta() {
     var cta = document.querySelector("[data-sticky-cta]");
     var form = document.querySelector("[data-lead-form]") || document.getElementById("contato");
-    var hero = document.querySelector(".svc-hero");
+    var hero = document.querySelector(".svc-hero, .lp-hero");
     if (!cta || !form || !hero) return;
     cta.hidden = false;
     var formVisible = false;
@@ -787,6 +912,9 @@
   initMobileSubmenus();
   initReveal();
   initFloat();
+  initSignals();
+  initLightbox();
+  initMap();
   initHub();
   initFilters();
   initLeadForm();

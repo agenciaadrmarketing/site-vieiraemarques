@@ -9,6 +9,7 @@ export default {
   },
   hero: {
     h1: "Juros abusivos em financiamento",
+    grad: "Entenda o contrato antes de discutir a cobrança.",
     lede: "Entenda o contrato antes de discutir a cobrança: quais informações mostram o custo real da operação e em que situações a revisão pode ser avaliada.",
     cta: "Enviar informações do contrato",
     secondary: { href: "#contrato", label: "Como ler o contrato" },
@@ -134,7 +135,7 @@ export default {
   whatsapp: { message: "Olá! Vim pelo site da Vieira & Marques e gostaria de entender se há juros abusivos no meu financiamento." },
   form: {
     heading: `Envie as informações <span class="grad">do seu contrato.</span>`,
-    lead: "Com o tipo de contrato e a situação atual dos pagamentos, o advogado indica o que é preciso para a análise.",
+    lead: "Com o tipo de contrato e a situação atual dos pagamentos, a equipe de atendimento indica o que é preciso para a análise inicial.",
     points: ["Não pedimos dados bancários ou senhas", "Explicação do resultado, inclusive quando a taxa está dentro do mercado", "Reunião presencial ou por vídeo"],
     questions: [
       { id: "tipo_contrato", type: "select", label: "Tipo de contrato", options: ["Financiamento de veículo", "Empréstimo pessoal", "Empréstimo consignado", "Outro"] },

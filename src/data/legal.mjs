@@ -39,6 +39,7 @@ export const LEGAL_REVIEW = [
   "Bases legais por finalidade, em especial para dados sensíveis enviados espontaneamente (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
   "Aplicabilidade do art. 15 do Marco Civil (guarda de registros de acesso) ao escritório (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
   "Foro: texto provisório sem foro exclusivo (Termos, seção 15) [VALIDAR FORO COM O ESCRITÓRIO]",
+  isPending(SITE.hours) && "[CONFIRMAR COM O ESCRITÓRIO] Horário de atendimento (oculto no site, na Política e no rodapé enquanto pendente)",
   DATA_FLOWS.leadSheet && "Formulário grava em planilha Google: confirmar contrato/termos do Google Workspace e região dos dados (Política, seções 4, 8 e 9)",
 ].filter(Boolean);
 

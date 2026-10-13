@@ -12,6 +12,7 @@ export default function politicaDePrivacidade() {
   const hosting = isPending(LEGAL.hostingProvider) ? "" : esc(LEGAL.hostingProvider);
   const mail = `<a class="text-link" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`;
   const phone = `<a class="text-link" href="${SITE.phone.href}">${SITE.phone.display}</a>`;
+  const hours = isPending(SITE.hours) ? "" : ` (${esc(SITE.hours.toLowerCase())})`;
   const terms = `<a class="text-link" href="${LEGAL_PATHS.terms}">Termos de Uso</a>`;
 
   const sections = [
@@ -87,6 +88,7 @@ export default function politicaDePrivacidade() {
             "Você toca em um botão de WhatsApp. O aplicativo (ou o WhatsApp Web) abre uma conversa com o número do escritório e uma mensagem inicial sobre o assunto da página.",
             "Você pode revisar, alterar ou apagar essa mensagem — ou desistir do envio. Nada é transmitido ao escritório pelo site.",
             "Se decidir enviar, a conversa continua no WhatsApp, e o escritório passa a tratar as informações que você compartilhar ali.",
+            "A conversa é atendida inicialmente pela equipe de atendimento do escritório, que faz a triagem e, quando aplicável, encaminha o caso internamente ao advogado ou profissional responsável pela área.",
           ]) +
           p("O site não coleta nem armazena mensagens, nomes ou números de telefone.")
         : sheet
@@ -216,10 +218,10 @@ export default function politicaDePrivacidade() {
       body:
         (LEGAL.privacyChannelApproved
           ? p(
-              `Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato pelo e-mail ${mail}, indicando no assunto “Privacidade”. Também é possível usar o telefone ${phone} (${esc(SITE.hours.toLowerCase())}).`,
+              `Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato pelo e-mail ${mail}, indicando no assunto “Privacidade”. Também é possível usar o telefone ${phone}${hours}.`,
               "Esse é o canal do escritório para assuntos de proteção de dados pessoais, inclusive para comunicações da Autoridade Nacional de Proteção de Dados (ANPD)."
             )
-          : p(`Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato com o escritório pelo telefone ${phone} (${esc(SITE.hours.toLowerCase())}) ou na sede indicada na seção 1, informando que o assunto é privacidade e dados pessoais.`)) +
+          : p(`Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato com o escritório pelo telefone ${phone}${hours} ou na sede indicada na seção 1, informando que o assunto é privacidade e dados pessoais.`)) +
         p("Para proteger seus dados, poderemos pedir informações que confirmem sua identidade antes de atender à solicitação."),
     },
     {

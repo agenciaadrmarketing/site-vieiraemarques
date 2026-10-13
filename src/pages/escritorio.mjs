@@ -1,4 +1,6 @@
+import { lpSteps, lpCta, lpReach, lpStructure } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
+import { waMessage } from "../data/site.mjs";
 import { team, teamRecognitions } from "../data/team.mjs";
 import { areaById, areaUrl, AREAS_HUB } from "../data/areas.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
@@ -16,7 +18,7 @@ const METHOD = [
   { title: "Atenção individualizada", text: "Cada caso é tratado a partir dos próprios fatos e documentos. Ouvir com cuidado vem antes de qualquer orientação." },
   { title: "Clareza antes da decisão", text: "Prazos, etapas e riscos são explicados em linguagem direta, para que a decisão sobre o próximo passo seja de quem nos procura." },
   { title: "Caminho proporcional ao caso", text: "Aconselhamento preventivo, acordo extrajudicial ou representação judicial — a via é escolhida conforme o que a situação exige." },
-  { title: "Responsabilidade por área", text: "Advogados inscritos na OAB/SP respondem diretamente pelas áreas em que atuam, do primeiro contato ao acompanhamento do caso." },
+  { title: "Responsabilidade por área", text: "Advogados inscritos na OAB/SP respondem pelas áreas em que atuam. O primeiro contato passa pela equipe de atendimento, que encaminha cada caso ao profissional responsável." },
 ];
 
 // Conteúdo essencial de Visão, Missão e Valores do site anterior, preservado.
@@ -127,17 +129,21 @@ export default function escritorio() {
   </div>
 </section>
 
-<section class="section section--dark" aria-labelledby="estrutura-titulo">
-  <div class="container">
-    ${sectionHead({ eyebrow: "Estrutura", id: "estrutura-titulo", title: `O escritório <span class="grad">por dentro.</span>`, lead: "Sede em Boituva, com salas de atendimento e de reunião. Para quem está em outra cidade, as reuniões acontecem por vídeo." })}
-    <div class="gallery" data-reveal>
-      <figure class="figure figure--hover gallery__wide">${img("escritorio-interno", { alt: "Ambiente interno do escritório em Boituva", sizes: "(min-width: 1240px) 1180px, 100vw", style: "object-position:50% 55%" })}<figcaption>Sede — Boituva/SP</figcaption></figure>
-      <figure class="figure figure--hover">${img("sala-reuniao", { alt: "Sala de reunião do escritório", sizes: "(min-width: 960px) 390px, 100vw" })}<figcaption>Sala de reunião</figcaption></figure>
-      <figure class="figure figure--hover">${img("letreiro", { alt: "Letreiro com a marca Vieira & Marques na parede do escritório", sizes: "(min-width: 960px) 390px, 100vw" })}<figcaption>Identidade no escritório</figcaption></figure>
-      <figure class="figure figure--hover">${img("mesa-trabalho", { alt: "Mesas de trabalho da equipe no escritório", sizes: "(min-width: 960px) 390px, 100vw" })}<figcaption>Área de trabalho da equipe</figcaption></figure>
-    </div>
-  </div>
-</section>`;
+${lpStructure({
+  eyebrow: "Estrutura",
+  title: `O escritório <span class="grad">por dentro.</span>`,
+  text: "Sede em Boituva, com salas de atendimento e de reunião. Para quem está em outra cidade, as reuniões acontecem por vídeo.",
+  items: [
+    { image: "escritorio-interno", title: "Sede — Boituva/SP", caption: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici", alt: "Ambiente interno do escritório em Boituva", wide: true, position: "50% 55%" },
+    { image: "sala-reuniao", title: "Sala de reunião", caption: "Reuniões presenciais ou por vídeo", alt: "Sala de reunião do escritório" },
+    { image: "letreiro", title: "Identidade no escritório", caption: "Vieira & Marques Sociedade de Advogados", alt: "Letreiro com a marca Vieira & Marques na parede do escritório" },
+    { image: "mesa-trabalho", title: "Área de trabalho da equipe", caption: "Cada caso analisado a partir dos documentos", alt: "Mesas de trabalho da equipe no escritório", wide: true },
+  ],
+})}
+
+${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a nossa equipe.</span>`, text: "A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao advogado responsável pela área.", message: waMessage() })}
+
+${lpReach()}`;
 
   return page({
     title: "O Escritório | Vieira & Marques",

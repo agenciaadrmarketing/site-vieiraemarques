@@ -1,12 +1,13 @@
 import { esc, join } from "../lib/html.mjs";
-import { SITE } from "../data/site.mjs";
+import { SITE, waMessage } from "../data/site.mjs";
+import { lpSteps, lpCta, lpReach, lpStructure } from "../partials/lp.mjs";
 import { practiceAreas, areaUrl, AREAS_HUB } from "../data/areas.mjs";
 import { team, teamRecognitions } from "../data/team.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
 import { page } from "../partials/layout.mjs";
 import { img, imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
-import { sectionHead, linkArrow, btn, teamPanels, recognitions, articleFeature, articleRow, facts, steps } from "../partials/components.mjs";
+import { sectionHead, linkArrow, btn, teamPanels, recognitions, articleFeature, articleRow, facts } from "../partials/components.mjs";
 
 const HERO_SIZES = "(min-width: 1240px) 1212px, 100vw";
 
@@ -130,17 +131,11 @@ export default function home() {
   </div>
 </section>
 
-<section class="section section--dark" aria-labelledby="atendimento-titulo">
-  <div class="container">
-    ${sectionHead({
-      eyebrow: "Atendimento",
-      id: "atendimento-titulo",
-      title: `Como funciona <span class="grad">o primeiro contato.</span>`,
-      lead: "Nenhuma etapa exige que você já saiba nomear o seu problema jurídico. O envio da mensagem não constitui contratação: condições são combinadas por escrito depois da análise.",
-    })}
-    ${steps()}
-  </div>
-</section>`;
+${lpSteps({ title: `Como funciona <span class="grad">o primeiro contato.</span>` })}
+
+${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. Identificar a área e o caminho aplicável faz parte da triagem inicial.", message: waMessage() })}
+
+${lpReach()}`;
 
   return page({
     title: "Vieira & Marques Advogados | Boituva - SP e região de Sorocaba",

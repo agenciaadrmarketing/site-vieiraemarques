@@ -1,134 +1,119 @@
-import { esc, join, when } from "../lib/html.mjs";
-import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
-import { practiceAreas, areaUrl, AREAS_HUB } from "../data/areas.mjs";
+import { esc, join } from "../lib/html.mjs";
+import { SITE, waMessage } from "../data/site.mjs";
+import { areaUrl, AREAS_HUB } from "../data/areas.mjs";
+import { AREA_LP } from "../data/area-lp.mjs";
 import { hasPage, serviceHref } from "../data/services/index.mjs";
 import { team, teamByArea } from "../data/team.mjs";
 import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
-import { page, breadcrumbs } from "../partials/layout.mjs";
+import { page } from "../partials/layout.mjs";
+import { imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
-import { sectionHead, faqList, faqSchema, articleRow, teamPanels } from "../partials/components.mjs";
-import { whatsappPanel } from "../partials/whatsapp-panel.mjs";
+import { faqSchema, articleRow } from "../partials/components.mjs";
+import { lpHero, lpServices, lpSteps, lpTeam, lpStructure, lpCta, lpSignals, lpReach, lpFaq, lpHead, lpOtherAreas } from "../partials/lp.mjs";
 
-// Página própria de cada área (página-pilar): apresenta a área, lista os serviços
-// (com link para os guias publicados), a equipe responsável, as perguntas frequentes
-// e os conteúdos da Base de Conhecimento. Mãe das páginas /areas/<área>/<serviço>/.
+// Página própria de cada área (página-pilar), no mesmo desenho das landing pages
+// publicadas: hero com a pergunta do cliente, serviços, como funciona, equipe,
+// estrutura, faixa de chamada, pontos de atenção, onde atendemos e perguntas.
+// Mãe das páginas /areas/<área>/<serviço>/.
 
 const description = (area) => {
   const base = `${area.summary.replace(/\s+—\s+/, ": ")} Atendimento em Boituva (SP), na região de Sorocaba e online.`;
   return base.length <= 160 ? base : `${area.summary} Atendimento em Boituva (SP) e online.`;
 };
 
-function serviceCard(area, s) {
-  const published = hasPage(area.id, s.id);
-  return `<li class="service${published ? " service--guide" : ""}" id="${area.id}-${s.id}">
-  <h3 class="service__title">${esc(s.title)}</h3>
-  <p class="service__text">${esc(s.text)}</p>
-  ${when(s.items.length, `<ul class="service__items" aria-label="Situações em ${esc(s.title)}">${join(s.items, (i) => `<li>${esc(i)}</li>`)}</ul>`)}
-  ${published
-    ? `<a class="service__link" href="${serviceHref(area.id, s.id)}">Guia completo: ${esc(s.title.toLowerCase())} ${icon.arrow(14)}</a>`
-    : `<a class="service__link service__link--wa" href="${whatsappUrl(waMessage(s.title.toLowerCase()))}" target="_blank" rel="noopener">${icon.whatsapp(14)} Falar sobre ${esc(s.title.toLowerCase())}</a>`}
-</li>`;
-}
+const faqTitle = (area) => `Perguntas sobre <span class="grad">${esc(area.shortTitle === "Médico e Saúde" ? "Direito Médico e da Saúde" : area.title)}</span>`;
 
 export function renderArea(area) {
+  const lp = AREA_LP[area.id];
   const path = areaUrl(area);
   const crumbs = [
     { label: "Início", href: "/" },
     { label: "Áreas de Atuação", href: AREAS_HUB },
     { label: area.title, href: path },
   ];
-  const services = area.services;
-  const guides = services.filter((s) => hasPage(area.id, s.id));
   const people = teamByArea(area.id);
   const faqs = faqByArea[area.id] ?? [];
   const related = articles.filter((a) => a.area === area.id);
   const msg = waMessage(area.title);
-  const others = practiceAreas.filter((a) => a.id !== area.id);
+  const guides = area.services.filter((s) => hasPage(area.id, s.id));
+
+  const services = area.services.map((s) => ({
+    id: `${area.id}-${s.id}`,
+    icon: lp.icons[s.id] ?? "doc",
+    title: s.title,
+    text: s.text,
+    items: s.items,
+    ...(hasPage(area.id, s.id)
+      ? { href: serviceHref(area.id, s.id), linkLabel: "Ver o guia completo" }
+      : { message: waMessage(s.title.toLowerCase()), linkLabel: "Falar sobre isso" }),
+  }));
 
   const body = `
-<section class="page-hero area-hero on-dark" aria-labelledby="page-titulo">
-  <div class="container">
-    ${breadcrumbs(crumbs)}
-    <div class="page-hero__grid">
-      <div class="stack">
-        <p class="eyebrow">Área de atuação · ${area.number}</p>
-        <h1 class="page-hero__title" id="page-titulo">${esc(area.title)}</h1>
-        <p class="lead">${esc(area.description)}</p>
-        <div class="btn-row">
-          <a class="btn btn--whatsapp" href="${whatsappUrl(msg)}" target="_blank" rel="noopener" data-cta="hero">${icon.whatsapp(18)} Conversar pelo WhatsApp</a>
-          <a class="btn btn--ghost-light" href="#servicos">Ver serviços</a>
-        </div>
-      </div>
-      <aside class="page-hero__aside" aria-label="Resumo da área">
-        <dl class="svc-facts">
-          <div><dt>Serviços</dt><dd>${services.length} situações atendidas${guides.length ? `, ${guides.length} com guia completo` : ""}.</dd></div>
-          <div><dt>Profissionais</dt><dd>${people.length ? esc(people.map((p) => p.name).join(", ")) : "Equipe do escritório, com análise individual de cada caso."}</dd></div>
-          <div><dt>Atendimento</dt><dd>Presencial em Boituva, na região de Sorocaba e por vídeo em todo o Brasil.</dd></div>
-        </dl>
-      </aside>
-    </div>
-  </div>
-</section>
+${lpHero({
+  crumbs,
+  badge: lp.badge,
+  title: lp.title,
+  text: esc(lp.text),
+  message: msg,
+  cta: lp.cta,
+  secondary: { href: "#servicos", label: "Ver serviços da área" },
+  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  image: lp.image,
+  alt: lp.alt,
+  position: lp.position,
+})}
 
-<section class="section section--white" id="servicos" aria-labelledby="servicos-titulo">
-  <div class="container">
-    ${sectionHead({ eyebrow: "Serviços", id: "servicos-titulo", title: `O que o escritório atende em <span class="grad">${esc(area.title)}.</span>`, lead: guides.length ? "Os serviços com guia completo explicam o tema, os documentos e as dúvidas mais comuns. Nos demais, fale direto com a equipe." : "Fale com a equipe sobre a sua situação: a análise começa pelos fatos e documentos." })}
-    <ul class="services area-services">${join(services, (s) => serviceCard(area, s))}</ul>
-  </div>
-</section>
+${lpServices({
+  eyebrow: `Área de atuação · ${area.number}`,
+  title: lp.servicesTitle,
+  lead: guides.length
+    ? "Os serviços com guia completo explicam o tema, os documentos e as dúvidas mais comuns. Nos demais, fale direto com a equipe."
+    : "Fale com a equipe sobre a sua situação: a análise começa pelos fatos e documentos.",
+  items: services,
+  cta: { ...lp.servicesCta, message: msg },
+})}
 
-<section class="section section--muted" aria-labelledby="equipe-titulo">
-  <div class="container">
-    ${sectionHead({ eyebrow: "Equipe", id: "equipe-titulo", title: `Quem conduz <span class="grad">o atendimento.</span>`, lead: people.length ? `Em ${esc(area.title)}: ${esc(people.map((p) => p.name).join(", "))}. Conheça também o restante da equipe.` : "Formação, inscrição na OAB e áreas de atuação de cada profissional — informação verificável." })}
-    ${teamPanels([...people, ...team.filter((p) => !people.includes(p))], { profileLinks: true })}
-  </div>
-</section>
+${lpSteps()}
 
-${faqs.length ? `<section class="section section--white" id="perguntas" aria-labelledby="perguntas-titulo">
+${lpTeam({
+  title: people.length
+    ? `Quem responde por <span class="grad">${esc(area.title)}.</span>`
+    : `Quem conduz <span class="grad">o atendimento.</span>`,
+  text: people.length
+    ? `Em ${esc(area.title)}: ${esc(people.map((p) => p.name).join(", "))}. Conheça também o restante da equipe — formação, inscrição na OAB e temas de atuação à vista.`
+    : "Formação, inscrição na OAB e temas de atuação de cada profissional — informação verificável.",
+  people: [...people, ...team.filter((p) => !people.includes(p))],
+})}
+
+${lpStructure()}
+
+${lpCta({ title: lp.band.title, text: lp.band.text, message: msg })}
+
+${lpSignals({ title: lp.signalsTitle, items: lp.signals })}
+
+${lpReach()}
+
+${faqs.length ? lpFaq({ title: faqTitle(area), lead: lp.faqLead, items: faqs, message: waMessage(`uma dúvida sobre ${area.title}`) }) : ""}
+
+${related.length ? `<section class="lp-sec lp-sec--muted" aria-labelledby="conteudos-titulo">
   <div class="container container--narrow">
-    ${sectionHead({ eyebrow: "Perguntas frequentes", id: "perguntas-titulo", title: `Dúvidas comuns sobre <span class="grad">${esc(area.shortTitle === "Médico e Saúde" ? "Direito Médico e da Saúde" : area.title)}.</span>` })}
-    ${faqList(faqs)}
-  </div>
-</section>` : ""}
-
-${related.length ? `<section class="section section--muted" aria-labelledby="conteudos-titulo">
-  <div class="container container--narrow">
-    ${sectionHead({ eyebrow: "Base de conhecimento", id: "conteudos-titulo", title: `Conteúdos sobre <span class="grad">${esc(area.shortTitle)}.</span>` })}
+    ${lpHead({ eyebrow: "Base de conhecimento", title: `Conteúdos sobre <span class="grad">${esc(area.shortTitle)}.</span>`, id: "conteudos-titulo" })}
     <ul class="article-list">${join(related, (a) => articleRow(a))}</ul>
-    <p class="mt-lg"><a class="link-arrow" href="/conhecimento/?area=${area.id}">Todos os conteúdos de ${esc(area.shortTitle)} ${icon.arrow(14)}</a></p>
+    <p class="mt-lg center"><a class="link-arrow" href="/conhecimento/?area=${area.id}">Todos os conteúdos de ${esc(area.shortTitle)} ${icon.arrow(14)}</a></p>
   </div>
 </section>` : ""}
 
-<section class="section section--dark svc-form-section" id="contato" aria-labelledby="contato-titulo">
-  <div class="container">
-    <div class="split">
-      <div class="stack" data-reveal>
-        <p class="eyebrow">Contato</p>
-        <h2 class="h-section" id="contato-titulo">Conte o que aconteceu. <span class="grad">A análise começa pelos fatos.</span></h2>
-        <p class="lead">Um advogado da área lê a mensagem e indica os próximos passos e os documentos necessários.</p>
-        <nav class="area-others" aria-label="Outras áreas de atuação">
-          <p class="eyebrow">Outras áreas</p>
-          <ul>${join(others, (a) => `<li><a href="${areaUrl(a)}">${esc(a.title)}</a></li>`)}</ul>
-        </nav>
-      </div>
-      ${whatsappPanel({
-        id: "whatsapp",
-        level: 3,
-        intro: `A conversa abre com uma mensagem sobre ${esc(area.title)}. Você pode editá-la antes de enviar.`,
-        message: msg,
-        topics: ["O que aconteceu e quando", "Quem está envolvido", "Quais documentos você já tem"],
-      })}
-    </div>
-  </div>
-</section>`;
+${lpOtherAreas(area.id)}`;
 
   return page({
-    title: `${area.title} | Vieira & Marques`,
+    title: `${area.title} em Boituva/SP | Vieira & Marques`,
     description: description(area),
     path,
     crumbs,
+    preload: [imgPreload(lp.image, "100vw")],
     whatsappMessage: msg,
+    floatPhrases: lp.phrases,
     schema: [
       {
         "@type": "Service",
@@ -141,7 +126,7 @@ ${related.length ? `<section class="section section--muted" aria-labelledby="con
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: `Serviços em ${area.title}`,
-          itemListElement: services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title, description: s.text } })),
+          itemListElement: area.services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title, description: s.text } })),
         },
       },
       ...(faqs.length ? [faqSchema(faqs)] : []),

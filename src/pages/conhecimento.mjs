@@ -1,5 +1,6 @@
+import { lpCta, lpReach } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
-import { SITE } from "../data/site.mjs";
+import { SITE, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaById, areaFaqUrl } from "../data/areas.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
@@ -98,7 +99,11 @@ export default function conhecimento() {
       aside: `<a class="btn" href="${SITE.blogBase}/blog/" target="_blank" rel="noopener">Abrir o blog <span class="btn__arrow">${icon.arrowUpRight(16)}</span></a>`,
     })}
   </div>
-</section>`;
+</section>
+
+${lpCta({ title: `Leu sobre o seu caso e ficou com dúvida? <span class="grad">Fale com a nossa equipe.</span>`, text: "Os conteúdos são informativos e não substituem a análise do caso concreto. Envie as informações para uma análise inicial.", message: waMessage() })}
+
+${lpReach()}`;
 
   return page({
     title: "Base de Conhecimento Jurídico | Vieira & Marques",

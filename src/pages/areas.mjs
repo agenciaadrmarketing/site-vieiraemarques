@@ -1,3 +1,4 @@
+import { lpCta, lpReach } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
 import { practiceAreas, areaUrl, areaHubAnchor } from "../data/areas.mjs";
@@ -58,7 +59,11 @@ function areaBlock(area) {
       </div>
     </div>
   </div>
-</section>`;
+</section>
+
+${lpCta({ title: `Não sabe em qual área seu caso se encaixa? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. A equipe de atendimento faz a triagem e encaminha o caso à área adequada.", message: waMessage() })}
+
+${lpReach()}`;
 }
 
 export default function areas() {

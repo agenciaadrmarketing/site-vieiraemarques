@@ -1,3 +1,4 @@
+import { lpSteps, lpCta, lpReach } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, isPending, whatsappUrl, waMessage } from "../data/site.mjs";
 import { practiceAreas } from "../data/areas.mjs";
@@ -6,7 +7,7 @@ import { page, breadcrumbs } from "../partials/layout.mjs";
 import { icon } from "../partials/icons.mjs";
 import { leadForm } from "../partials/lead-form.mjs";
 import { whatsappPanel } from "../partials/whatsapp-panel.mjs";
-import { sectionHead, faqList, faqSchema, steps } from "../partials/components.mjs";
+import { sectionHead, faqList, faqSchema } from "../partials/components.mjs";
 
 const PATH = "/contato/";
 const CRUMBS = [
@@ -32,7 +33,7 @@ export default function contato() {
         <h1 class="page-hero__title" id="page-titulo">Fale com <span class="grad">a equipe.</span></h1>
       </div>
       <div class="page-hero__aside">
-        <p class="lead">Descreva a sua situação em linguagem comum. Um advogado da área correspondente lê a mensagem e retorna com os próximos passos aplicáveis ao seu caso.</p>
+        <p class="lead">Descreva a sua situação em linguagem comum. A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao advogado responsável pela área.</p>
       </div>
     </div>
   </div>
@@ -76,19 +77,16 @@ export default function contato() {
   </div>
 </section>
 
-<section class="section section--white" aria-labelledby="faq-titulo">
+<section class="section section--white lp-faq-plain" aria-labelledby="faq-titulo">
   <div class="container container--narrow">
     ${sectionHead({ eyebrow: "Atendimento", id: "faq-titulo", title: `Dúvidas sobre <span class="grad">o primeiro contato.</span>` })}
     ${faqList(faqAtendimento)}
   </div>
 </section>
 
-<section class="section section--dark" aria-labelledby="etapas-titulo">
-  <div class="container">
-    ${sectionHead({ eyebrow: "Depois do contato", id: "etapas-titulo", title: `O que acontece <span class="grad">a seguir.</span>` })}
-    ${steps()}
-  </div>
-</section>`;
+${lpSteps({ eyebrow: "Depois do contato", title: `O que acontece <span class="grad">a seguir.</span>` })}
+
+${lpReach()}`;
 
   return page({
     title: "Contato | Vieira & Marques Sociedade de Advogados",

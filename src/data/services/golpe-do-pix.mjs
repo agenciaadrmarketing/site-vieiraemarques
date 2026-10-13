@@ -9,6 +9,7 @@ export default {
   },
   hero: {
     h1: "Golpe do Pix",
+    grad: "Entenda as primeiras etapas.",
     lede: "Foi vítima de uma fraude envolvendo Pix? Veja o que costuma ser feito nas primeiras etapas, como funciona o pedido de devolução e quais informações ajudam a analisar o caso.",
     cta: "Enviar informações",
     secondary: { href: "#primeiras-etapas", label: "Primeiras etapas" },
@@ -125,7 +126,7 @@ export default {
   whatsapp: { message: "Olá! Vim pelo site da Vieira & Marques. Fui vítima de um golpe envolvendo Pix e gostaria de orientação." },
   form: {
     heading: `Envie as informações <span class="grad">sobre a fraude.</span>`,
-    lead: "Com o tipo de fraude, a data e o que já foi comunicado ao banco, o advogado avalia quais medidas ainda são possíveis.",
+    lead: "Com o tipo de fraude, a data e o que já foi comunicado ao banco, a equipe encaminha o caso para a análise das medidas ainda possíveis.",
     points: ["Atendimento sigiloso", "Não pedimos senhas, tokens ou dados de cartão", "Explicação honesta sobre o que é possível no caso"],
     questions: [
       { id: "tipo_fraude", type: "select", label: "Tipo de fraude", options: ["Falso familiar ou amigo", "Falsa central de atendimento", "Falsa venda ou compra", "Conta invadida", "Falso investimento", "Crédito não contratado", "Outro"] },

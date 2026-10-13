@@ -10,6 +10,7 @@ export default {
   },
   hero: {
     h1: "Divórcio",
+    grad: "Entenda os caminhos antes de decidir.",
     lede: "Entenda os caminhos possíveis — com ou sem acordo, em cartório ou na Justiça — e o que precisa ser decidido sobre filhos, pensão e patrimônio.",
     cta: "Entender meu caso",
     secondary: { href: "#tipos", label: "Tipos de divórcio" },
@@ -195,7 +196,7 @@ export default {
   whatsapp: { message: "Olá! Vim pelo site da Vieira & Marques e gostaria de orientação sobre divórcio." },
   form: {
     heading: `Conte a situação. <span class="grad">A análise começa pelos fatos.</span>`,
-    lead: "Não é preciso ter tudo decidido. As respostas abaixo ajudam o advogado a entender o cenário antes da primeira conversa.",
+    lead: "Não é preciso ter tudo decidido. As respostas abaixo ajudam a equipe a entender o cenário e encaminhar o caso ao profissional responsável.",
     points: ["Atendimento sigiloso", "Reunião presencial em Boituva ou por vídeo", "Condições do trabalho combinadas por escrito, depois da análise"],
     questions: [
       { id: "acordo", type: "choice", label: "Existe acordo sobre o divórcio?", options: ["Sim", "Em parte", "Não", "Ainda não conversamos"] },

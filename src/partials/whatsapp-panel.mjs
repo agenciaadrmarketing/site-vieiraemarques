@@ -1,5 +1,5 @@
 import { esc, join, when } from "../lib/html.mjs";
-import { SITE, whatsappUrl } from "../data/site.mjs";
+import { SITE, isPending, whatsappUrl } from "../data/site.mjs";
 import { LEGAL_PATHS } from "../data/legal.mjs";
 import { icon } from "./icons.mjs";
 
@@ -19,7 +19,7 @@ export function whatsappPanel({ id = "whatsapp", level = 2, title = "Conversar p
   <ul class="wa-panel__choices">${join(choices, (c) => `<li>${waLink(c.message, `${esc(c.label)} <span aria-hidden="true">↗</span>`, "wa-panel__choice", "assunto")}</li>`)}</ul>`)}
   ${when(warning, `<p class="form__warning">${esc(warning)}</p>`)}
   ${waLink(message, `${icon.whatsapp(18)} Conversar pelo WhatsApp`, "btn btn--whatsapp btn--block", "whatsapp_panel")}
-  <p class="muted wa-panel__alt">Prefere telefone? <a class="text-link" href="${SITE.phone.href}">${SITE.phone.display}</a> · ${esc(SITE.hours)}</p>
+  <p class="muted wa-panel__alt">Prefere telefone? <a class="text-link" href="${SITE.phone.href}">${SITE.phone.display}</a>${isPending(SITE.hours) ? "" : ` · ${esc(SITE.hours)}`}</p>
   <p class="form__privacy">O WhatsApp é um serviço de terceiro, com política própria. Veja como tratamos seus dados na <a href="${LEGAL_PATHS.privacy}">Política de Privacidade</a>.</p>
 </div>`;
 }

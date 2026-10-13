@@ -5,6 +5,8 @@ import { LEGAL_PATHS } from "../data/legal.mjs";
 import { MENUS } from "../data/menu.mjs";
 import { img, logo } from "./media.mjs";
 import { icon } from "./icons.mjs";
+import { waButton } from "./components.mjs";
+import { DEFAULT_PHRASES } from "../data/area-lp.mjs";
 import images from "../data/images.json" with { type: "json" };
 
 import { createHash } from "node:crypto";
@@ -125,7 +127,7 @@ const mobileLinks = (current) =>
     </li>`;
   });
 
-function header(current) {
+function header(current, whatsappMessage) {
   return `<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <div class="topbar">
   <div class="container">
@@ -144,7 +146,7 @@ function header(current) {
       <span class="nav__surface" aria-hidden="true" data-nav-surface></span>
       <ul class="nav__list">${navLinks(current)}</ul>
     </nav>
-    <a class="btn btn--light btn--plain site-header__cta" href="/contato/">Falar com a equipe</a>
+    <div class="site-header__cta">${waButton(whatsappMessage, "Falar no WhatsApp", { cta: "topo", size: "sm" })}</div>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" data-menu-toggle>
       <span class="menu-toggle__lines" aria-hidden="true"></span><span class="sr-only">Abrir menu</span>
     </button>
@@ -158,7 +160,8 @@ function header(current) {
       </ul>
     </nav>
     <div class="mobile-menu__foot">
-      <a class="btn btn--light" href="/contato/">Falar com a equipe <span class="btn__arrow">${icon.arrow(16)}</span></a>
+      ${waButton(whatsappMessage, "Falar no WhatsApp", { cta: "menu", block: true })}
+      <a href="/contato/">Outras formas de contato</a>
       <a href="${SITE.phone.href}">${SITE.phone.display}</a>
       <p>${esc(SITE.units[0].street)} — ${esc(SITE.units[0].city)}/${esc(SITE.units[0].region)}</p>
     </div>
@@ -235,8 +238,19 @@ const loader = () => `<div class="vm-loader" role="status" aria-label="Carregand
   </div>
 </div>`;
 
-export const waFloat = (message) =>
-  `<a class="wa-float" href="${whatsappUrl(message)}" target="_blank" rel="noopener" data-wa-float data-hidden="true" aria-label="Conversar pelo WhatsApp">${icon.whatsapp(20)}<span>WhatsApp</span></a>`;
+// WhatsApp flutuante no padrão das LPs: botão verde e balão com frases da página
+// (alternam a cada poucos segundos; o "×" fecha o balão nesta página). site.js controla.
+export const waFloat = (message, phrases = DEFAULT_PHRASES) => {
+  const [first] = phrases;
+  return `<div class="wa-float" data-wa-float data-hidden="true">
+  <div class="wa-float__bubble" data-wa-bubble data-phrases="${esc(JSON.stringify(phrases))}" hidden>
+    <button class="wa-float__close" type="button" data-wa-bubble-close aria-label="Fechar mensagem">×</button>
+    <p class="wa-float__title" data-wa-bubble-title>${esc(first.t)}</p>
+    <p class="wa-float__text" data-wa-bubble-text>${esc(first.s)}</p>
+  </div>
+  ${waButton(message, "Falar pelo WhatsApp", { cta: "flutuante" })}
+</div>`;
+};
 
 export function breadcrumbs(crumbs) {
   return `<nav class="breadcrumbs" aria-label="Você está em">
@@ -244,18 +258,18 @@ export function breadcrumbs(crumbs) {
 </nav>`;
 }
 
-export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage() }) {
+export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage(), floatPhrases }) {
   return `<!DOCTYPE html>
 <html lang="${SITE.lang}">
 ${head({ title, description, path, schema, crumbs, preload })}
 <body${SITE.forms ? " data-forms" : ""}>
 ${loader()}
-${header(path)}
+${header(path, whatsappMessage)}
 <main id="conteudo" tabindex="-1">
 ${body}
 </main>
 ${footer(whatsappMessage)}
-${floatingWhatsapp ? waFloat(whatsappMessage) : ""}
+${floatingWhatsapp ? waFloat(whatsappMessage, floatPhrases) : ""}
 <script src="/assets/js/site.js?v=${ASSET_VERSION}" data-lenis="/assets/js/vendor/lenis.min.js?v=${ASSET_VERSION}" defer></script>
 ${join(scripts, (s) => `<script src="${s}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
 </html>

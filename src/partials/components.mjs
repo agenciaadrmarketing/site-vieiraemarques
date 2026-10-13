@@ -2,6 +2,7 @@ import { esc, join, when } from "../lib/html.mjs";
 import { img } from "./media.mjs";
 import { icon } from "./icons.mjs";
 import { areaById, areaUrl } from "../data/areas.mjs";
+import { whatsappUrl } from "../data/site.mjs";
 import { formatDate } from "../data/articles.mjs";
 
 export function sectionHead({ eyebrow, title, id, lead, align, aside }) {
@@ -18,6 +19,10 @@ export function sectionHead({ eyebrow, title, id, lead, align, aside }) {
 
 export const linkArrow = (href, label, external = false) =>
   `<a class="link-arrow" href="${href}"${external ? ' target="_blank" rel="noopener"' : ""}>${esc(label)} ${icon.arrow(14)}</a>`;
+
+// Botão verde das landing pages (borda com brilho girando). Abre o WhatsApp com a mensagem da página.
+export const waButton = (message, label, { cta, size, block = false } = {}) =>
+  `<a class="btn-wa${size ? ` btn-wa--${size}` : ""}${block ? " btn-wa--block" : ""}" href="${whatsappUrl(message)}" target="_blank" rel="noopener"${cta ? ` data-cta="${cta}"` : ""}>${icon.whatsapp(size === "sm" ? 16 : 18)}<span>${esc(label)}</span></a>`;
 
 export const btn = (href, label, variant = "", arrow = true) =>
   `<a class="btn ${variant}" href="${href}">${esc(label)}${arrow ? ` <span class="btn__arrow">${icon.arrow(16)}</span>` : ""}</a>`;
@@ -75,10 +80,12 @@ export function facts(list, cls = "") {
 </dl>`;
 }
 
+// Fluxo do primeiro contato: a equipe de atendimento faz a triagem e encaminha o caso
+// ao profissional responsável, quando aplicável (o WhatsApp não é atendido diretamente por advogado).
 export const STEPS = [
-  { title: "Você descreve a situação", text: "Pelo WhatsApp ou por telefone, em linguagem comum. Não é preciso saber nomear a área do Direito." },
-  { title: "Um advogado analisa", text: "A mensagem é lida por um profissional da área correspondente, que verifica o que já é possível avaliar com o que foi enviado." },
-  { title: "Reunião presencial ou por vídeo", text: "Na sede, em Boituva, ou por videochamada. Nessa conversa são apresentados os caminhos aplicáveis e os documentos necessários." },
+  { title: "Você entra em contato", text: "Pelo WhatsApp ou por telefone, em linguagem comum. Não é preciso saber nomear a área do Direito." },
+  { title: "Triagem com a equipe de atendimento", text: "A equipe registra as informações iniciais, identifica a área do caso e indica quais documentos são úteis." },
+  { title: "Encaminhamento ao profissional responsável", text: "Quando aplicável, o caso segue para o advogado da área, que avalia os fatos e os documentos enviados." },
   { title: "Definição do caminho", text: "Orientação preventiva, tentativa de acordo ou atuação judicial — com etapas e condições combinadas por escrito." },
 ];
 
