@@ -6,7 +6,7 @@ import { page, breadcrumbs } from "./layout.mjs";
 // Componentes compartilhados pelas páginas legais: hero, índice, seções e avisos.
 // Cada seção: { id, title, body } — body é HTML montado com os helpers abaixo.
 
-export const p = (...paragraphs) => join(paragraphs, (t) => `<p>${t}</p>`);
+export const p = (...paragraphs) => join(paragraphs.filter(Boolean), (t) => `<p>${t}</p>`);
 export const h3 = (t) => `<h3>${t}</h3>`;
 export const list = (items) => `<ul class="legal-list">${join(items, (t) => `<li>${t}</li>`)}</ul>`;
 export const steps = (items) => `<ol class="legal-steps">${join(items, (t) => `<li>${t}</li>`)}</ol>`;

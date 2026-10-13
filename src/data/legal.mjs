@@ -10,11 +10,10 @@ export const LEGAL = {
   // Encarregado pelo tratamento de dados: [ENCARREGADO NÃO DEFINIDO / VALIDAR COM O ESCRITÓRIO].
   // Não há nome confirmado; a Política não indica encarregado enquanto for null.
   dpo: null,
-  // O e-mail público (SITE.email) só passa a ser apresentado como canal de privacidade
-  // depois da aprovação do escritório. Até lá, a Política indica telefone e sede.
-  privacyChannelApproved: false,
-  // [CONFIRMAR PROVEDOR DE HOSPEDAGEM] — a Política não nomeia fornecedor.
-  hostingProvider: PENDING,
+  // E-mail público (SITE.email) aprovado pelo escritório como canal de privacidade (LGPD).
+  privacyChannelApproved: true,
+  // Provedor de hospedagem confirmado pelo escritório.
+  hostingProvider: "Hostinger",
   // Texto provisório; não definir foro exclusivo sem validação do escritório.
   lawAndForum:
     "Estes Termos são regidos pelas leis da República Federativa do Brasil. Eventuais controvérsias serão submetidas ao foro competente, observadas as normas legais aplicáveis.",
@@ -34,7 +33,9 @@ export const DATA_FLOWS = {
 export const LEGAL_REVIEW = [
   !LEGAL.dpo && "[ENCARREGADO NÃO DEFINIDO / VALIDAR COM O ESCRITÓRIO] Se o escritório for agente de pequeno porte e não indicar encarregado, manter canal para titulares e ANPD (Política, seção 12)",
   !LEGAL.privacyChannelApproved && `Aprovar ${SITE.email} como canal de privacidade (LEGAL.privacyChannelApproved) (Política, seção 12)`,
-  isPending(LEGAL.hostingProvider) && "[CONFIRMAR PROVEDOR DE HOSPEDAGEM] e cookies técnicos definidos pelo servidor em produção (Política, seções 2, 7, 8 e 9)",
+  isPending(LEGAL.hostingProvider)
+    ? "[CONFIRMAR PROVEDOR DE HOSPEDAGEM] e cookies técnicos definidos pelo servidor em produção (Política, seções 2, 7, 8 e 9)"
+    : `Confirmar no painel da ${LEGAL.hostingProvider} a região do servidor (data center) e se o servidor define cookies técnicos (Política, seções 7 e 9)`,
   "Bases legais por finalidade, em especial para dados sensíveis enviados espontaneamente (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
   "Aplicabilidade do art. 15 do Marco Civil (guarda de registros de acesso) ao escritório (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
   "Foro: texto provisório sem foro exclusivo (Termos, seção 15) [VALIDAR FORO COM O ESCRITÓRIO]",

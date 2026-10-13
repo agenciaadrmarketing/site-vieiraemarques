@@ -9,6 +9,7 @@ import { legalPage, p, h3, list, steps, callout, table } from "../partials/legal
 export default function politicaDePrivacidade() {
   const sede = SITE.units[0];
   const { forms, leadSheet: sheet } = DATA_FLOWS;
+  const hosting = isPending(LEGAL.hostingProvider) ? "" : esc(LEGAL.hostingProvider);
   const mail = `<a class="text-link" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`;
   const phone = `<a class="text-link" href="${SITE.phone.href}">${SITE.phone.display}</a>`;
   const terms = `<a class="text-link" href="${LEGAL_PATHS.terms}">Termos de Uso</a>`;
@@ -57,7 +58,7 @@ export default function politicaDePrivacidade() {
           : "") +
         h3("Dados técnicos da conexão") +
         p(
-          "Para exibir as páginas, o servidor de hospedagem recebe dados técnicos da conexão, como endereço IP, data e hora, página solicitada e tipo de navegador. Esses registros podem ser mantidos pelo provedor de hospedagem por razões de segurança e funcionamento, conforme as regras aplicáveis."
+          `Para exibir as páginas, o servidor de hospedagem${hosting ? ` (${hosting})` : ""} recebe dados técnicos da conexão, como endereço IP, data e hora, página solicitada e tipo de navegador. Esses registros podem ser mantidos pelo provedor de hospedagem por razões de segurança e funcionamento, conforme as regras aplicáveis.`
         ),
     },
     {
@@ -162,7 +163,9 @@ export default function politicaDePrivacidade() {
       body:
         p("Os dados são compartilhados somente na medida necessária para as finalidades descritas:") +
         list([
-          "<strong>Hospedagem</strong> — o provedor que mantém o site no ar recebe os dados técnicos da conexão;",
+          hosting
+            ? `<strong>Hospedagem</strong> — a ${hosting}, empresa que mantém o site no ar, recebe os dados técnicos da conexão;`
+            : "<strong>Hospedagem</strong> — o provedor que mantém o site no ar recebe os dados técnicos da conexão;",
           ...(sheet ? ["<strong>Ferramentas de produtividade em nuvem</strong> — a planilha e o e-mail usados para registrar e organizar os contatos recebidos;"] : []),
           "<strong>Mensageria</strong> — o WhatsApp, quando você opta por continuar a conversa por ele;",
           "<strong>Autoridades</strong> — quando houver obrigação legal, ordem judicial ou necessidade de defesa de direitos.",
@@ -172,7 +175,10 @@ export default function politicaDePrivacidade() {
       id: "transferencia",
       title: "Transferência internacional",
       body: p(
-        `Alguns serviços utilizados${sheet ? " — como o WhatsApp e as ferramentas de planilha e e-mail em nuvem —" : ", como o WhatsApp,"} são operados por empresas que podem processar dados em servidores localizados fora do Brasil. Nesses casos, a transferência ocorre nas hipóteses admitidas pela LGPD e conforme as garantias oferecidas por esses fornecedores.`
+        `Alguns serviços utilizados${sheet ? " — como o WhatsApp e as ferramentas de planilha e e-mail em nuvem —" : ", como o WhatsApp,"} são operados por empresas que podem processar dados em servidores localizados fora do Brasil. Nesses casos, a transferência ocorre nas hipóteses admitidas pela LGPD e conforme as garantias oferecidas por esses fornecedores.`,
+        hosting
+          ? `A hospedagem do site é contratada com a ${hosting}, que mantém servidores em diferentes países. Conforme a infraestrutura utilizada, os dados técnicos da conexão podem ser processados fora do Brasil, nas mesmas condições.`
+          : ""
       ),
     },
     {
@@ -209,7 +215,10 @@ export default function politicaDePrivacidade() {
       title: "Como falar conosco sobre seus dados",
       body:
         (LEGAL.privacyChannelApproved
-          ? p(`Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato pelo e-mail ${mail}, indicando no assunto “Privacidade”. Também é possível usar o telefone ${phone}.`)
+          ? p(
+              `Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato pelo e-mail ${mail}, indicando no assunto “Privacidade”. Também é possível usar o telefone ${phone} (${esc(SITE.hours.toLowerCase())}).`,
+              "Esse é o canal do escritório para assuntos de proteção de dados pessoais, inclusive para comunicações da Autoridade Nacional de Proteção de Dados (ANPD)."
+            )
           : p(`Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato com o escritório pelo telefone ${phone} (${esc(SITE.hours.toLowerCase())}) ou na sede indicada na seção 1, informando que o assunto é privacidade e dados pessoais.`)) +
         p("Para proteger seus dados, poderemos pedir informações que confirmem sua identidade antes de atender à solicitação."),
     },
