@@ -4,6 +4,7 @@ const svg = (body, size = 16, extra = "") =>
 export const icon = {
   arrow: (s) => svg('<path d="M5 12h14M13 6l6 6-6 6"/>', s),
   arrowUpRight: (s) => svg('<path d="M7 17L17 7M8 7h9v9"/>', s),
+  chevronDown: (s) => svg('<path d="M6 9l6 6 6-6"/>', s),
   plus: (s) => svg('<path d="M12 5v14M5 12h14"/>', s),
   check: (s) => svg('<path d="M5 12.5l4.2 4.2L19 7"/>', s),
   pin: (s) => svg('<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>', s),

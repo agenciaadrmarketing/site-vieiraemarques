@@ -2,6 +2,7 @@ import { esc, attrs, join, jsonLd, when } from "../lib/html.mjs";
 import { SITE, NAV, isPending, whatsappUrl, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
 import { LEGAL_PATHS } from "../data/legal.mjs";
+import { MENUS } from "../data/menu.mjs";
 import { img, logo } from "./media.mjs";
 import { icon } from "./icons.mjs";
 import images from "../data/images.json" with { type: "json" };
@@ -83,8 +84,46 @@ ${jsonLd({ "@context": "https://schema.org", "@graph": graph })}
 </head>`;
 }
 
-const navLinks = (current, cls) =>
-  join(NAV, (item) => `<li><a class="${cls}" href="${item.href}"${when(item.href === current, ' aria-current="page"')}>${esc(item.label)}</a></li>`);
+// Menu principal com submenus (inspirado no "morphing island navbar"): no desktop,
+// um único fundo flutuante se ajusta ao painel ativo e uma pílula acompanha o item
+// sob o mouse. Item = link (navega) + botão (abre o submenu), padrão "disclosure".
+const ext = (it) => (it.external ? ' target="_blank" rel="noopener"' : "");
+const menuPanel = (m) => `<div class="nav__panel${m.wide ? " nav__panel--wide" : ""}" id="submenu-${m.id}" data-nav-panel>
+  <div class="nav__panel-main">
+    <p class="nav__panel-heading">${esc(m.heading)}</p>
+    ${when(m.sub, `<p class="nav__panel-sub">${esc(m.sub)}</p>`)}
+    <ul class="nav__panel-list">${join(m.items, (it) => `<li><a class="nav__panel-link" href="${esc(it.href)}"${ext(it)}>${when(it.num, `<span class="nav__panel-num">${it.num}</span>`)}<span class="nav__panel-text"><span class="nav__panel-title">${esc(it.title)}${it.external ? ' <span aria-hidden="true">↗</span>' : ` ${icon.arrow(12)}`}</span><span class="nav__panel-desc">${esc(it.desc)}</span></span></a></li>`)}</ul>
+  </div>
+  ${m.aside ? `<div class="nav__panel-aside">
+    <p class="nav__panel-heading">${esc(m.aside.heading)}</p>
+    <ul class="nav__panel-list">${join(m.aside.items, (it) => `<li><a class="nav__panel-link nav__panel-link--compact" href="${esc(it.href)}"><span class="nav__panel-text"><span class="nav__panel-title">${esc(it.title)} ${icon.arrow(12)}</span><span class="nav__panel-desc">${esc(it.desc)}</span></span></a></li>`)}</ul>
+  </div>` : ""}
+  ${m.footer ? `<div class="nav__panel-foot"><span>${esc(m.footer.text)}</span><a href="${esc(m.footer.href)}"${ext(m.footer)}>${esc(m.footer.label)} <span aria-hidden="true">${m.footer.external ? "↗" : "→"}</span></a></div>` : ""}
+</div>`;
+
+const navLinks = (current) =>
+  join(NAV, (item) => {
+    const m = MENUS[item.href];
+    const cur = when(item.href === current, ' aria-current="page"');
+    if (!m) return `<li class="nav__item" data-nav-item><a class="nav__link" href="${item.href}"${cur}>${esc(item.label)}</a></li>`;
+    return `<li class="nav__item nav__item--menu" data-nav-item>
+      <a class="nav__link" href="${item.href}"${cur}>${esc(item.label)}</a><button class="nav__toggle" type="button" aria-expanded="false" aria-controls="submenu-${m.id}" data-nav-toggle><span class="sr-only">Submenu de ${esc(item.label)}</span>${icon.chevronDown(14)}</button>
+      ${menuPanel(m)}
+    </li>`;
+  });
+
+const mobileLinks = (current) =>
+  join(NAV, (item, i) => {
+    const m = MENUS[item.href];
+    const cur = when(item.href === current, ' aria-current="page"');
+    const link = `<a href="${item.href}"${cur}>${esc(item.label)}<span>0${i + 1}</span></a>`;
+    if (!m) return `<li>${link}</li>`;
+    const li = (it) => `<li><a href="${esc(it.href)}"${ext(it)}>${esc(it.title)}</a></li>`;
+    return `<li class="mobile-menu__item">
+      <div class="mobile-menu__row">${link}<button class="mobile-menu__toggle" type="button" aria-expanded="false" aria-controls="mm-${m.id}" data-mm-toggle><span class="sr-only">Submenu de ${esc(item.label)}</span>${icon.plus(18)}</button></div>
+      <ul class="mobile-menu__sub" id="mm-${m.id}" hidden>${join(m.items, li)}${m.aside ? `<li class="mobile-menu__sub-label" aria-hidden="true">${esc(m.aside.heading)}</li>${join(m.aside.items, li)}` : ""}</ul>
+    </li>`;
+  });
 
 function header(current) {
   return `<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -100,8 +139,10 @@ function header(current) {
 <header class="site-header" data-header>
   <div class="container site-header__bar">
     <a class="site-header__logo" href="/" aria-label="${esc(SITE.name)} — página inicial">${logo("claro", 170)}</a>
-    <nav class="nav" aria-label="Principal">
-      <ul class="nav__list">${navLinks(current, "nav__link")}</ul>
+    <nav class="nav" aria-label="Principal" data-nav>
+      <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+      <span class="nav__surface" aria-hidden="true" data-nav-surface></span>
+      <ul class="nav__list">${navLinks(current)}</ul>
     </nav>
     <a class="btn btn--light btn--plain site-header__cta" href="/contato/">Falar com a equipe</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" data-menu-toggle>
@@ -113,7 +154,7 @@ function header(current) {
   <div class="container">
     <nav aria-label="Menu">
       <ul class="mobile-menu__list">
-        ${join(NAV, (item, i) => `<li><a href="${item.href}"${when(item.href === current, ' aria-current="page"')}>${esc(item.label)}<span>0${i + 1}</span></a></li>`)}
+        ${mobileLinks(current)}
       </ul>
     </nav>
     <div class="mobile-menu__foot">

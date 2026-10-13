@@ -143,6 +143,96 @@
     });
   }
 
+  /* ---------- Submenus do cabeçalho ---------- */
+  // Desktop: abre por hover (com tolerância), clique no botão ou teclado; Esc fecha.
+  // O fundo único se ajusta ao painel ativo (efeito "morphing island").
+  function initNav() {
+    var nav = document.querySelector("[data-nav]");
+    if (!nav) return;
+    var items = [].slice.call(nav.querySelectorAll("[data-nav-item]"));
+    var open = null;
+    var closeTimer = null;
+
+    function setState(item, on) {
+      var btn = item.querySelector("[data-nav-toggle]");
+      var panel = item.querySelector("[data-nav-panel]");
+      if (btn) btn.setAttribute("aria-expanded", String(on));
+      if (panel) panel.classList.toggle("is-open", on);
+    }
+    function movePill(item) {
+      var n = nav.getBoundingClientRect();
+      var r = item.getBoundingClientRect();
+      nav.style.setProperty("--pill-x", (r.left - n.left) + "px");
+      nav.style.setProperty("--pill-w", r.width + "px");
+      nav.setAttribute("data-pill", "");
+    }
+    function place(item, panel) {
+      var n = nav.getBoundingClientRect();
+      var r = item.getBoundingClientRect();
+      var w = panel.offsetWidth;
+      var vw = document.documentElement.clientWidth;
+      var x = r.left + r.width / 2 - n.left - w / 2;
+      x = Math.max(16 - n.left, Math.min(x, vw - 16 - n.left - w));
+      panel.style.setProperty("--px", x + "px");
+      nav.style.setProperty("--sf-x", x + "px");
+      nav.style.setProperty("--sf-w", w + "px");
+      nav.style.setProperty("--sf-h", panel.offsetHeight + "px");
+    }
+    function closeAll() {
+      clearTimeout(closeTimer);
+      if (open) setState(open, false);
+      open = null;
+      nav.removeAttribute("data-open");
+    }
+    function openMenu(item) {
+      clearTimeout(closeTimer);
+      var panel = item.querySelector("[data-nav-panel]");
+      if (!panel) { closeAll(); return; }
+      if (open === item) return;
+      var first = !open;
+      if (open) setState(open, false);
+      if (first) nav.setAttribute("data-instant", "");
+      place(item, panel);
+      setState(item, true);
+      nav.setAttribute("data-open", "");
+      open = item;
+      if (first) requestAnimationFrame(function () { requestAnimationFrame(function () { nav.removeAttribute("data-instant"); }); });
+    }
+    function closeSoon(ms) { clearTimeout(closeTimer); closeTimer = setTimeout(closeAll, ms); }
+
+    items.forEach(function (item) {
+      item.addEventListener("mouseenter", function () { movePill(item); openMenu(item); });
+      var btn = item.querySelector("[data-nav-toggle]");
+      if (btn) btn.addEventListener("click", function () {
+        if (open === item) closeAll();
+        else { openMenu(item); var first = item.querySelector("[data-nav-panel] a"); if (first && btn.matches(":focus-visible")) first.focus(); }
+      });
+    });
+    nav.addEventListener("mouseenter", function () { clearTimeout(closeTimer); });
+    nav.addEventListener("mouseleave", function () { nav.removeAttribute("data-pill"); closeSoon(160); });
+    nav.addEventListener("focusout", function (e) { if (open && !nav.contains(e.relatedTarget)) closeAll(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape" || !open) return;
+      var btn = open.querySelector("[data-nav-toggle]");
+      closeAll();
+      if (btn) btn.focus();
+    });
+    document.addEventListener("click", function (e) { if (open && !nav.contains(e.target)) closeAll(); });
+    window.addEventListener("resize", closeAll);
+  }
+
+  // Mobile: acordeão dos submenus.
+  function initMobileSubmenus() {
+    document.querySelectorAll("[data-mm-toggle]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var sub = document.getElementById(btn.getAttribute("aria-controls"));
+        var on = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", String(on));
+        if (sub) sub.hidden = !on;
+      });
+    });
+  }
+
   /* ---------- Revelação suave ---------- */
   // Contêineres cujos itens entram em cascata e mídias que entram com leve aproximação.
   var STAGGER = ".section-head > .stack-sm, .svc-head, .area-index, .services, .steps, .facts, .principles, .cards-grid, .article-list, " +
@@ -646,6 +736,8 @@
   initLoader();
   initSmoothScroll();
   initMenu();
+  initNav();
+  initMobileSubmenus();
   initReveal();
   initFloat();
   initHub();

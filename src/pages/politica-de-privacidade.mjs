@@ -142,7 +142,7 @@ export default function politicaDePrivacidade() {
       title: "Cookies e tecnologias semelhantes",
       body:
         p(
-          "O site não cria cookies próprios e não utiliza, atualmente, ferramentas de análise de audiência, de publicidade, de mapas de calor ou de gravação de sessão — como Google Analytics, Google Tag Manager, Google Ads ou Meta Pixel. As fontes, imagens e scripts são servidos pelo próprio site, sem bibliotecas ou incorporações de terceiros."
+          "O site não cria cookies próprios e não utiliza, atualmente, ferramentas de análise de audiência, de publicidade, de mapas de calor ou de gravação de sessão — como Google Analytics, Google Tag Manager, Google Ads ou Meta Pixel. As fontes, as imagens e os scripts — inclusive a biblioteca de código aberto usada na rolagem suave — são servidos pelo próprio site, sem incorporações de serviços de terceiros."
         ) +
         (forms
           ? p("O site usa o armazenamento de sessão do navegador (sessionStorage), que é apagado quando a aba é fechada, para:") +
