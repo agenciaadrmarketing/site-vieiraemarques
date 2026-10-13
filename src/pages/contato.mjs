@@ -1,4 +1,5 @@
-import { lpSteps, lpCta, lpReach } from "../partials/lp.mjs";
+import { imgPreload } from "../partials/media.mjs";
+import { lpSteps, lpCta, lpReach, lpHero } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, isPending, whatsappUrl, waMessage } from "../data/site.mjs";
 import { practiceAreas } from "../data/areas.mjs";
@@ -24,22 +25,20 @@ export default function contato() {
   const sede = SITE.units[0];
 
   const body = `
-<section class="page-hero on-dark" aria-labelledby="page-titulo">
-  <div class="container">
-    ${breadcrumbs(CRUMBS)}
-    <div class="page-hero__grid">
-      <div class="stack">
-        <p class="eyebrow">Contato</p>
-        <h1 class="page-hero__title" id="page-titulo">Fale com <span class="grad">a equipe.</span></h1>
-      </div>
-      <div class="page-hero__aside">
-        <p class="lead">Descreva a sua situação em linguagem comum. A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao advogado responsável pela área.</p>
-      </div>
-    </div>
-  </div>
-</section>
+${lpHero({
+  crumbs: CRUMBS,
+  badge: "Contato · Sede em Boituva/SP",
+  title: `Fale com <span class="grad">a nossa equipe.</span>`,
+  text: "Descreva a sua situação em linguagem comum. A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao advogado responsável pela área.",
+  message: waMessage(),
+  cta: "Falar com a equipe",
+  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  image: "fachada",
+  alt: "Fachada do escritório Vieira & Marques em Boituva",
+  position: "55% 45%",
+})}
 
-<section class="section section--dark section--flush-top" aria-labelledby="${SITE.forms ? "formulario" : "whatsapp"}-titulo">
+<section class="section section--dark" aria-labelledby="${SITE.forms ? "formulario" : "whatsapp"}-titulo">
   <div class="container">
     <div class="split">
       <div class="stack" data-reveal>
@@ -93,6 +92,7 @@ ${lpReach()}`;
     description:
       "Fale com a Vieira & Marques: sede em Boituva, atendimento na região de Sorocaba e online em todo o Brasil. Telefone e WhatsApp (15) 3347-0189.",
     path: PATH,
+    preload: [imgPreload("fachada", "100vw")],
     crumbs: CRUMBS,
     floatingWhatsapp: SITE.forms,
     schema: [{ "@type": "ContactPage", name: "Contato", about: { "@id": "https://vieiraemarquesadvogados.com/#org" } }, faqSchema(faqAtendimento)],

@@ -1,4 +1,5 @@
-import { lpSteps, lpCta, lpReach, lpStructure } from "../partials/lp.mjs";
+import { imgPreload } from "../partials/media.mjs";
+import { lpSteps, lpCta, lpReach, lpStructure, lpHero } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { waMessage } from "../data/site.mjs";
 import { team, teamRecognitions } from "../data/team.mjs";
@@ -44,21 +45,19 @@ function profile(p) {
 
 export default function escritorio() {
   const body = `
-<section class="page-hero on-dark" aria-labelledby="page-titulo">
-  <div class="container">
-    ${breadcrumbs(CRUMBS)}
-    <div class="page-hero__grid">
-      <div class="stack">
-        <p class="eyebrow">O Escritório</p>
-        <h1 class="page-hero__title" id="page-titulo">Orientar antes de agir. <span class="grad">Agir com responsabilidade.</span></h1>
-      </div>
-      <div class="page-hero__aside">
-        <p class="lead">A Vieira &amp; Marques Sociedade de Advogados nasceu com o propósito de oferecer atendimento jurídico ético, eficiente e acolhedor — com sede em Boituva, atendimento na região de Sorocaba e online em todo o Brasil.</p>
-      </div>
-    </div>
-    <figure class="page-hero__media">${img("equipe", { alt: "Equipe de advogados da Vieira & Marques no escritório de Boituva", sizes: "(min-width: 1240px) 1180px, 100vw", priority: true, style: "object-position:50% 30%" })}</figure>
-  </div>
-</section>
+${lpHero({
+  crumbs: CRUMBS,
+  badge: "O Escritório · Boituva/SP",
+  title: `Orientar antes de agir. <span class="grad">Agir com responsabilidade.</span>`,
+  text: "A Vieira &amp; Marques Sociedade de Advogados nasceu com o propósito de oferecer atendimento jurídico ético, eficiente e acolhedor — com sede em Boituva, atendimento na região de Sorocaba e online em todo o Brasil.",
+  message: waMessage(),
+  cta: "Falar com a equipe",
+  secondary: { href: "#equipe", label: "Conheça a equipe" },
+  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  image: "equipe",
+  alt: "Equipe de advogados da Vieira & Marques no escritório de Boituva",
+  position: "50% 30%",
+})}
 
 <section class="section section--white" aria-labelledby="historia-titulo">
   <div class="container">
@@ -150,6 +149,7 @@ ${lpReach()}`;
     description:
       "História, forma de atuação, princípios e equipe da Vieira & Marques Sociedade de Advogados, com sede em Boituva, atendimento na região de Sorocaba e online.",
     path: PATH,
+    preload: [imgPreload("equipe", "100vw")],
     crumbs: CRUMBS,
     whatsappMessage: "Olá! Vim pelo site da Vieira & Marques, conheci o escritório e gostaria de orientação.",
     schema: [

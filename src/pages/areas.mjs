@@ -1,4 +1,5 @@
-import { lpCta, lpReach } from "../partials/lp.mjs";
+import { imgPreload } from "../partials/media.mjs";
+import { lpCta, lpReach, lpHero } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
 import { practiceAreas, areaUrl, areaHubAnchor } from "../data/areas.mjs";
@@ -69,21 +70,18 @@ ${lpReach()}`;
 export default function areas() {
   const allFaqs = practiceAreas.flatMap((a) => faqByArea[a.id] ?? []);
   const body = `
-<section class="page-hero on-dark" aria-labelledby="page-titulo">
-  <div class="container">
-    ${breadcrumbs(CRUMBS)}
-    <div class="page-hero__grid">
-      <div class="stack">
-        <p class="eyebrow">Áreas de atuação</p>
-        <h1 class="page-hero__title" id="page-titulo">Oito áreas do Direito, <span class="grad">organizadas pelo que você precisa resolver.</span></h1>
-      </div>
-      <div class="page-hero__aside">
-        <p class="lead">Cada área reúne as situações concretas que o escritório atende. Não sabe em qual delas o seu caso se encaixa? Descreva o que aconteceu — identificar o caminho faz parte da primeira análise.</p>
-        ${linkArrow("/contato/", "Falar com a equipe")}
-      </div>
-    </div>
-  </div>
-</section>
+${lpHero({
+  crumbs: CRUMBS,
+  badge: "Áreas de atuação · 8 áreas",
+  title: `Oito áreas do Direito, <span class="grad">organizadas pelo que você precisa resolver.</span>`,
+  text: "Cada área reúne as situações concretas que o escritório atende. Não sabe em qual delas o seu caso se encaixa? Descreva o que aconteceu — identificar o caminho faz parte da triagem inicial.",
+  message: waMessage(),
+  cta: "Falar com a equipe",
+  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  image: "escritorio-interno",
+  alt: "Ambiente interno do escritório Vieira & Marques em Boituva",
+  position: "60% 55%",
+})}
 
 <div class="section section--white">
   <div class="container hub">
@@ -104,6 +102,7 @@ export default function areas() {
     description:
       "Família, Sucessório, Trabalhista, Criminal, Médico e Saúde, Bancário, Imobiliário e Previdenciário: as áreas e os serviços da Vieira & Marques Advogados.",
     path: PATH,
+    preload: [imgPreload("escritorio-interno", "100vw")],
     crumbs: CRUMBS,
     schema: [
       {

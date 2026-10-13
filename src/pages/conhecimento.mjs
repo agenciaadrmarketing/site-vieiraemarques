@@ -1,4 +1,5 @@
-import { lpCta, lpReach } from "../partials/lp.mjs";
+import { imgPreload } from "../partials/media.mjs";
+import { lpCta, lpReach, lpHero } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaById, areaFaqUrl } from "../data/areas.mjs";
@@ -25,20 +26,19 @@ export default function conhecimento() {
     `<button class="chip" type="button" data-filter="${id}" aria-pressed="${pressed}">${esc(label)} <span class="chip__count">${n}</span></button>`;
 
   const body = `
-<section class="page-hero on-dark" aria-labelledby="page-titulo">
-  <div class="container">
-    ${breadcrumbs(CRUMBS)}
-    <div class="page-hero__grid">
-      <div class="stack">
-        <p class="eyebrow">Base de conhecimento</p>
-        <h1 class="page-hero__title" id="page-titulo">Informação jurídica para <span class="grad">decisões mais conscientes.</span></h1>
-      </div>
-      <div class="page-hero__aside">
-        <p class="lead">Artigos, perguntas frequentes e orientações escritas pela equipe do escritório, em linguagem direta. Conteúdo de caráter informativo: a avaliação de cada caso depende dos documentos e das circunstâncias concretas.</p>
-      </div>
-    </div>
-  </div>
-</section>
+${lpHero({
+  crumbs: CRUMBS,
+  badge: "Base de conhecimento",
+  title: `Informação jurídica para <span class="grad">decisões mais conscientes.</span>`,
+  text: "Artigos, perguntas frequentes e orientações escritas pela equipe do escritório, em linguagem direta. Conteúdo de caráter informativo: a avaliação de cada caso depende dos documentos e das circunstâncias concretas.",
+  message: waMessage(),
+  cta: "Falar com a equipe",
+  secondary: { href: "#conteudos-titulo", label: "Ver conteúdos" },
+  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  image: "mesa-trabalho",
+  alt: "Mesa de trabalho do escritório Vieira & Marques",
+  position: "55% 50%",
+})}
 
 <section class="section section--white" aria-labelledby="conteudos-titulo" data-filter-scope>
   <div class="container">
@@ -110,6 +110,7 @@ ${lpReach()}`;
     description:
       "Artigos e perguntas frequentes sobre Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário, pela equipe da Vieira & Marques.",
     path: PATH,
+    preload: [imgPreload("mesa-trabalho", "100vw")],
     crumbs: CRUMBS,
     whatsappMessage: "Olá! Vim pela Base de Conhecimento do site da Vieira & Marques e gostaria de orientação sobre o meu caso.",
     schema: [
