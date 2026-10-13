@@ -33,6 +33,14 @@ SOURCES = {
     "leticia-pereira-de-abreu": (f"{SRC}/leticia-pereira-de-abreu-advogada.webp", [360, 600, 900], "leticia-pereira-de-abreu-advogada"),
     "gledie-camargo": (f"{SRC}/gledie-camargo-advogada.webp", [360, 600, 900], "gledie-camargo-advogada"),
     "natalia-okumura": (f"{SRC}/natalia-okumura-advogada.webp", [360, 600], "natalia-okumura-advogada"),
+    "hero-trabalhista": (f"{SRC}/tema-trabalhista-carteira-de-trabalho.webp", [480, 800, 1280, 1920], "advogado-direito-do-trabalho-carteira-de-trabalho-boituva"),
+    "textura-trabalhista": (f"{SRC}/tema-trabalhista-livros-e-ctps.webp", [640], "direito-do-trabalho-livros-ctps"),
+    "textura-trabalhista-2": (f"{SRC}/tema-trabalhista-balanca-e-relogio.webp", [640], "direito-do-trabalho-balanca-relogio"),
+    "hero-bancario": (f"{SRC}/tema-bancario-contrato-de-financiamento.webp", [480, 800, 1280, 1672], "advogado-direito-bancario-revisao-financiamento-boituva"),
+    "tema-pix": (f"{SRC}/tema-bancario-golpe-do-pix.webp", [480, 800, 1280], "advogado-golpe-do-pix-boituva"),
+    "hero-familia": (f"{SRC}/tema-familia-divorcio-acordo-partilha-guarda.webp", [480, 800, 1280, 1920], "advogado-divorcio-acordo-partilha-guarda-boituva"),
+    "tema-familia-consulta": (f"{SRC}/tema-familia-atendimento-casal.webp", [480, 800, 1400], "advogado-direito-de-familia-atendimento"),
+    "tema-familia-aliancas": (f"{SRC}/tema-familia-aliancas.webp", [480, 800, 1400], "divorcio-pensao-alimenticia-guarda-aliancas"),
 }
 
 
@@ -107,6 +115,8 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     # Saída 100% gerada: limpa variantes antigas antes de gerar.
     for f in os.listdir(OUT_DIR):
+        if f.endswith(".svg"):  # mapa gerado por src/tools/mapa-sp.mjs
+            continue
         os.remove(os.path.join(OUT_DIR, f))
     manifest = {name: save_variants(src, widths, slug) for name, (src, widths, slug) in SOURCES.items()}
     manifest.update(logo_variants())

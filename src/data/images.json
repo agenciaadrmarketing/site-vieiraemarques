@@ -346,6 +346,169 @@
       }
     ]
   },
+  "hero-trabalhista": {
+    "width": 1920,
+    "height": 1077,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-480.webp",
+        "w": 480,
+        "h": 269
+      },
+      {
+        "src": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-800.webp",
+        "w": 800,
+        "h": 449
+      },
+      {
+        "src": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-1280.webp",
+        "w": 1280,
+        "h": 718
+      },
+      {
+        "src": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-1920.webp",
+        "w": 1920,
+        "h": 1077
+      }
+    ]
+  },
+  "textura-trabalhista": {
+    "width": 1920,
+    "height": 1077,
+    "variants": [
+      {
+        "src": "/assets/img/direito-do-trabalho-livros-ctps-640.webp",
+        "w": 640,
+        "h": 359
+      }
+    ]
+  },
+  "textura-trabalhista-2": {
+    "width": 1920,
+    "height": 1077,
+    "variants": [
+      {
+        "src": "/assets/img/direito-do-trabalho-balanca-relogio-640.webp",
+        "w": 640,
+        "h": 359
+      }
+    ]
+  },
+  "hero-bancario": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-480.webp",
+        "w": 480,
+        "h": 270
+      },
+      {
+        "src": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-1280.webp",
+        "w": 1280,
+        "h": 720
+      },
+      {
+        "src": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-1672.webp",
+        "w": 1672,
+        "h": 941
+      }
+    ]
+  },
+  "tema-pix": {
+    "width": 1920,
+    "height": 1072,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-golpe-do-pix-boituva-480.webp",
+        "w": 480,
+        "h": 268
+      },
+      {
+        "src": "/assets/img/advogado-golpe-do-pix-boituva-800.webp",
+        "w": 800,
+        "h": 447
+      },
+      {
+        "src": "/assets/img/advogado-golpe-do-pix-boituva-1280.webp",
+        "w": 1280,
+        "h": 715
+      }
+    ]
+  },
+  "hero-familia": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-480.webp",
+        "w": 480,
+        "h": 270
+      },
+      {
+        "src": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-1280.webp",
+        "w": 1280,
+        "h": 720
+      },
+      {
+        "src": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-1920.webp",
+        "w": 1920,
+        "h": 1080
+      }
+    ]
+  },
+  "tema-familia-consulta": {
+    "width": 1400,
+    "height": 781,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-direito-de-familia-atendimento-480.webp",
+        "w": 480,
+        "h": 268
+      },
+      {
+        "src": "/assets/img/advogado-direito-de-familia-atendimento-800.webp",
+        "w": 800,
+        "h": 446
+      },
+      {
+        "src": "/assets/img/advogado-direito-de-familia-atendimento-1400.webp",
+        "w": 1400,
+        "h": 781
+      }
+    ]
+  },
+  "tema-familia-aliancas": {
+    "width": 1400,
+    "height": 781,
+    "variants": [
+      {
+        "src": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-480.webp",
+        "w": 480,
+        "h": 268
+      },
+      {
+        "src": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-800.webp",
+        "w": 800,
+        "h": 446
+      },
+      {
+        "src": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-1400.webp",
+        "w": 1400,
+        "h": 781
+      }
+    ]
+  },
   "logo-escuro": {
     "src": "/assets/img/logo-vieira-marques-advogados-preto-400.webp",
     "w": 603,

@@ -101,9 +101,9 @@ export const LP_STEPS = [
 
 const PIN = `<svg class="lp-pin__icon" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 3a1 1 0 0 1 .117 1.993l-.117 .007v4.764l1.894 3.789a1 1 0 0 1 .1 .331l.006 .116v2a1 1 0 0 1 -.883 .993l-.117 .007h-4v4a1 1 0 0 1 -1.993 .117l-.007 -.117v-4h-4a1 1 0 0 1 -.993 -.883l-.007 -.117v-2a1 1 0 0 1 .06 -.34l.046 -.107l1.894 -3.791v-4.762a1 1 0 0 1 -.117 -1.993l.117 -.007h8z"/></svg>`;
 
-export function lpSteps({ id = "como-funciona", eyebrow = "Como funciona", title = `O caminho do <span class="grad">primeiro contato à definição do caso.</span>`, lead = "O primeiro contato é feito com a equipe de atendimento, que organiza as informações e encaminha o caso. O envio da mensagem não constitui contratação.", steps = LP_STEPS, tone = "muted" } = {}) {
+export function lpSteps({ id = "como-funciona", eyebrow = "Como funciona", title = `O caminho do <span class="grad">primeiro contato à definição do caso.</span>`, lead = "O primeiro contato é feito com a equipe de atendimento, que organiza as informações e encaminha o caso. O envio da mensagem não constitui contratação.", steps = LP_STEPS, tone = "muted", tex = "sala-reuniao" } = {}) {
   return `<section class="lp-sec lp-sec--${tone} lp-steps" id="${id}" aria-labelledby="${id}-titulo">
-  ${tone === "muted" ? texture("sala-reuniao") : ""}
+  ${tone === "muted" ? texture(tex) : ""}
   <div class="container">
     ${lpHead({ eyebrow, title, lead, id: `${id}-titulo` })}
     <div class="lp-pins">
@@ -121,6 +121,57 @@ export function lpSteps({ id = "como-funciona", eyebrow = "Como funciona", title
         </li>`)}
       </ol>
     </div>
+  </div>
+</section>`;
+}
+
+/* ---------- Documentos (a "principal prova" das LPs) ---------- */
+// Texto, lista e CTA à esquerda; à direita, a imagem em destaque (livro 3D para a CTPS).
+export function lpProof({ id = "documentos", eyebrow = "Antes da primeira conversa", title, text, points, message, cta = "Enviar documentos para análise inicial", image, alt, book = false, tex }) {
+  return `<section class="lp-sec lp-sec--dark lp-proof on-dark" id="${id}" aria-labelledby="${id}-titulo">
+  ${tex ? texture(tex) : ""}
+  <div class="container">
+    <div class="lp-split lp-split--proof">
+      <div>
+        ${lpHead({ eyebrow, title, lead: text, id: `${id}-titulo`, align: "left" })}
+        <div data-reveal>
+          ${dots(points.map(esc))}
+          <div class="lp-proof__cta">${waButton(message, cta, { cta: "documentos" })}</div>
+        </div>
+      </div>
+      <div class="lp-proof__visual" data-reveal>
+        ${book
+          ? `<div class="lp-book"><div class="lp-book__inner"><div class="lp-book__cover">${img(image, { alt, sizes: "300px" })}</div><div class="lp-book__pages" aria-hidden="true"></div></div></div>`
+          : `<figure class="lp-proof__frame">${img(image, { alt, sizes: "(min-width: 940px) 520px, 100vw" })}</figure>`}
+      </div>
+    </div>
+  </div>
+</section>`;
+}
+
+/* ---------- Sobre (advogado responsável) ---------- */
+// Foto grande de quem responde pela área, como na seção "Sobre" das LPs, seguida dos
+// painéis com toda a equipe. Sem profissional definido, mostra a foto da equipe.
+export function lpAbout({ id = "equipe", person, areaTitle, people, points = ["Atendimento humanizado, ético e sigiloso.", "Análise dos documentos antes de qualquer medida judicial.", "Prazos, etapas e riscos explicados em linguagem direta."] }) {
+  const title = person
+    ? `${esc(person.name)} — <span class="grad">${esc(areaTitle)}</span>`
+    : `Advogados inscritos na OAB/SP, <span class="grad">com área de atuação definida.</span>`;
+  const text = person
+    ? `${esc(person.role)} · ${esc(person.oab)}. ${esc(person.bio)} O primeiro contato é feito com a equipe de atendimento, que encaminha o caso ao profissional responsável.`
+    : "Cada área tem profissionais que respondem por ela. O primeiro contato é feito com a equipe de atendimento, que organiza as informações e encaminha o caso ao advogado responsável.";
+  return `<section class="lp-sec lp-sec--dark lp-about lp-team on-dark" id="${id}" aria-labelledby="${id}-titulo">
+  <div class="container">
+    <div class="lp-split lp-split--about">
+      <figure class="lp-about__photo" data-reveal>${person
+        ? img(person.photo, { alt: `${person.name}, ${person.role.toLowerCase()} da Vieira & Marques`, sizes: "(min-width: 940px) 448px, 90vw", style: `object-position:${person.positionActive ?? "50% 25%"}` })
+        : img("equipe", { alt: "Equipe da Vieira & Marques reunida na sede, em Boituva", sizes: "(min-width: 940px) 448px, 90vw", style: "object-position:50% 35%" })}</figure>
+      <div>
+        ${lpHead({ eyebrow: "Segurança e experiência jurídica", title, lead: text, id: `${id}-titulo`, align: "left" })}
+        <div data-reveal>${dots(points.map(esc))}</div>
+      </div>
+    </div>
+    <h3 class="lp-about__team">Conheça toda a equipe</h3>
+    ${teamPanels(people, { profileLinks: true, headingLevel: 4 })}
   </div>
 </section>`;
 }

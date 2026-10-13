@@ -10,7 +10,7 @@ import { page } from "../partials/layout.mjs";
 import { imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
 import { faqSchema, articleRow } from "../partials/components.mjs";
-import { lpHero, lpServices, lpSteps, lpTeam, lpStructure, lpCta, lpSignals, lpReach, lpFaq, lpHead, lpOtherAreas } from "../partials/lp.mjs";
+import { lpHero, lpServices, lpSteps, lpProof, lpAbout, lpStructure, lpCta, lpSignals, lpReach, lpFaq, lpHead, lpOtherAreas } from "../partials/lp.mjs";
 
 // Página própria de cada área (página-pilar), no mesmo desenho das landing pages
 // publicadas: hero com a pergunta do cliente, serviços, como funciona, equipe,
@@ -72,19 +72,14 @@ ${lpServices({
     : "Fale com a equipe sobre a sua situação: a análise começa pelos fatos e documentos.",
   items: services,
   cta: { ...lp.servicesCta, message: msg },
+  ...(lp.tex ? { texture: lp.tex } : {}),
 })}
 
-${lpSteps()}
+${lpProof({ ...lp.proof, message: waMessage(`${area.title} e quero enviar documentos para análise inicial`), tex: lp.tex })}
 
-${lpTeam({
-  title: people.length
-    ? `Quem responde por <span class="grad">${esc(area.title)}.</span>`
-    : `Quem conduz <span class="grad">o atendimento.</span>`,
-  text: people.length
-    ? `Em ${esc(area.title)}: ${esc(people.map((p) => p.name).join(", "))}. Conheça também o restante da equipe — formação, inscrição na OAB e temas de atuação à vista.`
-    : "Formação, inscrição na OAB e temas de atuação de cada profissional — informação verificável.",
-  people: [...people, ...team.filter((p) => !people.includes(p))],
-})}
+${lpSteps(lp.stepsTex ? { tex: lp.stepsTex } : {})}
+
+${lpAbout({ person: people[0], areaTitle: area.title, people: [...people, ...team.filter((p) => !people.includes(p))] })}
 
 ${lpStructure()}
 
