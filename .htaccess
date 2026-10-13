@@ -29,6 +29,7 @@ ErrorDocument 404 /404.html
   RewriteRule ^areas/direito-previdenciario/?$ /areas-de-atuacao/#previdenciario [R=302,NE,L]
 
   # URLs institucionais anteriores.
+  RewriteRule ^privacidade/?$ /politica-de-privacidade/ [R=301,L]
   RewriteRule ^sobre-nos/?$ /escritorio/ [R=301,L]
   RewriteRule ^o-escritorio/?$ /escritorio/ [R=301,L]
   RewriteRule ^equipe/?$ /escritorio/#equipe [R=301,NE,L]

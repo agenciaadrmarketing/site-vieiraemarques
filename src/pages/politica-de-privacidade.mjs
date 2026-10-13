@@ -1,0 +1,228 @@
+import { esc } from "../lib/html.mjs";
+import { SITE, isPending } from "../data/site.mjs";
+import { LEGAL, DATA_FLOWS, LEGAL_PATHS } from "../data/legal.mjs";
+import { legalPage, p, h3, list, steps, callout, table } from "../partials/legal.mjs";
+
+// Texto baseado na auditoria do código do site (formulário, armazenamento de sessão,
+// ausência de cookies próprios e de ferramentas de medição). Ao mudar o funcionamento
+// do site, atualizar DATA_FLOWS em src/data/legal.mjs e esta página.
+export default function politicaDePrivacidade() {
+  const sede = SITE.units[0];
+  const sheet = DATA_FLOWS.leadSheet;
+  const mail = `<a class="text-link" href="mailto:${esc(LEGAL.privacyEmail)}">${esc(LEGAL.privacyEmail)}</a>`;
+  const phone = `<a class="text-link" href="${SITE.phone.href}">${SITE.phone.display}</a>`;
+  const terms = `<a class="text-link" href="${LEGAL_PATHS.terms}">Termos de Uso</a>`;
+
+  const sections = [
+    {
+      id: "controlador",
+      title: "Quem é responsável pelos seus dados",
+      body:
+        p(
+          `A <strong>${esc(SITE.name)}</strong> é a controladora dos dados pessoais tratados por meio deste site, ou seja, é quem decide como e para que esses dados são utilizados.`
+        ) +
+        list([
+          `Endereço: ${esc(sede.street)}, ${esc(sede.district)}, ${esc(sede.city)}/${esc(sede.region)}, CEP ${esc(sede.postalCode)}`,
+          ...(isPending(LEGAL.cnpj) ? [] : [`CNPJ: ${esc(LEGAL.cnpj)}`]),
+          `E-mail: ${mail}`,
+          `Telefone: ${phone}`,
+        ]),
+    },
+    {
+      id: "dados",
+      title: "Quais dados podem ser tratados",
+      body:
+        h3("Dados que você informa") +
+        p("Ao preencher um formulário do site, você informa:") +
+        list([
+          "nome e número de WhatsApp;",
+          "e-mail, cidade e estado, se quiser informá-los;",
+          "o assunto ou a área de interesse;",
+          "as respostas às perguntas da página — por exemplo, se já houve desligamento da empresa, o tipo de contrato ou a faixa de valor envolvida;",
+          "a mensagem que você escrever.",
+        ]) +
+        h3("Dados sobre a origem do acesso") +
+        p(
+          "Para identificar como o contato chegou ao site, o navegador guarda, durante a sessão, a primeira página acessada, o endereço da página anterior (quando o navegador o informa) e, se estiverem presentes no link, parâmetros de campanha: utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid e fbclid.",
+          sheet
+            ? "Essas informações são enviadas ao escritório junto com o formulário, além do título e do endereço da página em que ele foi preenchido e da data e hora do envio."
+            : "Atualmente, essas informações permanecem no seu navegador e não são enviadas ao escritório."
+        ) +
+        h3("Dados técnicos da conexão") +
+        p(
+          "Para exibir as páginas, o servidor de hospedagem recebe dados técnicos da conexão, como endereço IP, data e hora, página solicitada e tipo de navegador. Esses registros podem ser mantidos pelo provedor de hospedagem por razões de segurança e funcionamento, conforme as regras aplicáveis."
+        ),
+    },
+    {
+      id: "sensiveis",
+      title: "Informações sensíveis e dados de terceiros",
+      body:
+        p(
+          "Por se tratar de um escritório de advocacia, uma mensagem pode envolver situações pessoais, de saúde, familiares ou financeiras. O formulário serve apenas para o primeiro contato: o necessário é uma descrição breve, suficiente para entender o assunto."
+        ) +
+        callout(
+          "Antes de enviar",
+          p(
+            "Evite enviar, pelo formulário inicial, documentos, senhas, dados bancários completos ou outras informações sensíveis que não sejam necessárias para o primeiro contato. O escritório nunca solicita senhas, tokens, códigos de verificação ou números completos de cartão."
+          )
+        ) +
+        p(
+          "Casos de família, guarda, pensão ou saúde podem envolver crianças e adolescentes. Nesses casos, informe apenas o indispensável para descrever a situação. Dados de menores eventualmente recebidos são tratados no melhor interesse deles e somente para a finalidade do atendimento solicitado."
+        ),
+    },
+    {
+      id: "formularios",
+      title: "Como funcionam os formulários",
+      body: sheet
+        ? p("O caminho das informações enviadas pelo site é este:") +
+          steps([
+            "Você preenche o formulário. Os campos são conferidos no próprio navegador antes do envio.",
+            "As informações são registradas em uma ferramenta de planilha em nuvem utilizada pelo escritório para organizar os contatos recebidos.",
+            "A equipe é avisada do novo contato e encaminha a solicitação à área adequada.",
+            "O retorno é feito pelo WhatsApp ou pelo e-mail informado. Se preferir, você pode iniciar a conversa pelo WhatsApp logo após o envio.",
+          ])
+        : p("O caminho das informações enviadas pelo site é este:") +
+          steps([
+            "Você preenche o formulário. Os campos são conferidos no próprio navegador.",
+            "Ao confirmar, o site abre o WhatsApp com uma mensagem já redigida, contendo seu nome, o assunto, as respostas e o texto escrito por você.",
+            "Nada é transmitido ao escritório até que você envie essa mensagem no WhatsApp. Você pode revisá-la, alterá-la ou desistir do envio.",
+            "A partir do envio, o atendimento continua pela conversa no WhatsApp.",
+          ]) +
+          p("O site não mantém banco de dados próprio com as mensagens preenchidas no formulário."),
+    },
+    {
+      id: "whatsapp",
+      title: "WhatsApp e outros serviços externos",
+      body: p(
+        "Ao seguir para o WhatsApp, você passa a usar também uma plataforma de terceiro, operada por empresa própria e sujeita às suas políticas e termos. O escritório trata as informações que recebe na conversa, mas não controla o tratamento realizado pela própria plataforma.",
+        "O mesmo vale para os links do site que levam ao Instagram, ao Facebook e ao Google Maps: ao abri-los, você sai deste site, e as práticas de privacidade passam a ser as desses serviços."
+      ),
+    },
+    {
+      id: "finalidades",
+      title: "Para que utilizamos seus dados e com qual base legal",
+      body:
+        p(
+          "A Lei Geral de Proteção de Dados (Lei nº 13.709/2018) prevê diferentes bases legais para o tratamento. Nem todo tratamento depende de consentimento: cada finalidade tem a sua."
+        ) +
+        table({
+          caption: "Finalidades e bases legais do tratamento",
+          head: ["Finalidade", "Base legal"],
+          rows: [
+            ["Responder à sua solicitação e organizar o primeiro atendimento", "Procedimentos preliminares relacionados a contrato, a pedido do titular"],
+            ["Encaminhar o contato à área de atuação adequada", "Procedimentos preliminares relacionados a contrato, a pedido do titular"],
+            ...(sheet ? [["Identificar a origem do contato (página e campanha)", "Legítimo interesse do escritório em entender como é encontrado, com dados limitados ao necessário"]] : []),
+            ["Evitar envios automáticos e abusos nos formulários", "Legítimo interesse, para a segurança do site e de quem o utiliza"],
+            ["Guardar registros técnicos de acesso, quando exigido", "Cumprimento de obrigação legal ou regulatória"],
+            ["Informações sensíveis que você decida incluir na mensagem", "Tratamento limitado ao necessário para avaliar a solicitação, nas hipóteses do art. 11 da LGPD, como o exercício regular de direitos"],
+            ["Defender direitos em eventual processo administrativo ou judicial", "Exercício regular de direitos"],
+          ],
+        }) +
+        p("Os dados não são vendidos nem utilizados para envio de publicidade."),
+    },
+    {
+      id: "cookies",
+      title: "Cookies e tecnologias semelhantes",
+      body:
+        p(
+          "O site não cria cookies próprios e não utiliza, atualmente, ferramentas de análise de audiência, de publicidade, de mapas de calor ou de gravação de sessão — como Google Analytics, Google Tag Manager, Google Ads ou Meta Pixel. As fontes, imagens e scripts são servidos pelo próprio site, sem bibliotecas ou incorporações de terceiros."
+        ) +
+        p("O site usa o armazenamento de sessão do navegador (sessionStorage), que é apagado quando a aba é fechada, para:") +
+        list([
+          "<strong>Origem do acesso</strong> — guardar a página de entrada, a página anterior e os parâmetros de campanha descritos na seção 2;",
+          "<strong>Proteção contra envios repetidos</strong> — registrar o horário do último envio de formulário, evitando duplicidades.",
+        ]) +
+        p(
+          "O site também registra eventos de navegação — como cliques em botões e envio de formulário — em uma variável interna da página, preparada para uma futura ferramenta de medição. Hoje esses eventos não são enviados a nenhum serviço.",
+          "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
+        ),
+    },
+    {
+      id: "compartilhamento",
+      title: "Com quem os dados podem ser compartilhados",
+      body:
+        p("Os dados são compartilhados somente na medida necessária para as finalidades descritas:") +
+        list([
+          "<strong>Hospedagem</strong> — o provedor que mantém o site no ar recebe os dados técnicos da conexão;",
+          ...(sheet ? ["<strong>Ferramentas de produtividade em nuvem</strong> — a planilha e o e-mail usados para registrar e organizar os contatos recebidos;"] : []),
+          "<strong>Mensageria</strong> — o WhatsApp, quando você opta por continuar a conversa por ele;",
+          "<strong>Autoridades</strong> — quando houver obrigação legal, ordem judicial ou necessidade de defesa de direitos.",
+        ]),
+    },
+    {
+      id: "transferencia",
+      title: "Transferência internacional",
+      body: p(
+        `Alguns serviços utilizados${sheet ? " — como o WhatsApp e as ferramentas de planilha e e-mail em nuvem —" : ", como o WhatsApp,"} são operados por empresas que podem processar dados em servidores localizados fora do Brasil. Nesses casos, a transferência ocorre nas hipóteses admitidas pela LGPD e conforme as garantias oferecidas por esses fornecedores.`
+      ),
+    },
+    {
+      id: "retencao",
+      title: "Por quanto tempo mantemos os dados",
+      body:
+        p("Os dados são mantidos pelo tempo necessário para cumprir a finalidade que justificou a coleta. Para definir esse período, consideram-se:") +
+        list([
+          "o andamento da solicitação e de eventual atendimento posterior;",
+          "obrigações legais, regulatórias e profissionais aplicáveis à advocacia;",
+          "a necessidade de preservar informações para o exercício regular de direitos;",
+          "razões de segurança.",
+        ]) +
+        p("Encerrada a necessidade, os dados são eliminados ou anonimizados, salvo nas hipóteses em que a lei autoriza sua conservação."),
+    },
+    {
+      id: "direitos",
+      title: "Seus direitos",
+      body:
+        p("A LGPD garante ao titular dos dados, nos termos e limites da lei, os direitos de:") +
+        list([
+          "confirmar se seus dados são tratados e acessá-los;",
+          "corrigir dados incompletos, inexatos ou desatualizados;",
+          "pedir a anonimização, o bloqueio ou a eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a lei;",
+          "pedir a portabilidade dos dados, conforme a regulamentação da Autoridade Nacional de Proteção de Dados (ANPD);",
+          "saber com quais entidades os dados foram compartilhados;",
+          "ser informado sobre a possibilidade de não fornecer consentimento e suas consequências, quando o tratamento depender dele;",
+          "revogar o consentimento, quando ele for a base do tratamento;",
+          "opor-se a tratamento realizado em desconformidade com a lei;",
+          "pedir a revisão de decisões tomadas unicamente com base em tratamento automatizado, se houver.",
+        ]) +
+        p(
+          "Alguns pedidos podem ter limites. A eliminação, por exemplo, não alcança dados que precisem ser mantidos para cumprir obrigação legal ou para o exercício regular de direitos. Quando isso ocorrer, você será informado do motivo.",
+          "Você também pode apresentar reclamação à ANPD."
+        ),
+    },
+    {
+      id: "contato",
+      title: "Como falar conosco sobre seus dados",
+      body:
+        p(`Para exercer seus direitos ou tirar dúvidas sobre esta Política, entre em contato pelo e-mail ${mail}, indicando no assunto “Privacidade”. Também é possível usar o telefone ${phone}.`) +
+        p("Para proteger seus dados, poderemos pedir informações que confirmem sua identidade antes de atender à solicitação."),
+    },
+    {
+      id: "seguranca",
+      title: "Segurança e incidentes",
+      body: p(
+        "Adotamos medidas técnicas e administrativas destinadas a proteger os dados pessoais contra acessos não autorizados e situações acidentais ou ilícitas. O site funciona com conexão criptografada (HTTPS), e o acesso às informações recebidas é restrito a quem precisa delas para o atendimento.",
+        "Nenhum sistema é totalmente imune a falhas. Se ocorrer um incidente de segurança que possa acarretar risco ou dano relevante aos titulares, o escritório adotará as medidas cabíveis e fará as comunicações previstas na legislação."
+      ),
+    },
+    {
+      id: "alteracoes",
+      title: "Alterações desta Política",
+      body: p(
+        "Esta Política pode ser atualizada para refletir mudanças no site, nos serviços utilizados ou na legislação. A data da versão vigente aparece no início e no final desta página. Mudanças relevantes, como a adoção de novas ferramentas de medição, serão indicadas aqui antes de entrarem em funcionamento."
+      ),
+    },
+  ];
+
+  return legalPage({
+    path: LEGAL_PATHS.privacy,
+    label: "Política de Privacidade",
+    title: "Política de Privacidade | Vieira & Marques",
+    description: "Consulte informações sobre privacidade e tratamento de dados pessoais nos canais digitais da Vieira & Marques.",
+    eyebrow: "Privacidade e LGPD",
+    h1: `Política de <span class="grad">Privacidade</span>`,
+    intro: "Este documento explica como os dados pessoais podem ser tratados durante a utilização dos canais digitais da Vieira &amp; Marques: o que é coletado, para quê, com quem é compartilhado e como você pode exercer seus direitos.",
+    sections,
+    related: `As condições de uso do site estão nos ${terms}.`,
+  });
+}

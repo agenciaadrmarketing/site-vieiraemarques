@@ -362,11 +362,9 @@
       var errors = validate(d);
       ["nome", "whatsapp", "email", "mensagem"].concat(questions.map(function (q) { return q.getAttribute("data-question"); }))
         .forEach(function (k) { setError(k, errors[k]); });
-      var consent = form.querySelector("[data-consent]");
-      form.querySelector("[data-consent-error]").textContent = consent.checked ? "" : "É preciso autorizar o contato para enviar.";
       var firstInvalid = Object.keys(errors)[0];
-      if (firstInvalid || !consent.checked) {
-        var target = firstInvalid ? form.elements[firstInvalid] : consent;
+      if (firstInvalid) {
+        var target = form.elements[firstInvalid];
         if (target && target.length && !target.focus) target = target[0];
         if (target && target.focus) target.focus();
         return;
@@ -453,6 +451,48 @@
     update();
   }
 
+  /* ---------- Índice das páginas legais: seção atual ---------- */
+  function initTocSpy() {
+    var links = document.querySelectorAll(".legal-toc a");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (a) { a.removeAttribute("aria-current"); });
+        var a = byId[entry.target.id];
+        if (a) a.setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    Object.keys(byId).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  }
+
+  /* ---------- Rodapé: voltar ao topo e deslocamento discreto do letreiro ---------- */
+  function initFooter() {
+    var top = document.querySelector("[data-back-to-top]");
+    if (top) top.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+      var main = document.getElementById("conteudo");
+      if (main) main.focus({ preventScroll: true });
+    });
+    var footer = document.querySelector("[data-footer]");
+    var giant = document.querySelector("[data-footer-giant]");
+    if (reduceMotion || !footer || !giant || !("IntersectionObserver" in window)) return;
+    var active = false, ticking = false;
+    function update() {
+      ticking = false;
+      var r = footer.getBoundingClientRect();
+      // 0 quando o rodapé entra na tela, 1 quando termina; o letreiro sobe até 40px.
+      var progress = Math.min(1, Math.max(0, (window.innerHeight - r.top) / (r.height || 1)));
+      giant.style.setProperty("--giant-y", (40 - progress * 40).toFixed(1) + "px");
+    }
+    new IntersectionObserver(function (entries) { active = entries[0].isIntersecting; if (active) update(); }).observe(footer);
+    window.addEventListener("scroll", function () {
+      if (active && !ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+  }
+
   /* ---------- Rastreio de cliques ---------- */
   function initClickTracking() {
     if (pageCtx) track("service_page_view");
@@ -476,5 +516,7 @@
   initLeadForm();
   initToc();
   initStickyCta();
+  initTocSpy();
+  initFooter();
   initClickTracking();
 })();

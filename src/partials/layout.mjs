@@ -1,6 +1,7 @@
 import { esc, attrs, join, jsonLd, when } from "../lib/html.mjs";
 import { SITE, NAV, isPending, whatsappUrl } from "../data/site.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
+import { LEGAL_PATHS } from "../data/legal.mjs";
 import { img, logo } from "./media.mjs";
 import { icon } from "./icons.mjs";
 import images from "../data/images.json" with { type: "json" };
@@ -121,39 +122,49 @@ function header(current) {
 </div>`;
 }
 
+// Rodapé global: fechamento editorial (frase + um CTA), colunas de navegação,
+// letreiro "VIEIRA & MARQUES" em baixo contraste e barra final com "voltar ao topo".
+// Movimento só por CSS + IntersectionObserver (site.js), respeitando prefers-reduced-motion.
 export function footer() {
   const sede = SITE.units[0];
-  return `<footer class="site-footer on-dark">
-  <div class="container">
-    <div class="site-footer__grid">
-      <div class="site-footer__brand">
-        <a href="/" aria-label="${esc(SITE.name)} — página inicial">${logo("claro", 190)}</a>
-        <p>Sociedade de advogados com sede em Boituva, unidade em Sorocaba e atendimento online em todo o Brasil.</p>
-      </div>
-      <nav aria-label="Rodapé">
-        <h2 class="site-footer__title">Navegação</h2>
-        <ul class="site-footer__list">${join(NAV, (i) => `<li><a href="${i.href}">${esc(i.label)}</a></li>`)}</ul>
-      </nav>
-      <div>
-        <h2 class="site-footer__title">Áreas de atuação</h2>
-        <ul class="site-footer__list">${join(practiceAreas, (a) => `<li><a href="${areaUrl(a)}">${esc(a.title)}</a></li>`)}</ul>
-      </div>
-      <div>
-        <h2 class="site-footer__title">Contato</h2>
-        <ul class="site-footer__list">
-          <li>${esc(sede.street)}<br>${esc(sede.district)} — ${esc(sede.city)}/${esc(sede.region)}</li>
-          <li><a href="${SITE.phone.href}">${SITE.phone.display}</a></li>
-          <li><a href="${whatsappUrl()}" target="_blank" rel="noopener">WhatsApp</a></li>
-          ${when(!isPending(SITE.email), `<li><a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a></li>`)}
-          ${join(SITE.social, (s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`)}
-        </ul>
-      </div>
+  const col = (title, inner, extra = "") => `<div class="site-footer__col${extra}" data-reveal>
+        <h2 class="site-footer__title">${title}</h2>
+        ${inner}
+      </div>`;
+  const ext = (href, label) => `<a class="site-footer__link" href="${esc(href)}" target="_blank" rel="noopener">${esc(label)} <span class="site-footer__ext" aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>`;
+  const link = (href, label) => `<a class="site-footer__link" href="${href}">${esc(label)}</a>`;
+  return `<footer class="site-footer on-dark" data-footer>
+  <div class="site-footer__backdrop" aria-hidden="true"></div>
+  <div class="container site-footer__inner">
+    <div class="site-footer__close">
+      <p class="eyebrow" data-reveal>${esc(SITE.shortName)}</p>
+      <p class="site-footer__headline" data-reveal>Clareza para entender.<br><span class="grad">Estratégia para seguir.</span></p>
+      <div data-reveal><a class="site-footer__cta" href="/contato/" data-track="footer_cta_click">Falar com a equipe <span class="site-footer__cta-arrow" aria-hidden="true">${icon.arrow(20)}</span></a></div>
     </div>
+
+    <div class="site-footer__cols">
+      ${col("Navegação", `<nav aria-label="Rodapé"><ul class="site-footer__list">${join(NAV, (i) => `<li>${link(i.href, i.label)}</li>`)}</ul></nav>`)}
+      ${col("Áreas", `<ul class="site-footer__list site-footer__list--2">${join(practiceAreas, (a) => `<li>${link(areaUrl(a), a.title)}</li>`)}</ul>`, " site-footer__col--areas")}
+      ${col("Contato", `<ul class="site-footer__list">
+          <li class="site-footer__address">${esc(sede.street)}<br>${esc(sede.city)}/${esc(sede.region)}</li>
+          <li><a class="site-footer__link" href="${SITE.phone.href}">${SITE.phone.display}</a></li>
+          <li>${ext(whatsappUrl(), "WhatsApp")}</li>
+          ${when(!isPending(SITE.email), `<li><a class="site-footer__link site-footer__email" href="mailto:${esc(SITE.email)}">${esc(SITE.email).replace("@", "<wbr>@")}</a></li>`)}
+        </ul>`, " site-footer__col--contact")}
+      ${col("Legal", `<ul class="site-footer__list">
+          <li>${link(LEGAL_PATHS.privacy, "Política de Privacidade")}</li>
+          <li>${link(LEGAL_PATHS.terms, "Termos de Uso")}</li>
+        </ul>
+        <ul class="site-footer__list site-footer__social" aria-label="Redes sociais">${join(SITE.social, (s) => `<li>${ext(s.url, s.label)}</li>`)}</ul>`)}
+    </div>
+
     <div class="site-footer__bottom">
-      <p>© ${new Date().getFullYear()} ${esc(SITE.name)}. ${esc(SITE.oabNotice)}</p>
-      <p><a href="/privacidade/">Privacidade e termos de uso</a></p>
+      <p>© ${new Date().getFullYear()} ${esc(SITE.name)}.</p>
+      <p class="site-footer__notice">${esc(SITE.oabNotice)}</p>
+      <button class="site-footer__top" type="button" data-back-to-top aria-label="Voltar ao topo">Topo <span aria-hidden="true">${icon.arrow(14)}</span></button>
     </div>
   </div>
+  <p class="site-footer__giant" aria-hidden="true"><span data-footer-giant><span>Vieira &amp;</span> <span>Marques</span></span></p>
 </footer>`;
 }
 

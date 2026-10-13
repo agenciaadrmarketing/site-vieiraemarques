@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { SITE } from "./data/site.mjs";
 import { page } from "./partials/layout.mjs";
 import { ROUTES } from "./routes.mjs";
+import { LEGAL_REVIEW } from "./data/legal.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -46,3 +47,7 @@ write(join(ROOT, "sitemap.xml"), sitemap());
 write(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /design/\n\nSitemap: ${SITE.origin}/sitemap.xml\n`);
 
 console.log(`Build: ${ROUTES.length} páginas + 404, sitemap.xml e robots.txt`);
+if (LEGAL_REVIEW.length) {
+  console.log(`Páginas legais — ${LEGAL_REVIEW.length} item(ns) para revisão do escritório (src/data/legal.mjs):`);
+  for (const item of LEGAL_REVIEW) console.log(`  - ${item}`);
+}

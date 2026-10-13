@@ -26,11 +26,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vieiraemarquesadvogados.com/privacidade/</loc>
-    <lastmod>2026-10-13</lastmod>
-    <priority>0.2</priority>
-  </url>
-  <url>
     <loc>https://vieiraemarquesadvogados.com/areas/direito-de-familia/divorcio/</loc>
     <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
@@ -49,5 +44,15 @@
     <loc>https://vieiraemarquesadvogados.com/areas/direito-bancario/golpe-do-pix/</loc>
     <lastmod>2026-10-13</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vieiraemarquesadvogados.com/politica-de-privacidade/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://vieiraemarquesadvogados.com/termos-de-uso/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.2</priority>
   </url>
 </urlset>

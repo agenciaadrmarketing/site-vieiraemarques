@@ -1,6 +1,7 @@
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, whatsappUrl } from "../data/site.mjs";
 import { practiceAreas } from "../data/areas.mjs";
+import { LEGAL_PATHS } from "../data/legal.mjs";
 
 // Usado no /contato/?servico=<id>: identifica serviço e área a partir do link de origem.
 const SERVICE_MAP = JSON.stringify(
@@ -91,10 +92,9 @@ export function leadForm({
       <p class="field__error" id="lead-mensagem-erro" aria-live="polite"></p>
     </div>
     ${when(warning, `<p class="form__warning">${esc(warning)}</p>`)}
-    <label class="consent"><input type="checkbox" name="consentimento" required data-consent><span>Autorizo o contato do escritório e o tratamento dos meus dados para responder a esta mensagem, conforme a <a href="/privacidade/">política de privacidade</a>.</span></label>
-    <p class="field__error" data-consent-error aria-live="polite"></p>
     <button class="btn btn--light btn--block" type="submit" data-submit>Enviar informações <span class="btn__arrow">${icon.arrow(16)}</span></button>
     <p class="form__status" role="status" aria-live="polite" data-status></p>
+    <p class="form__privacy">Ao enviar suas informações, você declara estar ciente do tratamento de dados conforme nossa <a href="${LEGAL_PATHS.privacy}">Política de Privacidade</a>.</p>
     <p class="form__note">O envio não constitui contratação de serviços nem estabelece, por si só, relação advogado-cliente.</p>
   </form>
   <div class="form-success" hidden tabindex="-1" data-success>
