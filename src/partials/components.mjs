@@ -22,18 +22,6 @@ export const linkArrow = (href, label, external = false) =>
 export const btn = (href, label, variant = "", arrow = true) =>
   `<a class="btn ${variant}" href="${href}">${esc(label)}${arrow ? ` <span class="btn__arrow">${icon.arrow(16)}</span>` : ""}</a>`;
 
-export function personCard(p, { sizes = "(min-width: 1100px) 220px, (min-width: 640px) 33vw, 50vw", headingLevel = 3 } = {}) {
-  const h = `h${headingLevel}`;
-  return `<li class="person" data-reveal>
-  <figure class="person__photo">${img(p.photo, { alt: `${p.name}, ${p.role.toLowerCase()} da Vieira & Marques`, sizes, style: `object-position:${p.position}` })}</figure>
-  <div class="stack-sm">
-    <p class="person__meta"><span>${esc(p.role)}</span><span>${esc(p.oab)}</span></p>
-    <${h} class="person__name">${esc(p.name)}</${h}>
-    <p class="person__focus">${esc(p.focus)}</p>
-  </div>
-</li>`;
-}
-
 const meta = (a) => {
   const area = areaById[a.area];
   return `<p class="meta"><span>${esc(area ? area.shortTitle : "")}</span><time datetime="${a.date}">${formatDate(a.date)}</time>${a.type === "guia" ? "<span>Guia</span>" : ""}</p>`;
@@ -108,3 +96,26 @@ export const areaLink = (id) => {
   const a = areaById[id];
   return a ? `<a class="text-link" href="${areaUrl(a)}">${esc(a.title)}</a>` : "";
 };
+
+// Equipe em painéis expansíveis (componente da Home, reutilizado no Escritório).
+// Desktop: painéis lado a lado; o ativo se expande e mostra cargo, OAB, atuação e temas.
+// Mobile: cartões com rolagem lateral. Sem JS, o primeiro painel fica aberto.
+export function teamPanels(people, { profileLinks = false, headingLevel = 3 } = {}) {
+  const h = `h${headingLevel}`;
+  return `<div class="team-panels" data-team-panels data-reveal>
+  ${join(people, (p, i) => `<article class="team-panel${i === 0 ? " is-active" : ""}" tabindex="0" aria-labelledby="painel-${p.id}">
+    <div class="team-panel__photo">${img(p.photo, { alt: `${p.name}, ${p.role.toLowerCase()} da Vieira & Marques`, sizes: "(min-width: 900px) 520px, 80vw", style: `--pos:${p.position};--pos-active:${p.positionActive ?? p.position}` })}</div>
+    <span class="team-panel__vertical" aria-hidden="true">${esc(p.name)}</span>
+    <div class="team-panel__info">
+      <p class="team-panel__meta">${esc(p.role)} · ${esc(p.oab)}</p>
+      <${h} class="team-panel__name" id="painel-${p.id}">${esc(p.name)}</${h}>
+      <p class="team-panel__bio">${esc(p.bio)}</p>
+      ${when(p.tags?.length, `<ul class="team-panel__tags" aria-label="Temas">${join(p.tags ?? [], (t) => `<li>${esc(t)}</li>`)}</ul>`)}
+      ${when(profileLinks, `<a class="team-panel__link" href="/escritorio/#${p.id}">Formação completa <span aria-hidden="true">→</span></a>`)}
+    </div>
+  </article>`)}
+</div>
+<p class="team-panels__hint"><span class="team-panels__hint-desktop">Passe o mouse ou use o teclado sobre cada profissional para ver formação e áreas de atuação.</span><span class="team-panels__hint-mobile">Deslize para conhecer a equipe →</span></p>`;
+}
+
+export const recognitions = (items) => `<ul class="recognitions" data-reveal>${join(items, (t) => `<li>${esc(t)}</li>`)}</ul>`;

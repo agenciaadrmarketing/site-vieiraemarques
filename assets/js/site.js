@@ -493,6 +493,22 @@
     }, { passive: true });
   }
 
+  /* ---------- Equipe em painéis: o painel em foco/hover/clique se expande ---------- */
+  function initTeamPanels() {
+    document.querySelectorAll("[data-team-panels]").forEach(function (group) {
+      var panels = [].slice.call(group.querySelectorAll(".team-panel"));
+      function activate(panel) {
+        if (panel.classList.contains("is-active")) return;
+        panels.forEach(function (p) { p.classList.toggle("is-active", p === panel); });
+      }
+      panels.forEach(function (panel) {
+        panel.addEventListener("mouseenter", function () { activate(panel); });
+        panel.addEventListener("focusin", function () { activate(panel); });
+        panel.addEventListener("click", function () { activate(panel); });
+      });
+    });
+  }
+
   /* ---------- Rastreio de cliques ---------- */
   function initClickTracking() {
     if (pageCtx) track("service_page_view");
@@ -522,5 +538,6 @@
   initStickyCta();
   initTocSpy();
   initFooter();
+  initTeamPanels();
   initClickTracking();
 })();

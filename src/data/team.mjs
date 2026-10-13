@@ -17,6 +17,9 @@ export const team = [
       "Título de Jovem Inspirador concedido pela Câmara de Boituva",
     ],
     photo: "oscar-moreira-vieira",
+    // Componente de equipe da Home: temas exibidos e enquadramento da foto quando expandida.
+    tags: ["Divórcio", "Inventário", "Guarda", "Pensão"],
+    positionActive: "38% 58%",
     position: "50% 18%",
   },
   {
@@ -33,6 +36,8 @@ export const team = [
       "Diploma de Jovem Inspiradora concedido pela Câmara Municipal de Boituva",
     ],
     photo: "jislana-marques",
+    tags: ["Defesa criminal", "INSS", "Benefícios"],
+    positionActive: "50% 12%",
     position: "50% 22%",
   },
   {
@@ -48,6 +53,8 @@ export const team = [
       "Atuação em processos criminais e execução penal",
     ],
     photo: "leticia-pereira-de-abreu",
+    tags: ["Processo penal", "Execução penal"],
+    positionActive: "52% 14%",
     position: "52% 22%",
   },
   {
@@ -64,6 +71,8 @@ export const team = [
       "Pós-graduada em Processo Penal",
     ],
     photo: "gledie-camargo",
+    tags: ["Direito Penal", "Processo Penal", "Execução"],
+    positionActive: "62% 34%",
     position: "62% 30%",
   },
   {
@@ -80,8 +89,17 @@ export const team = [
       "Pós-graduanda em Direito Médico, Odontológico e da Saúde pela Universidade de São Paulo (USP)",
     ],
     photo: "natalia-okumura",
+    tags: ["Contratos", "Consumidor", "Saúde"],
+    positionActive: "50% 10%",
     position: "50% 18%",
   },
+];
+
+// Destaques do corpo profissional (conferidos com as credenciais acima).
+export const teamRecognitions = [
+  "Presidência da Comissão de Direito de Família e Sucessões da OAB de Boituva (2022/2024) — Dr. Oscar Moreira Vieira.",
+  "Pós-graduações concluídas e em curso em Família e Sucessões, Direito Penal, Processo Penal, Previdenciário, Advocacia Cível e Direito Médico.",
+  "Títulos de Jovem Inspirador e Jovem Inspiradora concedidos pela Câmara Municipal de Boituva.",
 ];
 
 export const teamByArea = (areaId) => team.filter((p) => p.areas.includes(areaId));

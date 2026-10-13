@@ -1,10 +1,10 @@
 import { esc, join, when } from "../lib/html.mjs";
-import { team } from "../data/team.mjs";
+import { team, teamRecognitions } from "../data/team.mjs";
 import { areaById, areaUrl, AREAS_HUB } from "../data/areas.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { img } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
-import { sectionHead, facts } from "../partials/components.mjs";
+import { sectionHead, facts, teamPanels, recognitions } from "../partials/components.mjs";
 
 const PATH = "/escritorio/";
 const CRUMBS = [
@@ -28,12 +28,12 @@ const PRINCIPLES = [
 
 function profile(p) {
   const areaLinks = p.areas.map((id) => areaById[id]).filter(Boolean);
+  // A foto aparece nos painéis acima; aqui fica a formação completa.
   return `<article class="profile" id="${p.id}" data-reveal>
-  <figure class="profile__photo">${img(p.photo, { alt: `${p.name}, ${p.role.toLowerCase()} da Vieira & Marques`, sizes: "(min-width: 820px) 380px, 100vw", style: `object-position:${p.position}` })}</figure>
   <div class="profile__body">
     <p class="person__meta"><span>${esc(p.role)} · ${esc(p.oab)}</span></p>
-    <h3 class="profile__name">${esc(p.name)}</h3>
-    <p class="lead">${esc(p.bio)}</p>
+    <h4 class="profile__name">${esc(p.name)}</h4>
+    <p class="muted">${esc(p.bio)}</p>
     <ul class="profile__list">${join(p.credentials, (c) => `<li>${esc(c)}</li>`)}</ul>
     ${when(areaLinks.length, `<p class="muted">Áreas: ${areaLinks.map((a) => `<a class="text-link" href="${areaUrl(a)}">${esc(a.title)}</a>`).join(", ")}</p>`)}
   </div>
@@ -120,7 +120,10 @@ export default function escritorio() {
       title: `Advogados com <span class="grad">áreas de atuação definidas.</span>`,
       lead: "Formação, inscrição na OAB e áreas de atuação de cada profissional, conforme informado pelo escritório.",
     })}
-    ${join(team, profile)}
+    ${teamPanels(team, { headingLevel: 3 })}
+    ${recognitions(teamRecognitions)}
+    <h3 class="eyebrow profiles__title">Formação de cada profissional</h3>
+    <div class="profiles">${join(team, profile)}</div>
   </div>
 </section>
 

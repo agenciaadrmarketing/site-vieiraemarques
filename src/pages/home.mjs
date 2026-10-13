@@ -1,12 +1,12 @@
 import { esc, join } from "../lib/html.mjs";
 import { SITE } from "../data/site.mjs";
 import { practiceAreas, areaUrl, AREAS_HUB } from "../data/areas.mjs";
-import { team } from "../data/team.mjs";
+import { team, teamRecognitions } from "../data/team.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
 import { page } from "../partials/layout.mjs";
 import { img, imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
-import { sectionHead, linkArrow, btn, personCard, articleFeature, articleRow, facts, steps } from "../partials/components.mjs";
+import { sectionHead, linkArrow, btn, teamPanels, recognitions, articleFeature, articleRow, facts, steps } from "../partials/components.mjs";
 
 const HERO_SIZES = "(min-width: 1240px) 1212px, 100vw";
 
@@ -110,7 +110,8 @@ export default function home() {
       lead: "Formação, inscrição na OAB e área de atuação de cada profissional — informação verificável.",
       aside: linkArrow("/escritorio/#equipe", "Conheça a equipe"),
     })}
-    <ul class="people">${join(team, (p) => personCard(p))}</ul>
+    ${teamPanels(team, { profileLinks: true })}
+    ${recognitions(teamRecognitions)}
   </div>
 </section>
 
