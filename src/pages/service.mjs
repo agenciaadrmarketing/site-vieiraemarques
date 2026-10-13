@@ -1,6 +1,6 @@
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
-import { areaUrl, AREAS_HUB, areaById } from "../data/areas.mjs";
+import { areaUrl, areaFaqUrl, AREAS_HUB, areaById } from "../data/areas.mjs";
 import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { team } from "../data/team.mjs";
@@ -73,7 +73,7 @@ function related(p) {
       ${when(knowledge.length || hasFaq, `<div class="stack-sm" data-reveal>
         <p class="eyebrow">Base de conhecimento</p>
         ${when(knowledge.length, `<ul class="article-list">${join(knowledge, (a) => articleRow(a).replace("<a href", '<a data-track="related_content_click" href'))}</ul>`)}
-        ${when(hasFaq, `<a class="link-arrow svc-related__more" href="${areaUrl(areaById[faqArea]).replace(`#${faqArea}`, `#${faqArea}-faq`)}" data-track="related_content_click">Perguntas frequentes sobre ${esc(areaById[faqArea].title)} ${icon.arrow(14)}</a>`)}
+        ${when(hasFaq, `<a class="link-arrow svc-related__more" href="${areaFaqUrl(areaById[faqArea])}" data-track="related_content_click">Perguntas frequentes sobre ${esc(areaById[faqArea].title)} ${icon.arrow(14)}</a>`)}
         ${when(knowledge.length, `<a class="link-arrow svc-related__more" href="/conhecimento/?area=${p.area}" data-track="related_content_click">Conteúdos de ${esc(areaById[p.area].shortTitle)} ${icon.arrow(14)}</a>`)}
       </div>`)}
     </div>

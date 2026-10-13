@@ -409,7 +409,9 @@ export const practiceAreas = [
 export const areaById = Object.fromEntries(practiceAreas.map((a) => [a.id, a]));
 
 export const AREAS_HUB = "/areas-de-atuacao/";
-// Enquanto as páginas-pilar /areas/<área>/ não existem, a área aponta para o hub.
-export const areaUrl = (area) => `${AREAS_HUB}#${area.id}`;
+// Página própria de cada área (página-pilar), mãe das páginas de serviço.
+export const areaUrl = (area) => `/areas/${area.slug}/`;
+// Bloco da área dentro do hub /areas-de-atuacao/ (índice lateral da página).
+export const areaHubAnchor = (area) => `${AREAS_HUB}#${area.id}`;
+export const areaFaqUrl = (area) => `${areaUrl(area)}#perguntas`;
 export const servicePath = (area, service) => (service.slug ? `/areas/${area.slug}/${service.slug}/` : null);
-export const futureAreaPath = (area) => `/areas/${area.slug}/`;

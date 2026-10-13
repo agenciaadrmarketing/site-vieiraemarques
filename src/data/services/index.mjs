@@ -1,4 +1,4 @@
-import { areaById, servicePath, AREAS_HUB } from "../areas.mjs";
+import { areaById, servicePath, areaUrl } from "../areas.mjs";
 import divorcio from "./divorcio.mjs";
 import verbasRescisorias from "./verbas-rescisorias.mjs";
 import jurosAbusivos from "./juros-abusivos.mjs";
@@ -18,10 +18,10 @@ export const servicePages = PAGES.map((p) => {
 const published = new Set(servicePages.map((p) => `${p.area}/${p.service}`));
 export const hasPage = (areaId, serviceId) => published.has(`${areaId}/${serviceId}`);
 
-// Destino de um serviço: a página própria, se publicada; senão, a âncora no hub.
+// Destino de um serviço: a página própria, se publicada; senão, o cartão na página da área.
 export function serviceHref(areaId, serviceId) {
   const area = areaById[areaId];
   const service = area?.services.find((s) => s.id === serviceId);
   if (!service) throw new Error(`Serviço inexistente: ${areaId}/${serviceId}`);
-  return hasPage(areaId, serviceId) ? servicePath(area, service) : `${AREAS_HUB}#${areaId}-${serviceId}`;
+  return hasPage(areaId, serviceId) ? servicePath(area, service) : `${areaUrl(area)}#${areaId}-${serviceId}`;
 }

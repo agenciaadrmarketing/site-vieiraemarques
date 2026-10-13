@@ -1,6 +1,6 @@
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE } from "../data/site.mjs";
-import { practiceAreas, areaById, areaUrl } from "../data/areas.mjs";
+import { practiceAreas, areaById, areaFaqUrl } from "../data/areas.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
@@ -67,7 +67,7 @@ export default function conhecimento() {
       <div class="mt-lg" data-filter-block>
         <p class="eyebrow">Perguntas frequentes por área</p>
         <ul class="cards-grid mt-lg">
-          ${join(faqAreas, (a) => `<li data-filter-item data-area="${a.id}"><a class="article-card" href="${areaUrl(a).replace("#" + a.id, "#" + a.id + "-faq")}">
+          ${join(faqAreas, (a) => `<li data-filter-item data-area="${a.id}"><a class="article-card" href="${areaFaqUrl(a)}">
             <p class="meta"><span>${esc(a.shortTitle)}</span><span>${faqByArea[a.id].length} perguntas</span></p>
             <h3 class="article-card__title">${esc(faqByArea[a.id][0][0])}</h3>
             <p class="muted">E outras dúvidas frequentes sobre ${esc(a.title)}.</p>

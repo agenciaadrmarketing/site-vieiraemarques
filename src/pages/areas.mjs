@@ -1,6 +1,6 @@
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
-import { practiceAreas, areaUrl } from "../data/areas.mjs";
+import { practiceAreas, areaUrl, areaHubAnchor } from "../data/areas.mjs";
 import { hasPage, serviceHref } from "../data/services/index.mjs";
 import { teamByArea } from "../data/team.mjs";
 import { articles } from "../data/articles.mjs";
@@ -33,6 +33,7 @@ function areaBlock(area) {
     <p class="area-block__num">${area.number} / ${String(practiceAreas.length).padStart(2, "0")}</p>
     <h2 class="area-block__title" id="${area.id}-titulo">${esc(area.title)}</h2>
     <p class="lead">${esc(area.description)}</p>
+    ${linkArrow(areaUrl(area), `Página de ${area.title}`)}
   </header>
   <h3 class="sr-only">Serviços em ${esc(area.title)}</h3>
   <ul class="services" data-reveal>${join(area.services, (s) => service(area, s))}</ul>
@@ -84,7 +85,7 @@ export default function areas() {
     <nav class="hub__index" aria-label="Áreas de atuação nesta página">
       <p class="eyebrow hub__index-title">Índice</p>
       <div class="hub__index-inner" data-hub-nav>
-        ${join(practiceAreas, (a) => `<a class="hub__link" href="${areaUrl(a)}" data-hub-link="${a.id}"><span>${a.number}</span>${esc(a.title)}</a>`)}
+        ${join(practiceAreas, (a) => `<a class="hub__link" href="${areaHubAnchor(a)}" data-hub-link="${a.id}"><span>${a.number}</span>${esc(a.title)}</a>`)}
       </div>
     </nav>
     <div class="hub__content">

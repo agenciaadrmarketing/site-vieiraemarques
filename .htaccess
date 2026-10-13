@@ -16,17 +16,8 @@ ErrorDocument 404 /404.html
   RewriteRule ^(src|design)(/|$) - [R=404,L]
   RewriteRule ^(package\.json|\.git.*)$ - [R=404,L]
 
-  # Páginas-pilar /areas/<área>/ ainda não existem: redirecionamento temporário (302)
-  # para a área no hub, para não consolidar a URL que receberá a página-pilar.
-  RewriteRule ^areas/?$ /areas-de-atuacao/ [R=302,L]
-  RewriteRule ^areas/direito-de-familia/?$ /areas-de-atuacao/#familia [R=302,NE,L]
-  RewriteRule ^areas/direito-sucessorio/?$ /areas-de-atuacao/#sucessorio [R=302,NE,L]
-  RewriteRule ^areas/direito-trabalhista/?$ /areas-de-atuacao/#trabalhista [R=302,NE,L]
-  RewriteRule ^areas/direito-criminal/?$ /areas-de-atuacao/#criminal [R=302,NE,L]
-  RewriteRule ^areas/direito-medico-saude/?$ /areas-de-atuacao/#saude [R=302,NE,L]
-  RewriteRule ^areas/direito-bancario/?$ /areas-de-atuacao/#bancario [R=302,NE,L]
-  RewriteRule ^areas/direito-imobiliario/?$ /areas-de-atuacao/#imobiliario [R=302,NE,L]
-  RewriteRule ^areas/direito-previdenciario/?$ /areas-de-atuacao/#previdenciario [R=302,NE,L]
+  # /areas/ sem área: leva ao hub das áreas.
+  RewriteRule ^areas/?$ /areas-de-atuacao/ [R=301,L]
 
   # URLs institucionais anteriores.
   RewriteRule ^privacidade/?$ /politica-de-privacidade/ [R=301,L]
@@ -35,11 +26,11 @@ ErrorDocument 404 /404.html
   RewriteRule ^sobre-nos/?$ /escritorio/ [R=301,L]
   RewriteRule ^o-escritorio/?$ /escritorio/ [R=301,L]
   RewriteRule ^equipe/?$ /escritorio/#equipe [R=301,NE,L]
-  RewriteRule ^direito-de-familia/?$ /areas-de-atuacao/#familia [R=301,NE,L]
-  RewriteRule ^direito-sucessorio/?$ /areas-de-atuacao/#sucessorio [R=301,NE,L]
-  RewriteRule ^direito-criminal/?$ /areas-de-atuacao/#criminal [R=301,NE,L]
-  RewriteRule ^direito-trabalhista/?$ /areas-de-atuacao/#trabalhista [R=301,NE,L]
-  RewriteRule ^direito-previdenciario/?$ /areas-de-atuacao/#previdenciario [R=301,NE,L]
+  RewriteRule ^direito-de-familia/?$ /areas/direito-de-familia/ [R=301,L]
+  RewriteRule ^direito-sucessorio/?$ /areas/direito-sucessorio/ [R=301,L]
+  RewriteRule ^direito-criminal/?$ /areas/direito-criminal/ [R=301,L]
+  RewriteRule ^direito-trabalhista/?$ /areas/direito-trabalhista/ [R=301,L]
+  RewriteRule ^direito-previdenciario/?$ /areas/direito-previdenciario/ [R=301,L]
 </IfModule>
 
 <IfModule mod_expires.c>
