@@ -261,14 +261,19 @@
       items.forEach(function (el) { el.classList.add("is-visible"); });
       return;
     }
+    // Depois da entrada em cascata, cada item volta às próprias transições (hover, expansão).
+    function settle(el, ms) {
+      if (!el.hasAttribute("data-reveal-stagger")) return;
+      setTimeout(function () { el.setAttribute("data-revealed", ""); }, ms);
+    }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); io.unobserve(entry.target); }
+        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); settle(entry.target, 1700); io.unobserve(entry.target); }
       });
     }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
     items.forEach(function (el) {
       // Conteúdo acima da dobra ao abrir a página por âncora não deve ficar oculto.
-      if (el.getBoundingClientRect().bottom < window.innerHeight) el.classList.add("is-visible");
+      if (el.getBoundingClientRect().bottom < window.innerHeight) { el.classList.add("is-visible"); settle(el, 0); }
       else io.observe(el);
     });
   }
