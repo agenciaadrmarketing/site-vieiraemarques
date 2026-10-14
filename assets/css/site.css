@@ -1664,3 +1664,4 @@ html { interpolate-size: allow-keywords; }
 @media (max-width: 720px) { .lp-hero__bg { object-position: var(--pos-m, 50% 50%) !important; } }
 .lp-proof__frame--tall { max-width: 400px; aspect-ratio: 3 / 4; }
 @media (max-width: 720px) { .lp-proof__frame--tall { max-width: 300px; } }
+@media (max-width: 720px) { .lp-badge { max-width: 100%; text-align: left; gap: 8px; padding: 8px 14px; } }

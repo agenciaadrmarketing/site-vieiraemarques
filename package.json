@@ -7,7 +7,8 @@
     "images": "python3 -I src/tools/images.py",
     "build": "node src/build.mjs",
     "check": "node --check assets/js/site.js && node src/check.mjs",
-    "verify": "npm run build && npm run check"
+    "verify": "npm run build && npm run check",
+    "pacote": "npm run verify && python3 -I src/tools/pacote.py"
   },
   "engines": {
     "node": ">=20.10"
