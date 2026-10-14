@@ -1,0 +1,85 @@
+# Vieira & Marques — roteamento, cache, compressão e cabeçalhos de segurança.
+# As páginas são HTML estático gerado por `npm run build` (fontes em /src).
+
+Options -Indexes
+DirectorySlash On
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Ambiente de homologação (novosite.*): não indexar.
+  RewriteCond %{HTTP_HOST} ^novosite\. [NC]
+  RewriteRule ^ - [E=VM_STAGING:1]
+
+  # Fontes do build, arquivo de design e metadados não são públicos.
+  RewriteRule ^(src|design)(/|$) - [R=404,L]
+  RewriteRule ^(package\.json|\.git.*)$ - [R=404,L]
+
+  # /areas/ sem área: leva ao hub das áreas.
+  RewriteRule ^areas/?$ /areas-de-atuacao/ [R=301,L]
+
+  # URLs institucionais anteriores.
+  RewriteRule ^privacidade/?$ /politica-de-privacidade/ [R=301,L]
+  # Canonical antigo da LP "Divórcio SP" apontava para esta URL no domínio principal.
+  RewriteRule ^divorcio-sao-paulo/?$ /areas/direito-de-familia/divorcio/ [R=301,L]
+  RewriteRule ^sobre-nos/?$ /escritorio/ [R=301,L]
+  RewriteRule ^o-escritorio/?$ /escritorio/ [R=301,L]
+  RewriteRule ^equipe/?$ /escritorio/#equipe [R=301,NE,L]
+  RewriteRule ^direito-de-familia/?$ /areas/direito-de-familia/ [R=301,L]
+  RewriteRule ^direito-sucessorio/?$ /areas/direito-sucessorio/ [R=301,L]
+  RewriteRule ^direito-criminal/?$ /areas/direito-criminal/ [R=301,L]
+  RewriteRule ^direito-trabalhista/?$ /areas/direito-trabalhista/ [R=301,L]
+  RewriteRule ^direito-previdenciario/?$ /areas/direito-previdenciario/ [R=301,L]
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow" env=VM_STAGING
+
+  <FilesMatch "\.(webp|jpe?g|png|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # CSS e JS são referenciados com ?v=<versão>; a versão muda a cada alteração.
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+
+  # script-src: nenhum script inline executável (JSON-LD não é executado).
+  # img/connect-src: Google Apps Script do formulário de leads.
+  # Ao adicionar Google Tag Manager, incluir www.googletagmanager.com e os domínios das tags.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://script.google.com https://script.googleusercontent.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com; font-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/xml text/xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/javascript application/javascript application/json image/svg+xml application/xml text/xml
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+</IfModule>
