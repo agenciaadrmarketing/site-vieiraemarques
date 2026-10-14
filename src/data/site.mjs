@@ -11,7 +11,7 @@ export const SITE = {
   locale: "pt_BR",
   lang: "pt-BR",
   description:
-    "Sociedade de advogados com sede em Boituva (SP), atendimento na região de Sorocaba e online em todo o Brasil.",
+    "Sociedade de advogados com sede em Boituva (SP), atendimento presencial em Boituva e Sorocaba e online em São Paulo e todo o Brasil.",
 
   phone: { display: "(15) 3347-0189", href: "tel:+551533470189", e164: "+551533470189" },
   whatsapp: { number: "551533470189", display: "(15) 3347-0189" },
@@ -22,7 +22,7 @@ export const SITE = {
   // Endereço físico confirmado: somente a sede em Boituva. Sorocaba é região atendida;
   // só publicar uma "Unidade Sorocaba" depois de o escritório confirmar rua, número,
   // complemento, bairro, CEP e telefone.
-  serviceRegion: "região de Sorocaba",
+  serviceRegion: "Sorocaba",
   units: [
     {
       id: "boituva",

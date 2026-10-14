@@ -3,16 +3,24 @@ import divorcio from "./divorcio.mjs";
 import verbasRescisorias from "./verbas-rescisorias.mjs";
 import jurosAbusivos from "./juros-abusivos.mjs";
 import golpeDoPix from "./golpe-do-pix.mjs";
+import familia from "./familia.mjs";
+import sucessorio from "./sucessorio.mjs";
+import trabalhista from "./trabalhista.mjs";
+import criminal from "./criminal.mjs";
+import saude from "./saude.mjs";
+import outros from "./outros.mjs";
 
 // Páginas de serviço publicadas. Para publicar uma nova: criar o arquivo de conteúdo
 // (planejamento editorial próprio) e incluí-lo aqui.
-const PAGES = [divorcio, verbasRescisorias, jurosAbusivos, golpeDoPix];
+// As quatro primeiras têm planejamento editorial próprio e aparecem em destaque no menu.
+const FEATURED = [divorcio, verbasRescisorias, jurosAbusivos, golpeDoPix];
+const PAGES = [...FEATURED, ...familia, ...sucessorio, ...trabalhista, ...criminal, ...saude, ...outros];
 
 export const servicePages = PAGES.map((p) => {
   const area = areaById[p.area];
   const service = area?.services.find((s) => s.id === p.service);
   if (!area || !service) throw new Error(`Serviço inexistente: ${p.area}/${p.service}`);
-  return { ...p, areaData: area, serviceData: service, path: servicePath(area, service) };
+  return { ...p, featured: FEATURED.includes(p), areaData: area, serviceData: service, path: servicePath(area, service) };
 });
 
 const published = new Set(servicePages.map((p) => `${p.area}/${p.service}`));

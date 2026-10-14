@@ -27,7 +27,7 @@ export default function home() {
       </h1>
       <div class="hero__panel">
         <p class="hero__lede">Clareza jurídica antes de qualquer decisão.</p>
-        <p class="hero__text">Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário. Sede em Boituva, atendimento na região de Sorocaba e online em todo o Brasil.</p>
+        <p class="hero__text">Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário. Atendimento presencial em Boituva e Sorocaba e online em São Paulo e todo o Brasil.</p>
         <div class="btn-row">
           ${btn(AREAS_HUB, "Conheça nossas áreas", "btn--light")}
           <a class="btn btn--ghost-light" href="/contato/">Falar com a equipe</a>
@@ -43,13 +43,13 @@ export default function home() {
       <div class="stack" data-reveal>
         <p class="eyebrow">Vieira &amp; Marques Sociedade de Advogados</p>
         <h2 class="h-section" id="intro-titulo">A orientação vem antes da estratégia — <span class="grad">e a estratégia, antes do processo.</span></h2>
-        <p class="lead">Um escritório organizado por áreas, com advogados inscritos na OAB/SP respondendo diretamente por cada uma delas. Sede em Boituva, atendimento na região de Sorocaba e online para clientes de todo o Brasil.</p>
+        <p class="lead">Um escritório organizado por áreas, com advogados inscritos na OAB/SP respondendo diretamente por cada uma delas. Atendimento presencial em Boituva e Sorocaba e online para clientes de São Paulo e de todo o Brasil.</p>
       </div>
       <div data-reveal>
         ${facts([
           { label: "Sede", value: "Boituva — SP", text: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici." },
-          { label: "Região", value: "Sorocaba e região", text: "Atendimento a clientes de Sorocaba e cidades vizinhas." },
-          { label: "Alcance", value: "Todo o Brasil", text: "Reuniões por vídeo e envio digital de documentos." },
+          { label: "Presencial", value: "Boituva e Sorocaba", text: "Reuniões na sede, em Boituva, e em Sorocaba." },
+          { label: "Online", value: "São Paulo e todo o Brasil", text: "Reuniões por vídeo e envio digital de documentos." },
           { label: "Corpo profissional", value: `${team.length} advogados`, text: "Inscrição ativa na OAB/SP e áreas definidas de atuação." },
         ])}
       </div>
@@ -138,9 +138,9 @@ ${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nos
 ${lpReach()}`;
 
   return page({
-    title: "Vieira & Marques Advogados | Boituva - SP e região de Sorocaba",
+    title: "Vieira & Marques Advogados | Boituva, Sorocaba e todo o Brasil",
     description:
-      "Advogados em Boituva (SP) e região de Sorocaba: Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário. Atendimento online.",
+      "Advogados em Boituva e Sorocaba (SP) e online em todo o Brasil: Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS.",
     path: "/",
     preload: [imgPreload("fachada", HERO_SIZES)],
     schema: [

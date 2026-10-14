@@ -101,7 +101,7 @@ export const LP_STEPS = [
   { title: "Você entra em contato", text: "Pelo WhatsApp ou por telefone, do jeito que conseguir. Se tiver documentos, envie; se não tiver, a conversa começa mesmo assim." },
   { title: "Triagem com a equipe de atendimento", text: "A equipe registra as informações iniciais, identifica a área do caso e indica quais documentos são úteis para a análise." },
   { title: "Encaminhamento interno", text: "Quando aplicável, o caso é encaminhado ao advogado ou profissional responsável pela área." },
-  { title: "Reunião e análise", text: "Na sede, em Boituva, ou por videochamada: você conhece os caminhos possíveis, os riscos e os documentos necessários." },
+  { title: "Reunião e análise", text: "Presencial, em Boituva ou Sorocaba, ou por videochamada: você conhece os caminhos possíveis, os riscos e os documentos necessários." },
   { title: "Definição do caminho", text: "Orientação preventiva, tentativa de acordo ou atuação judicial, com etapas e condições combinadas por escrito." },
 ];
 
@@ -204,11 +204,11 @@ const sede = SITE.units[0];
 export const STRUCTURE = [
   { image: "recepcao", title: "Recepção em Boituva/SP", caption: `${sede.street} — ${sede.district}`, alt: "Recepção do escritório Vieira & Marques, com diplomas e certificados na parede", wide: true },
   { image: "equipe", title: "A equipe", caption: "Profissionais que acompanham cada caso", alt: "Equipe da Vieira & Marques reunida na sede, em Boituva", position: "50% 35%" },
-  { image: "sala-atendimento", title: "Sala de atendimento", caption: "Atendimento presencial ou por vídeo", alt: "Sala de atendimento do escritório, com mesa e cadeiras" },
+  { image: "sala-atendimento", title: "Sala de atendimento", caption: "Atendimento presencial ou online", alt: "Sala de atendimento do escritório, com mesa e cadeiras" },
   { image: "atendimento-mesa", title: "Como trabalhamos", caption: "Cada caso analisado a partir dos documentos", alt: "Advogada trabalhando no computador, na sede do escritório", wide: true, position: "50% 40%" },
 ];
 
-export function lpStructure({ id = "estrutura", eyebrow = "O escritório", title = `Estrutura real, <span class="grad">equipe que você pode visitar.</span>`, text = "Sede em Boituva/SP, com atendimento presencial e reuniões por vídeo para clientes das demais cidades.", items = STRUCTURE } = {}) {
+export function lpStructure({ id = "estrutura", eyebrow = "O escritório", title = `Estrutura real, <span class="grad">equipe que você pode visitar.</span>`, text = "Sede em Boituva/SP, atendimento presencial também em Sorocaba e reuniões por vídeo para clientes de todo o Brasil.", items = STRUCTURE } = {}) {
   return `<section class="lp-sec lp-sec--dark lp-structure on-dark" id="${id}" aria-labelledby="${id}-titulo">
   <div class="container">
     ${lpHead({ eyebrow, title, lead: text, id: `${id}-titulo`, align: "left" })}
@@ -342,12 +342,13 @@ function mapSp() {
 }
 
 export const REACH_POINTS = [
+  "Atendimento presencial em Boituva e Sorocaba.",
   "Reuniões por vídeo, sem necessidade de deslocamento.",
   "Assinatura de documentos por meio digital.",
   "Acompanhamento processual à distância, com atualizações claras.",
 ];
 
-export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", title = `Atendimento em todo o <span class="grad">estado de São Paulo.</span>`, text = "Da capital ao interior e ao litoral: além da sede em Boituva e da região de Sorocaba, atendemos clientes de Campinas, Santos, Ribeirão Preto, São José dos Campos, ABC, Guarulhos e das demais cidades do estado por reunião online. Clientes de outros estados também são atendidos a distância.", points = REACH_POINTS } = {}) {
+export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", title = `Atendimento em São Paulo <span class="grad">e em todo o Brasil.</span>`, text = "Atendimento presencial na sede, em Boituva, e em Sorocaba. Para clientes da capital, do interior, do litoral e de outros estados, o atendimento é online — de Campinas, Santos e Ribeirão Preto a qualquer cidade do país.", points = REACH_POINTS } = {}) {
   return `<section class="lp-sec lp-sec--dark lp-reach on-dark" id="${id}" aria-labelledby="${id}-titulo">
   <div class="container">
     <div class="lp-split lp-split--reach">

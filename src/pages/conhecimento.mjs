@@ -34,7 +34,7 @@ ${lpHero({
   message: waMessage(),
   cta: "Falar com a equipe",
   secondary: { href: "#conteudos-titulo", label: "Ver conteúdos" },
-  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  note: ["Atendimento sigiloso", "Presencial em Boituva e Sorocaba", "Online em São Paulo e todo o Brasil"],
   image: "mesa-trabalho",
   alt: "Mesa de trabalho do escritório Vieira & Marques",
   position: "55% 50%",

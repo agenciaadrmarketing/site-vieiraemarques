@@ -18,8 +18,8 @@ import { HERO_MOBILE, lpHero, lpServices, lpSteps, lpProof, lpAbout, lpStructure
 // Mãe das páginas /areas/<área>/<serviço>/.
 
 const description = (area) => {
-  const base = `${area.summary.replace(/\s+—\s+/, ": ")} Atendimento em Boituva (SP), na região de Sorocaba e online.`;
-  return base.length <= 160 ? base : `${area.summary} Atendimento em Boituva (SP) e online.`;
+  const base = `${area.summary.replace(/\s+—\s+/, ": ")} Presencial em Boituva e Sorocaba; online em todo o Brasil.`;
+  return base.length <= 160 ? base : `${area.summary} Presencial em Boituva e Sorocaba e online.`;
 };
 
 const faqTitle = (area) => `Perguntas sobre <span class="grad">${esc(area.shortTitle === "Médico e Saúde" ? "Direito Médico e da Saúde" : area.title)}</span>`;
@@ -58,7 +58,7 @@ ${lpHero({
   message: msg,
   cta: lp.cta,
   secondary: { href: "#servicos", label: "Ver serviços da área" },
-  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  note: ["Atendimento sigiloso", "Presencial em Boituva e Sorocaba", "Online em São Paulo e todo o Brasil"],
   image: lp.image,
   alt: lp.alt,
   position: lp.position,

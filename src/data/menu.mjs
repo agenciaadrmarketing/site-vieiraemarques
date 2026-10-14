@@ -30,7 +30,7 @@ export const MENUS = {
     items: practiceAreas.map((a) => ({ title: a.title, desc: short(a.summary), href: areaUrl(a), num: a.number })),
     aside: {
       heading: "Guias por serviço",
-      items: servicePages.map((p) => ({ title: p.serviceData.title, desc: p.areaData.title, href: p.path })),
+      items: servicePages.filter((p) => p.featured).map((p) => ({ title: p.serviceData.title, desc: p.areaData.title, href: p.path })),
     },
     footer: { text: "Não sabe qual é a área? Descreva a situação.", label: "Ver todas as áreas", href: AREAS_HUB },
   },

@@ -131,7 +131,7 @@ function header(current, whatsappMessage) {
   return `<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <div class="topbar">
   <div class="container">
-    <p class="topbar__note">Sede em Boituva — SP · atendimento na região de Sorocaba e online em todo o Brasil</p>
+    <p class="topbar__note">Presencial em Boituva e Sorocaba · online em São Paulo e todo o Brasil</p>
     <div class="topbar__links">
       <a href="${SITE.phone.href}">${SITE.phone.display}</a>
       ${join(SITE.social, (s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`)}

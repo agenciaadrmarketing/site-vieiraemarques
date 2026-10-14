@@ -77,7 +77,7 @@ ${lpHero({
   text: "Cada área reúne as situações concretas que o escritório atende. Não sabe em qual delas o seu caso se encaixa? Descreva o que aconteceu — identificar o caminho faz parte da triagem inicial.",
   message: waMessage(),
   cta: "Falar com a equipe",
-  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  note: ["Atendimento sigiloso", "Presencial em Boituva e Sorocaba", "Online em São Paulo e todo o Brasil"],
   image: "escritorio-interno",
   alt: "Ambiente interno do escritório Vieira & Marques em Boituva",
   position: "60% 55%",

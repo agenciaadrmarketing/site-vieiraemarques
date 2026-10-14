@@ -49,11 +49,11 @@ ${lpHero({
   crumbs: CRUMBS,
   badge: "O Escritório · Boituva/SP",
   title: `Orientar antes de agir. <span class="grad">Agir com responsabilidade.</span>`,
-  text: "A Vieira &amp; Marques Sociedade de Advogados nasceu com o propósito de oferecer atendimento jurídico ético, eficiente e acolhedor — com sede em Boituva, atendimento na região de Sorocaba e online em todo o Brasil.",
+  text: "A Vieira &amp; Marques Sociedade de Advogados nasceu com o propósito de oferecer atendimento jurídico ético, eficiente e acolhedor — com sede em Boituva, atendimento presencial em Boituva e Sorocaba e online em São Paulo e todo o Brasil.",
   message: waMessage(),
   cta: "Falar com a equipe",
   secondary: { href: "#equipe", label: "Conheça a equipe" },
-  note: ["Atendimento sigiloso", "Presencial em Boituva", "Online em todo o Brasil"],
+  note: ["Atendimento sigiloso", "Presencial em Boituva e Sorocaba", "Online em São Paulo e todo o Brasil"],
   image: "equipe",
   alt: "Equipe de advogados da Vieira & Marques no escritório de Boituva",
   position: "50% 30%",
@@ -74,8 +74,8 @@ ${lpHero({
         </div>
         ${facts([
           { label: "Sede", value: "Boituva — SP" },
-          { label: "Região", value: "Sorocaba e região" },
-          { label: "Alcance", value: "Todo o Brasil, online" },
+          { label: "Presencial", value: "Boituva e Sorocaba" },
+          { label: "Online", value: "São Paulo e todo o Brasil" },
           { label: "Equipe", value: `${team.length} advogados` },
         ])}
       </div>
@@ -131,7 +131,7 @@ ${lpHero({
 ${lpStructure({
   eyebrow: "Estrutura",
   title: `O escritório <span class="grad">por dentro.</span>`,
-  text: "Sede em Boituva, com salas de atendimento e de reunião. Para quem está em outra cidade, as reuniões acontecem por vídeo.",
+  text: "Sede em Boituva, com salas de atendimento e de reunião. Atendimento presencial também em Sorocaba e, para as demais cidades, reuniões por vídeo.",
   items: [
     { image: "escritorio-interno", title: "Sede — Boituva/SP", caption: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici", alt: "Ambiente interno do escritório em Boituva", wide: true, position: "50% 55%" },
     { image: "sala-reuniao", title: "Sala de reunião", caption: "Reuniões presenciais ou por vídeo", alt: "Sala de reunião do escritório" },
@@ -147,7 +147,7 @@ ${lpReach()}`;
   return page({
     title: "O Escritório | Vieira & Marques",
     description:
-      "História, forma de atuação, princípios e equipe da Vieira & Marques Sociedade de Advogados, com sede em Boituva, atendimento na região de Sorocaba e online.",
+      "História, forma de atuação e equipe da Vieira & Marques Sociedade de Advogados: presencial em Boituva e Sorocaba e online em todo o Brasil.",
     path: PATH,
     preload: [imgPreload("equipe", "100vw")],
     crumbs: CRUMBS,

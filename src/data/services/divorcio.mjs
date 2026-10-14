@@ -197,7 +197,7 @@ export default {
   form: {
     heading: `Conte a situação. <span class="grad">A análise começa pelos fatos.</span>`,
     lead: "Não é preciso ter tudo decidido. As respostas abaixo ajudam a equipe a entender o cenário e encaminhar o caso ao profissional responsável.",
-    points: ["Atendimento sigiloso", "Reunião presencial em Boituva ou por vídeo", "Condições do trabalho combinadas por escrito, depois da análise"],
+    points: ["Atendimento sigiloso", "Reunião presencial em Boituva ou Sorocaba, ou por vídeo", "Condições do trabalho combinadas por escrito, depois da análise"],
     questions: [
       { id: "acordo", type: "choice", label: "Existe acordo sobre o divórcio?", options: ["Sim", "Em parte", "Não", "Ainda não conversamos"] },
       { id: "filhos", type: "choice", label: "Existem filhos do casal?", options: ["Sim", "Não"] },
