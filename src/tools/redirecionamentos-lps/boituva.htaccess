@@ -1,0 +1,5 @@
+# LP desativada: redireciona (301) para a página equivalente do site novo.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^ https://vieiraemarquesadvogados.com/ [R=301,L]
+</IfModule>

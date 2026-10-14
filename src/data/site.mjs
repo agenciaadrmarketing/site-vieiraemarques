@@ -55,6 +55,15 @@ export const SITE = {
   // formulário permanece em src/partials/lead-form.mjs; para reativar, usar true.
   forms: false,
 
+  // Medição e verificação (tudo vazio = desativado). Ao preencher:
+  //   googleSiteVerification  código da meta tag do Google Search Console;
+  //   ga4                     ID do Google Analytics 4 (ex.: "G-XXXXXXXXXX");
+  //   metaPixel               ID do Pixel da Meta (somente números).
+  // Com ga4 ou metaPixel, o build libera os domínios na CSP do .htaccess, a Política de
+  // Privacidade passa a descrever as ferramentas e o site exibe o aviso de consentimento:
+  // as tags só carregam depois que o visitante aceita.
+  measurement: { googleSiteVerification: "", ga4: "", metaPixel: "" },
+
   oabNotice:
     "Conteúdo de caráter informativo, em conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021. Não há oferta de serviços, captação de clientela ou promessa de resultado. Cada caso é analisado individualmente.",
 };

@@ -1,11 +1,12 @@
 // Gera as páginas estáticas a partir de src/. Sem dependências: `node src/build.mjs`.
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SITE } from "./data/site.mjs";
 import { page } from "./partials/layout.mjs";
 import { ROUTES } from "./routes.mjs";
 import { LEGAL_REVIEW } from "./data/legal.mjs";
+import { cspHeader } from "./data/csp.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -43,6 +44,12 @@ function sitemap() {
 
 for (const route of ROUTES) write(outFile(route.path), route.render());
 write(join(ROOT, "404.html"), notFound());
+
+// CSP do .htaccess acompanha a configuração de medição (src/data/csp.mjs).
+const htaccess = join(ROOT, ".htaccess");
+const ht = readFileSync(htaccess, "utf8");
+const csp = ht.replace(/Header always set Content-Security-Policy "[^"]*"/, `Header always set Content-Security-Policy "${cspHeader()}"`);
+if (csp !== ht) writeFileSync(htaccess, csp);
 write(join(ROOT, "sitemap.xml"), sitemap());
 write(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /design/\n\nSitemap: ${SITE.origin}/sitemap.xml\n`);
 

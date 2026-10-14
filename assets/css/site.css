@@ -1665,3 +1665,10 @@ html { interpolate-size: allow-keywords; }
 .lp-proof__frame--tall { max-width: 400px; aspect-ratio: 3 / 4; }
 @media (max-width: 720px) { .lp-proof__frame--tall { max-width: 300px; } }
 @media (max-width: 720px) { .lp-badge { max-width: 100%; text-align: left; gap: 8px; padding: 8px 14px; } }
+
+/* ---------- Aviso de consentimento (somente com ferramentas de medição configuradas) ---------- */
+.consent { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 60; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; max-width: 880px; margin-inline: auto; padding: 18px 22px; border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: #111111; color: #EDEDED; box-shadow: 0 24px 60px -20px rgba(0,0,0,.7); }
+.consent[hidden] { display: none; }
+.consent__text { flex: 1 1 320px; font-size: 14px; line-height: 1.55; }
+.consent__actions { display: flex; gap: 10px; }
+.site-footer__prefs { padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; text-align: left; }

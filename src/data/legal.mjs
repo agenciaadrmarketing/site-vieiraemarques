@@ -25,8 +25,8 @@ export const DATA_FLOWS = {
   forms: SITE.forms,
   // Com formulário ativo e endpoint configurado, os dados vão para planilha (Google Apps Script).
   leadSheet: SITE.forms && !isPending(SITE.leadEndpoint),
-  analytics: [],
-  advertising: [],
+  analytics: SITE.measurement.ga4 ? ["Google Analytics 4"] : [],
+  advertising: SITE.measurement.metaPixel ? ["Pixel da Meta"] : [],
 };
 
 // Pendências para a revisão jurídica interna. Impressas pelo build; não vão para o HTML.
@@ -40,6 +40,7 @@ export const LEGAL_REVIEW = [
   "Aplicabilidade do art. 15 do Marco Civil (guarda de registros de acesso) ao escritório (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
   "Foro: texto provisório sem foro exclusivo (Termos, seção 15) [VALIDAR FORO COM O ESCRITÓRIO]",
   isPending(SITE.hours) && "[CONFIRMAR COM O ESCRITÓRIO] Horário de atendimento (oculto no site, na Política e no rodapé enquanto pendente)",
+  (DATA_FLOWS.analytics.length || DATA_FLOWS.advertising.length) && "Ferramentas de medição ativas: revisar a Política (cookies, finalidades, compartilhamento e transferência internacional) e o texto do aviso de consentimento",
   DATA_FLOWS.leadSheet && "Formulário grava em planilha Google: confirmar contrato/termos do Google Workspace e região dos dados (Política, seções 4, 8 e 9)",
 ].filter(Boolean);
 

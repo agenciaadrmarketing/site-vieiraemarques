@@ -64,6 +64,7 @@ function head({ title, description, path, ogType = "website", schema = [], crumb
 <link rel="canonical" href="${esc(url)}">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0B0B0B">
+${SITE.measurement.googleSiteVerification ? `<meta name="google-site-verification" content="${esc(SITE.measurement.googleSiteVerification)}">\n` : ""}
 <meta property="og:type" content="${ogType}">
 <meta property="og:locale" content="${SITE.locale}">
 <meta property="og:site_name" content="${esc(SITE.name)}">
@@ -213,6 +214,7 @@ export function footer(whatsappMessage = waMessage()) {
       ${col("Legal", `<ul class="site-footer__list">
           <li>${link(LEGAL_PATHS.privacy, "Política de Privacidade")}</li>
           <li>${link(LEGAL_PATHS.terms, "Termos de Uso")}</li>
+          ${SITE.measurement.ga4 || SITE.measurement.metaPixel ? `<li><button class="site-footer__link site-footer__prefs" type="button" data-consent-open>Preferências de cookies</button></li>` : ""}
         </ul>
         <ul class="site-footer__list site-footer__social" aria-label="Redes sociais">${join(SITE.social, (s) => `<li>${ext(s.url, s.label)}</li>`)}</ul>`)}
     </div>
@@ -258,11 +260,28 @@ export function breadcrumbs(crumbs) {
 </nav>`;
 }
 
+// Aviso de consentimento: só existe com ferramentas de medição configuradas.
+const MEASURING = Boolean(SITE.measurement.ga4 || SITE.measurement.metaPixel);
+const consentBanner = () => {
+  const tools = [SITE.measurement.ga4 && "Google Analytics", SITE.measurement.metaPixel && "Pixel da Meta"].filter(Boolean).join(" e ");
+  return `<div class="consent on-dark" data-consent hidden role="region" aria-label="Preferências de cookies">
+  <p class="consent__text">Com a sua autorização, usamos ferramentas de medição (${esc(tools)}) para entender como o site é usado. <a class="text-link" href="${LEGAL_PATHS.privacy}#cookies">Saiba mais</a></p>
+  <div class="consent__actions">
+    <button class="btn btn--ghost-light btn--plain" type="button" data-consent-choice="recusado">Recusar</button>
+    <button class="btn btn--light btn--plain" type="button" data-consent-choice="aceito">Aceitar</button>
+  </div>
+</div>`;
+};
+const bodyAttrs = () =>
+  (SITE.forms ? " data-forms" : "") +
+  (SITE.measurement.ga4 ? ` data-ga4="${esc(SITE.measurement.ga4)}"` : "") +
+  (SITE.measurement.metaPixel ? ` data-pixel="${esc(SITE.measurement.metaPixel)}"` : "");
+
 export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage(), floatPhrases }) {
   return `<!DOCTYPE html>
 <html lang="${SITE.lang}">
 ${head({ title, description, path, schema, crumbs, preload })}
-<body${SITE.forms ? " data-forms" : ""}>
+<body${bodyAttrs()}>
 ${loader()}
 ${header(path, whatsappMessage)}
 <main id="conteudo" tabindex="-1">
@@ -270,6 +289,7 @@ ${body}
 </main>
 ${footer(whatsappMessage)}
 ${floatingWhatsapp ? waFloat(whatsappMessage, floatPhrases) : ""}
+${MEASURING ? consentBanner() : ""}
 <script src="/assets/js/site.js?v=${ASSET_VERSION}" data-lenis="/assets/js/vendor/lenis.min.js?v=${ASSET_VERSION}" defer></script>
 ${join(scripts, (s) => `<script src="${s}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
 </html>

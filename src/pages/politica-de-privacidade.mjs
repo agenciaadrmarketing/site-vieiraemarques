@@ -9,6 +9,9 @@ import { legalPage, p, h3, list, steps, callout, table } from "../partials/legal
 export default function politicaDePrivacidade() {
   const sede = SITE.units[0];
   const { forms, leadSheet: sheet } = DATA_FLOWS;
+  const tools = [...DATA_FLOWS.analytics, ...DATA_FLOWS.advertising];
+  const measuring = tools.length > 0;
+  const toolList = tools.join(" e ");
   const hosting = isPending(LEGAL.hostingProvider) ? "" : esc(LEGAL.hostingProvider);
   const mail = `<a class="text-link" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`;
   const phone = `<a class="text-link" href="${SITE.phone.href}">${SITE.phone.display}</a>`;
@@ -129,6 +132,7 @@ export default function politicaDePrivacidade() {
           rows: [
             ["Responder à sua solicitação e organizar o primeiro atendimento", "Procedimentos preliminares relacionados a contrato, a pedido do titular"],
             ["Encaminhar o contato à área de atuação adequada", "Procedimentos preliminares relacionados a contrato, a pedido do titular"],
+            ...(measuring ? [[`Medir a audiência do site${DATA_FLOWS.advertising.length ? " e o resultado de campanhas" : ""}, com ${esc(toolList)}`, "Consentimento, que pode ser revogado a qualquer momento"]] : []),
             ...(sheet ? [["Identificar a origem do contato (página e campanha)", "Legítimo interesse do escritório em entender como é encontrado, com dados limitados ao necessário"]] : []),
             forms
               ? ["Evitar envios automáticos e abusos nos formulários", "Legítimo interesse, para a segurança do site e de quem o utiliza"]
@@ -143,21 +147,27 @@ export default function politicaDePrivacidade() {
     {
       id: "cookies",
       title: "Cookies e tecnologias semelhantes",
-      body:
-        p(
-          "O site não cria cookies próprios e não utiliza, atualmente, ferramentas de análise de audiência, de publicidade, de mapas de calor ou de gravação de sessão — como Google Analytics, Google Tag Manager, Google Ads ou Meta Pixel. As fontes, as imagens e os scripts — inclusive a biblioteca de código aberto usada na rolagem suave — são servidos pelo próprio site, sem incorporações de serviços de terceiros."
-        ) +
-        (forms
-          ? p("O site usa o armazenamento de sessão do navegador (sessionStorage), que é apagado quando a aba é fechada, para:") +
-            list([
-              "<strong>Origem do acesso</strong> — guardar a página de entrada, a página anterior e os parâmetros de campanha descritos na seção 2;",
-              "<strong>Proteção contra envios repetidos</strong> — registrar o horário do último envio de formulário, evitando duplicidades.",
-            ])
-          : p("O site também não grava informações no armazenamento do navegador (como localStorage ou sessionStorage).")) +
-        p(
-          "O site registra eventos de navegação — como cliques em botões — em uma variável interna da página, preparada para uma futura ferramenta de medição. Esses eventos não saem do seu navegador e não são enviados a nenhum serviço.",
-          "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
-        ),
+      body: measuring
+        ? p(
+            `O site não cria cookies próprios. Com a sua autorização, utiliza ferramentas de medição de terceiros — ${esc(toolList)} — que usam cookies e identificadores para gerar estatísticas de uso${DATA_FLOWS.advertising.length ? " e medir o resultado de campanhas" : ""}.`,
+            "Essas ferramentas só são carregadas depois que você clica em “Aceitar” no aviso exibido na primeira visita. Se recusar, nenhuma delas é ativada e o site funciona normalmente.",
+            "A sua escolha fica guardada no armazenamento do navegador (localStorage), sem identificar você, e pode ser alterada a qualquer momento em “Preferências de cookies”, no rodapé.",
+            "As fontes, as imagens e os demais scripts do site — inclusive a biblioteca de código aberto usada na rolagem suave — são servidos pelo próprio site."
+          )
+        : p(
+            "O site não cria cookies próprios e não utiliza, atualmente, ferramentas de análise de audiência, de publicidade, de mapas de calor ou de gravação de sessão — como Google Analytics, Google Tag Manager, Google Ads ou Meta Pixel. As fontes, as imagens e os scripts — inclusive a biblioteca de código aberto usada na rolagem suave — são servidos pelo próprio site, sem incorporações de serviços de terceiros."
+          ) +
+          (forms
+            ? p("O site usa o armazenamento de sessão do navegador (sessionStorage), que é apagado quando a aba é fechada, para:") +
+              list([
+                "<strong>Origem do acesso</strong> — guardar a página de entrada, a página anterior e os parâmetros de campanha descritos na seção 2;",
+                "<strong>Proteção contra envios repetidos</strong> — registrar o horário do último envio de formulário, evitando duplicidades.",
+              ])
+            : p("O site também não grava informações no armazenamento do navegador (como localStorage ou sessionStorage).")) +
+          p(
+            "O site registra eventos de navegação — como cliques em botões — em uma variável interna da página, preparada para uma futura ferramenta de medição. Esses eventos não saem do seu navegador e não são enviados a nenhum serviço.",
+            "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
+          ),
     },
     {
       id: "compartilhamento",
@@ -170,6 +180,7 @@ export default function politicaDePrivacidade() {
             : "<strong>Hospedagem</strong> — o provedor que mantém o site no ar recebe os dados técnicos da conexão;",
           ...(sheet ? ["<strong>Ferramentas de produtividade em nuvem</strong> — a planilha e o e-mail usados para registrar e organizar os contatos recebidos;"] : []),
           "<strong>Mensageria</strong> — o WhatsApp, quando você opta por continuar a conversa por ele;",
+          ...(measuring ? [`<strong>Medição de audiência</strong> — ${esc(toolList)}, somente se você autorizar no aviso de cookies;`] : []),
           "<strong>Autoridades</strong> — quando houver obrigação legal, ordem judicial ou necessidade de defesa de direitos.",
         ]),
     },
@@ -177,7 +188,7 @@ export default function politicaDePrivacidade() {
       id: "transferencia",
       title: "Transferência internacional",
       body: p(
-        `Alguns serviços utilizados${sheet ? " — como o WhatsApp e as ferramentas de planilha e e-mail em nuvem —" : ", como o WhatsApp,"} são operados por empresas que podem processar dados em servidores localizados fora do Brasil. Nesses casos, a transferência ocorre nas hipóteses admitidas pela LGPD e conforme as garantias oferecidas por esses fornecedores.`,
+        `Alguns serviços utilizados${sheet ? " — como o WhatsApp e as ferramentas de planilha e e-mail em nuvem —" : measuring ? ` — como o WhatsApp e ${esc(toolList)} —` : ", como o WhatsApp,"} são operados por empresas que podem processar dados em servidores localizados fora do Brasil. Nesses casos, a transferência ocorre nas hipóteses admitidas pela LGPD e conforme as garantias oferecidas por esses fornecedores.`,
         hosting
           ? `A hospedagem do site é contratada com a ${hosting}, que mantém servidores em diferentes países. Conforme a infraestrutura utilizada, os dados técnicos da conexão podem ser processados fora do Brasil, nas mesmas condições.`
           : ""
