@@ -63,7 +63,7 @@ ErrorDocument 404 /404.html
 
   # script-src: nenhum script inline executável (JSON-LD não é executado).
   # img/connect-src: Google Apps Script do formulário de leads.
-  # Ao adicionar Google Tag Manager, incluir www.googletagmanager.com e os domínios das tags.
+  # Linha gerada pelo build (src/data/csp.mjs): ferramentas de medição liberam os próprios domínios.
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://script.google.com https://script.googleusercontent.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com; font-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"

@@ -507,6 +507,61 @@
     if (pageCtx) { data.practice_area = pageCtx.practice_area; data.service = pageCtx.service; }
     Object.keys(params || {}).forEach(function (k) { data[k] = params[k]; });
     window.dataLayer.push(data);
+    // Com a medição autorizada, os mesmos eventos seguem para o GA4 e o Pixel da Meta.
+    if (typeof window.gtag === "function") window.gtag("event", event, data);
+    if (typeof window.fbq === "function" && event === "whatsapp_click") window.fbq("track", "Contact");
+  }
+
+  /* ---------- Medição com consentimento (só existe com IDs configurados) ---------- */
+  // Nenhuma tag de terceiros carrega antes do aceite. A escolha fica no localStorage.
+  function initConsent() {
+    var ga = document.body.getAttribute("data-ga4");
+    var px = document.body.getAttribute("data-pixel");
+    var box = document.querySelector("[data-consent]");
+    if ((!ga && !px) || !box) return;
+    var KEY = "vm-consentimento";
+    var loaded = false;
+    function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function save(v) { try { localStorage.setItem(KEY, v); } catch (e) { /* armazenamento indisponível */ } }
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      if (ga) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag("js", new Date());
+        window.gtag("config", ga);
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga);
+        document.head.appendChild(s);
+      }
+      if (px) {
+        var f = window.fbq = function () { f.callMethod ? f.callMethod.apply(f, arguments) : f.queue.push(arguments); };
+        if (!window._fbq) window._fbq = f;
+        f.push = f; f.loaded = true; f.version = "2.0"; f.queue = [];
+        var t = document.createElement("script");
+        t.async = true;
+        t.src = "https://connect.facebook.net/en_US/fbevents.js";
+        document.head.appendChild(t);
+        window.fbq("init", px);
+        window.fbq("track", "PageView");
+      }
+    }
+    function show(on) { box.hidden = !on; }
+    box.querySelectorAll("[data-consent-choice]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var v = btn.getAttribute("data-consent-choice");
+        save(v);
+        show(false);
+        if (v === "aceito") load();
+        else if (loaded) location.reload(); // revogação: recarrega sem as tags
+      });
+    });
+    document.querySelectorAll("[data-consent-open]").forEach(function (b) { b.addEventListener("click", function () { show(true); }); });
+    var choice = read();
+    if (choice === "aceito") load();
+    else if (!choice) show(true);
   }
 
   /* ---------- Formulário de lead (contato e serviços) ---------- */
@@ -911,6 +966,7 @@
   initNav();
   initMobileSubmenus();
   initReveal();
+  initConsent();
   initFloat();
   initSignals();
   initLightbox();
