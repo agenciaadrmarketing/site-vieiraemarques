@@ -7,4 +7,5 @@ export const LANDING_PAGES = [
   { path: "/divorcio-boituva/", from: "divorcio-boituva.vieiraemarquesadvogados.com" },
   { path: "/divorcio-sem-filhos-sem-bens/", from: "divorcio-semfilhos.vieiraemarquesadvogados.com" },
   { path: "/juros-abusivos/", from: "juros-abusivos.vieiraemarquesadvogados.com" },
+  { path: "/golpe-do-pix/", from: "advogado-golpedopix.vieiraemarquesadvogados.com" },
 ];

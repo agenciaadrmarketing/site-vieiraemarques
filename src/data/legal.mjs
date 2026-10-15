@@ -14,9 +14,9 @@ export const LEGAL = {
   privacyChannelApproved: true,
   // Provedor de hospedagem confirmado pelo escritório.
   hostingProvider: "Hostinger",
-  // Texto provisório; não definir foro exclusivo sem validação do escritório.
+  // Foro de São Paulo/SP indicado pelo escritório; a ressalva do consumidor segue o CDC.
   lawAndForum:
-    "Estes Termos são regidos pelas leis da República Federativa do Brasil. Eventuais controvérsias serão submetidas ao foro competente, observadas as normas legais aplicáveis.",
+    "Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da Comarca de São Paulo/SP para dirimir eventuais controvérsias, ressalvadas as hipóteses em que a lei estabeleça foro diverso, como o do domicílio do consumidor.",
 };
 
 // Recursos do site que mudam o texto da Política. Mantê-los coerentes com o código:
@@ -35,12 +35,12 @@ export const LEGAL_REVIEW = [
   !LEGAL.privacyChannelApproved && `Aprovar ${SITE.email} como canal de privacidade (LEGAL.privacyChannelApproved) (Política, seção 12)`,
   isPending(LEGAL.hostingProvider)
     ? "[CONFIRMAR PROVEDOR DE HOSPEDAGEM] e cookies técnicos definidos pelo servidor em produção (Política, seções 2, 7, 8 e 9)"
-    : `Confirmar no painel da ${LEGAL.hostingProvider} a região do servidor (data center) e se o servidor define cookies técnicos (Política, seções 7 e 9)`,
+    : `Região do servidor confirmada no painel da ${LEGAL.hostingProvider} (EUA, Arizona; backups em Boston): confirmar se o servidor define cookies técnicos (Política, seções 7 e 9)`,
   "Bases legais por finalidade, em especial para dados sensíveis enviados espontaneamente (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
   "Aplicabilidade do art. 15 do Marco Civil (guarda de registros de acesso) ao escritório (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
   "Retenção: base de dados vitalícia (resposta do escritório) pode conflitar com os arts. 15 e 16 da LGPD; revisar o texto da seção 10 [REVISÃO JURÍDICA NECESSÁRIA]",
   SITE.googleReviews && "Avaliações do Google: confirmar com o escritório a compatibilidade com o Provimento 205/2021 da OAB e registrar na Política o carregamento das fotos de perfil (lh3.googleusercontent.com)",
-  "Foro: texto provisório sem foro exclusivo (Termos, seção 15) [VALIDAR FORO COM O ESCRITÓRIO]",
+  "Foro de São Paulo/SP indicado pelo escritório (Termos, seção 15): confirmar se é a Comarca da capital [REVISÃO JURÍDICA]",
   isPending(SITE.hours) && "[CONFIRMAR COM O ESCRITÓRIO] Horário de atendimento (oculto no site, na Política e no rodapé enquanto pendente)",
   (DATA_FLOWS.analytics.length || DATA_FLOWS.advertising.length) && "Ferramentas de medição ativas: revisar a Política (cookies, finalidades, compartilhamento e transferência internacional) e o texto do aviso de consentimento",
   DATA_FLOWS.leadSheet && "Formulário grava em planilha Google: confirmar contrato/termos do Google Workspace e região dos dados (Política, seções 4, 8 e 9)",

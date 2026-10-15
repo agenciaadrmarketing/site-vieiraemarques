@@ -18,7 +18,7 @@ desativar uma LP** e levar o visitante para a página equivalente do site novo (
 | divorcio-sp.vieiraemarquesadvogados.com | /divorcio-sao-paulo/ (mesma LP) | `divorcio-sp.htaccess` |
 | divorcio-boituva.vieiraemarquesadvogados.com | /divorcio-boituva/ (mesma LP) | `divorcio-boituva.htaccess` |
 | divorcio-semfilhos.vieiraemarquesadvogados.com | /divorcio-sem-filhos-sem-bens/ | `divorcio-guia.htaccess` |
-| advogado-golpedopix.vieiraemarquesadvogados.com | /areas/direito-bancario/golpe-do-pix/ | `golpe-do-pix.htaccess` |
+| advogado-golpedopix.vieiraemarquesadvogados.com | /golpe-do-pix/ | `golpe-do-pix.htaccess` |
 | verbas-rescisorias.vieiraemarquesadvogados.com | /areas/direito-trabalhista/verbas-rescisorias/ | `verbas-rescisorias.htaccess` |
 | (LP de juros abusivos) | /juros-abusivos/ | `juros-abusivos.htaccess` |
 

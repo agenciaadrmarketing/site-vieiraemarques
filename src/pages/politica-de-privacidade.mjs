@@ -193,7 +193,7 @@ export default function politicaDePrivacidade() {
       body: p(
         `Alguns serviços utilizados${sheet ? " — como o WhatsApp e as ferramentas de planilha e e-mail em nuvem —" : measuring ? ` — como o WhatsApp e ${esc(toolList)} —` : ", como o WhatsApp,"} são operados por empresas que podem processar dados em servidores localizados fora do Brasil. Nesses casos, a transferência ocorre nas hipóteses admitidas pela LGPD e conforme as garantias oferecidas por esses fornecedores.`,
         hosting
-          ? `A hospedagem do site é contratada com a ${hosting}, que mantém servidores em diferentes países. Conforme a infraestrutura utilizada, os dados técnicos da conexão podem ser processados fora do Brasil, nas mesmas condições.`
+          ? `A hospedagem do site é contratada com a ${hosting}, que mantém o servidor deste site nos Estados Unidos (Arizona), com cópias de segurança também nos Estados Unidos (Boston). Os dados técnicos da conexão e as informações do site são, portanto, processados fora do Brasil, nas mesmas condições.`
           : ""
       ),
     },

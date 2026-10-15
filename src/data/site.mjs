@@ -16,8 +16,8 @@ export const SITE = {
   phone: { display: "(15) 3347-0189", href: "tel:+551533470189", e164: "+551533470189" },
   whatsapp: { number: "551533470189", display: "(15) 3347-0189" },
   email: "vieiraemarques.advogados@gmail.com",
-  // Horário de atendimento: aguardando confirmação do escritório (não exibir até lá).
-  hours: PENDING,
+  // Horário de atendimento confirmado pelo escritório (vale para a equipe comercial).
+  hours: "Segunda a sexta, das 8h às 18h",
 
   // Endereço físico confirmado: somente a sede em Boituva. Sorocaba é região atendida;
   // só publicar uma "Unidade Sorocaba" depois de o escritório confirmar rua, número,
