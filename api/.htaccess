@@ -1,0 +1,8 @@
+# Só o endpoint público fica acessível; configuração, cache e exemplos ficam bloqueados.
+<FilesMatch "^(config(\.example)?\.php|\.cache)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^\.cache/ - [F,L]
+</IfModule>
