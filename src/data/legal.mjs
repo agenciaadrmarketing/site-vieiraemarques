@@ -6,7 +6,7 @@ import { SITE, PENDING, isPending } from "./site.mjs";
 
 export const LEGAL = {
   // Data exibida como "Última atualização" nas duas páginas. Atualizar a cada revisão.
-  lastUpdated: "2026-10-13",
+  lastUpdated: "2026-10-15",
   // Encarregado pelo tratamento de dados: [ENCARREGADO NÃO DEFINIDO / VALIDAR COM O ESCRITÓRIO].
   // Não há nome confirmado; a Política não indica encarregado enquanto for null.
   dpo: null,
@@ -38,6 +38,8 @@ export const LEGAL_REVIEW = [
     : `Confirmar no painel da ${LEGAL.hostingProvider} a região do servidor (data center) e se o servidor define cookies técnicos (Política, seções 7 e 9)`,
   "Bases legais por finalidade, em especial para dados sensíveis enviados espontaneamente (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
   "Aplicabilidade do art. 15 do Marco Civil (guarda de registros de acesso) ao escritório (Política, seção 6) [REVISÃO JURÍDICA NECESSÁRIA]",
+  "Retenção: base de dados vitalícia (resposta do escritório) pode conflitar com os arts. 15 e 16 da LGPD; revisar o texto da seção 10 [REVISÃO JURÍDICA NECESSÁRIA]",
+  SITE.googleReviews && "Avaliações do Google: confirmar com o escritório a compatibilidade com o Provimento 205/2021 da OAB e registrar na Política o carregamento das fotos de perfil (lh3.googleusercontent.com)",
   "Foro: texto provisório sem foro exclusivo (Termos, seção 15) [VALIDAR FORO COM O ESCRITÓRIO]",
   isPending(SITE.hours) && "[CONFIRMAR COM O ESCRITÓRIO] Horário de atendimento (oculto no site, na Política e no rodapé enquanto pendente)",
   (DATA_FLOWS.analytics.length || DATA_FLOWS.advertising.length) && "Ferramentas de medição ativas: revisar a Política (cookies, finalidades, compartilhamento e transferência internacional) e o texto do aviso de consentimento",

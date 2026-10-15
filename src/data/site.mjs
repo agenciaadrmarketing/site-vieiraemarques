@@ -62,8 +62,9 @@ export const SITE = {
   // Com ga4 ou metaPixel, o build libera os domínios na CSP do .htaccess, a Política de
   // Privacidade passa a descrever as ferramentas e o site exibe o aviso de consentimento:
   // as tags só carregam depois que o visitante aceita.
-  // Avaliações do Google (src/tools/google-reviews.mjs): só aparecem com true e com dados baixados.
-  googleReviews: false,
+  // Avaliações do Google via api/google-reviews.php (servidor, com cache). A seção só aparece se a API
+  // estiver configurada no servidor (GOOGLE_PLACES_API_KEY e GOOGLE_PLACE_ID); sem isso, fica oculta.
+  googleReviews: true,
   measurement: { googleSiteVerification: "", ga4: "", metaPixel: "" },
 
   oabNotice:

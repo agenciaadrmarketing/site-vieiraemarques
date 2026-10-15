@@ -1,9 +1,10 @@
 import { imgPreload } from "../partials/media.mjs";
 import { lpSteps, lpCta, lpReach, lpStructure, lpHero } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
-import { waMessage } from "../data/site.mjs";
+import { SITE, waMessage } from "../data/site.mjs";
 import { team, personName, profilePath } from "../data/team.mjs";
 import { areaById, areaUrl, AREAS_HUB } from "../data/areas.mjs";
+import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { img } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
@@ -28,6 +29,8 @@ const PRINCIPLES = [
   { label: "Missão", title: "Defender direitos com afinco, sem aceitar desigualdades.", text: "Proteger os direitos de quem nos procura e ajudar a encontrar soluções jurídicas seguras e sustentáveis, no âmbito extrajudicial ou judicial.", source: "“Defender os seus direitos com afinco, não aceitando desigualdades.”" },
   { label: "Valores", title: "Responsabilidade, fidelidade e honestidade.", text: "No trato com cada cliente e no respeito aos princípios éticos da advocacia — o que inclui informar com franqueza e nunca prometer resultado.", source: "“Responsabilidade, fidelidade e honestidade no trato com os nossos clientes é o nosso lema.”" },
 ];
+
+const SITE_SCRIPTS = SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [];
 
 export default function escritorio() {
   const body = `
@@ -123,11 +126,14 @@ ${lpStructure({
   ],
 })}
 
+${googleReviews({ muted: false })}
+
 ${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a nossa equipe.</span>`, text: "A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao advogado responsável pela área.", message: waMessage() })}
 
 ${lpReach()}`;
 
   return page({
+    scripts: SITE_SCRIPTS,
     title: "O Escritório | Vieira & Marques",
     description:
       "História, forma de atuação e equipe da Vieira & Marques Sociedade de Advogados: presencial em Boituva e Sorocaba e online em todo o Brasil.",

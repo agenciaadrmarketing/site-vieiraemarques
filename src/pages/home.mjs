@@ -2,7 +2,7 @@ import { esc, join } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
 import { lpSteps, lpCta, lpReach, lpStructure } from "../partials/lp.mjs";
 import { practiceAreas, areaUrl, AREAS_HUB } from "../data/areas.mjs";
-import reviews from "../data/google-reviews.json" with { type: "json" };
+import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { team, teamRecognitions } from "../data/team.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
 import { page } from "../partials/layout.mjs";
@@ -11,6 +11,8 @@ import { icon } from "../partials/icons.mjs";
 import { sectionHead, linkArrow, btn, teamPanels, recognitions, articleFeature, articleRow, facts } from "../partials/components.mjs";
 
 const HERO_SIZES = "(min-width: 1240px) 1212px, 100vw";
+
+const SITE_SCRIPTS = SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [];
 
 export default function home() {
   const recent = articles.filter((a) => a !== featuredArticle).slice(0, 3);
@@ -134,19 +136,14 @@ export default function home() {
 
 ${lpSteps({ title: `Como funciona <span class="grad">o primeiro contato.</span>` })}
 
-${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. Identificar a área e o caminho aplicável faz parte da triagem inicial.", message: waMessage() })}
+${googleReviews()}
 
-${SITE.googleReviews && reviews.reviews.length ? `<section class="section section--muted" aria-labelledby="avaliacoes-titulo">
-  <div class="container">
-    ${sectionHead({ eyebrow: "Avaliações no Google", id: "avaliacoes-titulo", title: `O que dizem <span class="grad">no Google.</span>`, lead: `Nota ${String(reviews.rating).replace(".", ",")} em ${reviews.count} avaliações no Perfil da Empresa.` })}
-    <ul class="cards-grid mt-lg">${reviews.reviews.map((r) => `<li class="article-card"><p class="meta"><span>${"★".repeat(r.rating)}</span><span>${esc(r.when)}</span></p><p>${esc(r.text)}</p><p class="muted">${esc(r.author)}</p></li>`).join("")}</ul>
-    <p class="mt-lg"><a class="link-arrow" href="${esc(reviews.url)}" target="_blank" rel="noopener">Ver todas no Google ${icon.arrowUpRight(14)}</a></p>
-  </div>
-</section>` : ""}
+${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. Identificar a área e o caminho aplicável faz parte da triagem inicial.", message: waMessage() })}
 
 ${lpReach()}`;
 
   return page({
+    scripts: SITE_SCRIPTS,
     title: "Vieira & Marques Advogados | Boituva, Sorocaba e todo o Brasil",
     description:
       "Advogados em Boituva e Sorocaba (SP) e online em todo o Brasil: Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS.",

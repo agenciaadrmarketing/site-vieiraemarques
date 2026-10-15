@@ -13,7 +13,9 @@ import zipfile
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(ROOT, "dist", "site-vieiraemarques.zip")
 EXCLUDE_DIRS = {"src", "design", "dist", "node_modules", ".git", ".github", ".claude"}
-EXCLUDE_FILES = {"package.json", "package-lock.json", ".gitignore"}
+EXCLUDE_FILES = {"package.json", "package-lock.json", ".gitignore", ".env.example", ".env"}
+# Credenciais e cache do endpoint de avaliações nunca entram no pacote.
+EXCLUDE_REL = {os.path.join("api", "config.php")}
 
 
 def main():
@@ -25,8 +27,10 @@ def main():
             if rel == ".":
                 dirs[:] = sorted(d for d in dirs if d not in EXCLUDE_DIRS)
             else:
-                dirs.sort()
+                dirs[:] = sorted(d for d in dirs if os.path.join(rel, d) != os.path.join("api", ".cache"))
             for f in sorted(files):
+                if os.path.join(rel, f) in EXCLUDE_REL:
+                    continue
                 if rel == "." and f in EXCLUDE_FILES:
                     continue
                 path = os.path.join(base, f)

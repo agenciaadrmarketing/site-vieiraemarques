@@ -6,6 +6,8 @@ import { SITE } from "./site.mjs";
 export function cspHeader() {
   const { ga4, metaPixel } = SITE.measurement;
   const script = ["'self'"], img = ["'self'", "data:", "https://script.google.com", "https://script.googleusercontent.com"], connect = ["'self'", "https://script.google.com", "https://script.googleusercontent.com"];
+  // Fotos de perfil dos autores das avaliações do Google (carregadas pelo navegador).
+  if (SITE.googleReviews) img.push("https://lh3.googleusercontent.com");
   if (ga4) {
     script.push("https://www.googletagmanager.com");
     img.push("https://www.google-analytics.com", "https://www.googletagmanager.com");

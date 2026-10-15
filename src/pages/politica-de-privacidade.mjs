@@ -167,7 +167,10 @@ export default function politicaDePrivacidade() {
           p(
             "O site registra eventos de navegação — como cliques em botões — em uma variável interna da página, preparada para uma futura ferramenta de medição. Esses eventos não saem do seu navegador e não são enviados a nenhum serviço.",
             "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
-          ),
+          ) +
+          (SITE.googleReviews
+            ? p("A seção de avaliações exibe comentários publicados por clientes no Google. Eles são consultados pelo servidor do site, sem o seu navegador acessar o Google para isso; apenas as fotos de perfil dos autores, quando existirem, são carregadas dos servidores do Google, que pode receber o seu endereço IP nessa requisição.")
+            : ""),
     },
     {
       id: "compartilhamento",
@@ -200,6 +203,9 @@ export default function politicaDePrivacidade() {
       body:
         p(
           "Os dados pessoais serão mantidos pelo período necessário para o cumprimento das finalidades que justificaram sua coleta e tratamento, bem como pelo período necessário ao cumprimento de obrigações legais ou regulatórias e ao exercício regular de direitos. Encerrada a finalidade e inexistindo fundamento para sua conservação, os dados serão eliminados ou anonimizados, observados os limites técnicos e legais aplicáveis."
+        ) +
+        p(
+          "No caso de clientes, os dados pessoais e os dados processuais permanecem na base de dados do escritório, sem prazo de eliminação definido, em razão do dever de guarda da documentação do caso, do cumprimento de obrigações legais e regulatórias e do exercício regular de direitos. O compromisso do escritório de fornecer dados e documentos ao cliente se encerra com a conclusão do contrato de prestação de serviços."
         ),
     },
     {
