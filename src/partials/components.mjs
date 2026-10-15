@@ -110,15 +110,15 @@ export const areaLink = (id) => {
 export function teamPanels(people, { profileLinks = false, headingLevel = 3 } = {}) {
   const h = `h${headingLevel}`;
   return `<div class="team-panels" data-team-panels data-reveal>
-  ${join(people, (p, i) => `<article class="team-panel${i === 0 ? " is-active" : ""}" tabindex="0" aria-labelledby="painel-${p.id}">
+  ${join(people, (p, i) => `<article class="team-panel${i === 0 ? " is-active" : ""}" id="${p.id}" tabindex="0" aria-labelledby="painel-${p.id}">
     <div class="team-panel__photo">${img(p.photo, { alt: `${p.name}, ${p.role.toLowerCase()} da Vieira & Marques`, sizes: "(min-width: 900px) 520px, 80vw", style: `--pos:${p.position};--pos-active:${p.positionActive ?? p.position}` })}</div>
     <span class="team-panel__vertical" aria-hidden="true">${esc(p.name)}</span>
     <div class="team-panel__info">
       <p class="team-panel__meta">${esc(p.role)} · ${esc(p.oab)}</p>
       <${h} class="team-panel__name" id="painel-${p.id}">${esc(p.name)}</${h}>
-      <p class="team-panel__bio">${esc(p.bio)}</p>
+      <p class="team-panel__bio">${esc(p.summary ?? p.bio)}</p>
       ${when(p.tags?.length, `<ul class="team-panel__tags" aria-label="Temas">${join(p.tags ?? [], (t) => `<li>${esc(t)}</li>`)}</ul>`)}
-      ${when(profileLinks, `<a class="team-panel__link" href="/escritorio/#${p.id}">Formação completa <span aria-hidden="true">→</span></a>`)}
+      ${when(profileLinks && p.hasProfile, `<a class="team-panel__link" href="/advogados/${p.slug}/">Ver perfil completo <span aria-hidden="true">→</span></a>`)}
     </div>
   </article>`)}
 </div>
@@ -127,7 +127,7 @@ export function teamPanels(people, { profileLinks = false, headingLevel = 3 } = 
   <div class="team-carousel__dots">${join(people, (p, i) => `<button class="team-carousel__dot" type="button" data-team-dot="${i}" aria-label="Ver ${esc(p.name)}"${i === 0 ? ' aria-current="true"' : ""}></button>`)}</div>
   <button class="team-carousel__arrow" type="button" data-team-next aria-label="Próximo profissional">${icon.arrow(16)}</button>
 </div>
-<p class="team-panels__hint"><span class="team-panels__hint-desktop">Passe o mouse sobre cada profissional para ver formação e áreas de atuação.</span><span class="team-panels__hint-mobile">Deslize ou use as setas para conhecer a equipe.</span></p>`;
+<p class="team-panels__hint"><span class="team-panels__hint-desktop">Passe o mouse sobre cada profissional para ver as áreas de atuação e abrir o perfil.</span><span class="team-panels__hint-mobile">Deslize ou use as setas para conhecer a equipe.</span></p>`;
 }
 
 export const recognitions = (items) => `<ul class="recognitions" data-reveal>${join(items, (t) => `<li>${esc(t)}</li>`)}</ul>`;

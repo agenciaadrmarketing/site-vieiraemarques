@@ -1680,3 +1680,58 @@ html { interpolate-size: allow-keywords; }
 .js .lp-map.is-visible .lp-map__cap { animation: lp-fade .5s ease var(--d, 1.5s) both; }
 @media (prefers-reduced-motion: reduce) { .js .lp-map .lp-map__cap { opacity: 1 !important; animation: none !important; } }
 @media (max-width: 940px) { .lp-reach .lp-map--brasil { width: min(420px, 100%); } }
+
+/* Perfil individual do profissional (/advogados/<slug>/) */
+.adv-hero { background: var(--c-ink); color: var(--c-text-light); padding-block: clamp(24px, 3vw, 36px) clamp(56px, 8vw, 104px); }
+.adv-hero__grid { display: grid; gap: 36px; margin-top: clamp(28px, 5vw, 56px); align-items: center; }
+@media (min-width: 900px) { .adv-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 64px; } }
+.adv-hero__in { max-width: 640px; }
+.adv-hero__title { margin-top: 20px; font-size: clamp(38px, 5.4vw, 68px); font-weight: 600; line-height: 1.04; letter-spacing: -0.02em; color: #FFFFFF; }
+.adv-hero__role { margin-top: 14px; font-size: 13px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: #A3A3A3; }
+.adv-hero__text { margin-top: 22px; font-size: clamp(16.5px, 1.4vw, 18px); font-weight: 300; line-height: 1.65; color: #B4B4B4; text-wrap: pretty; }
+.adv-hero__areas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.adv-hero__areas a { display: inline-block; padding: 7px 14px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; font-size: 13px; color: #EDEDED; }
+.adv-hero__areas a:hover { background: #FFFFFF; color: #0B0B0B; }
+.adv-hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; margin-top: 32px; }
+.adv-hero__photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; background: var(--c-ink-3); aspect-ratio: 4 / 5; max-width: 440px; width: 100%; justify-self: center; }
+.adv-hero__photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.25) contrast(1.03); }
+@media (max-width: 899px) { .adv-hero__photo { order: -1; aspect-ratio: 1 / 1; max-width: 360px; justify-self: start; } }
+.adv-areas { list-style: none; display: grid; gap: 16px; margin-top: 28px; }
+@media (min-width: 720px) { .adv-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.adv-area { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 26px; border: 1px solid var(--c-line-light); border-radius: 14px; background: var(--c-paper); box-shadow: var(--shadow-card); transition: border-color .25s var(--ease), box-shadow .25s var(--ease); }
+.adv-area:hover { border-color: var(--c-ink); box-shadow: var(--shadow-card-hover); }
+.adv-area .link-arrow { margin-top: auto; padding-top: 8px; }
+.adv-tags-label { margin-top: 32px; font-size: 12px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--c-text-dark-3); }
+.adv-tags { margin-top: 12px; }
+.adv-tags li { color: var(--c-ink); border-color: var(--c-line-light-2); }
+.adv-cred { display: grid; gap: 28px; margin-top: 28px; }
+@media (min-width: 820px) { .adv-cred { grid-template-columns: 1.3fr 1fr; gap: 56px; } }
+.adv-cred__label { font-size: 12px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--c-text-dark-3); margin-bottom: 16px; }
+.adv-cred__col > .adv-cred__label:not(:first-child) { margin-top: 32px; }
+.adv-cred__oab { font-size: var(--fs-lg); font-weight: 600; }
+.adv-timeline { list-style: none; border-left: 1px solid var(--c-line-light-2); display: grid; gap: 22px; padding-left: 22px; }
+.adv-timeline li { position: relative; display: grid; gap: 3px; }
+.adv-timeline li::before { content: ""; position: absolute; left: -27px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--c-ink); }
+.adv-timeline__level { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text-dark-3); }
+.adv-list { list-style: none; display: grid; gap: 10px; }
+.adv-list li { padding-left: 18px; position: relative; color: var(--c-text-dark-2); line-height: 1.55; }
+.adv-list li::before { content: ""; position: absolute; left: 0; top: .7em; width: 8px; height: 1px; background: var(--c-ink); }
+.adv-others { list-style: none; display: grid; gap: 12px; margin-top: 24px; }
+@media (min-width: 720px) { .adv-others { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.adv-other { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border: 1px solid var(--c-line-light); border-radius: 14px; background: var(--c-paper); }
+.adv-other:hover { border-color: var(--c-ink); }
+.adv-other > span:nth-child(2) { display: grid; flex: 1; min-width: 0; }
+.adv-other__photo { width: 56px; height: 56px; flex: none; border-radius: 50%; overflow: hidden; background: var(--c-paper-2); }
+.adv-other__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Guias em PDF da Base de conhecimento (design do Hub de conteúdo) */
+.hub-guides { list-style: none; display: grid; gap: 16px; }
+@media (min-width: 720px) { .hub-guides { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) { .hub-guides { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.hub-guide { position: relative; display: flex; flex-direction: column; gap: 10px; height: 100%; padding: clamp(22px, 3vw, 30px); border: 1px solid var(--c-line-dark-2); border-radius: 16px; background: var(--c-ink); color: var(--c-text-light); overflow: hidden; transition: transform .35s var(--ease), border-color .25s var(--ease); }
+.hub-guide:hover { transform: translateY(-3px); border-color: #7A7A7A; }
+.hub-guide__code { font-size: 11.5px; font-weight: 600; letter-spacing: .13em; color: var(--c-text-light-3); }
+.hub-guide__word { margin-top: 6px; font-size: clamp(30px, 3.4vw, 40px); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; background: linear-gradient(100deg, #FFFFFF 0%, #C8C8C8 52%, #9A9A9A 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hub-guide__title { font-size: 17px; font-weight: 500; color: #FFFFFF; }
+.hub-guide__desc { font-size: 14.5px; font-weight: 300; line-height: 1.6; color: var(--c-text-light-2); }
+.hub-guide__go { margin-top: auto; padding-top: 14px; font-size: 13.5px; font-weight: 500; color: #FFFFFF; }

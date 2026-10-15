@@ -3,6 +3,23 @@
 export const team = [
   {
     id: "oscar-moreira-vieira",
+    slug: "oscar-moreira-vieira",
+    hasProfile: true,
+    summary: "Atua em Direito de Família e Sucessões. Presidiu a Comissão de Direito de Família e Sucessões da OAB de Boituva (2022/2024).",
+    about: [
+      "O Dr. Oscar Moreira Vieira é sócio fundador da Vieira & Marques e atua em Direito de Família e Sucessões — divórcio, guarda, pensão alimentícia, inventário e herança.",
+      "É pós-graduado em Direito de Família e Sucessões pela Escola Brasileira de Direito e cursa pós-graduação em Direito Público, com ênfase em Direito Constitucional, Administrativo e Eleitoral.",
+      "Presidiu a Comissão de Direito de Família e Sucessões da OAB de Boituva no triênio 2022/2024 e foi diretor executivo da Escola do Legislativo da Câmara de Boituva em 2022/2023.",
+    ],
+    education: [
+      { course: "Direito de Família e Sucessões", level: "Pós-graduação", institution: "Escola Brasileira de Direito" },
+      { course: "Direito Público, com ênfase em Direito Constitucional, Administrativo e Eleitoral", level: "Pós-graduação (em andamento)", institution: "Escola Brasileira de Direito" },
+    ],
+    recognitionsList: [
+      "Presidente da Comissão de Direito de Família e Sucessões da OAB de Boituva (2022/2024)",
+      "Diretor executivo da Escola do Legislativo da Câmara de Boituva (2022/2023)",
+      "Título de Jovem Inspirador concedido pela Câmara de Boituva",
+    ],
     name: "Dr. Oscar Moreira Vieira",
     role: "Sócio fundador",
     oab: "OAB/SP 442.118",
@@ -24,6 +41,19 @@ export const team = [
   },
   {
     id: "jislana-marques",
+    slug: "jislana-marques",
+    hasProfile: true,
+    summary: "Atua em Direito Penal e Direito Previdenciário. Graduada em Direito pela Universidade Paulista.",
+    about: [
+      "A Dra. Jislana Marques é sócia fundadora da Vieira & Marques e atua em Direito Penal e Direito Previdenciário — da defesa criminal aos pedidos e revisões de benefícios do INSS.",
+      "É graduada em Direito pela Universidade Paulista e cursa pós-graduação em Direito Previdenciário.",
+      "Recebeu o diploma de Jovem Inspiradora, concedido pela Câmara Municipal de Boituva.",
+    ],
+    education: [
+      { course: "Direito", level: "Graduação", institution: "Universidade Paulista" },
+      { course: "Direito Previdenciário", level: "Pós-graduação (em andamento)" },
+    ],
+    recognitionsList: ["Diploma de Jovem Inspiradora concedido pela Câmara Municipal de Boituva"],
     name: "Dra. Jislana Marques",
     role: "Sócia fundadora",
     oab: "OAB/SP 470.356",
@@ -42,6 +72,9 @@ export const team = [
   },
   {
     id: "leticia-pereira-de-abreu",
+    slug: "leticia-pereira-de-abreu",
+    hasProfile: false,
+    summary: "Atua em processos criminais e execução penal. Graduada em Direito pela ESAMC-Sorocaba / UNISO.",
     name: "Dra. Leticia Pereira de Abreu",
     role: "Advogada",
     oab: "OAB/SP 449.619",
@@ -59,6 +92,19 @@ export const team = [
   },
   {
     id: "gledie-camargo",
+    slug: "gledie-camargo",
+    hasProfile: true,
+    summary: "Atua em Direito Penal, Processo Penal e execução penal. Graduada em Direito pela UNISO.",
+    about: [
+      "A Dra. Glediê Camargo atua em Direito Penal, Processo Penal e execução penal.",
+      "É graduada em Direito pela Universidade de Sorocaba (UNISO) e pós-graduada em Direito Penal e em Processo Penal.",
+    ],
+    education: [
+      { course: "Direito", level: "Graduação", institution: "Universidade de Sorocaba (UNISO)" },
+      { course: "Direito Penal", level: "Pós-graduação" },
+      { course: "Processo Penal", level: "Pós-graduação" },
+    ],
+    recognitionsList: [],
     name: "Dra. Glediê Camargo",
     role: "Advogada",
     oab: "OAB/SP 453.152",
@@ -77,6 +123,19 @@ export const team = [
   },
   {
     id: "natalia-okumura",
+    slug: "natalia-okumura",
+    hasProfile: true,
+    summary: "Atua em Direito Civil e do Consumidor e em ações de saúde contra o SUS e planos de saúde.",
+    about: [
+      "A Dra. Natália Okumura atua em Direito Civil e do Consumidor e em ações de saúde contra o SUS e planos de saúde.",
+      "É graduada pela Faculdade de Direito de Sorocaba (FADI) e cursa pós-graduação em Advocacia Cível e em Direito Médico, Odontológico e da Saúde.",
+    ],
+    education: [
+      { course: "Direito", level: "Graduação", institution: "Faculdade de Direito de Sorocaba (FADI)" },
+      { course: "Advocacia Cível", level: "Pós-graduação (em andamento)", institution: "Fundação Escola Superior do Ministério Público (FMP)" },
+      { course: "Direito Médico, Odontológico e da Saúde", level: "Pós-graduação (em andamento)", institution: "Universidade de São Paulo (USP)" },
+    ],
+    recognitionsList: [],
     name: "Dra. Natália Okumura",
     role: "Advogada",
     oab: "OAB/SP 460.641",
@@ -103,3 +162,7 @@ export const teamRecognitions = [
 ];
 
 export const teamByArea = (areaId) => team.filter((p) => p.areas.includes(areaId));
+
+export const profilePath = (p) => `/advogados/${p.slug}/`;
+export const personName = (p) => p.name.replace(/^Dra?\. /, "");
+export const teamWithProfile = team.filter((p) => p.hasProfile);

@@ -7,6 +7,8 @@ import politicaDePrivacidade from "./pages/politica-de-privacidade.mjs";
 import termosDeUso from "./pages/termos-de-uso.mjs";
 import { servicePages } from "./data/services/index.mjs";
 import { renderService } from "./pages/service.mjs";
+import { renderAdvogado } from "./pages/advogado.mjs";
+import { teamWithProfile, profilePath } from "./data/team.mjs";
 import { renderArea } from "./pages/area.mjs";
 import { practiceAreas, areaUrl } from "./data/areas.mjs";
 
@@ -18,6 +20,7 @@ export const ROUTES = [
   { path: "/contato/", render: contato, priority: "0.8" },
   ...practiceAreas.map((a) => ({ path: areaUrl(a), render: () => renderArea(a), priority: "0.9" })),
   ...servicePages.map((p) => ({ path: p.path, render: () => renderService(p), priority: "0.8" })),
+  ...teamWithProfile.map((p) => ({ path: profilePath(p), render: () => renderAdvogado(p), priority: "0.7" })),
   { path: "/politica-de-privacidade/", render: politicaDePrivacidade, priority: "0.2" },
   { path: "/termos-de-uso/", render: termosDeUso, priority: "0.2" },
 ];

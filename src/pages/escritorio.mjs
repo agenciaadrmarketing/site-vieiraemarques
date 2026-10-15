@@ -2,12 +2,12 @@ import { imgPreload } from "../partials/media.mjs";
 import { lpSteps, lpCta, lpReach, lpStructure, lpHero } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { waMessage } from "../data/site.mjs";
-import { team, teamRecognitions } from "../data/team.mjs";
+import { team, personName, profilePath } from "../data/team.mjs";
 import { areaById, areaUrl, AREAS_HUB } from "../data/areas.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { img } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
-import { sectionHead, facts, teamPanels, recognitions } from "../partials/components.mjs";
+import { sectionHead, facts, teamPanels } from "../partials/components.mjs";
 
 const PATH = "/escritorio/";
 const CRUMBS = [
@@ -28,20 +28,6 @@ const PRINCIPLES = [
   { label: "Missão", title: "Defender direitos com afinco, sem aceitar desigualdades.", text: "Proteger os direitos de quem nos procura e ajudar a encontrar soluções jurídicas seguras e sustentáveis, no âmbito extrajudicial ou judicial.", source: "“Defender os seus direitos com afinco, não aceitando desigualdades.”" },
   { label: "Valores", title: "Responsabilidade, fidelidade e honestidade.", text: "No trato com cada cliente e no respeito aos princípios éticos da advocacia — o que inclui informar com franqueza e nunca prometer resultado.", source: "“Responsabilidade, fidelidade e honestidade no trato com os nossos clientes é o nosso lema.”" },
 ];
-
-function profile(p) {
-  const areaLinks = p.areas.map((id) => areaById[id]).filter(Boolean);
-  // A foto aparece nos painéis acima; aqui fica a formação completa.
-  return `<article class="profile" id="${p.id}" data-reveal>
-  <div class="profile__body">
-    <p class="person__meta"><span>${esc(p.role)} · ${esc(p.oab)}</span></p>
-    <h4 class="profile__name">${esc(p.name)}</h4>
-    <p class="muted">${esc(p.bio)}</p>
-    <ul class="profile__list">${join(p.credentials, (c) => `<li>${esc(c)}</li>`)}</ul>
-    ${when(areaLinks.length, `<p class="muted">Áreas: ${areaLinks.map((a) => `<a class="text-link" href="${areaUrl(a)}">${esc(a.title)}</a>`).join(", ")}</p>`)}
-  </div>
-</article>`;
-}
 
 export default function escritorio() {
   const body = `
@@ -119,12 +105,9 @@ ${lpHero({
       eyebrow: "Equipe",
       id: "equipe-titulo",
       title: `Advogados com <span class="grad">áreas de atuação definidas.</span>`,
-      lead: "Formação, inscrição na OAB e áreas de atuação de cada profissional, conforme informado pelo escritório.",
+      lead: "Conheça cada profissional e abra o perfil completo para ver formação, áreas e contato.",
     })}
-    ${teamPanels(team, { headingLevel: 3 })}
-    ${recognitions(teamRecognitions)}
-    <h3 class="eyebrow profiles__title">Formação de cada profissional</h3>
-    <div class="profiles">${join(team, profile)}</div>
+    ${teamPanels(team, { headingLevel: 3, profileLinks: true })}
   </div>
 </section>
 
@@ -154,7 +137,7 @@ ${lpReach()}`;
     whatsappMessage: "Olá! Vim pelo site da Vieira & Marques, conheci o escritório e gostaria de orientação.",
     schema: [
       { "@type": "AboutPage", "@id": `https://vieiraemarquesadvogados.com${PATH}#pagina`, name: "O Escritório", about: { "@id": "https://vieiraemarquesadvogados.com/#org" } },
-      ...team.map((p) => ({ "@type": "Person", name: p.name.replace(/^Dra?\. /, ""), jobTitle: `${p.role} — ${p.focus}`, identifier: p.oab, worksFor: { "@id": "https://vieiraemarquesadvogados.com/#org" } })),
+      ...team.map((p) => ({ "@type": "Person", ...(p.hasProfile ? { "@id": `https://vieiraemarquesadvogados.com${profilePath(p)}#pessoa`, url: `https://vieiraemarquesadvogados.com${profilePath(p)}` } : {}), name: personName(p), jobTitle: p.role, worksFor: { "@id": "https://vieiraemarquesadvogados.com/#org" } })),
     ],
     body,
   });

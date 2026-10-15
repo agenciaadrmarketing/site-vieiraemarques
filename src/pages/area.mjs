@@ -3,13 +3,14 @@ import { SITE, waMessage } from "../data/site.mjs";
 import { areaUrl, AREAS_HUB } from "../data/areas.mjs";
 import { AREA_LP } from "../data/area-lp.mjs";
 import { hasPage, serviceHref } from "../data/services/index.mjs";
-import { team, teamByArea } from "../data/team.mjs";
+import { team, teamByArea, profilePath } from "../data/team.mjs";
 import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { page } from "../partials/layout.mjs";
 import { imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
-import { faqSchema, articleRow } from "../partials/components.mjs";
+import { faqSchema, articleRow, sectionHead } from "../partials/components.mjs";
+import { img } from "../partials/media.mjs";
 import { HERO_MOBILE, lpHero, lpServices, lpSteps, lpProof, lpAbout, lpStructure, lpCta, lpSignals, lpReach, lpFaq, lpHead, lpOtherAreas } from "../partials/lp.mjs";
 
 // Página própria de cada área (página-pilar), no mesmo desenho das landing pages
@@ -84,6 +85,17 @@ ${lpSteps(lp.stepsTex ? { tex: lp.stepsTex } : {})}
 ${lpAbout({ person: people[0], areaTitle: area.title, people: [...people, ...team.filter((p) => !people.includes(p))] })}
 
 ${lpStructure()}
+
+${people.some((x) => x.hasProfile) ? `<section class="section section--white" aria-labelledby="profissionais-titulo">
+  <div class="container">
+    ${sectionHead({ eyebrow: "Equipe", id: "profissionais-titulo", title: `Profissionais <span class="grad">da área.</span>` })}
+    <ul class="adv-others" data-reveal>${join(people.filter((x) => x.hasProfile), (o) => `<li><a class="adv-other" href="${profilePath(o)}">
+      <span class="adv-other__photo">${img(o.photo, { alt: "", sizes: "72px", style: `object-position:${o.position}` })}</span>
+      <span><strong>${esc(o.name)}</strong><span class="muted">${esc(o.focus)}</span></span>
+      <span aria-hidden="true">${icon.arrow(14)}</span>
+    </a></li>`)}</ul>
+  </div>
+</section>` : ""}
 
 ${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandImage ? { image: lp.bandImage, position: "center 55%" } : {}) })}
 

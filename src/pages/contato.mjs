@@ -94,7 +94,6 @@ ${lpReach()}`;
     path: PATH,
     preload: [imgPreload("fachada", "100vw")],
     crumbs: CRUMBS,
-    floatingWhatsapp: SITE.forms,
     schema: [{ "@type": "ContactPage", name: "Contato", about: { "@id": "https://vieiraemarquesadvogados.com/#org" } }, faqSchema(faqAtendimento)],
     body,
   });

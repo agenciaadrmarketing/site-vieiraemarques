@@ -4,6 +4,7 @@ import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaById, areaFaqUrl } from "../data/areas.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
+import { guides as pdfGuides } from "../data/guides.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { icon } from "../partials/icons.mjs";
@@ -17,23 +18,24 @@ const CRUMBS = [
 
 export default function conhecimento() {
   const count = (id) =>
-    articles.filter((a) => a.area === id).length + ((faqByArea[id] ?? []).length ? 1 : 0);
+    articles.filter((a) => a.area === id).length + pdfGuides.filter((g) => g.area === id).length + ((faqByArea[id] ?? []).length ? 1 : 0);
   const rest = articles.filter((a) => a !== featuredArticle);
   const guides = articles.filter((a) => a.type === "guia");
   const faqAreas = practiceAreas.filter((a) => (faqByArea[a.id] ?? []).length);
 
+  const pdfCount = (id) => pdfGuides.filter((g) => g.area === id).length;
   const chip = (id, label, n, pressed = false) =>
     `<button class="chip" type="button" data-filter="${id}" aria-pressed="${pressed}">${esc(label)} <span class="chip__count">${n}</span></button>`;
 
   const body = `
 ${lpHero({
   crumbs: CRUMBS,
-  badge: "Base de conhecimento",
+  badge: "Base de conhecimento · Guias e blog",
   title: `Informação jurídica para <span class="grad">decisões mais conscientes.</span>`,
-  text: "Artigos, perguntas frequentes e orientações escritas pela equipe do escritório, em linguagem direta. Conteúdo de caráter informativo: a avaliação de cada caso depende dos documentos e das circunstâncias concretas.",
+  text: "Guias em PDF, artigos do blog, perguntas frequentes e orientações escritas pela equipe do escritório, em linguagem direta. Conteúdo de caráter informativo: a avaliação de cada caso depende dos documentos e das circunstâncias concretas.",
   message: waMessage(),
   cta: "Falar com a equipe",
-  secondary: { href: "#conteudos-titulo", label: "Ver conteúdos" },
+  secondary: { href: "#guias", label: "Ver guias e artigos" },
   note: ["Atendimento sigiloso", "Presencial em Boituva e Sorocaba", "Online em São Paulo e todo o Brasil"],
   image: "mesa-trabalho",
   alt: "Mesa de trabalho do escritório Vieira & Marques",
@@ -44,19 +46,32 @@ ${lpHero({
   <div class="container">
     <h2 class="sr-only" id="conteudos-titulo">Conteúdos por área</h2>
     <div class="chips" role="group" aria-label="Filtrar por área" data-filter-chips>
-      ${chip("todos", "Todos", articles.length + faqAreas.length, true)}
+      ${chip("todos", "Todos", articles.length + faqAreas.length + pdfGuides.length, true)}
       ${join(practiceAreas, (a) => chip(a.id, a.shortTitle, count(a.id)))}
     </div>
     <p class="sr-only" role="status" aria-live="polite" data-filter-status></p>
 
     <div class="mt-lg stack">
-      <div data-filter-block>
+      <div data-filter-block id="guias">
+        <p class="eyebrow">Guias em PDF</p>
+        <ul class="hub-guides mt-lg">
+          ${join(pdfGuides, (g) => `<li data-filter-item data-area="${g.area}"><a class="hub-guide" href="${esc(g.url)}" target="_blank" rel="noopener">
+            <span class="hub-guide__code">${g.n} · ${esc(g.label.toUpperCase())}</span>
+            <span class="hub-guide__word" aria-hidden="true">${esc(g.word)}</span>
+            <span class="hub-guide__title">${esc(g.title)}</span>
+            <span class="hub-guide__desc">${esc(g.desc)}</span>
+            <span class="hub-guide__go">Abrir guia em PDF <span aria-hidden="true">↗</span></span>
+          </a></li>`)}
+        </ul>
+      </div>
+
+      <div class="mt-lg" data-filter-block>
         <p class="eyebrow">Em destaque</p>
         <div class="mt-lg" data-filter-item data-area="${featuredArticle.area}">${articleFeature(featuredArticle)}</div>
       </div>
 
       <div class="mt-lg" data-filter-block>
-        <p class="eyebrow">Publicados recentemente</p>
+        <p class="eyebrow">Artigos do blog</p>
         <ul class="cards-grid mt-lg">${join(rest, (a) => articleCard(a).replace("<li ", "<li data-filter-item "))}</ul>
       </div>
 

@@ -160,7 +160,10 @@ ${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").re
     description: p.seo.description,
     path: p.path,
     crumbs,
-    floatingWhatsapp: false,
+    floatPhrases: [
+      { t: `Dúvida sobre ${p.serviceData.title.toLowerCase()}?`, s: "Envie as informações para uma análise inicial pela nossa equipe de atendimento." },
+      ...AREA_LP[p.area].phrases,
+    ],
     preload: [
       { ...imgPreload(p.hero.image ?? AREA_LP[p.area].image, "100vw"), media: "(min-width: 721px)" },
       { ...imgPreload(AREA_LP[p.area].imageMobile, "100vw"), media: HERO_MOBILE },
