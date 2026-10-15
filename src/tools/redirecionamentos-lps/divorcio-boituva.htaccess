@@ -1,0 +1,5 @@
+# LP movida para o domínio principal: redireciona (301) para a mesma página.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^ https://vieiraemarquesadvogados.com/divorcio-boituva/ [R=301,L]
+</IfModule>

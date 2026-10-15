@@ -1,5 +1,5 @@
-# LP desativada: redireciona (301) para a página equivalente do site novo.
+# LP movida para o domínio principal: redireciona (301) para a mesma página.
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteRule ^ https://vieiraemarquesadvogados.com/areas/direito-de-familia/divorcio/ [R=301,L]
+  RewriteRule ^ https://vieiraemarquesadvogados.com/divorcio/ [R=301,L]
 </IfModule>
