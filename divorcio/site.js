@@ -1,6 +1,6 @@
 // site.js — espelho estático (sem React/Babel) da página de divórcio.
 // Só roda para navegação real de topo; o editor visual (dentro de iframe)
-// continua usando support.js + mapa-brasil.js normalmente, via o bloco
+// continua usando support.js + mapa-sp.js normalmente, via o bloco
 // original preservado em <template id="dc-source">. Ver index.html.
 (function () {
   "use strict";
@@ -206,21 +206,21 @@
   if (vpsNumeroEl) { vpsRender(); vpsStart(); }
 
   // ---------- Mapa do Brasil (carregado só quando a seção se aproxima) ----------
-  var mapaHost = document.querySelector("mapa-brasil");
+  var mapaHost = document.querySelector("mapa-sp");
   if (mapaHost && "IntersectionObserver" in window) {
     var mapaIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         mapaIo.disconnect();
         var s = document.createElement("script");
-        s.src = "./mapa-brasil.js";
+        s.src = "./mapa-sp.js";
         document.body.appendChild(s);
       });
     }, { rootMargin: "300px 0px" });
     mapaIo.observe(mapaHost);
   } else if (mapaHost) {
     var s2 = document.createElement("script");
-    s2.src = "./mapa-brasil.js";
+    s2.src = "./mapa-sp.js";
     document.body.appendChild(s2);
   }
 

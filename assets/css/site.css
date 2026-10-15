@@ -1672,3 +1672,11 @@ html { interpolate-size: allow-keywords; }
 .consent__text { flex: 1 1 320px; font-size: 14px; line-height: 1.55; }
 .consent__actions { display: flex; gap: 10px; }
 .site-footer__prefs { padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; text-align: left; }
+
+/* Mapa do Brasil (Onde atendemos das páginas institucionais e principais) */
+.lp-map--brasil { width: min(500px, 100%); aspect-ratio: 600 / 612; }
+.lp-map__cap circle:not(.lp-map__pulse) { transition: none; }
+.js .lp-map:not(.is-visible) .lp-map__cap { opacity: 0; }
+.js .lp-map.is-visible .lp-map__cap { animation: lp-fade .5s ease var(--d, 1.5s) both; }
+@media (prefers-reduced-motion: reduce) { .js .lp-map .lp-map__cap { opacity: 1 !important; animation: none !important; } }
+@media (max-width: 940px) { .lp-reach .lp-map--brasil { width: min(420px, 100%); } }
