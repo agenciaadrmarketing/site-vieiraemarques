@@ -5,4 +5,6 @@ export const LANDING_PAGES = [
   { path: "/divorcio/", from: "divorcio.vieiraemarquesadvogados.com" },
   { path: "/divorcio-sao-paulo/", from: "divorcio-sp.vieiraemarquesadvogados.com" },
   { path: "/divorcio-boituva/", from: "divorcio-boituva.vieiraemarquesadvogados.com" },
+  { path: "/divorcio-sem-filhos-sem-bens/", from: "divorcio-semfilhos.vieiraemarquesadvogados.com" },
+  { path: "/juros-abusivos/", from: "juros-abusivos.vieiraemarquesadvogados.com" },
 ];
