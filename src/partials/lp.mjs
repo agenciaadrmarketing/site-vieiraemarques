@@ -7,6 +7,7 @@ import { breadcrumbs } from "./layout.mjs";
 import { teamPanels, faqList, waButton } from "./components.mjs";
 import images from "../data/images.json" with { type: "json" };
 import mapa from "../data/mapa-sp.json" with { type: "json" };
+import mapaBr from "../data/mapa-brasil.json" with { type: "json" };
 
 export { waButton };
 
@@ -275,7 +276,7 @@ export function lpSignals({ id = "pontos-de-atencao", eyebrow = "Vale a pena sab
 </section>`;
 }
 
-/* ---------- Onde atendemos (mapa de SP) ---------- */
+/* ---------- Onde atendemos: mapa de SP (páginas locais e nichadas) ---------- */
 // Mapa gerado no build (src/tools/mapa-sp.mjs, malha do IBGE): sem d3, sem chamada à
 // API do IBGE no navegador. As animações (contorno, cidades, sede e capital) são CSS.
 const { k, tx, ty } = mapa.projection;
@@ -341,21 +342,106 @@ function mapSp() {
 </figure>`;
 }
 
-export const REACH_POINTS = [
-  "Atendimento presencial em Boituva e Sorocaba.",
-  "Reuniões por vídeo, sem necessidade de deslocamento.",
-  "Assinatura de documentos por meio digital.",
-  "Acompanhamento processual à distância, com atualizações claras.",
+/* ---------- Mapa do Brasil (páginas institucionais e principais) ---------- */
+// Mesmo desenho do <mapa-brasil> das LPs: contorno, divisas estaduais (imagem carregada
+// perto da tela), capitais e Brasília em destaque — mais a sede, em Boituva.
+const projectBr = ([lon, lat]) => {
+  const { k: kb, tx: txb, ty: tyb } = mapaBr.projection;
+  const y = Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360));
+  return [+(kb * ((lon * Math.PI) / 180) + txb).toFixed(1), +(tyb - kb * y).toFixed(1)];
+};
+const CAPITAIS = [
+  ["Manaus", -60.02, -3.1], ["Belém", -48.5, -1.46], ["Fortaleza", -38.52, -3.73], ["Recife", -34.88, -8.05],
+  ["Salvador", -38.51, -12.97], ["Brasília", -47.88, -15.79], ["Cuiabá", -56.1, -15.6], ["Goiânia", -49.25, -16.68],
+  ["Belo Horizonte", -43.94, -19.92], ["Rio de Janeiro", -43.17, -22.91], ["São Paulo", -46.63, -23.55], ["Curitiba", -49.27, -25.43],
+  ["Florianópolis", -48.55, -27.59], ["Porto Alegre", -51.23, -30.03], ["Campo Grande", -54.65, -20.44], ["Rio Branco", -67.81, -9.97],
+  ["São Luís", -44.3, -2.53], ["Natal", -35.21, -5.79], ["João Pessoa", -34.88, -7.11], ["Maceió", -35.73, -9.66],
+  ["Aracaju", -37.07, -10.91], ["Teresina", -42.8, -5.09], ["Palmas", -48.33, -10.18], ["Boa Vista", -60.67, 2.82],
+  ["Macapá", -51.07, 0.03], ["Porto Velho", -63.9, -8.76], ["Vitória", -40.34, -20.32],
+];
+const CIDADES_BR = [
+  [-47.06, -22.91], [-46.33, -23.96], [-45.89, -23.18], [-47.81, -21.18], [-47.46, -23.5], [-49.06, -22.31], [-51.39, -22.13], [-49.38, -20.82],
+  [-48.28, -18.91], [-47.93, -19.75], [-43.35, -21.76], [-43.86, -16.73], [-41.95, -18.85], [-42.54, -19.47], [-41.3, -21.75], [-44.1, -22.52],
+  [-39.03, -14.79], [-38.97, -12.27], [-40.84, -14.87], [-40.5, -9.42], [-35.98, -8.28], [-35.88, -7.23], [-37.34, -5.19], [-40.35, -3.69],
+  [-39.32, -7.21], [-38.22, -9.4], [-47.49, -5.53], [-49.13, -5.37], [-54.71, -2.44], [-52.21, -3.2], [-56.74, -2.63], [-64.72, -3.35],
+  [-69.94, -4.25], [-63.03, -7.51], [-61.95, -10.88], [-60.14, -12.74], [-55.51, -11.86], [-54.64, -16.47], [-52.26, -15.89], [-54.81, -22.22],
+  [-51.7, -20.79], [-48.95, -16.33], [-50.93, -17.79], [-48.21, -7.19], [-49.07, -11.73], [-44.99, -12.15], [-43.42, -13.26], [-41.47, -7.08],
+  [-44.79, -4.23], [-51.16, -23.31], [-51.94, -23.42], [-53.46, -24.96], [-54.59, -25.55], [-50.16, -25.09], [-48.85, -26.3], [-49.07, -26.92],
+  [-52.62, -27.1], [-49.37, -28.68], [-51.18, -29.17], [-53.81, -29.68], [-52.34, -31.77], [-57.09, -29.76], [-52.41, -28.26],
 ];
 
-export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", title = `Atendimento em São Paulo <span class="grad">e em todo o Brasil.</span>`, text = "Atendimento presencial na sede, em Boituva, e em Sorocaba. Para clientes da capital, do interior, do litoral e de outros estados, o atendimento é online — de Campinas, Santos e Ribeirão Preto a qualquer cidade do país.", points = REACH_POINTS } = {}) {
+function mapBrasil() {
+  const [sx, sy] = projectBr(SEDE);
+  const cidades = join(CIDADES_BR, (c, i) => {
+    const [x, y] = projectBr(c);
+    return `<circle cx="${x}" cy="${y}" r="1.8" style="--d:${(1.6 + (i % 20) * 0.05).toFixed(2)}s"/>`;
+  });
+  const capitais = join(CAPITAIS, ([nome, lon, lat], i) => {
+    const [x, y] = projectBr([lon, lat]);
+    const df = nome === "Brasília";
+    return `<g class="lp-map__cap" style="--d:${(1.5 + i * 0.045).toFixed(2)}s">${df ? `<circle class="lp-map__pulse" cx="${x}" cy="${y}" r="4" fill="#FFF"/>` : ""}<circle cx="${x}" cy="${y}" r="${df ? 4.4 : 3.2}" fill="#FFF" stroke="rgba(11,11,11,.6)"><title>${esc(nome)}</title></circle></g>`;
+  });
+  return `<figure class="lp-map lp-map--brasil" data-map data-reveal>
+  <div class="lp-map__halo" aria-hidden="true"></div>
+  <svg viewBox="0 0 ${mapaBr.width} ${mapaBr.height}" role="img" aria-labelledby="mapa-br-titulo mapa-br-desc" focusable="false">
+    <title id="mapa-br-titulo">Mapa do Brasil</title>
+    <desc id="mapa-br-desc">Atendimento online em todo o Brasil, com as 27 capitais em destaque, e sede do escritório em Boituva, no estado de São Paulo.</desc>
+    <defs>
+      <linearGradient id="mapa-br-grad" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#4A4A4A"/><stop offset=".55" stop-color="#232323"/><stop offset="1" stop-color="#0B0B0B"/></linearGradient>
+      <filter id="mapa-br-sombra" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".65"/></filter>
+      <path id="mapa-br-pais" d="${mapaBr.outline}" pathLength="1000"/>
+      <clipPath id="mapa-br-clip"><use href="#mapa-br-pais"/></clipPath>
+    </defs>
+    <use class="lp-map__mass" href="#mapa-br-pais" fill="url(#mapa-br-grad)" filter="url(#mapa-br-sombra)"/>
+    <image class="lp-map__mun" data-map-mesh="/assets/img/mapa-brasil-estados.svg" x="0" y="0" width="${mapaBr.width}" height="${mapaBr.height}" clip-path="url(#mapa-br-clip)"/>
+    <use class="lp-map__outline" href="#mapa-br-pais"/>
+    <g class="lp-map__cities" fill="rgba(255,255,255,.55)">${cidades}</g>
+    <g>${capitais}</g>
+    <g class="lp-map__dest">
+      <circle class="lp-map__pulse" cx="${sx}" cy="${sy}" r="5" fill="#1EA94F"/>
+      <circle cx="${sx}" cy="${sy}" r="5.5" fill="#1EA94F" stroke="#0B0B0B" stroke-width="1.5"><title>Boituva/SP — sede do escritório</title></circle>
+      <line x1="${sx + 7}" y1="${sy + 6}" x2="${sx + 46}" y2="${sy + 58}" stroke="rgba(255,255,255,.45)"/>
+      <text x="${sx + 50}" y="${sy + 70}" class="lp-map__label2">Sede</text>
+      <text x="${sx + 50}" y="${sy + 89}" class="lp-map__label">Boituva/SP</text>
+    </g>
+  </svg>
+</figure>`;
+}
+
+// Páginas institucionais e principais: alcance nacional (mapa do Brasil).
+export const REACH_NATIONAL = {
+  title: `Atendimento <span class="grad">em todo o Brasil.</span>`,
+  text: "Clientes de qualquer estado são atendidos de forma online, com reuniões por vídeo e documentos assinados digitalmente. O atendimento presencial acontece onde o escritório tem estrutura: na sede, em Boituva, e em Sorocaba, no interior de São Paulo.",
+  points: [
+    "Atendimento online para clientes de todo o Brasil.",
+    "Reuniões por vídeo, sem necessidade de deslocamento.",
+    "Assinatura de documentos e acompanhamento processual à distância.",
+    "Atendimento presencial em Boituva e Sorocaba (SP).",
+  ],
+};
+// Páginas locais, regionais e nichadas: foco em São Paulo (mapa de SP).
+export const REACH_REGIONAL = {
+  title: `Atendimento em todo o <span class="grad">estado de São Paulo.</span>`,
+  text: "Atendimento presencial na sede, em Boituva, e em Sorocaba. Para clientes da capital, do interior e do litoral — de Campinas, Santos e Ribeirão Preto a qualquer cidade do estado —, o atendimento é online.",
+  points: [
+    "Atendimento presencial em Boituva e Sorocaba.",
+    "Reuniões por vídeo, sem necessidade de deslocamento.",
+    "Assinatura de documentos por meio digital.",
+    "Acompanhamento processual à distância, com atualizações claras.",
+  ],
+};
+export const REACH_POINTS = REACH_REGIONAL.points;
+
+// scope: "brasil" (padrão: institucionais, áreas e serviços) ou "sp" (páginas locais/nichadas).
+export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", scope = "brasil", title, text, points } = {}) {
+  const copy = scope === "sp" ? REACH_REGIONAL : REACH_NATIONAL;
   return `<section class="lp-sec lp-sec--dark lp-reach on-dark" id="${id}" aria-labelledby="${id}-titulo">
   <div class="container">
     <div class="lp-split lp-split--reach">
       <div>
-        ${lpHead({ eyebrow, title, lead: text, id: `${id}-titulo`, align: "left" })}
+        ${lpHead({ eyebrow, title: title ?? copy.title, lead: text ?? copy.text, id: `${id}-titulo`, align: "left" })}
         <div data-reveal>
-          ${dots(points.map(esc))}
+          ${dots((points ?? copy.points).map(esc))}
           <div class="lp-reach__card">
             <p class="lp-reach__card-title">${icon.pin(16)} Sede — ${esc(sede.city)}/${esc(sede.region)}</p>
             <address>${esc(sede.street)} — ${esc(sede.district)}<br>${esc(sede.city)}/${esc(sede.region)} · CEP ${esc(sede.postalCode)}</address>
@@ -364,7 +450,7 @@ export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", tit
           </div>
         </div>
       </div>
-      ${mapSp()}
+      ${scope === "sp" ? mapSp() : mapBrasil()}
     </div>
   </div>
 </section>`;
