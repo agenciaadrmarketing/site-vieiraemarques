@@ -2015,3 +2015,11 @@ a.g-review__name:hover { text-decoration: underline; }
   .wa-float__bubble { width: min(290px, calc(100vw - 44px)); }
   .wa-float__avatar { width: 60px; height: 60px; }
 }
+
+/* Balão do WhatsApp: entrada e saída suaves */
+@keyframes wa-bubble-in { from { opacity: 0; transform: translateY(14px) scale(.94); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+@keyframes wa-bubble-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(10px) scale(.96); } }
+.wa-float__bubble { transform-origin: 85% 100%; animation: wa-bubble-in .55s cubic-bezier(.22,.8,.24,1) both; }
+.wa-float__bubble.is-swap { animation: wa-bubble-in .55s cubic-bezier(.22,.8,.24,1) both; }
+.wa-float__bubble.is-leaving { animation: wa-bubble-out .4s cubic-bezier(.4,0,.6,1) both; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .wa-float__bubble, .wa-float__bubble.is-swap, .wa-float__bubble.is-leaving { animation: none; } }
