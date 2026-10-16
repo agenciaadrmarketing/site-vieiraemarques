@@ -1775,10 +1775,6 @@ a.g-review__name:hover { text-decoration: underline; }
 
 /* Animações contínuas pausam nas seções fora da tela */
 .is-offscreen, .is-offscreen *, .is-offscreen *::before, .is-offscreen *::after { animation-play-state: paused !important; }
-/* Botão do cabeçalho: o brilho em volta só aparece ao passar o mouse (sempre visível = repintura constante) */
-.site-header .btn-wa:not(:hover):not(:focus-visible) { animation: none; }
-.site-header .btn-wa:not(:hover):not(:focus-visible)::after { animation: none; }
-
 /* Troca de página com transição suave (Chrome/Edge/Safari recentes; os demais navegam direto) */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
