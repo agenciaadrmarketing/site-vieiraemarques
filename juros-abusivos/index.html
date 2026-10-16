@@ -417,6 +417,94 @@
   </section>
 
 
+  <section id="depoimentos" class="sec" style="padding: 84px 0 88px; background: #F4F4F4; color: #0B0B0B;">
+    <div style="max-width: 760px; margin: 0 auto; padding: 0 24px; text-align: center;">
+      <div style="display: inline-block; border: 1px solid #D6D6D6; background: rgba(255,255,255,0.6); border-radius: 999px; padding: 6px 16px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Depoimentos</div>
+      <h2 class="h2" style="font-weight: 600; font-size: 40px; line-height: 1.15; letter-spacing: -0.02em; margin: 20px 0 0;">O que dizem <span class="grad-light">nossos clientes</span></h2>
+      <p style="font-size: 17px; font-weight: 300; line-height: 1.7; color: #4A4A4A; margin: 14px 0 0;">Relatos de quem já revisou contratos com juros abusivos e dívidas que não paravam de crescer.</p>
+    </div>
+    <div class="mq-wrap" style="margin: 44px auto 0; max-width: 1180px; padding: 0 24px; display: flex; justify-content: center; gap: 20px; max-height: 700px; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);">
+      <div class="mq mq-a">
+        <sc-for list="{{ col1 }}" as="d" hint-placeholder-count="3">
+          <figure style="background: #FFFFFF; border: 1px solid #E4E4E4; border-radius: 22px; padding: 32px; width: 320px; flex: none; margin: 0; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 26px 60px -52px rgba(11,11,11,0.6);">
+            <blockquote style="font-size: 15.5px; font-weight: 300; line-height: 1.72; color: #4A4A4A; margin: 0;">{{ d.texto }}</blockquote>
+            <figcaption style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <span aria-hidden="true" style="width: 44px; height: 44px; flex: none; border-radius: 999px; display: grid; place-items: center; background: #0B0B0B; color: #FFFFFF; font-size: 14px; font-weight: 600; letter-spacing: 0.04em;">{{ d.ini }}</span>
+              <span style="display: flex; flex-direction: column;">
+                <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">{{ d.nome }}</span>
+                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">{{ d.origem }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </sc-for>
+        <sc-for list="{{ col1 }}" as="d" hint-placeholder-count="3">
+          <figure aria-hidden="true" style="background: #FFFFFF; border: 1px solid #E4E4E4; border-radius: 22px; padding: 32px; width: 320px; flex: none; margin: 0; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 26px 60px -52px rgba(11,11,11,0.6);">
+            <blockquote style="font-size: 15.5px; font-weight: 300; line-height: 1.72; color: #4A4A4A; margin: 0;">{{ d.texto }}</blockquote>
+            <figcaption style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <span aria-hidden="true" style="width: 44px; height: 44px; flex: none; border-radius: 999px; display: grid; place-items: center; background: #0B0B0B; color: #FFFFFF; font-size: 14px; font-weight: 600; letter-spacing: 0.04em;">{{ d.ini }}</span>
+              <span style="display: flex; flex-direction: column;">
+                <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">{{ d.nome }}</span>
+                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">{{ d.origem }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+      <div class="mq mq-b mq-hide-md">
+        <sc-for list="{{ col2 }}" as="d" hint-placeholder-count="3">
+          <figure style="background: #FFFFFF; border: 1px solid #E4E4E4; border-radius: 22px; padding: 32px; width: 320px; flex: none; margin: 0; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 26px 60px -52px rgba(11,11,11,0.6);">
+            <blockquote style="font-size: 15.5px; font-weight: 300; line-height: 1.72; color: #4A4A4A; margin: 0;">{{ d.texto }}</blockquote>
+            <figcaption style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <span aria-hidden="true" style="width: 44px; height: 44px; flex: none; border-radius: 999px; display: grid; place-items: center; background: #0B0B0B; color: #FFFFFF; font-size: 14px; font-weight: 600; letter-spacing: 0.04em;">{{ d.ini }}</span>
+              <span style="display: flex; flex-direction: column;">
+                <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">{{ d.nome }}</span>
+                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">{{ d.origem }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </sc-for>
+        <sc-for list="{{ col2 }}" as="d" hint-placeholder-count="3">
+          <figure aria-hidden="true" style="background: #FFFFFF; border: 1px solid #E4E4E4; border-radius: 22px; padding: 32px; width: 320px; flex: none; margin: 0; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 26px 60px -52px rgba(11,11,11,0.6);">
+            <blockquote style="font-size: 15.5px; font-weight: 300; line-height: 1.72; color: #4A4A4A; margin: 0;">{{ d.texto }}</blockquote>
+            <figcaption style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <span aria-hidden="true" style="width: 44px; height: 44px; flex: none; border-radius: 999px; display: grid; place-items: center; background: #0B0B0B; color: #FFFFFF; font-size: 14px; font-weight: 600; letter-spacing: 0.04em;">{{ d.ini }}</span>
+              <span style="display: flex; flex-direction: column;">
+                <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">{{ d.nome }}</span>
+                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">{{ d.origem }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+      <div class="mq mq-c mq-hide-lg">
+        <sc-for list="{{ col3 }}" as="d" hint-placeholder-count="3">
+          <figure style="background: #FFFFFF; border: 1px solid #E4E4E4; border-radius: 22px; padding: 32px; width: 320px; flex: none; margin: 0; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 26px 60px -52px rgba(11,11,11,0.6);">
+            <blockquote style="font-size: 15.5px; font-weight: 300; line-height: 1.72; color: #4A4A4A; margin: 0;">{{ d.texto }}</blockquote>
+            <figcaption style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <span aria-hidden="true" style="width: 44px; height: 44px; flex: none; border-radius: 999px; display: grid; place-items: center; background: #0B0B0B; color: #FFFFFF; font-size: 14px; font-weight: 600; letter-spacing: 0.04em;">{{ d.ini }}</span>
+              <span style="display: flex; flex-direction: column;">
+                <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">{{ d.nome }}</span>
+                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">{{ d.origem }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </sc-for>
+        <sc-for list="{{ col3 }}" as="d" hint-placeholder-count="3">
+          <figure aria-hidden="true" style="background: #FFFFFF; border: 1px solid #E4E4E4; border-radius: 22px; padding: 32px; width: 320px; flex: none; margin: 0; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 26px 60px -52px rgba(11,11,11,0.6);">
+            <blockquote style="font-size: 15.5px; font-weight: 300; line-height: 1.72; color: #4A4A4A; margin: 0;">{{ d.texto }}</blockquote>
+            <figcaption style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <span aria-hidden="true" style="width: 44px; height: 44px; flex: none; border-radius: 999px; display: grid; place-items: center; background: #0B0B0B; color: #FFFFFF; font-size: 14px; font-weight: 600; letter-spacing: 0.04em;">{{ d.ini }}</span>
+              <span style="display: flex; flex-direction: column;">
+                <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">{{ d.nome }}</span>
+                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">{{ d.origem }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" style="position: relative; padding: 150px 24px; background: #0B0B0B; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
     <img src="uploads/1-3.jpg" loading="lazy" decoding="async" alt="Equipe Vieira &amp; Marques" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 62%; display: block;">
     <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,11,11,0.9) 0%, rgba(11,11,11,0.82) 50%, rgba(11,11,11,0.94) 100%); pointer-events: none;"></div>
@@ -688,7 +776,7 @@ class Component extends DCLogic {
       { texto: "Fizeram o recálculo do meu financiamento e mostraram exatamente onde estava o abuso nos juros.", nome: "Paulo Nogueira", origem: "Recálculo de saldo · Cerquilho/SP", foto: "uploads/avatares/7.webp" },
       { texto: "Documentação organizada por eles, prazos cumpridos e resposta sempre que eu procurei o escritório.", nome: "Fernando Alcântara", origem: "Revisão bancária · Boituva/SP", foto: "uploads/avatares/8.webp" },
       { texto: "Indiquei para a minha família. Profissionalismo do primeiro contato até o encerramento do caso.", nome: "Bruno Cardoso", origem: "Juros abusivos · Porto Feliz/SP", foto: "uploads/avatares/9.webp" }
-    ];
+    ].map((d) => ({ ...d, ini: d.nome.split(" ").filter(Boolean).slice(0, 2).map((p) => p[0]).join("").toUpperCase() }));
     const galeria = [
       { src: "uploads/17-e1772128273241.jpg", titulo: "Recepção em Boituva/SP", legenda: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici" },
       { src: "uploads/admin-ajax-1 (1).jpg", titulo: "A equipe", legenda: "Advogados e time de atendimento do escritório" },
