@@ -1,6 +1,7 @@
 import { esc, join } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
 import { areaUrl, AREAS_HUB } from "../data/areas.mjs";
+import { AREA_EXTRA_PHRASES } from "../data/float-phrases.mjs";
 import { AREA_LP } from "../data/area-lp.mjs";
 import { hasPage, serviceHref } from "../data/services/index.mjs";
 import { team, teamByArea, profilePath } from "../data/team.mjs";
@@ -121,7 +122,7 @@ ${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandIma
       { ...imgPreload(lp.imageMobile, "100vw"), media: HERO_MOBILE },
     ],
     whatsappMessage: msg,
-    floatPhrases: lp.phrases,
+    floatPhrases: [...lp.phrases, ...(AREA_EXTRA_PHRASES[area.id] ?? [])],
     schema: [
       {
         "@type": "Service",

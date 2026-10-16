@@ -207,3 +207,32 @@ export const SERVICE_PHRASES = {
     q("Tem certidão de nascimento e contribuições?", "Esses documentos ajudam no pedido."),
   ],
 };
+
+// Páginas institucionais (início, escritório, contato, conhecimento): 4 mensagens gerais.
+export const GENERAL_PHRASES = [
+  q("Ficou com alguma dúvida?", "Fale com a equipe pelo WhatsApp e receba orientação sobre o seu caso."),
+  q("Não sabe em qual área seu caso se encaixa?", "Descreva a situação: identificar o caminho faz parte da análise."),
+  q("Prefere conversar por mensagem?", "A equipe de atendimento recebe as informações e encaminha o caso ao profissional da área."),
+  q("Tem documentos do caso?", "Contratos, notificações e comprovantes ajudam a equipe na análise inicial."),
+];
+
+// Complemento das mensagens de cada área de atuação (a página da área já tem 2 próprias).
+export const AREA_EXTRA_PHRASES = {
+  familia: [q("Tem filhos ou bens envolvidos?", "Conte a situação da família para uma análise inicial."), q("Dúvida entre acordo e processo?", "A equipe explica os caminhos possíveis em linguagem simples.")],
+  sucessorio: [q("Perdeu alguém e tem bens a organizar?", "Conte a situação: a equipe explica o que costuma ser analisado."), q("Quer planejar a sucessão da família?", "Saiba quais caminhos existem para organizar o patrimônio.")],
+  trabalhista: [q("Tem carteira, contracheques ou termo de rescisão?", "Esses documentos ajudam a conferir o que foi pago."), q("Dúvida sobre seus direitos no trabalho?", "Conte a situação para a equipe de atendimento.")],
+  criminal: [q("Recebeu intimação ou foi investigado?", "Envie o documento para uma análise inicial, com discrição."), q("Familiar envolvido em um caso?", "Descreva o que se sabe e a equipe encaminha ao profissional da área.")],
+  saude: [q("Plano de saúde negou algo?", "Envie a negativa por escrito e o relatório médico."), q("Profissional da saúde com reclamação aberta?", "Conte a situação com sigilo para a análise inicial.")],
+  bancario: [q("Tem contrato de financiamento ou empréstimo?", "Ele mostra taxas e prazo, base da análise."), q("Foi vítima de golpe ou cobrança estranha?", "Registre datas, valores e comprovantes e fale com a equipe.")],
+  imobiliario: [q("Dúvida sobre contrato de imóvel?", "Envie o contrato para uma análise inicial."), q("Imóvel sem regularização?", "Conte a situação para a equipe indicar o caminho.")],
+  previdenciario: [q("Benefício negado ou cortado pelo INSS?", "Envie a carta de decisão e os laudos."), q("Quer saber se tem direito a um benefício?", "Conte sua situação para uma análise inicial.")],
+};
+
+// Perfil individual: quatro mensagens a partir do foco e dos temas do profissional.
+export const profilePhrases = (p) => {
+  const tags = (p.tags ?? []).map((t) => t.toLowerCase());
+  const base = [q(`Quer falar sobre ${p.focus.toLowerCase()}?`, "Fale com nossa equipe de atendimento pelo WhatsApp.")];
+  const more = tags.slice(0, 3).map((t, i) => q(["Dúvida sobre", "Precisa de orientação sobre", "Quer entender mais sobre"][i] + ` ${t}?`, "Conte a situação e a equipe encaminha o caso ao profissional da área."));
+  while (base.length + more.length < 4) more.push(q("Tem documentos do caso?", "Eles ajudam a equipe na análise inicial."));
+  return [...base, ...more].slice(0, 4);
+};

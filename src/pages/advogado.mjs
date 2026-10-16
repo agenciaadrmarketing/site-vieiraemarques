@@ -9,6 +9,7 @@ import { img, imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
 import { sectionHead, articleCard, waButton } from "../partials/components.mjs";
 import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
+import { profilePhrases } from "../data/float-phrases.mjs";
 import { lpCta } from "../partials/lp.mjs";
 
 // Perfil individual do profissional (/advogados/<slug>/). Todo o conteúdo vem de
@@ -128,7 +129,7 @@ ${when(others.length, `<section class="section section--white" aria-labelledby="
     crumbs,
     preload: [imgPreload(p.photo, "(min-width: 900px) 440px, 90vw")],
     whatsappMessage: msg,
-    floatPhrases: [{ t: `Quer falar sobre ${p.focus.toLowerCase()}?`, s: "Fale com nossa equipe de atendimento pelo WhatsApp." }],
+    floatPhrases: profilePhrases(p),
     schema: [
       {
         "@type": "ProfilePage",

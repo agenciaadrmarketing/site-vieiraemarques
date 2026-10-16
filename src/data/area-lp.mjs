@@ -257,7 +257,4 @@ export const AREA_LP = {
 };
 
 // Balão do WhatsApp flutuante nas demais páginas.
-export const DEFAULT_PHRASES = [
-  { t: "Ficou com alguma dúvida?", s: "Fale com a equipe pelo WhatsApp e receba orientação sobre o seu caso." },
-  { t: "Não sabe em qual área seu caso se encaixa?", s: "Descreva a situação: identificar o caminho faz parte da análise." },
-];
+export { GENERAL_PHRASES as DEFAULT_PHRASES } from "./float-phrases.mjs";
