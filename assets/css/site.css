@@ -1097,8 +1097,6 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
 
 /* ---------- Rolagem suave (Lenis, só com mouse/trackpad) ---------- */
 html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 
 /* ---------- Animações de entrada ---------- */

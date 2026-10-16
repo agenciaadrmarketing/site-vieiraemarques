@@ -73,60 +73,6 @@
     document.addEventListener("touchstart", hint, { passive: true });
   }
 
-  /* ---------- Rolagem suave (Lenis) ---------- */
-  // Só com mouse/trackpad: no toque a rolagem nativa já é suave. Carrega sob demanda.
-  function initSmoothScroll() {
-    if (reduceMotion || !window.matchMedia || !window.matchMedia("(pointer: fine)").matches) return;
-    var me = document.querySelector("script[data-lenis]");
-    if (!me) return;
-    var s = document.createElement("script");
-    s.src = me.getAttribute("data-lenis");
-    s.async = true;
-    s.onload = function () {
-      if (!window.Lenis) return;
-      var lenis = new window.Lenis({ lerp: 0.2, wheelMultiplier: 1.15, smoothWheel: true, syncTouch: false });
-      // Rolagem animada até uma posição absoluta. Sincroniza antes com a posição real,
-      // que pode ter mudado por teclado (foco) ou rolagem nativa.
-      lenis.vmScrollTo = function (y) {
-        lenis.scrollTo(window.scrollY, { immediate: true });
-        lenis.scrollTo(Math.max(0, y));
-      };
-      window.vmLenis = lenis;
-      // O laço de animação só roda enquanto há rolagem (e ~0,5 s depois); parado, não gasta CPU.
-      var running = false, idle = 0;
-      function raf(t) {
-        lenis.raf(t);
-        idle = lenis.isScrolling ? 0 : idle + 1;
-        if (idle > 30) { running = false; return; }
-        requestAnimationFrame(raf);
-      }
-      function wake() { idle = 0; if (!running) { running = true; requestAnimationFrame(raf); } }
-      ["wheel", "keydown", "touchstart", "pointerdown", "scroll"].forEach(function (ev) { window.addEventListener(ev, wake, { passive: true }); });
-      lenis.on("scroll", wake);
-      var scrollTo0 = lenis.scrollTo.bind(lenis);
-      lenis.scrollTo = function () { wake(); return scrollTo0.apply(null, arguments); };
-      wake();
-      // Âncoras na mesma página: desliza respeitando a altura do cabeçalho.
-      document.addEventListener("click", function (e) {
-        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return;
-        var a = e.target.closest && e.target.closest('a[href*="#"]');
-        if (!a) return;
-        var url;
-        try { url = new URL(a.getAttribute("href"), location.href); } catch (err) { return; }
-        if (url.pathname !== location.pathname || !url.hash || url.hash === "#") return;
-        var target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
-        if (!target) return;
-        e.preventDefault();
-        var offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
-        lenis.vmScrollTo(target.getBoundingClientRect().top + window.scrollY - offset);
-        history.pushState(null, "", url.hash);
-        if (target.tabIndex < 0 && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA|SUMMARY)$/.test(target.tagName)) target.setAttribute("tabindex", "-1");
-        target.focus({ preventScroll: true });
-      });
-    };
-    document.head.appendChild(s);
-  }
-
   /* ---------- Pausa animações fora da tela ---------- */
   // Animações contínuas (botão verde, mapa, linhas) só rodam nas seções visíveis.
   function initOffscreenPause() {
@@ -1049,7 +995,6 @@
     ? function (fn) { window.requestIdleCallback(fn, { timeout: 700 }); }
     : function (fn) { window.setTimeout(fn, 120); };
   initLoader();
-  initSmoothScroll();
   initMenu();
   initNav();
   initMobileSubmenus();
