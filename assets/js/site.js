@@ -84,7 +84,7 @@
     s.async = true;
     s.onload = function () {
       if (!window.Lenis) return;
-      var lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true });
+      var lenis = new window.Lenis({ lerp: 0.2, wheelMultiplier: 1.15, smoothWheel: true, syncTouch: false });
       // Rolagem animada até uma posição absoluta. Sincroniza antes com a posição real,
       // que pode ter mudado por teclado (foco) ou rolagem nativa.
       lenis.vmScrollTo = function (y) {

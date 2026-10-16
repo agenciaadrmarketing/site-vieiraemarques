@@ -77,9 +77,9 @@ export default function home() {
         ${btn("/escritorio/", "Conheça o escritório")}
       </div>
       <div class="mosaic" data-reveal>
-        <figure class="figure figure--hover">${img("recepcao", { alt: "Recepção do escritório, com diplomas e certificados na parede", sizes: "(min-width: 960px) 640px, 100vw" })}<figcaption>Recepção — Boituva/SP</figcaption></figure>
-        <figure class="figure figure--hover">${img("sala-atendimento", { alt: "Sala de atendimento do escritório", sizes: "(min-width: 960px) 320px, 50vw" })}</figure>
-        <figure class="figure figure--hover">${img("estacao-trabalho", { alt: "Estação de trabalho com a identidade Vieira & Marques", sizes: "(min-width: 960px) 320px, 50vw" })}</figure>
+        <figure class="figure figure--hover">${img("recepcao", { alt: "Recepção do escritório, com o logotipo Vieira & Marques na parede", sizes: "(min-width: 960px) 640px, 100vw" })}<figcaption>Recepção — Boituva/SP</figcaption></figure>
+        <figure class="figure figure--hover">${img("sala-atendimento", { alt: "Advogada à mesa de atendimento do escritório", sizes: "(min-width: 960px) 320px, 50vw" })}</figure>
+        <figure class="figure figure--hover">${img("estacao-trabalho", { alt: "Estação de trabalho do escritório, com notebook e área de espera ao fundo", sizes: "(min-width: 960px) 320px, 50vw" })}</figure>
       </div>
     </div>
   </div>

@@ -89,7 +89,7 @@ ${lpHero({
 <section class="section section--white" aria-labelledby="metodo-titulo">
   <div class="container">
     <div class="split split--center">
-      <figure class="figure figure--portrait" data-reveal>${img("atendimento-mesa", { alt: "Advogada do escritório trabalhando em sua estação", sizes: "(min-width: 960px) 460px, 100vw", style: "object-position:40% 50%" })}</figure>
+      <figure class="figure figure--portrait" data-reveal>${img("atendimento-mesa", { alt: "Advogada do escritório em sua estação de trabalho", sizes: "(min-width: 960px) 460px, 100vw", style: "object-position:40% 50%" })}</figure>
       <div>
         ${sectionHead({ eyebrow: "Forma de atuação", id: "metodo-titulo", title: `Como o escritório <span class="grad">conduz cada caso.</span>` })}
         <ol class="principles principles--light">
@@ -108,10 +108,10 @@ ${lpStructure({
   title: `O escritório <span class="grad">por dentro.</span>`,
   text: "Sede em Boituva, com salas de atendimento e de reunião. Atendimento presencial também em Sorocaba e, para as demais cidades, reuniões por vídeo.",
   items: [
-    { image: "escritorio-interno", title: "Sede — Boituva/SP", caption: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici", alt: "Ambiente interno do escritório em Boituva", wide: true, position: "50% 55%" },
-    { image: "sala-reuniao", title: "Sala de reunião", caption: "Reuniões presenciais ou por vídeo", alt: "Sala de reunião do escritório" },
+    { image: "escritorio-interno", title: "Sede — Boituva/SP", caption: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici", alt: "Advogada à mesa no ambiente interno do escritório em Boituva", wide: true, position: "50% 55%" },
+    { image: "sala-reuniao", title: "Sala de reunião", caption: "Reuniões presenciais ou por vídeo", alt: "Equipe reunida na sala de reunião do escritório" },
     { image: "letreiro", title: "Identidade no escritório", caption: "Vieira & Marques Sociedade de Advogados", alt: "Letreiro com a marca Vieira & Marques na parede do escritório" },
-    { image: "mesa-trabalho", title: "Área de trabalho da equipe", caption: "Cada caso analisado a partir dos documentos", alt: "Mesas de trabalho da equipe no escritório", wide: true },
+    { image: "mesa-trabalho", title: "Área de trabalho da equipe", caption: "Cada caso analisado a partir dos documentos", alt: "Mesa de trabalho do escritório, com notebook e documentos", wide: true },
   ],
 })}
 

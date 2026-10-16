@@ -32,7 +32,7 @@ export function renderAdvogado(p) {
   const photoUrl = SITE.origin + entry.variants.at(-1).src;
 
   const body = `
-<section class="adv-hero on-dark" aria-labelledby="page-titulo">
+<section class="adv-hero on-dark${p.hero ? " adv-hero--bg" : ""}" aria-labelledby="page-titulo">
   <div class="container">
     ${breadcrumbs(crumbs)}
     <div class="adv-hero__grid">
@@ -46,7 +46,7 @@ export function renderAdvogado(p) {
           <a class="lp-hero__secondary" href="/escritorio/#equipe">Ver toda a equipe ${icon.arrow(14)}</a>
         </div>
       </div>
-      <figure class="adv-hero__photo">${img(p.photo, { alt: `${name}, ${title(p).toLowerCase()} da Vieira & Marques`, sizes: "(min-width: 900px) 440px, 90vw", priority: true, style: `object-position:${p.position}` })}</figure>
+      <figure class="adv-hero__photo">${img(p.hero ?? p.photo, { alt: `${name}, ${title(p).toLowerCase()} da Vieira & Marques`, sizes: p.hero ? "(min-width: 900px) 64vw, 100vw" : "(min-width: 900px) 440px, 90vw", priority: true, style: `object-position:${p.hero ? p.heroPosition : p.position}` })}</figure>
     </div>
   </div>
 </section>

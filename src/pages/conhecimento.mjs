@@ -1,5 +1,5 @@
 import { imgPreload } from "../partials/media.mjs";
-import { lpCta, lpReach, lpHero, lpOtherAreas } from "../partials/lp.mjs";
+import { lpCta, lpReach, lpHero, lpAreaCards } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaById, areaFaqUrl } from "../data/areas.mjs";
@@ -116,7 +116,7 @@ ${lpHero({
   </div>
 </section>
 
-${lpOtherAreas(null, { title: "Conteúdos e serviços por área de atuação" })}
+${lpAreaCards({ eyebrow: "Por área de atuação", title: `Conteúdos e serviços <span class="grad">por área de atuação.</span>`, lead: "Cada área reúne os serviços e as orientações do escritório. Escolha a que mais se aproxima da sua situação." })}
 
 ${lpCta({ title: `Leu sobre o seu caso e ficou com dúvida? <span class="grad">Fale com a nossa equipe.</span>`, text: "Os conteúdos são informativos e não substituem a análise do caso concreto. Envie as informações para uma análise inicial.", message: waMessage() })}`;
 

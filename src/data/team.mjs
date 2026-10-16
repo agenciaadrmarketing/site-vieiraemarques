@@ -34,6 +34,9 @@ export const team = [
       "Título de Jovem Inspirador concedido pela Câmara de Boituva",
     ],
     photo: "oscar-moreira-vieira",
+    // Foto larga para o topo do perfil (pessoa à direita, degradê à esquerda).
+    hero: "oscar-moreira-vieira-fundo",
+    heroPosition: "44% 30%",
     // Componente de equipe da Home: temas exibidos e enquadramento da foto quando expandida.
     tags: ["Divórcio", "Inventário", "Guarda", "Pensão"],
     positionActive: "38% 58%",
@@ -66,6 +69,9 @@ export const team = [
       "Diploma de Jovem Inspiradora concedido pela Câmara Municipal de Boituva",
     ],
     photo: "jislana-marques",
+    // Foto larga para o topo do perfil (pessoa à direita, degradê à esquerda).
+    hero: "jislana-marques-fundo",
+    heroPosition: "50% 25%",
     tags: ["Defesa criminal", "INSS", "Benefícios"],
     positionActive: "50% 12%",
     position: "50% 22%",
@@ -117,6 +123,9 @@ export const team = [
       "Pós-graduada em Processo Penal",
     ],
     photo: "gledie-camargo",
+    // Foto larga para o topo do perfil (pessoa à direita, degradê à esquerda).
+    hero: "gledie-camargo-fundo",
+    heroPosition: "52% 28%",
     tags: ["Direito Penal", "Processo Penal", "Execução"],
     positionActive: "62% 34%",
     position: "62% 30%",
@@ -148,6 +157,9 @@ export const team = [
       "Pós-graduanda em Direito Médico, Odontológico e da Saúde pela Universidade de São Paulo (USP)",
     ],
     photo: "natalia-okumura",
+    // Foto larga para o topo do perfil (pessoa à direita, degradê à esquerda).
+    hero: "natalia-okumura-fundo",
+    heroPosition: "50% 25%",
     tags: ["Contratos", "Consumidor", "Saúde"],
     positionActive: "50% 10%",
     position: "50% 18%",

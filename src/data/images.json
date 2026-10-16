@@ -21,191 +21,191 @@
     ]
   },
   "recepcao": {
-    "width": 1228,
-    "height": 819,
+    "width": 1672,
+    "height": 941,
     "variants": [
       {
-        "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-480.webp",
+        "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-480.webp",
         "w": 480,
-        "h": 320
+        "h": 270
       },
       {
-        "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-800.webp",
+        "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-800.webp",
         "w": 800,
-        "h": 534
+        "h": 450
       },
       {
-        "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-1228.webp",
+        "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-1228.webp",
         "w": 1228,
-        "h": 819
+        "h": 691
       }
     ]
   },
   "sala-atendimento": {
-    "width": 1228,
-    "height": 819,
+    "width": 1536,
+    "height": 1024,
     "variants": [
       {
-        "src": "/assets/img/sala-de-atendimento-advogados-boituva-480.webp",
+        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-480.webp",
         "w": 480,
         "h": 320
       },
       {
-        "src": "/assets/img/sala-de-atendimento-advogados-boituva-800.webp",
+        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-800.webp",
         "w": 800,
-        "h": 534
+        "h": 533
       },
       {
-        "src": "/assets/img/sala-de-atendimento-advogados-boituva-1228.webp",
+        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-1228.webp",
         "w": 1228,
         "h": 819
       }
     ]
   },
   "sala-reuniao": {
-    "width": 1228,
-    "height": 819,
+    "width": 1350,
+    "height": 759,
     "variants": [
       {
-        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-480.webp",
-        "w": 480,
-        "h": 320
-      },
-      {
-        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-800.webp",
-        "w": 800,
-        "h": 534
-      },
-      {
-        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-1228.webp",
-        "w": 1228,
-        "h": 819
-      }
-    ]
-  },
-  "estacao-trabalho": {
-    "width": 1228,
-    "height": 819,
-    "variants": [
-      {
-        "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-480.webp",
-        "w": 480,
-        "h": 320
-      },
-      {
-        "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-800.webp",
-        "w": 800,
-        "h": 534
-      },
-      {
-        "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-1228.webp",
-        "w": 1228,
-        "h": 819
-      }
-    ]
-  },
-  "letreiro": {
-    "width": 1920,
-    "height": 1440,
-    "variants": [
-      {
-        "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-480.webp",
-        "w": 480,
-        "h": 360
-      },
-      {
-        "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-800.webp",
-        "w": 800,
-        "h": 600
-      },
-      {
-        "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-1200.webp",
-        "w": 1200,
-        "h": 900
-      }
-    ]
-  },
-  "equipe": {
-    "width": 1228,
-    "height": 819,
-    "variants": [
-      {
-        "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-480.webp",
-        "w": 480,
-        "h": 320
-      },
-      {
-        "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-800.webp",
-        "w": 800,
-        "h": 534
-      },
-      {
-        "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-1228.webp",
-        "w": 1228,
-        "h": 819
-      }
-    ]
-  },
-  "atendimento-mesa": {
-    "width": 1228,
-    "height": 819,
-    "variants": [
-      {
-        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-480.webp",
-        "w": 480,
-        "h": 320
-      },
-      {
-        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-800.webp",
-        "w": 800,
-        "h": 534
-      },
-      {
-        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-1228.webp",
-        "w": 1228,
-        "h": 819
-      }
-    ]
-  },
-  "mesa-trabalho": {
-    "width": 1600,
-    "height": 900,
-    "variants": [
-      {
-        "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-480.webp",
+        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-480.webp",
         "w": 480,
         "h": 270
       },
       {
-        "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-800.webp",
+        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-800.webp",
         "w": 800,
         "h": 450
       },
       {
-        "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-1200.webp",
+        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-1228.webp",
+        "w": 1228,
+        "h": 690
+      }
+    ]
+  },
+  "estacao-trabalho": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-480.webp",
+        "w": 480,
+        "h": 270
+      },
+      {
+        "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-1228.webp",
+        "w": 1228,
+        "h": 691
+      }
+    ]
+  },
+  "letreiro": {
+    "width": 1200,
+    "height": 600,
+    "variants": [
+      {
+        "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-480.webp",
+        "w": 480,
+        "h": 240
+      },
+      {
+        "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-800.webp",
+        "w": 800,
+        "h": 400
+      },
+      {
+        "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-1200.webp",
         "w": 1200,
-        "h": 675
+        "h": 600
+      }
+    ]
+  },
+  "equipe": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-480.webp",
+        "w": 480,
+        "h": 270
+      },
+      {
+        "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-1228.webp",
+        "w": 1228,
+        "h": 691
+      }
+    ]
+  },
+  "atendimento-mesa": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-480.webp",
+        "w": 480,
+        "h": 270
+      },
+      {
+        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-1228.webp",
+        "w": 1228,
+        "h": 691
+      }
+    ]
+  },
+  "mesa-trabalho": {
+    "width": 1322,
+    "height": 745,
+    "variants": [
+      {
+        "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-480.webp",
+        "w": 480,
+        "h": 270
+      },
+      {
+        "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-800.webp",
+        "w": 800,
+        "h": 451
+      },
+      {
+        "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-1200.webp",
+        "w": 1200,
+        "h": 676
       }
     ]
   },
   "equipe-reuniao": {
-    "width": 1228,
-    "height": 819,
+    "width": 1672,
+    "height": 941,
     "variants": [
       {
-        "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-480.webp",
+        "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-480.webp",
         "w": 480,
-        "h": 320
+        "h": 270
       },
       {
-        "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-800.webp",
+        "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-800.webp",
         "w": 800,
-        "h": 534
+        "h": 450
       },
       {
-        "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-1228.webp",
+        "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-1228.webp",
         "w": 1228,
-        "h": 819
+        "h": 691
       }
     ]
   },
@@ -226,123 +226,123 @@
     ]
   },
   "escritorio-interno": {
-    "width": 1600,
-    "height": 900,
+    "width": 1536,
+    "height": 1024,
     "variants": [
       {
-        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-480.webp",
+        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v2-480.webp",
         "w": 480,
-        "h": 270
+        "h": 320
       },
       {
-        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-800.webp",
+        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v2-800.webp",
         "w": 800,
-        "h": 450
+        "h": 533
       },
       {
-        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-1200.webp",
+        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v2-1200.webp",
         "w": 1200,
-        "h": 675
+        "h": 800
       },
       {
-        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-1600.webp",
-        "w": 1600,
-        "h": 900
+        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v2-1536.webp",
+        "w": 1536,
+        "h": 1024
       }
     ]
   },
   "oscar-moreira-vieira": {
-    "width": 1100,
-    "height": 1650,
+    "width": 706,
+    "height": 941,
     "variants": [
       {
-        "src": "/assets/img/oscar-moreira-vieira-advogado-360.webp",
+        "src": "/assets/img/oscar-moreira-vieira-advogado-v2-360.webp",
         "w": 360,
-        "h": 540
+        "h": 480
       },
       {
-        "src": "/assets/img/oscar-moreira-vieira-advogado-600.webp",
+        "src": "/assets/img/oscar-moreira-vieira-advogado-v2-600.webp",
         "w": 600,
-        "h": 900
+        "h": 800
       },
       {
-        "src": "/assets/img/oscar-moreira-vieira-advogado-900.webp",
-        "w": 900,
-        "h": 1350
+        "src": "/assets/img/oscar-moreira-vieira-advogado-v2-706.webp",
+        "w": 706,
+        "h": 941
       }
     ]
   },
   "jislana-marques": {
-    "width": 600,
-    "height": 520,
+    "width": 706,
+    "height": 941,
     "variants": [
       {
-        "src": "/assets/img/jislana-marques-advogada-360.webp",
+        "src": "/assets/img/jislana-marques-advogada-v2-360.webp",
         "w": 360,
-        "h": 312
+        "h": 480
       },
       {
-        "src": "/assets/img/jislana-marques-advogada-600.webp",
+        "src": "/assets/img/jislana-marques-advogada-v2-600.webp",
         "w": 600,
-        "h": 520
+        "h": 800
       }
     ]
   },
   "leticia-pereira-de-abreu": {
-    "width": 900,
-    "height": 793,
+    "width": 706,
+    "height": 941,
     "variants": [
       {
-        "src": "/assets/img/leticia-pereira-de-abreu-advogada-360.webp",
+        "src": "/assets/img/leticia-pereira-de-abreu-advogada-v2-360.webp",
         "w": 360,
-        "h": 317
+        "h": 480
       },
       {
-        "src": "/assets/img/leticia-pereira-de-abreu-advogada-600.webp",
+        "src": "/assets/img/leticia-pereira-de-abreu-advogada-v2-600.webp",
         "w": 600,
-        "h": 529
+        "h": 800
       },
       {
-        "src": "/assets/img/leticia-pereira-de-abreu-advogada-900.webp",
-        "w": 900,
-        "h": 793
+        "src": "/assets/img/leticia-pereira-de-abreu-advogada-v2-706.webp",
+        "w": 706,
+        "h": 941
       }
     ]
   },
   "gledie-camargo": {
-    "width": 900,
-    "height": 1350,
+    "width": 706,
+    "height": 941,
     "variants": [
       {
-        "src": "/assets/img/gledie-camargo-advogada-360.webp",
+        "src": "/assets/img/gledie-camargo-advogada-v2-360.webp",
         "w": 360,
-        "h": 540
+        "h": 480
       },
       {
-        "src": "/assets/img/gledie-camargo-advogada-600.webp",
+        "src": "/assets/img/gledie-camargo-advogada-v2-600.webp",
         "w": 600,
-        "h": 900
+        "h": 800
       },
       {
-        "src": "/assets/img/gledie-camargo-advogada-900.webp",
-        "w": 900,
-        "h": 1350
+        "src": "/assets/img/gledie-camargo-advogada-v2-706.webp",
+        "w": 706,
+        "h": 941
       }
     ]
   },
   "natalia-okumura": {
-    "width": 600,
-    "height": 520,
+    "width": 706,
+    "height": 941,
     "variants": [
       {
-        "src": "/assets/img/natalia-okumura-advogada-360.webp",
+        "src": "/assets/img/natalia-okumura-advogada-v2-360.webp",
         "w": 360,
-        "h": 312
+        "h": 480
       },
       {
-        "src": "/assets/img/natalia-okumura-advogada-600.webp",
+        "src": "/assets/img/natalia-okumura-advogada-v2-600.webp",
         "w": 600,
-        "h": 520
+        "h": 800
       }
     ]
   },
@@ -914,6 +914,106 @@
         "src": "/assets/img/beneficio-inss-previdenciario-vieira-marques-768.webp",
         "w": 768,
         "h": 1024
+      }
+    ]
+  },
+  "oscar-moreira-vieira-fundo": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-768.webp",
+        "w": 768,
+        "h": 432
+      },
+      {
+        "src": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-1280.webp",
+        "w": 1280,
+        "h": 720
+      },
+      {
+        "src": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-1672.webp",
+        "w": 1672,
+        "h": 941
+      }
+    ]
+  },
+  "jislana-marques-fundo": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/jislana-marques-advogada-estudio-v2-768.webp",
+        "w": 768,
+        "h": 432
+      },
+      {
+        "src": "/assets/img/jislana-marques-advogada-estudio-v2-1280.webp",
+        "w": 1280,
+        "h": 720
+      },
+      {
+        "src": "/assets/img/jislana-marques-advogada-estudio-v2-1672.webp",
+        "w": 1672,
+        "h": 941
+      }
+    ]
+  },
+  "natalia-okumura-fundo": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/natalia-okumura-advogada-escritorio-v2-768.webp",
+        "w": 768,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/natalia-okumura-advogada-escritorio-v2-1280.webp",
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "src": "/assets/img/natalia-okumura-advogada-escritorio-v2-1536.webp",
+        "w": 1536,
+        "h": 1024
+      }
+    ]
+  },
+  "gledie-camargo-fundo": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/gledie-camargo-advogada-escritorio-v2-768.webp",
+        "w": 768,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/gledie-camargo-advogada-escritorio-v2-1280.webp",
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "src": "/assets/img/gledie-camargo-advogada-escritorio-v2-1536.webp",
+        "w": 1536,
+        "h": 1024
+      }
+    ]
+  },
+  "bandeira": {
+    "width": 1920,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/img/bandeira-do-brasil-fundo-960.webp",
+        "w": 960,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/bandeira-do-brasil-fundo-1600.webp",
+        "w": 1600,
+        "h": 750
       }
     ]
   },

@@ -203,10 +203,10 @@ export function lpTeam({ id = "equipe", eyebrow = "Equipe", title = `Advogados i
 // Galeria da sede com legenda sobre a foto; clique abre a foto ampliada (site.js).
 const sede = SITE.units[0];
 export const STRUCTURE = [
-  { image: "recepcao", title: "Recepção em Boituva/SP", caption: `${sede.street} — ${sede.district}`, alt: "Recepção do escritório Vieira & Marques, com diplomas e certificados na parede", wide: true },
+  { image: "recepcao", title: "Recepção em Boituva/SP", caption: `${sede.street} — ${sede.district}`, alt: "Recepção do escritório Vieira & Marques, com o logotipo na parede", wide: true },
   { image: "equipe", title: "A equipe", caption: "Profissionais que acompanham cada caso", alt: "Equipe da Vieira & Marques reunida na sede, em Boituva", position: "50% 35%" },
-  { image: "sala-atendimento", title: "Sala de atendimento", caption: "Atendimento presencial ou online", alt: "Sala de atendimento do escritório, com mesa e cadeiras" },
-  { image: "atendimento-mesa", title: "Como trabalhamos", caption: "Cada caso analisado a partir dos documentos", alt: "Advogada trabalhando no computador, na sede do escritório", wide: true, position: "50% 40%" },
+  { image: "sala-atendimento", title: "Sala de atendimento", caption: "Atendimento presencial ou online", alt: "Advogada à mesa de atendimento do escritório, na sede em Boituva" },
+  { image: "atendimento-mesa", title: "Como trabalhamos", caption: "Cada caso analisado a partir dos documentos", alt: "Advogada à mesa de trabalho, na sede do escritório", wide: true, position: "50% 40%" },
 ];
 
 export function lpStructure({ id = "estrutura", eyebrow = "O escritório", title = `Estrutura real, <span class="grad">equipe que você pode visitar.</span>`, text = "Sede em Boituva/SP, atendimento presencial também em Sorocaba e reuniões por vídeo para clientes de todo o Brasil.", items = STRUCTURE } = {}) {
@@ -436,6 +436,7 @@ export const REACH_POINTS = REACH_REGIONAL.points;
 export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", scope = "brasil", title, text, points } = {}) {
   const copy = scope === "sp" ? REACH_REGIONAL : REACH_NATIONAL;
   return `<section class="lp-sec lp-sec--dark lp-reach on-dark" id="${id}" aria-labelledby="${id}-titulo">
+  <div class="lp-flag" aria-hidden="true">${img("bandeira", { alt: "", sizes: "100vw", style: "object-position:50% 40%" })}</div>
   <div class="container">
     <div class="lp-split lp-split--reach">
       <div>
@@ -468,6 +469,25 @@ export function lpFaq({ id = "perguntas", title, lead, items, message, ctaText =
       <p>${esc(ctaText)}</p>
       ${waButton(message, ctaLabel, { cta: "faq" })}
     </div>
+  </div>
+</section>`;
+}
+
+/* ---------- Cartões das áreas (preto, 3 colunas) ---------- */
+const AREA_ICON = { familia: "users", sucessorio: "home", trabalhista: "briefcase", criminal: "scale", saude: "pulse", bancario: "bank", imobiliario: "building", previdenciario: "shield" };
+export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação", title, lead, tone = "white" } = {}) {
+  return `<section class="lp-sec lp-sec--${tone} lp-areas" id="${id}" aria-labelledby="${id}-titulo">
+  <div class="container">
+    ${lpHead({ eyebrow, title, lead, id: `${id}-titulo` })}
+    <ul class="lp-areas__grid" data-reveal>
+      ${join(practiceAreas, (a) => `<li class="lp-areas__card">
+        <div class="lp-areas__top"><span class="lp-areas__icon">${(icon[AREA_ICON[a.id]] ?? icon.doc)(22)}</span><span class="lp-areas__num">${a.number}</span></div>
+        <h3 class="lp-areas__title"><a href="${areaUrl(a)}">${esc(a.title)}</a></h3>
+        <p class="lp-areas__text">${esc(a.summary)}</p>
+        <ul class="lp-areas__chips" aria-label="Serviços em ${esc(a.title)}">${join(a.services.slice(0, 4), (sv) => `<li>${esc(sv.title)}</li>`)}</ul>
+        <span class="lp-areas__go">Conheça a área ${icon.arrow(14)}</span>
+      </li>`)}
+    </ul>
   </div>
 </section>`;
 }
