@@ -31,6 +31,8 @@ ErrorDocument 404 /404.html
   RewriteRule ^direito-previdenciario/?$ /areas/direito-previdenciario/ [R=301,L]
 </IfModule>
 
+AddType application/manifest+json .webmanifest
+
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/webp "access plus 1 year"
