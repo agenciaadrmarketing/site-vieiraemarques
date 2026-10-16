@@ -20,7 +20,7 @@ export default function home() {
   const body = `
 <section class="hero on-dark" aria-labelledby="hero-titulo">
   <div class="hero__frame">
-    <div class="hero__media">${img("fachada", { alt: "Fachada do escritório Vieira & Marques em Boituva - SP", sizes: HERO_SIZES, priority: true })}</div>
+    <div class="hero__media">${img("hero-home", { alt: "Mesa de trabalho do escritório Vieira & Marques, em Boituva - SP", sizes: HERO_SIZES, priority: true })}</div>
     <p class="hero__badge">Sociedade de Advogados · OAB/SP</p>
     <div class="hero__inner">
       <h1 class="hero__title" id="hero-titulo">
@@ -79,7 +79,7 @@ export default function home() {
       <div class="mosaic" data-reveal>
         <figure class="figure figure--hover">${img("recepcao", { alt: "Recepção do escritório, com o logotipo Vieira & Marques na parede", sizes: "(min-width: 960px) 640px, 100vw" })}<figcaption>Recepção — Boituva/SP</figcaption></figure>
         <figure class="figure figure--hover">${img("sala-atendimento", { alt: "Poltrona, planta e mesa de vidro no escritório", sizes: "(min-width: 960px) 320px, 50vw" })}</figure>
-        <figure class="figure figure--hover">${img("estacao-trabalho", { alt: "Estação de trabalho do escritório, com notebook e área de espera ao fundo", sizes: "(min-width: 960px) 320px, 50vw" })}</figure>
+        <figure class="figure figure--hover">${img("mesa-trabalho", { alt: "Estação de trabalho do escritório, com notebook e área de espera ao fundo", sizes: "(min-width: 960px) 320px, 50vw" })}</figure>
       </div>
     </div>
   </div>
@@ -129,7 +129,7 @@ ${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nos
     description:
       "Advogados em Boituva e Sorocaba (SP) e online em todo o Brasil: Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS. Fale com a equipe.",
     path: "/",
-    preload: [imgPreload("fachada", HERO_SIZES)],
+    preload: [imgPreload("hero-home", HERO_SIZES)],
     schema: [
       {
         "@type": "WebSite",

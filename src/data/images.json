@@ -1031,6 +1031,27 @@
       }
     ]
   },
+  "hero-home": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-1280.webp",
+        "w": 1280,
+        "h": 720
+      },
+      {
+        "src": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-1672.webp",
+        "w": 1672,
+        "h": 941
+      }
+    ]
+  },
   "bandeira": {
     "width": 1920,
     "height": 900,

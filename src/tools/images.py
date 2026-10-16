@@ -68,11 +68,13 @@ SOURCES = {
     "jislana-marques-fundo": (f"{SRC}/jislana-marques-fundo.webp", [768, 1280, 1672], "jislana-marques-advogada-estudio-v2"),
     "natalia-okumura-fundo": (f"{SRC}/natalia-okumura-fundo.webp", [768, 1280, 1536], "natalia-okumura-advogada-escritorio-v2"),
     "gledie-camargo-fundo": (f"{SRC}/gledie-camargo-fundo.webp", [768, 1280, 1536], "gledie-camargo-advogada-escritorio-v2"),
+    "hero-home": (f"{SRC}/estacao-de-trabalho-escritorio-vieira-marques.webp", [800, 1280, 1672], "escritorio-vieira-marques-advogados-mesa-de-trabalho-hero"),
     "bandeira": (f"{SRC}/bandeira-do-brasil-fundo.webp", [960, 1600], "bandeira-do-brasil-fundo"),
 }
 
 
 def save_variants(src, widths, slug):
+    quality = 96 if slug.endswith("-hero") else 90
     im = Image.open(os.path.join(ROOT, src))
     im.load()
     im = im.convert("RGB")
@@ -80,7 +82,7 @@ def save_variants(src, widths, slug):
     for w in dict.fromkeys(min(w, im.width) for w in widths):
         h = round(im.height * w / im.width)
         out = f"{slug}-{w}.webp"
-        im.resize((w, h), Image.LANCZOS).save(os.path.join(OUT_DIR, out), "WEBP", quality=90, method=6)
+        im.resize((w, h), Image.LANCZOS).save(os.path.join(OUT_DIR, out), "WEBP", quality=quality, method=6)
         variants.append({"src": f"/assets/img/{out}", "w": w, "h": h})
     return {"width": im.width, "height": im.height, "variants": variants}
 
