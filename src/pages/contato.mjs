@@ -40,7 +40,7 @@ ${lpHero({
 
 <section class="section section--white" aria-labelledby="${SITE.forms ? "formulario" : "whatsapp"}-titulo">
   <div class="container">
-    <div class="split">
+    <div class="split contact-split">
       <div class="stack" data-reveal>
         <h2 class="h-card">Canais e endereço</h2>
         <ul class="contact-list">

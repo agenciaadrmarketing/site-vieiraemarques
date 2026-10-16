@@ -8,6 +8,7 @@ import { articles, featuredArticle } from "../data/articles.mjs";
 import { page } from "../partials/layout.mjs";
 import { img, imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
+import { trustBar } from "../partials/trust-bar.mjs";
 import { sectionHead, linkArrow, btn, teamPanels, recognitions, articleFeature, articleRow, facts } from "../partials/components.mjs";
 
 const HERO_SIZES = "(min-width: 1240px) 1212px, 100vw";
@@ -39,6 +40,7 @@ export default function home() {
     </div>
   </div>
 </section>
+${trustBar()}
 
 <section class="section section--dark on-dark" aria-labelledby="areas-titulo">
   <div class="container">

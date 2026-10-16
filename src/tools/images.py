@@ -67,6 +67,7 @@ SOURCES = {
     "oscar-moreira-vieira-fundo": (f"{SRC}/oscar-moreira-vieira-fundo.webp", [768, 1280, 1672], "oscar-moreira-vieira-advogado-escritorio-v2"),
     "jislana-marques-fundo": (f"{SRC}/jislana-marques-fundo.webp", [768, 1280, 1672], "jislana-marques-advogada-estudio-v2"),
     "natalia-okumura-fundo": (f"{SRC}/natalia-okumura-fundo.webp", [768, 1280, 1536], "natalia-okumura-advogada-escritorio-v2"),
+    "leticia-pereira-de-abreu-fundo": (f"{SRC}/leticia-pereira-de-abreu-fundo.webp", [768, 1280, 1536], "leticia-pereira-de-abreu-advogada-escritorio-v1"),
     "gledie-camargo-fundo": (f"{SRC}/gledie-camargo-fundo.webp", [768, 1280, 1536], "gledie-camargo-advogada-escritorio-v2"),
     "hero-home": (f"{SRC}/hero-home-notebook-vieira-marques.webp", [800, 1280, 1672, 2000], "escritorio-vieira-marques-advogados-mesa-de-trabalho-hero"),
     "atendente": (f"{SRC}/atendente-avatar.webp", [96, 170], "atendimento-vieira-marques-whatsapp"),

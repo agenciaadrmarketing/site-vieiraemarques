@@ -7,13 +7,16 @@ import images from "../data/images.json" with { type: "json" };
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { img, imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
-import { sectionHead, articleCard, waButton } from "../partials/components.mjs";
+import { trustBar } from "../partials/trust-bar.mjs";
+import { sectionHead, articleCard, waButton, teamPanels } from "../partials/components.mjs";
 import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { profilePhrases } from "../data/float-phrases.mjs";
-import { lpCta } from "../partials/lp.mjs";
+import { lpCta, lpHead } from "../partials/lp.mjs";
 
 // Perfil individual do profissional (/advogados/<slug>/). Todo o conteúdo vem de
 // src/data/team.mjs: seções sem dado confirmado não são exibidas.
+// Trechos entre **asteriscos** no texto "Sobre" (src/data/team.mjs) aparecem em negrito.
+const bold = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 const female = (p) => p.name.startsWith("Dra.");
 const title = (p) => (female(p) ? "Advogada" : "Advogado");
 
@@ -51,6 +54,7 @@ export function renderAdvogado(p) {
     </div>
   </div>
 </section>
+${trustBar({ person: p })}
 
 <section class="section section--white" aria-labelledby="sobre-titulo">
   <div class="container">
@@ -59,7 +63,7 @@ export function renderAdvogado(p) {
         <p class="eyebrow">Sobre</p>
         <h2 class="h-section" id="sobre-titulo">Sobre ${esc(name.split(" ")[0])} <span class="grad">${esc(name.split(" ").slice(1).join(" "))}.</span></h2>
       </div>
-      <div class="prose" data-reveal>${join(p.about, (t) => `<p>${esc(t)}</p>`)}
+      <div class="prose" data-reveal>${join(p.about, (t) => `<p>${bold(t)}</p>`)}
         <p class="muted">Integra a equipe da <a class="text-link" href="/escritorio/">Vieira &amp; Marques Sociedade de Advogados</a>, com sede em Boituva/SP, atendimento presencial em Boituva e Sorocaba e online em todo o Brasil.</p>
       </div>
     </div>
@@ -86,13 +90,19 @@ ${when(p.education?.length || p.recognitionsList?.length, `<section class="secti
     <div class="adv-cred" data-reveal>
       ${when(p.education?.length, `<div class="adv-cred__col">
         <h3 class="adv-cred__label">Formação acadêmica</h3>
-        <ol class="adv-timeline">${join(p.education, (e) => `<li><span class="adv-timeline__level">${esc(e.level)}</span><strong>${esc(e.course)}</strong>${when(e.institution, `<span class="muted">${esc(e.institution)}</span>`)}</li>`)}</ol>
+        <ol class="adv-edu">${join(p.education, (e) => `<li class="adv-edu__item">
+          <span class="adv-edu__icon" aria-hidden="true">${icon.doc(18)}</span>
+          <span class="adv-edu__body"><span class="adv-edu__level">${esc(e.level)}</span><strong class="adv-edu__course">${esc(e.course)}</strong>${when(e.institution, `<span class="adv-edu__inst">${esc(e.institution)}</span>`)}</span>
+        </li>`)}</ol>
       </div>`)}
       <div class="adv-cred__col">
         <h3 class="adv-cred__label">Inscrição profissional</h3>
-        <p class="adv-cred__oab">${esc(p.oab)}</p>
+        <div class="adv-oab on-dark">
+          <span class="adv-oab__icon" aria-hidden="true">${icon.shield(20)}</span>
+          <span class="adv-oab__body"><span class="adv-oab__label">Ordem dos Advogados do Brasil · Seção São Paulo</span><span class="adv-oab__num">${esc(p.oab)}</span></span>
+        </div>
         ${when(p.recognitionsList?.length, `<h3 class="adv-cred__label">Atuação institucional e reconhecimentos</h3>
-        <ul class="adv-list">${join(p.recognitionsList, (r) => `<li>${esc(r)}</li>`)}</ul>`)}
+        <ul class="adv-rec">${join(p.recognitionsList, (r) => `<li><span class="adv-rec__icon" aria-hidden="true">${icon.check(16)}</span><span>${esc(r)}</span></li>`)}</ul>`)}
       </div>
     </div>
   </div>
@@ -109,16 +119,12 @@ ${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a
 
 ${googleReviews()}
 
-${when(others.length, `<section class="section section--white" aria-labelledby="equipe-titulo">
+<section class="lp-sec lp-sec--dark lp-team on-dark" aria-labelledby="equipe-titulo">
   <div class="container">
-    ${sectionHead({ eyebrow: "Equipe", id: "equipe-titulo", title: `Conheça também <span class="grad">outros profissionais.</span>` })}
-    <ul class="adv-others" data-reveal>${join(others, (o) => `<li><a class="adv-other" href="${profilePath(o)}">
-      <span class="adv-other__photo">${img(o.photo, { alt: "", sizes: "72px", style: `object-position:${o.position}` })}</span>
-      <span><strong>${esc(o.name)}</strong><span class="muted">${esc(o.focus)}</span></span>
-      <span aria-hidden="true">${icon.arrow(14)}</span>
-    </a></li>`)}</ul>
+    ${lpHead({ eyebrow: "Equipe", title: `Conheça também <span class="grad">os demais profissionais.</span>`, id: "equipe-titulo" })}
+    ${teamPanels(team.filter((o) => o.slug !== p.slug), { profileLinks: true, headingLevel: 3 })}
   </div>
-</section>`)}`;
+</section>`;
 
   const desc = `${name}, ${title(p).toLowerCase()} da Vieira & Marques: atuação em ${areas.map((a) => a.title).join(" e ")}. Formação, áreas de atuação e contato com a equipe.`;
   return page({

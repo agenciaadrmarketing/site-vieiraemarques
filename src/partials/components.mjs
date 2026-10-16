@@ -111,7 +111,7 @@ export function teamPanels(people, { profileLinks = false, headingLevel = 3 } = 
   const h = `h${headingLevel}`;
   return `<div class="team-panels" data-team-panels data-reveal>
   ${join(people, (p, i) => `<article class="team-panel${i === 0 ? " is-active" : ""}" id="${p.id}" tabindex="0" aria-labelledby="painel-${p.id}">
-    <div class="team-panel__photo">${img(p.photo, { alt: `${p.name}, ${p.role.toLowerCase()} da Vieira & Marques`, sizes: "(min-width: 900px) 520px, 80vw", style: `--pos:${p.position};--pos-active:${p.positionActive ?? p.position}` })}</div>
+    <div class="team-panel__photo">${img(p.panel ?? p.photo, { alt: `${p.name}, ${p.role.toLowerCase()} da Vieira & Marques`, sizes: "(min-width: 900px) 520px, 80vw", style: `--pos:${p.panelPos ?? p.position};--pos-active:${p.panelPosActive ?? p.positionActive ?? p.position}` })}</div>
     <span class="team-panel__vertical" aria-hidden="true">${esc(p.name)}</span>
     <div class="team-panel__info">
       <p class="team-panel__meta">${esc(p.role)} · ${esc(p.oab)}</p>

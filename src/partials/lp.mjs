@@ -1,3 +1,4 @@
+import { trustBar } from "./trust-bar.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, isPending, whatsappUrl } from "../data/site.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
@@ -63,7 +64,8 @@ export function lpHero({ crumbs, badge, title, text, message, cta = "Falar no Wh
       ${when(aside, `<div class="lp-hero__aside">${aside}</div>`)}
     </div>
   </div>
-</section>`;
+</section>
+${trustBar()}`;
 }
 
 /* ---------- Serviços ---------- */

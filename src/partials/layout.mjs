@@ -143,14 +143,21 @@ const mobileLinks = (current) =>
     </li>`;
   });
 
+// Redes sociais com ícones (barra superior, menu mobile e rodapé); o WhatsApp entra junto.
+const SOCIAL_ICONS = { Instagram: icon.instagram, Facebook: icon.facebook };
+const socialLinks = (whatsappMessage, cls, size) => `<ul class="social ${cls}" aria-label="Redes sociais">
+        ${join(SITE.social, (s) => `<li><a class="social__link" href="${esc(s.url)}" target="_blank" rel="noopener" title="${esc(s.label)}">${(SOCIAL_ICONS[s.label] ?? icon.arrowUpRight)(size)}<span class="sr-only">${esc(s.label)} (abre em nova aba)</span></a></li>`)}
+        <li><a class="social__link social__link--wa" href="${esc(whatsappUrl(whatsappMessage))}" target="_blank" rel="noopener" title="WhatsApp">${icon.whatsapp(size)}<span class="sr-only">WhatsApp (abre em nova aba)</span></a></li>
+      </ul>`;
+
 function header(current, whatsappMessage) {
   return `<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <aside class="topbar" aria-label="Atendimento e contato">
   <div class="container">
-    <p class="topbar__note">Presencial em Boituva e Sorocaba · online em São Paulo e todo o Brasil</p>
+    <p class="topbar__note"><span class="topbar__note-full">Presencial em Boituva e Sorocaba · online em São Paulo e todo o Brasil</span><span class="topbar__note-short">Boituva, Sorocaba e online</span></p>
     <div class="topbar__links">
-      <a href="${SITE.phone.href}">${SITE.phone.display}</a>
-      ${join(SITE.social, (s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`)}
+      <a class="topbar__phone" href="${SITE.phone.href}">${icon.phone(14)} ${SITE.phone.display}</a>
+      ${socialLinks(whatsappMessage, "social--topbar", 15)}
     </div>
   </div>
 </aside>
@@ -180,6 +187,7 @@ function header(current, whatsappMessage) {
       <a href="/contato/">Outras formas de contato</a>
       <a href="${SITE.phone.href}">${SITE.phone.display}</a>
       <p>${esc(SITE.units[0].street)} — ${esc(SITE.units[0].city)}/${esc(SITE.units[0].region)}</p>
+      ${socialLinks(whatsappMessage, "social--menu", 18)}
     </div>
   </div>
 </div>`;
@@ -206,7 +214,6 @@ export function footer(whatsappMessage = waMessage()) {
         <h2 class="site-footer__title">${title}</h2>
         ${inner}
       </div>`;
-  const ext = (href, label) => `<a class="site-footer__link" href="${esc(href)}" target="_blank" rel="noopener">${esc(label)} <span class="site-footer__ext" aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>`;
   const link = (href, label) => `<a class="site-footer__link" href="${href}">${esc(label)}</a>`;
   return `<footer class="site-footer on-dark" data-footer>
   <div class="site-footer__backdrop" aria-hidden="true"></div>
@@ -221,17 +228,16 @@ export function footer(whatsappMessage = waMessage()) {
       ${col("Navegação", `<nav aria-label="Rodapé"><ul class="site-footer__list">${join(NAV, (i) => `<li>${link(i.href, i.label)}</li>`)}</ul></nav>`)}
       ${col("Áreas", `<ul class="site-footer__list site-footer__list--2">${join(practiceAreas, (a) => `<li>${link(areaUrl(a), a.title)}</li>`)}</ul>`, " site-footer__col--areas")}
       ${col("Contato", `<ul class="site-footer__list">
-          <li class="site-footer__address">${esc(sede.street)}<br>${esc(sede.city)}/${esc(sede.region)}</li>
-          <li><a class="site-footer__link" href="${SITE.phone.href}">${SITE.phone.display}</a></li>
-          <li>${ext(whatsappUrl(whatsappMessage), "WhatsApp")}</li>
-          ${when(!isPending(SITE.email), `<li><a class="site-footer__link site-footer__email" href="mailto:${esc(SITE.email)}">${esc(SITE.email).replace("@", "<wbr>@")}</a></li>`)}
-        </ul>`, " site-footer__col--contact")}
+          <li class="site-footer__address site-footer__ic">${icon.pin(16)}<span>${esc(sede.street)}<br>${esc(sede.city)}/${esc(sede.region)}</span></li>
+          <li class="site-footer__ic">${icon.phone(16)}<a class="site-footer__link" href="${SITE.phone.href}">${SITE.phone.display}</a></li>
+          ${when(!isPending(SITE.email), `<li class="site-footer__ic">${icon.mail(16)}<a class="site-footer__link site-footer__email" href="mailto:${esc(SITE.email)}">${esc(SITE.email).replace("@", "<wbr>@")}</a></li>`)}
+        </ul>
+        ${socialLinks(whatsappMessage, "social--footer", 18)}`, " site-footer__col--contact")}
       ${col("Legal", `<ul class="site-footer__list">
           <li>${link(LEGAL_PATHS.privacy, "Política de Privacidade")}</li>
           <li>${link(LEGAL_PATHS.terms, "Termos de Uso")}</li>
           ${SITE.measurement.ga4 || SITE.measurement.metaPixel ? `<li><button class="site-footer__link site-footer__prefs" type="button" data-consent-open>Preferências de cookies</button></li>` : ""}
-        </ul>
-        <ul class="site-footer__list site-footer__social" aria-label="Redes sociais">${join(SITE.social, (s) => `<li>${ext(s.url, s.label)}</li>`)}</ul>`)}
+        </ul>`)}
     </div>
 
     <div class="site-footer__bottom">

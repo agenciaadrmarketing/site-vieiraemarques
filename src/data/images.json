@@ -1005,6 +1005,27 @@
       }
     ]
   },
+  "leticia-pereira-de-abreu-fundo": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-768.webp",
+        "w": 768,
+        "h": 512
+      },
+      {
+        "src": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-1280.webp",
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "src": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-1536.webp",
+        "w": 1536,
+        "h": 1024
+      }
+    ]
+  },
   "gledie-camargo-fundo": {
     "width": 1536,
     "height": 1024,
