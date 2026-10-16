@@ -44,7 +44,7 @@ export function legalPage({ path, label, title, description, eyebrow, h1, intro,
 
 <section class="section section--white legal">
   <div class="container legal__grid">
-    <div class="legal__aside" data-lenis-prevent>
+    <div class="legal__aside">
       <details class="legal-toc" data-toc>
         <summary class="legal-toc__title">Nesta página</summary>
         <ol>${join(sections, (s) => `<li><a href="#${s.id}">${esc(s.title)}</a></li>`)}</ol>

@@ -168,7 +168,7 @@ function header(current, whatsappMessage) {
     </button>
   </div>
 </header>
-<div class="mobile-menu" id="menu-mobile" hidden data-menu data-lenis-prevent>
+<div class="mobile-menu" id="menu-mobile" hidden data-menu>
   <div class="container">
     <nav aria-label="Menu">
       <ul class="mobile-menu__list">
@@ -344,7 +344,7 @@ ${mapSection()}
 ${footer(whatsappMessage)}
 ${floatingWhatsapp ? waFloat(whatsappMessage, floatPhrases) : ""}
 ${MEASURING ? consentBanner() : ""}
-<script src="/assets/js/${jsFile("site")}?v=${ASSET_VERSION}" data-lenis="/assets/js/vendor/lenis.min.js?v=${ASSET_VERSION}" defer></script>
+<script src="/assets/js/${jsFile("site")}?v=${ASSET_VERSION}" defer></script>
 ${join(scripts, (s) => `<script src="${s.replace(/\/(\w+)\.js$/, (m, n) => `/${jsFile(n)}`)}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
 </html>
 `;
