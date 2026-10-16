@@ -8,7 +8,7 @@
     var nav = (performance.getEntriesByType && performance.getEntriesByType("navigation")[0]) || {};
     var internal = !!document.referrer && new URL(document.referrer).origin === location.origin;
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    skip = internal || reduce || nav.type === "back_forward" || nav.type === "reload" || !!sessionStorage.getItem("vm_intro");
+    skip = internal || reduce || nav.type === "back_forward" || nav.type === "reload" || /[?&]nointro=1/.test(location.search) || !!sessionStorage.getItem("vm_intro");
     if (!skip) sessionStorage.setItem("vm_intro", "1");
   } catch (e) { /* sem storage: mostra a tela só nesta página */ }
   if (skip) d.classList.add("no-intro", "js", "is-ready");
