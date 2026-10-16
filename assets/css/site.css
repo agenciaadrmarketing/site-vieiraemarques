@@ -1884,7 +1884,7 @@ a.g-review__name:hover { text-decoration: underline; }
 
 /* Bandeira do Brasil ao fundo de "Onde atendemos" (opacidade baixa para manter a leitura) */
 .lp-flag { position: absolute; inset: 0; z-index: 0; overflow: hidden; clip-path: inset(0); pointer-events: none; }
-.lp-flag img { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100lvh; object-fit: cover; opacity: .05; }
+.lp-flag img { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100lvh; object-fit: cover; opacity: .035; }
 .lp-flag::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,11,11,.78) 0%, rgba(11,11,11,.45) 55%, rgba(11,11,11,.7) 100%); }
 .lp-reach { position: relative; isolation: isolate; }
 .lp-reach > .container { position: relative; z-index: 1; }
