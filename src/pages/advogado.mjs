@@ -64,7 +64,7 @@ export function renderAdvogado(p) {
   </div>
 </section>
 
-<section class="section section--muted" aria-labelledby="areas-titulo">
+<section class="section section--dark on-dark" aria-labelledby="areas-titulo">
   <div class="container">
     ${sectionHead({ eyebrow: "Atuação", id: "areas-titulo", title: `Áreas de <span class="grad">atuação.</span>` })}
     <ul class="adv-areas" data-reveal>
@@ -96,7 +96,7 @@ ${when(p.education?.length || p.recognitionsList?.length, `<section class="secti
   </div>
 </section>`)}
 
-${when(own.length, `<section class="section section--muted" aria-labelledby="conteudos-titulo">
+${when(own.length, `<section class="section section--white" aria-labelledby="conteudos-titulo">
   <div class="container">
     ${sectionHead({ eyebrow: "Conteúdos", id: "conteudos-titulo", title: `Conteúdos de <span class="grad">${esc(name.split(" ")[0])}.</span>` })}
     <ul class="cards-grid mt-lg">${join(own, (a) => articleCard(a))}</ul>

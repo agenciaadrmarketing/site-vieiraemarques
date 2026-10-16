@@ -63,7 +63,7 @@ function related(p) {
   const faqArea = p.related?.faqArea ?? p.area;
   const hasFaq = (faqByArea[faqArea] ?? []).length > 0;
   if (!services.length && !knowledge.length && !hasFaq) return "";
-  return `<section class="section section--muted" aria-labelledby="relacionados-titulo">
+  return `<section class="section section--white" aria-labelledby="relacionados-titulo">
   <div class="container">
     <h2 class="sr-only" id="relacionados-titulo">Relacionados</h2>
     <div class="svc-related">
@@ -138,6 +138,24 @@ const serviceTitle = (seoTitle) => {
   return [`${name} em Boituva/SP e online | Vieira & Marques`, `${name} em Boituva/SP | Vieira & Marques`, `${name} | Vieira & Marques`].find((t) => t.length <= 60) ?? `${name} | Vieira & Marques`;
 };
 
+// Fundo de cada bloco pela função na jornada: tabelas, documentos e perguntas ficam claros (leitura e
+// comparação); o caminho (linha do tempo) é escuro; os demais alternam para criar pausas visuais.
+const PREFERRED = { table: "white", compare: "white", callout: "white", faq: "white", timeline: "dark" };
+const FLEXIBLE = new Set(["types", "prose", "list", "documents"]);
+function blockTones(blocks) {
+  const tones = [];
+  blocks.forEach((b, i) => {
+    const prev = tones[i - 1] ?? "dark"; // o topo da página (hero) é escuro
+    tones[i] = PREFERRED[b.type] ?? (FLEXIBLE.has(b.type) ? (prev === "white" ? "dark" : "white") : "white");
+    if (i === 0 && tones[i] === "dark") tones[i] = "white"; // logo após o hero escuro, o primeiro bloco é claro
+  });
+  for (let i = 1; i < tones.length; i++) {
+    if (tones[i] === "dark" && tones[i - 1] === "dark" && FLEXIBLE.has(blocks[i].type)) tones[i] = "white";
+    else if (tones[i] === "dark" && tones[i - 1] === "dark" && FLEXIBLE.has(blocks[i - 1].type)) tones[i - 1] = "white";
+  }
+  return blocks.map((b, i) => ({ ...b, tone: tones[i] }));
+}
+
 export function renderService(p) {
   const crumbs = [
     { label: "Início", href: "/" },
@@ -150,11 +168,8 @@ export function renderService(p) {
   const people = teamByArea(p.area);
   const body = `<div data-service-page data-practice-area="${esc(p.areaData.title)}" data-service="${esc(p.serviceData.title)}">
 ${hero(p, crumbs)}
-${join(p.blocks, renderBlock)}
-${lpCta({ title: lp.band.title, text: lp.band.text, message: waMsg(p) })}
+${join(blockTones(p.blocks), renderBlock)}
 ${lpTeam({ people: [...people, ...team.filter((t) => !people.includes(t))] })}
-${lpStructure()}
-${lpReach()}
 ${related(p)}
 ${SITE.forms ? formSection(p) : whatsappSection(p)}
 ${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").replace("<a ", '<a data-sticky-cta data-hidden="true" hidden ')}

@@ -1,5 +1,5 @@
 import { imgPreload } from "../partials/media.mjs";
-import { lpCta, lpReach, lpHero } from "../partials/lp.mjs";
+import { lpCta, lpReach, lpHero, lpOtherAreas } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaById, areaFaqUrl } from "../data/areas.mjs";
@@ -104,7 +104,7 @@ ${lpHero({
   </div>
 </section>
 
-<section class="section section--muted" aria-labelledby="blog-titulo">
+<section class="section section--dark on-dark" aria-labelledby="blog-titulo">
   <div class="container">
     ${sectionHead({
       eyebrow: "Blog do escritório",
@@ -116,9 +116,9 @@ ${lpHero({
   </div>
 </section>
 
-${lpCta({ title: `Leu sobre o seu caso e ficou com dúvida? <span class="grad">Fale com a nossa equipe.</span>`, text: "Os conteúdos são informativos e não substituem a análise do caso concreto. Envie as informações para uma análise inicial.", message: waMessage() })}
+${lpOtherAreas(null, { title: "Conteúdos e serviços por área de atuação" })}
 
-${lpReach()}`;
+${lpCta({ title: `Leu sobre o seu caso e ficou com dúvida? <span class="grad">Fale com a nossa equipe.</span>`, text: "Os conteúdos são informativos e não substituem a análise do caso concreto. Envie as informações para uma análise inicial.", message: waMessage() })}`;
 
   return page({
     title: "Base de Conhecimento Jurídico | Vieira & Marques",

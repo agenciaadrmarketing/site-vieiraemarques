@@ -1821,3 +1821,35 @@ a.g-review__name:hover { text-decoration: underline; }
 .fx-beam:hover::before, .fx-beam:focus-within::before { animation-duration: 3s; }
 @media (prefers-reduced-motion: reduce) { .fx-beam::before { animation: none; --bb-a: 40deg; } }
 @media (forced-colors: active) { .fx-beam::before, .fx-spot::before, .fx-spot::after { display: none; } }
+
+/* Variantes escuras de blocos de serviço (a ordem de fundos segue a jornada, ver src/docs/arquitetura-secoes.md) */
+.section--dark .svc-list__item, .section--dark .svc-columns, .section--dark .svc-column { border-color: var(--c-line-dark-2); }
+.section--dark .svc-list__num, .section--dark .svc-column__num { color: #A3A3A3; }
+.section--dark .svc-list__title, .section--dark .svc-column .h-card { color: #FFFFFF; }
+.section--dark .svc-list__text, .section--dark .svc-column li, .section--dark .svc-column p { color: #C9C9C9; }
+.section--dark .svc-list__link { color: #FFFFFF; }
+
+/* Diretório de áreas (/areas-de-atuacao/) */
+.hub-areas { list-style: none; display: grid; gap: 16px; margin-top: clamp(28px, 4vw, 48px); }
+@media (min-width: 720px) { .hub-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .hub-areas { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.hub-area { display: flex; flex-direction: column; gap: 12px; padding: 26px 24px; border: 1px solid var(--c-line-light); border-radius: 14px; background: var(--c-paper); scroll-margin-top: calc(var(--header-h) + 24px); }
+.hub-area__num { font-size: 12px; font-weight: 600; letter-spacing: .1em; color: #767676; }
+.hub-area__title { font-size: 20px; font-weight: 600; line-height: 1.25; }
+.hub-area__title a:hover { text-decoration: underline; }
+.hub-area__text { font-size: 15px; line-height: 1.6; color: var(--c-text-dark-2); }
+.hub-area__services { list-style: none; display: grid; gap: 4px; font-size: 14px; color: var(--c-text-dark-3); }
+.hub-area__services li::before { content: "— "; color: #A3A3A3; }
+.hub-area__services a { color: var(--c-ink); border-bottom: 1px solid #CFCFCF; }
+.hub-area__services a:hover { border-bottom-color: var(--c-ink); }
+.hub-area .link-arrow { margin-top: auto; padding-top: 6px; }
+
+/* Variantes escuras: diretório de áreas da Home, rodapé da equipe e rótulos dos perfis */
+.section--dark .area-index__num, .section--dark .adv-tags-label, .section--dark .team-panels__hint { color: #A3A3A3; }
+.section--dark .area-index__text, .section--dark .recognitions li { color: #C9C9C9; }
+.section--dark .recognitions li::before { background: #8A8A8A; }
+.section--dark .adv-tags li { color: #EDEDED; border-color: rgba(255,255,255,.3); }
+/* Contato em fundo claro */
+.section--white .contact-item__label { color: var(--c-text-dark-3); }
+.section--white .contact-item__note { color: var(--c-text-dark-3); }
+.section--white .contact-item__value, .section--white .contact-item .text-link { color: var(--c-ink); }

@@ -8,6 +8,7 @@ import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { img } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
+import { guides as pdfGuides } from "../data/guides.mjs";
 import { sectionHead, facts, teamPanels } from "../partials/components.mjs";
 
 const PATH = "/escritorio/";
@@ -72,7 +73,20 @@ ${lpHero({
   </div>
 </section>
 
-<section class="section section--muted" aria-labelledby="metodo-titulo">
+<section class="section section--dark" aria-labelledby="principios-titulo">
+  <div class="container">
+    ${sectionHead({ eyebrow: "Princípios", id: "principios-titulo", title: `O que orienta <span class="grad">o trabalho do escritório.</span>` })}
+    <ol class="principles">
+      ${join(PRINCIPLES, (p, i) => `<li class="principle" data-reveal>
+        <span class="principle__num">${String(i + 1).padStart(2, "0")} · ${esc(p.label)}</span>
+        <h3 class="principle__title">${esc(p.title)}</h3>
+        <p class="principle__text">${esc(p.text)}<span class="principle__source">${esc(p.source)}</span></p>
+      </li>`)}
+    </ol>
+  </div>
+</section>
+
+<section class="section section--white" aria-labelledby="metodo-titulo">
   <div class="container">
     <div class="split split--center">
       <figure class="figure figure--portrait" data-reveal>${img("atendimento-mesa", { alt: "Advogada do escritório trabalhando em sua estação", sizes: "(min-width: 960px) 460px, 100vw", style: "object-position:40% 50%" })}</figure>
@@ -89,18 +103,17 @@ ${lpHero({
   </div>
 </section>
 
-<section class="section section--dark" aria-labelledby="principios-titulo">
-  <div class="container">
-    ${sectionHead({ eyebrow: "Princípios", id: "principios-titulo", title: `O que orienta <span class="grad">o trabalho do escritório.</span>` })}
-    <ol class="principles">
-      ${join(PRINCIPLES, (p, i) => `<li class="principle" data-reveal>
-        <span class="principle__num">${String(i + 1).padStart(2, "0")} · ${esc(p.label)}</span>
-        <h3 class="principle__title">${esc(p.title)}</h3>
-        <p class="principle__text">${esc(p.text)}<span class="principle__source">${esc(p.source)}</span></p>
-      </li>`)}
-    </ol>
-  </div>
-</section>
+${lpStructure({
+  eyebrow: "Estrutura",
+  title: `O escritório <span class="grad">por dentro.</span>`,
+  text: "Sede em Boituva, com salas de atendimento e de reunião. Atendimento presencial também em Sorocaba e, para as demais cidades, reuniões por vídeo.",
+  items: [
+    { image: "escritorio-interno", title: "Sede — Boituva/SP", caption: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici", alt: "Ambiente interno do escritório em Boituva", wide: true, position: "50% 55%" },
+    { image: "sala-reuniao", title: "Sala de reunião", caption: "Reuniões presenciais ou por vídeo", alt: "Sala de reunião do escritório" },
+    { image: "letreiro", title: "Identidade no escritório", caption: "Vieira & Marques Sociedade de Advogados", alt: "Letreiro com a marca Vieira & Marques na parede do escritório" },
+    { image: "mesa-trabalho", title: "Área de trabalho da equipe", caption: "Cada caso analisado a partir dos documentos", alt: "Mesas de trabalho da equipe no escritório", wide: true },
+  ],
+})}
 
 <section class="section section--white" id="equipe" aria-labelledby="equipe-titulo">
   <div class="container">
@@ -114,23 +127,32 @@ ${lpHero({
   </div>
 </section>
 
-${lpStructure({
-  eyebrow: "Estrutura",
-  title: `O escritório <span class="grad">por dentro.</span>`,
-  text: "Sede em Boituva, com salas de atendimento e de reunião. Atendimento presencial também em Sorocaba e, para as demais cidades, reuniões por vídeo.",
-  items: [
-    { image: "escritorio-interno", title: "Sede — Boituva/SP", caption: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici", alt: "Ambiente interno do escritório em Boituva", wide: true, position: "50% 55%" },
-    { image: "sala-reuniao", title: "Sala de reunião", caption: "Reuniões presenciais ou por vídeo", alt: "Sala de reunião do escritório" },
-    { image: "letreiro", title: "Identidade no escritório", caption: "Vieira & Marques Sociedade de Advogados", alt: "Letreiro com a marca Vieira & Marques na parede do escritório" },
-    { image: "mesa-trabalho", title: "Área de trabalho da equipe", caption: "Cada caso analisado a partir dos documentos", alt: "Mesas de trabalho da equipe no escritório", wide: true },
-  ],
-})}
+${lpReach()}
 
 ${googleReviews({ muted: false })}
 
-${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a nossa equipe.</span>`, text: "A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao advogado responsável pela área.", message: waMessage() })}
+<section class="section section--white" aria-labelledby="conteudos-titulo">
+  <div class="container">
+    ${sectionHead({
+      eyebrow: "Base de conhecimento",
+      id: "conteudos-titulo",
+      title: `Informação para decidir <span class="grad">com mais clareza.</span>`,
+      lead: "Guias em PDF e artigos escritos pela equipe, em linguagem direta.",
+      aside: `<a class="link-arrow" href="/conhecimento/">Explorar conteúdos ${icon.arrow(14)}</a>`,
+    })}
+    <ul class="hub-guides mt-lg">
+      ${join(pdfGuides.slice(0, 3), (g) => `<li><a class="hub-guide" href="${esc(g.url)}" target="_blank" rel="noopener noreferrer">
+        <span class="hub-guide__code">${g.n} · ${esc(g.label.toUpperCase())}</span>
+        <span class="hub-guide__word" aria-hidden="true">${esc(g.word)}</span>
+        <span class="hub-guide__title">${esc(g.title)}</span>
+        <span class="hub-guide__desc">${esc(g.desc)}</span>
+        <span class="hub-guide__go">Abrir guia em PDF <span aria-hidden="true">↗</span></span>
+      </a></li>`)}
+    </ul>
+  </div>
+</section>
 
-${lpReach()}`;
+${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a nossa equipe.</span>`, text: "A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao advogado responsável pela área.", message: waMessage() })}`;
 
   return page({
     scripts: SITE_SCRIPTS,

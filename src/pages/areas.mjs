@@ -1,5 +1,5 @@
 import { imgPreload } from "../partials/media.mjs";
-import { lpCta, lpReach, lpHero } from "../partials/lp.mjs";
+import { lpCta, lpReach, lpHero, lpSteps } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
 import { profilePath } from "../data/team.mjs";
@@ -10,7 +10,7 @@ import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { icon } from "../partials/icons.mjs";
-import { faqList, faqSchema, linkArrow } from "../partials/components.mjs";
+import { sectionHead } from "../partials/components.mjs";
 
 const PATH = "/areas-de-atuacao/";
 const CRUMBS = [
@@ -78,23 +78,31 @@ ${lpHero({
   position: "60% 55%",
 })}
 
-<div class="section section--white">
-  <div class="container hub">
-    <nav class="hub__index" aria-label="Áreas de atuação nesta página">
-      <p class="eyebrow hub__index-title">Índice</p>
-      <div class="hub__index-inner" data-hub-nav>
-        ${join(practiceAreas, (a) => `<a class="hub__link" href="${areaHubAnchor(a)}" data-hub-link="${a.id}"><span>${a.number}</span>${esc(a.title)}</a>`)}
-      </div>
-    </nav>
-    <div class="hub__content">
-      ${join(practiceAreas, areaBlock)}
-    </div>
+<section class="section section--white" aria-labelledby="diretorio-titulo">
+  <div class="container">
+    ${sectionHead({
+      eyebrow: "Diretório",
+      id: "diretorio-titulo",
+      title: `Encontre a área <span class="grad">pelo assunto.</span>`,
+      lead: "Cada área tem uma página própria, com os serviços, os profissionais e as dúvidas mais comuns. Escolha a que mais se aproxima da sua situação.",
+    })}
+    <ul class="hub-areas" data-reveal>
+      ${join(practiceAreas, (area) => `<li class="hub-area" id="${area.id}">
+        <p class="hub-area__num">${area.number}</p>
+        <h3 class="hub-area__title"><a href="${areaUrl(area)}">${esc(area.title)}</a></h3>
+        <p class="hub-area__text">${esc(area.summary)}</p>
+        <ul class="hub-area__services" aria-label="Serviços em ${esc(area.title)}">${join(area.services.slice(0, 6), (sv) => `<li>${hasPage(area.id, sv.id) ? `<a href="${serviceHref(area.id, sv.id)}">${esc(sv.title)}</a>` : esc(sv.title)}</li>`)}</ul>
+        <a class="link-arrow" href="${areaUrl(area)}">Conhecer a área<span class="sr-only"> ${esc(area.title)}</span> ${icon.arrow(14)}</a>
+      </li>`)}
+    </ul>
   </div>
-</div>
+</section>
 
-${lpCta({ title: `Não sabe em qual área seu caso se encaixa? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. A equipe de atendimento faz a triagem e encaminha o caso à área adequada.", message: waMessage() })}
+${lpReach()}
 
-${lpReach()}`;
+${lpSteps({ eyebrow: "Como encontrar a área", title: `Do primeiro contato <span class="grad">à área certa.</span>` })}
+
+${lpCta({ title: `Não sabe em qual área seu caso se encaixa? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. A equipe de atendimento faz a triagem e encaminha o caso à área adequada.", message: waMessage() })}`;
 
   return page({
     title: "Áreas de Atuação | Vieira & Marques",
@@ -109,7 +117,6 @@ ${lpReach()}`;
         name: "Áreas de Atuação",
         hasPart: practiceAreas.map((a) => ({ "@type": "Service", name: a.title, provider: { "@id": "https://vieiraemarquesadvogados.com/#org" }, url: `https://vieiraemarquesadvogados.com${areaUrl(a)}` })),
       },
-      faqSchema(allFaqs),
     ],
     body,
   });

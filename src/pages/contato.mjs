@@ -38,7 +38,7 @@ ${lpHero({
   position: "55% 45%",
 })}
 
-<section class="section section--dark" aria-labelledby="${SITE.forms ? "formulario" : "whatsapp"}-titulo">
+<section class="section section--white" aria-labelledby="${SITE.forms ? "formulario" : "whatsapp"}-titulo">
   <div class="container">
     <div class="split">
       <div class="stack" data-reveal>
@@ -76,14 +76,14 @@ ${lpHero({
   </div>
 </section>
 
+${lpSteps({ eyebrow: "Depois do contato", title: `O que acontece <span class="grad">a seguir.</span>`, tone: "dark" })}
+
 <section class="section section--white lp-faq-plain" aria-labelledby="faq-titulo">
   <div class="container container--narrow">
     ${sectionHead({ eyebrow: "Atendimento", id: "faq-titulo", title: `Dúvidas sobre <span class="grad">o primeiro contato.</span>` })}
     ${faqList(faqAtendimento)}
   </div>
 </section>
-
-${lpSteps({ eyebrow: "Depois do contato", title: `O que acontece <span class="grad">a seguir.</span>` })}
 
 ${lpReach()}`;
 

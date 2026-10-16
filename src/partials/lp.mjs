@@ -69,12 +69,12 @@ export function lpHero({ crumbs, badge, title, text, message, cta = "Falar no Wh
 /* ---------- Serviços ---------- */
 // Cartões com ícone e número; o último é o cartão escuro com CTA.
 // items: [{ id, icon, title, text, items?, href?, linkLabel?, message? }]
-export function lpServices({ id = "servicos", eyebrow = "Serviços", title, lead, items, cta, texture: tex = "escritorio-interno" }) {
+export function lpServices({ id = "servicos", eyebrow = "Serviços", title, lead, items, cta, texture: tex = "escritorio-interno", tone = "white" }) {
   const total = items.length + (cta ? 1 : 0);
   // O cartão de CTA ocupa as colunas que sobrarem na última linha (3 no desktop, 2 no tablet).
   const span = cta ? ` lp-card--lg-${3 - ((total - 1) % 3)} lp-card--md-${2 - ((total - 1) % 2)}` : "";
-  return `<section class="lp-sec lp-sec--muted lp-services" id="${id}" aria-labelledby="${id}-titulo">
-  ${texture(tex)}
+  return `<section class="lp-sec lp-sec--${tone} lp-services${tone === "dark" ? " on-dark" : ""}" id="${id}" aria-labelledby="${id}-titulo">
+  ${tone === "muted" ? texture(tex) : ""}
   <div class="container">
     ${lpHead({ eyebrow, title, lead, id: `${id}-titulo` })}
     <ul class="lp-cards" data-reveal>
@@ -108,8 +108,8 @@ export const LP_STEPS = [
 
 const PIN = `<svg class="lp-pin__icon" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 3a1 1 0 0 1 .117 1.993l-.117 .007v4.764l1.894 3.789a1 1 0 0 1 .1 .331l.006 .116v2a1 1 0 0 1 -.883 .993l-.117 .007h-4v4a1 1 0 0 1 -1.993 .117l-.007 -.117v-4h-4a1 1 0 0 1 -.993 -.883l-.007 -.117v-2a1 1 0 0 1 .06 -.34l.046 -.107l1.894 -3.791v-4.762a1 1 0 0 1 -.117 -1.993l.117 -.007h8z"/></svg>`;
 
-export function lpSteps({ id = "como-funciona", eyebrow = "Como funciona", title = `O caminho do <span class="grad">primeiro contato à definição do caso.</span>`, lead = "O primeiro contato é feito com a equipe de atendimento, que organiza as informações e encaminha o caso. O envio da mensagem não constitui contratação.", steps = LP_STEPS, tone = "muted", tex = "sala-reuniao" } = {}) {
-  return `<section class="lp-sec lp-sec--${tone} lp-steps" id="${id}" aria-labelledby="${id}-titulo">
+export function lpSteps({ id = "como-funciona", eyebrow = "Como funciona", title = `O caminho do <span class="grad">primeiro contato à definição do caso.</span>`, lead = "O primeiro contato é feito com a equipe de atendimento, que organiza as informações e encaminha o caso. O envio da mensagem não constitui contratação.", steps = LP_STEPS, tone = "white", tex = "sala-reuniao" } = {}) {
+  return `<section class="lp-sec lp-sec--${tone} lp-steps${tone === "dark" ? " on-dark" : ""}" id="${id}" aria-labelledby="${id}-titulo">
   ${tone === "muted" ? texture(tex) : ""}
   <div class="container">
     ${lpHead({ eyebrow, title, lead, id: `${id}-titulo` })}
@@ -473,10 +473,10 @@ export function lpFaq({ id = "perguntas", title, lead, items, message, ctaText =
 }
 
 /* ---------- Outras áreas ---------- */
-export function lpOtherAreas(currentId) {
-  return `<nav class="lp-sec lp-sec--muted lp-others" aria-labelledby="outras-areas-titulo">
+export function lpOtherAreas(currentId, { tone = "white", title = "Outras áreas de atuação" } = {}) {
+  return `<nav class="lp-sec lp-sec--${tone} lp-others" aria-labelledby="outras-areas-titulo">
   <div class="container">
-    <h2 class="lp-eyebrow" id="outras-areas-titulo">Outras áreas de atuação</h2>
+    <h2 class="lp-eyebrow" id="outras-areas-titulo">${esc(title)}</h2>
     <ul class="lp-others__list" data-reveal>${join(practiceAreas.filter((a) => a.id !== currentId), (a) => `<li><a href="${areaUrl(a)}"><span class="lp-others__num">${a.number}</span>${esc(a.title)} ${icon.arrow(14)}</a></li>`)}</ul>
   </div>
 </nav>`;

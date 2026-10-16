@@ -69,6 +69,8 @@ ${lpHero({
   positionMobile: lp.positionMobile,
 })}
 
+${lpSignals({ title: lp.signalsTitle, items: lp.signals })}
+
 ${lpServices({
   eyebrow: `Área de atuação · ${area.number}`,
   title: lp.servicesTitle,
@@ -77,37 +79,19 @@ ${lpServices({
     : "Fale com a equipe sobre a sua situação: a análise começa pelos fatos e documentos.",
   items: services,
   cta: { ...lp.servicesCta, message: msg },
+  tone: "dark",
   ...(lp.tex ? { texture: lp.tex } : {}),
 })}
 
-${lpProof({ ...lp.proof, message: waMessage(`${area.title} e quero enviar documentos para análise inicial`), tex: lp.tex })}
-
 ${lpSteps(lp.stepsTex ? { tex: lp.stepsTex } : {})}
 
-${lpAbout({ person: people[0], areaTitle: area.title, people: [...people, ...team.filter((p) => !people.includes(p))] })}
-
-${lpStructure()}
-
-${people.some((x) => x.hasProfile) ? `<section class="section section--white" aria-labelledby="profissionais-titulo">
-  <div class="container">
-    ${sectionHead({ eyebrow: "Equipe", id: "profissionais-titulo", title: `Profissionais <span class="grad">da área.</span>` })}
-    <ul class="adv-others" data-reveal>${join(people.filter((x) => x.hasProfile), (o) => `<li><a class="adv-other" href="${profilePath(o)}">
-      <span class="adv-other__photo">${img(o.photo, { alt: "", sizes: "72px", style: `object-position:${o.position}` })}</span>
-      <span><strong>${esc(o.name)}</strong><span class="muted">${esc(o.focus)}</span></span>
-      <span aria-hidden="true">${icon.arrow(14)}</span>
-    </a></li>`)}</ul>
-  </div>
-</section>` : ""}
-
-${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandImage ? { image: lp.bandImage, position: "center 55%" } : {}) })}
-
-${lpSignals({ title: lp.signalsTitle, items: lp.signals })}
-
-${lpReach()}
+${lpProof({ ...lp.proof, message: waMessage(`${area.title} e quero enviar documentos para análise inicial`), tex: lp.tex })}
 
 ${faqs.length ? lpFaq({ title: faqTitle(area), lead: lp.faqLead, items: faqs, message: waMessage(`uma dúvida sobre ${area.title}`) }) : ""}
 
-${related.length ? `<section class="lp-sec lp-sec--muted" aria-labelledby="conteudos-titulo">
+${lpAbout({ person: people[0], areaTitle: area.title, people: [...people, ...team.filter((p) => !people.includes(p))] })}
+
+${related.length ? `<section class="lp-sec lp-sec--white" aria-labelledby="conteudos-titulo">
   <div class="container container--narrow">
     ${lpHead({ eyebrow: "Base de conhecimento", title: `Conteúdos sobre <span class="grad">${esc(area.shortTitle)}.</span>`, id: "conteudos-titulo" })}
     <ul class="article-list">${join(related, (a) => articleRow(a))}</ul>
@@ -115,7 +99,13 @@ ${related.length ? `<section class="lp-sec lp-sec--muted" aria-labelledby="conte
   </div>
 </section>` : ""}
 
-${lpOtherAreas(area.id)}`;
+${related.length ? "" : lpOtherAreas(area.id)}
+
+${lpReach()}
+
+${related.length ? lpOtherAreas(area.id) : ""}
+
+${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandImage ? { image: lp.bandImage, position: "center 55%" } : {}) })}`;
 
   return page({
     title: `${area.title} em Boituva/SP | Vieira & Marques`,

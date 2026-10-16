@@ -40,27 +40,7 @@ export default function home() {
   </div>
 </section>
 
-<section class="section section--white" aria-labelledby="intro-titulo">
-  <div class="container">
-    <div class="split split--center">
-      <div class="stack" data-reveal>
-        <p class="eyebrow">Vieira &amp; Marques Sociedade de Advogados</p>
-        <h2 class="h-section" id="intro-titulo">A orientação vem antes da estratégia — <span class="grad">e a estratégia, antes do processo.</span></h2>
-        <p class="lead">Um escritório organizado por áreas, com advogados inscritos na OAB/SP respondendo diretamente por cada uma delas. Atendimento presencial em Boituva e Sorocaba e online para clientes de São Paulo e de todo o Brasil.</p>
-      </div>
-      <div data-reveal>
-        ${facts([
-          { label: "Sede", value: "Boituva — SP", text: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici." },
-          { label: "Presencial", value: "Boituva e Sorocaba", text: "Reuniões na sede, em Boituva, e em Sorocaba." },
-          { label: "Online", value: "São Paulo e todo o Brasil", text: "Reuniões por vídeo e envio digital de documentos." },
-          { label: "Corpo profissional", value: `${team.length} advogados`, text: "Inscrição ativa na OAB/SP e áreas definidas de atuação." },
-        ])}
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--muted" aria-labelledby="areas-titulo">
+<section class="section section--dark on-dark" aria-labelledby="areas-titulo">
   <div class="container">
     ${sectionHead({
       eyebrow: "Áreas de atuação",
@@ -80,7 +60,7 @@ export default function home() {
   </div>
 </section>
 
-<section class="section section--dark" aria-labelledby="escritorio-titulo">
+<section class="section section--white" aria-labelledby="escritorio-titulo">
   <div class="container">
     <div class="split split--reverse split--center">
       <div class="stack" data-reveal>
@@ -94,7 +74,7 @@ export default function home() {
           <li>${icon.check(18)}<span>Prazos, etapas e riscos explicados em linguagem direta.</span></li>
           <li>${icon.check(18)}<span>Atuação preventiva, extrajudicial ou judicial, conforme o que o caso exige.</span></li>
         </ul>
-        ${btn("/escritorio/", "Conheça o escritório", "btn--light")}
+        ${btn("/escritorio/", "Conheça o escritório")}
       </div>
       <div class="mosaic" data-reveal>
         <figure class="figure figure--hover">${img("recepcao", { alt: "Recepção do escritório, com diplomas e certificados na parede", sizes: "(min-width: 960px) 640px, 100vw" })}<figcaption>Recepção — Boituva/SP</figcaption></figure>
@@ -105,7 +85,7 @@ export default function home() {
   </div>
 </section>
 
-<section class="section section--white" aria-labelledby="equipe-titulo">
+<section class="section section--dark on-dark" aria-labelledby="equipe-titulo">
   <div class="container">
     ${sectionHead({
       eyebrow: "Equipe",
@@ -119,7 +99,13 @@ export default function home() {
   </div>
 </section>
 
-<section class="section section--muted" aria-labelledby="conhecimento-titulo">
+
+${lpSteps({ title: `Como funciona <span class="grad">o primeiro contato.</span>` })}
+${lpReach()}
+
+${googleReviews()}
+
+<section class="section section--white" aria-labelledby="conhecimento-titulo">
   <div class="container">
     ${sectionHead({
       eyebrow: "Base de conhecimento",
@@ -134,13 +120,8 @@ export default function home() {
   </div>
 </section>
 
-${lpSteps({ title: `Como funciona <span class="grad">o primeiro contato.</span>` })}
-
-${googleReviews()}
-
 ${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. Identificar a área e o caminho aplicável faz parte da triagem inicial.", message: waMessage() })}
-
-${lpReach()}`;
+`;
 
   return page({
     scripts: SITE_SCRIPTS,
