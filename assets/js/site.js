@@ -333,11 +333,20 @@
     // Uma mensagem por vez: aparece, some e, depois de um intervalo, surge a próxima.
     // Os intervalos variam (12 s, 22 s, 35 s e 50 s) e se repetem em ciclo.
     var GAPS = [12000, 22000, 35000, 50000], VISIBLE = 8000, cycle = 0;
-    function hideBubble() { if (bubble) bubble.hidden = true; }
+    var leaveTimer = null;
+    function hideBubble() {
+      if (!bubble || bubble.hidden) return;
+      bubble.classList.remove("is-swap");
+      bubble.classList.add("is-leaving"); // saída suave; some do DOM depois da animação
+      clearTimeout(leaveTimer);
+      leaveTimer = setTimeout(function () { bubble.hidden = true; bubble.classList.remove("is-leaving"); }, reduceMotion ? 0 : 420);
+    }
     function nextBubble() {
       if (!bubble || closed || !shown || !phrases.length) return;
       index = cycle % phrases.length;
-      setPhrase(index);
+      clearTimeout(leaveTimer);
+      bubble.classList.remove("is-leaving");
+      setPhrase(index); // reinicia a animação de entrada
       bubble.hidden = false;
       var gap = GAPS[cycle % GAPS.length];
       cycle++;
@@ -359,8 +368,8 @@
     if (bubble) {
       bubble.querySelector("[data-wa-bubble-close]").addEventListener("click", function () {
         closed = true;
-        bubble.hidden = true;
         clearTimeout(rotate);
+        hideBubble();
         if (link) link.focus({ preventScroll: true });
       });
     }
