@@ -85,6 +85,7 @@ ${SITE.measurement.googleSiteVerification ? `<meta name="google-site-verificatio
 <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/assets/icons/favicon-16.png" sizes="16x16">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<script src="/assets/js/gate.js?v=${ASSET_VERSION}"></script>
 <link rel="preload" href="/assets/fonts/lexend-deca-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${join(preload, (p) => `<link rel="preload" as="image"${attrs(p)}>\n`)}<link rel="stylesheet" href="/assets/css/site.css?v=${ASSET_VERSION}">
 <noscript><style>.vm-loader{display:none}</style></noscript>

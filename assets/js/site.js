@@ -22,15 +22,16 @@
     try { return JSON.parse(sessionStorage.getItem("vm_origem") || "{}"); } catch (e) { return {}; }
   }
 
-  /* ---------- Tela de carregamento e transição entre páginas ---------- */
-  // Primeira visita: cobre a página até o "load" (mín. ~0,45 s, máx. 2,5 s).
-  // Vindo de outra página do site: sai assim que o conteúdo está pronto.
-  // Voltar/avançar (cache do navegador) e "reduzir movimento": sem tela.
+  /* ---------- Tela de carregamento ---------- */
+  // Só na primeira página da visita (gate.js decide e marca html.no-intro nas demais).
+  // Some quando a página carrega (mín. ~0,4 s para não piscar; máx. 1,8 s) e é removida do DOM,
+  // liberando as camadas de animação. A troca entre páginas usa View Transitions no CSS.
   function initLoader() {
     var el = document.querySelector("[data-loader]");
     var root = document.documentElement;
     function ready() { root.classList.add("is-ready"); }
     if (!el) { ready(); return; }
+    if (root.classList.contains("no-intro")) { el.remove(); ready(); return; }
     el.style.animation = "none"; // o JS assume o controle (cancela o fallback do CSS)
     var start = Date.now();
     var hidden = false;
@@ -39,38 +40,14 @@
       hidden = true;
       el.classList.add("is-hidden");
       ready();
+      setTimeout(function () { el.remove(); }, 600);
     }
-    var nav = (window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation")[0]) || {};
-    var internal = false;
-    try { internal = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) { /* referrer inválido */ }
-
-    if (reduceMotion || nav.type === "back_forward") hide();
-    else if (internal) requestAnimationFrame(function () { requestAnimationFrame(hide); });
-    else {
-      var done = function () { setTimeout(hide, Math.max(150, 450 - (Date.now() - start))); };
-      if (document.readyState === "complete") done();
-      else window.addEventListener("load", done);
-      setTimeout(hide, 2500);
-    }
-
+    function done() { setTimeout(hide, Math.max(0, 400 - (Date.now() - start))); }
+    if (document.readyState === "complete") done();
+    else window.addEventListener("load", done);
+    setTimeout(hide, 1800);
     // Página restaurada do cache (botão voltar): nunca deixar a tela por cima.
-    window.addEventListener("pageshow", function (e) { if (e.persisted) { el.classList.add("is-hidden"); hidden = true; ready(); } });
-
-    if (reduceMotion) return;
-    document.addEventListener("click", function (e) {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      var a = e.target.closest && e.target.closest("a[href]");
-      if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download") || a.hasAttribute("data-no-transition")) return;
-      var url;
-      try { url = new URL(a.getAttribute("href"), location.href); } catch (err) { return; }
-      if (url.origin !== location.origin) return;
-      if (url.pathname === location.pathname && url.search === location.search) return; // âncora na mesma página
-      if (/\.[a-z0-9]{2,4}$/i.test(url.pathname) && !/\.html$/i.test(url.pathname)) return; // arquivos
-      e.preventDefault();
-      el.classList.remove("is-hidden");
-      hidden = false;
-      setTimeout(function () { location.href = url.href; }, 280);
-    });
+    window.addEventListener("pageshow", function (e) { if (e.persisted) { el.remove(); ready(); } });
   }
 
   /* ---------- Pré-carregamento ao passar o mouse / tocar (navegação quase instantânea) ---------- */
@@ -113,8 +90,20 @@
         lenis.scrollTo(Math.max(0, y));
       };
       window.vmLenis = lenis;
-      function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
-      requestAnimationFrame(raf);
+      // O laço de animação só roda enquanto há rolagem (e ~0,5 s depois); parado, não gasta CPU.
+      var running = false, idle = 0;
+      function raf(t) {
+        lenis.raf(t);
+        idle = lenis.isScrolling ? 0 : idle + 1;
+        if (idle > 30) { running = false; return; }
+        requestAnimationFrame(raf);
+      }
+      function wake() { idle = 0; if (!running) { running = true; requestAnimationFrame(raf); } }
+      ["wheel", "keydown", "touchstart", "pointerdown", "scroll"].forEach(function (ev) { window.addEventListener(ev, wake, { passive: true }); });
+      lenis.on("scroll", wake);
+      var scrollTo0 = lenis.scrollTo.bind(lenis);
+      lenis.scrollTo = function () { wake(); return scrollTo0.apply(null, arguments); };
+      wake();
       // Âncoras na mesma página: desliza respeitando a altura do cabeçalho.
       document.addEventListener("click", function (e) {
         if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return;
@@ -134,6 +123,16 @@
       });
     };
     document.head.appendChild(s);
+  }
+
+  /* ---------- Pausa animações fora da tela ---------- */
+  // Animações contínuas (botão verde, mapa, linhas) só rodam nas seções visíveis.
+  function initOffscreenPause() {
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle("is-offscreen", !e.isIntersecting); });
+    }, { rootMargin: "120px 0px" });
+    document.querySelectorAll("main > section, main > div, .site-footer").forEach(function (el) { io.observe(el); });
   }
 
   /* ---------- Menu mobile ---------- */
@@ -983,6 +982,7 @@
   if (document.body.hasAttribute("data-forms")) captureOrigin();
   initLoader();
   initPrefetch();
+  initOffscreenPause();
   initSmoothScroll();
   initMenu();
   initNav();

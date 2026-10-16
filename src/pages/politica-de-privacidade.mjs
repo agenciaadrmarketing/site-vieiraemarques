@@ -162,8 +162,9 @@ export default function politicaDePrivacidade() {
               list([
                 "<strong>Origem do acesso</strong> — guardar a página de entrada, a página anterior e os parâmetros de campanha descritos na seção 2;",
                 "<strong>Proteção contra envios repetidos</strong> — registrar o horário do último envio de formulário, evitando duplicidades.",
+                "<strong>Animação de abertura</strong> — lembrar, durante a visita, que a tela de abertura já foi exibida, sem identificar você.",
               ])
-            : p("O site também não grava informações no armazenamento do navegador (como localStorage ou sessionStorage).")) +
+            : p("O site usa o armazenamento de sessão do navegador (sessionStorage) apenas para lembrar, durante a visita, que a animação de abertura já foi exibida. Esse marcador não identifica você e é apagado quando a aba é fechada.")) +
           p(
             "O site registra eventos de navegação — como cliques em botões — em uma variável interna da página, preparada para uma futura ferramenta de medição. Esses eventos não saem do seu navegador e não são enviados a nenhum serviço.",
             "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
