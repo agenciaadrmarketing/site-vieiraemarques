@@ -24,7 +24,7 @@
 
   /* ---------- Tela de carregamento ---------- */
   // Só na primeira página da visita (gate.js decide e marca html.no-intro nas demais).
-  // Some quando o HTML e o JS estão prontos (mín. 0,65 s para ser percebida; máx. 1,1 s) e é removida do DOM,
+  // Some quando o HTML e o JS estão prontos (mín. 0,25 s; máx. 0,9 s) e é removida do DOM,
   // liberando as camadas de animação. A troca entre páginas usa View Transitions no CSS.
   function initLoader() {
     var el = document.querySelector("[data-loader]");
@@ -42,12 +42,12 @@
       ready();
       setTimeout(function () { el.remove(); }, 600);
     }
-    // Não espera as imagens (evento "load"): sai assim que o HTML/JS está pronto (mín. 0,65 s) e,
-    // no máximo, em 1,1 s. Em rede lenta, a tela não atrasa a pintura do conteúdo principal.
-    function done() { setTimeout(hide, Math.max(0, 650 - (Date.now() - start))); }
+    // Não espera as imagens (evento "load"): sai assim que o HTML/JS está pronto (mín. 0,25 s) e,
+    // no máximo, em 0,9 s. Em rede lenta, a tela não atrasa a pintura do conteúdo principal.
+    function done() { setTimeout(hide, Math.max(0, 250 - (Date.now() - start))); }
     if (document.readyState !== "loading") done();
     else document.addEventListener("DOMContentLoaded", done);
-    setTimeout(hide, 1100);
+    setTimeout(hide, 900);
     // Página restaurada do cache (botão voltar): nunca deixar a tela por cima.
     window.addEventListener("pageshow", function (e) { if (e.persisted) { el.remove(); ready(); } });
   }
