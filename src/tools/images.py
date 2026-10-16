@@ -32,7 +32,7 @@ SOURCES = {
     "jislana-marques": (f"{SRC}/jislana-marques-advogada.webp", [360, 600, 706], "jislana-marques-advogada-v2"),
     "leticia-pereira-de-abreu": (f"{SRC}/leticia-pereira-de-abreu-advogada.webp", [360, 600, 900], "leticia-pereira-de-abreu-advogada-v2"),
     "gledie-camargo": (f"{SRC}/gledie-camargo-advogada.webp", [360, 600, 900], "gledie-camargo-advogada-v2"),
-    "natalia-okumura": (f"{SRC}/natalia-okumura-advogada.webp", [360, 600, 706], "natalia-okumura-advogada-v2"),
+    "natalia-okumura": (f"{SRC}/natalia-okumura-advogada.webp", [360, 600, 940], "natalia-okumura-advogada-v3"),
     "hero-trabalhista": (f"{SRC}/tema-trabalhista-carteira-de-trabalho.webp", [480, 800, 1280, 1920], "advogado-direito-do-trabalho-carteira-de-trabalho-boituva"),
     "textura-trabalhista": (f"{SRC}/tema-trabalhista-livros-e-ctps.webp", [640], "direito-do-trabalho-livros-ctps"),
     "textura-trabalhista-2": (f"{SRC}/tema-trabalhista-balanca-e-relogio.webp", [640], "direito-do-trabalho-balanca-relogio"),

@@ -351,22 +351,22 @@
     ]
   },
   "natalia-okumura": {
-    "width": 706,
+    "width": 940,
     "height": 941,
     "variants": [
       {
-        "src": "/assets/img/natalia-okumura-advogada-v2-360.webp",
+        "src": "/assets/img/natalia-okumura-advogada-v3-360.webp",
         "w": 360,
-        "h": 480
+        "h": 360
       },
       {
-        "src": "/assets/img/natalia-okumura-advogada-v2-600.webp",
+        "src": "/assets/img/natalia-okumura-advogada-v3-600.webp",
         "w": 600,
-        "h": 800
+        "h": 601
       },
       {
-        "src": "/assets/img/natalia-okumura-advogada-v2-706.webp",
-        "w": 706,
+        "src": "/assets/img/natalia-okumura-advogada-v3-940.webp",
+        "w": 940,
         "h": 941
       }
     ]

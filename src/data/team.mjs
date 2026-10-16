@@ -161,8 +161,8 @@ export const team = [
     hero: "natalia-okumura-fundo",
     heroPosition: "50% 25%",
     tags: ["Contratos", "Consumidor", "Saúde"],
-    positionActive: "19% 0%",
-    position: "19% 18%",
+    positionActive: "50% 0%",
+    position: "50% 18%",
   },
 ];
 
