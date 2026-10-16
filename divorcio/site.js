@@ -105,10 +105,10 @@
 
   // ---------- Galeria / lightbox ----------
   var galeria = [
-    { src: "uploads/webp/recepcao-1200.webp", fallback: "uploads/17-e1772128273241.jpg", titulo: "Recepção em Boituva/SP", legenda: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici" },
-    { src: "uploads/webp/equipe-foto-600.webp", fallback: "uploads/admin-ajax-1 (1).jpg", titulo: "A equipe", legenda: "Advogados e time de atendimento do escritório" },
-    { src: "uploads/webp/sala-1200.webp", fallback: "uploads/19.jpg", titulo: "Sala de atendimento", legenda: "Atendimento presencial em Boituva ou reunião online" },
-    { src: "uploads/webp/trabalho-1200.webp", fallback: "uploads/16.jpg", titulo: "Como trabalhamos", legenda: "Cada caso é analisado em conjunto pela equipe" }
+    { src: "uploads/webp/recepcao-1200.webp", fallback: "uploads/17-e1772128273241.webp", titulo: "Recepção em Boituva/SP", legenda: "Rua Benedita Sanson Labronici, 180 — Chácara Labronici" },
+    { src: "uploads/webp/equipe-foto-600.webp", fallback: "uploads/admin-ajax-1 (1).webp", titulo: "A equipe", legenda: "Advogados e time de atendimento do escritório" },
+    { src: "uploads/webp/sala-1200.webp", fallback: "uploads/19.webp", titulo: "Sala de atendimento", legenda: "Atendimento presencial em Boituva ou reunião online" },
+    { src: "uploads/webp/trabalho-1200.webp", fallback: "uploads/16.webp", titulo: "Como trabalhamos", legenda: "Cada caso é analisado em conjunto pela equipe" }
   ];
   var lightbox = document.getElementById("lightbox");
   var lightboxImg = document.getElementById("lightbox-img");

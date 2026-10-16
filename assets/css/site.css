@@ -1941,3 +1941,6 @@ a.g-review__name:hover { text-decoration: underline; }
 
 /* Lista de áreas em fundo escuro: o hover clareia só levemente (texto claro continua legível) */
 :is(.section--dark, .on-dark) .area-index__item a:hover { background: rgba(255,255,255,.08); }
+
+/* Título dos cartões brancos dentro de seções escuras (herdava o branco do fundo) */
+.lp-card:not(.lp-card--cta) .lp-card__title { color: #0B0B0B; }
