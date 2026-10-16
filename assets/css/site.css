@@ -1944,3 +1944,21 @@ a.g-review__name:hover { text-decoration: underline; }
 
 /* Título dos cartões brancos dentro de seções escuras (herdava o branco do fundo) */
 .lp-card:not(.lp-card--cta) .lp-card__title { color: #0B0B0B; }
+
+/* Mobile: textos principais e botões centralizados */
+@media (max-width: 760px) {
+  .split > .stack, .split > .stack-sm, .split > [data-reveal]:not(.mosaic):not(.figure) { text-align: center; justify-items: center; }
+  .split > .stack .checklist { text-align: left; justify-self: center; max-width: 30em; }
+  .split > .stack .prose { text-align: center; }
+  .btn-row, .adv-hero__cta, .lp-hero__cta, .lp-cta .btn-row, .site-footer__cta-row { justify-content: center; }
+  .adv-hero__in, .adv-hero--bg .adv-hero__in { text-align: center; margin-inline: auto; }
+  .adv-hero__areas { justify-content: center; }
+  .adv-hero__photo { justify-self: center; }
+  .section > .container > .btn, .section .container > .btn-row { justify-content: center; }
+  .lp-cta, .lp-cta .lp-cta__in { text-align: center; }
+  .link-arrow { justify-content: center; }
+  .contact-card, .contact-grid { text-align: center; }
+  .lp-faq__cta { align-items: center; }
+  .g-reviews__bar { justify-content: center; text-align: center; }
+  .g-reviews__summary { justify-content: center; }
+}
