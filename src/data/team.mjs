@@ -39,7 +39,7 @@ export const team = [
     heroPosition: "44% 30%",
     // Componente de equipe da Home: temas exibidos e enquadramento da foto quando expandida.
     tags: ["Divórcio", "Inventário", "Guarda", "Pensão"],
-    positionActive: "57% 58%",
+    positionActive: "57% 0%",
     position: "57% 18%",
   },
   {
@@ -73,7 +73,7 @@ export const team = [
     hero: "jislana-marques-fundo",
     heroPosition: "50% 25%",
     tags: ["Defesa criminal", "INSS", "Benefícios"],
-    positionActive: "79% 12%",
+    positionActive: "79% 0%",
     position: "79% 22%",
   },
   {
@@ -93,7 +93,7 @@ export const team = [
     ],
     photo: "leticia-pereira-de-abreu",
     tags: ["Processo penal", "Execução penal"],
-    positionActive: "68% 14%",
+    positionActive: "68% 0%",
     position: "68% 22%",
   },
   {
@@ -127,7 +127,7 @@ export const team = [
     hero: "gledie-camargo-fundo",
     heroPosition: "52% 28%",
     tags: ["Direito Penal", "Processo Penal", "Execução"],
-    positionActive: "26% 34%",
+    positionActive: "26% 0%",
     position: "26% 30%",
   },
   {
@@ -161,7 +161,7 @@ export const team = [
     hero: "natalia-okumura-fundo",
     heroPosition: "50% 25%",
     tags: ["Contratos", "Consumidor", "Saúde"],
-    positionActive: "19% 10%",
+    positionActive: "19% 0%",
     position: "19% 18%",
   },
 ];
