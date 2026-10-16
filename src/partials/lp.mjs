@@ -206,7 +206,7 @@ export const STRUCTURE = [
   { image: "recepcao", title: "Recepção em Boituva/SP", caption: `${sede.street} — ${sede.district}`, alt: "Recepção do escritório Vieira & Marques, com o logotipo na parede", wide: true },
   { image: "equipe", title: "A equipe", caption: "Profissionais que acompanham cada caso", alt: "Equipe da Vieira & Marques reunida na sede, em Boituva", position: "50% 35%" },
   { image: "sala-atendimento", title: "Sala de atendimento", caption: "Atendimento presencial ou online", alt: "Poltrona de couro, planta e porta-retrato no escritório, em Boituva" },
-  { image: "atendimento-mesa", title: "Como trabalhamos", caption: "Cada caso analisado a partir dos documentos", alt: "Advogada à mesa de trabalho, na sede do escritório", wide: true, position: "50% 40%" },
+  { image: "atendimento-mesa", title: "Como trabalhamos", caption: "Cada caso analisado a partir dos documentos", alt: "Mesa de recepção do escritório, na sede em Boituva", wide: true, position: "50% 40%" },
 ];
 
 export function lpStructure({ id = "estrutura", eyebrow = "O escritório", title = `Estrutura real, <span class="grad">equipe que você pode visitar.</span>`, text = "Sede em Boituva/SP, atendimento presencial também em Sorocaba e reuniões por vídeo para clientes de todo o Brasil.", items = STRUCTURE } = {}) {

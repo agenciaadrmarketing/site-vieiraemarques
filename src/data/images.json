@@ -51,40 +51,35 @@
     "height": 700,
     "variants": [
       {
-        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-480.webp",
+        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v3-480.webp",
         "w": 480,
         "h": 480
       },
       {
-        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-700.webp",
+        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v3-700.webp",
         "w": 700,
         "h": 700
       }
     ]
   },
   "sala-reuniao": {
-    "width": 1350,
-    "height": 759,
+    "width": 1022,
+    "height": 720,
     "variants": [
       {
-        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-480.webp",
+        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-480.webp",
         "w": 480,
-        "h": 270
+        "h": 338
       },
       {
-        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-800.webp",
+        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-800.webp",
         "w": 800,
-        "h": 450
+        "h": 564
       },
       {
-        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-1228.webp",
-        "w": 1228,
-        "h": 690
-      },
-      {
-        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-1350.webp",
-        "w": 1350,
-        "h": 759
+        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-1022.webp",
+        "w": 1022,
+        "h": 720
       }
     ]
   },
@@ -162,28 +157,28 @@
     ]
   },
   "atendimento-mesa": {
-    "width": 1672,
-    "height": 941,
+    "width": 1552,
+    "height": 641,
     "variants": [
       {
-        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-480.webp",
+        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-480.webp",
         "w": 480,
-        "h": 270
+        "h": 198
       },
       {
-        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-800.webp",
+        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-800.webp",
         "w": 800,
-        "h": 450
+        "h": 330
       },
       {
-        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-1228.webp",
+        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-1228.webp",
         "w": 1228,
-        "h": 691
+        "h": 507
       },
       {
-        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-1672.webp",
-        "w": 1672,
-        "h": 941
+        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-1552.webp",
+        "w": 1552,
+        "h": 641
       }
     ]
   },
@@ -251,28 +246,23 @@
     ]
   },
   "escritorio-interno": {
-    "width": 1536,
-    "height": 1024,
+    "width": 852,
+    "height": 760,
     "variants": [
       {
-        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v2-480.webp",
+        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-480.webp",
         "w": 480,
-        "h": 320
+        "h": 428
       },
       {
-        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v2-800.webp",
+        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-800.webp",
         "w": 800,
-        "h": 533
+        "h": 714
       },
       {
-        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v2-1200.webp",
-        "w": 1200,
-        "h": 800
-      },
-      {
-        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v2-1536.webp",
-        "w": 1536,
-        "h": 1024
+        "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-852.webp",
+        "w": 852,
+        "h": 760
       }
     ]
   },
