@@ -73,6 +73,7 @@ export const SITE = {
   // (api/google-reviews.php) não estiver configurada, este valor aparece escrito à mão; com a API
   // ativa, o número e a nota passam a vir do Google.
   googleReviewsCount: 180,
+  googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJL36YRqjjxZQR4GRhe3Bl5M8", // mesmo link já usado na LP de Boituva; conferir o Place ID
   measurement: { googleSiteVerification: "", ga4: "", metaPixel: "" },
 
   oabNotice:
