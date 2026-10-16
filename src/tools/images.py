@@ -16,18 +16,18 @@ SRC = "src/media/fotos"
 # chave interna (usada em img("...")) -> (original, larguras, nome do arquivo publicado)
 # Os nomes publicados descrevem a imagem para busca de imagens; a largura vai no sufixo.
 SOURCES = {
-    "fachada": (f"{SRC}/fachada-escritorio-vieira-marques-advogados-boituva.webp", [480, 800, 1228], "fachada-escritorio-vieira-marques-advogados-boituva-sp"),
-    "recepcao": (f"{SRC}/recepcao-escritorio-vieira-marques-advogados.webp", [480, 800, 1228], "recepcao-escritorio-de-advocacia-vieira-marques-v2"),
-    "sala-atendimento": (f"{SRC}/sala-de-atendimento-vieira-marques-advogados.webp", [480, 800, 1228], "sala-de-atendimento-advogados-boituva-v2"),
-    "sala-reuniao": (f"{SRC}/sala-de-reuniao-vieira-marques-advogados.webp", [480, 800, 1228], "sala-de-reuniao-vieira-marques-advogados-v2"),
-    "estacao-trabalho": (f"{SRC}/estacao-de-trabalho-escritorio-vieira-marques.webp", [480, 800, 1228], "estacao-de-trabalho-escritorio-de-advocacia-v2"),
+    "fachada": (f"{SRC}/fachada-escritorio-vieira-marques-advogados-boituva.webp", [480, 800, 1228, 1672], "fachada-escritorio-vieira-marques-advogados-boituva-sp"),
+    "recepcao": (f"{SRC}/recepcao-escritorio-vieira-marques-advogados.webp", [480, 800, 1228, 1672], "recepcao-escritorio-de-advocacia-vieira-marques-v2"),
+    "sala-atendimento": (f"{SRC}/sala-de-atendimento-vieira-marques-advogados.webp", [480, 800, 1228, 1672], "sala-de-atendimento-advogados-boituva-v2"),
+    "sala-reuniao": (f"{SRC}/sala-de-reuniao-vieira-marques-advogados.webp", [480, 800, 1228, 1672], "sala-de-reuniao-vieira-marques-advogados-v2"),
+    "estacao-trabalho": (f"{SRC}/estacao-de-trabalho-escritorio-vieira-marques.webp", [480, 800, 1228, 1672], "estacao-de-trabalho-escritorio-de-advocacia-v2"),
     "letreiro": (f"{SRC}/letreiro-vieira-marques-sociedade-de-advogados.webp", [480, 800, 1200], "letreiro-vieira-marques-sociedade-de-advogados-v2"),
-    "equipe": (f"{SRC}/equipe-advogados-vieira-marques-boituva.webp", [480, 800, 1228], "equipe-de-advogados-vieira-marques-boituva-v2"),
-    "atendimento-mesa": (f"{SRC}/atendimento-juridico-vieira-marques.webp", [480, 800, 1228], "atendimento-juridico-vieira-marques-advogados-v2"),
+    "equipe": (f"{SRC}/equipe-advogados-vieira-marques-boituva.webp", [480, 800, 1228, 1672], "equipe-de-advogados-vieira-marques-boituva-v2"),
+    "atendimento-mesa": (f"{SRC}/atendimento-juridico-vieira-marques.webp", [480, 800, 1228, 1672], "atendimento-juridico-vieira-marques-advogados-v2"),
     "mesa-trabalho": (f"{SRC}/mesa-de-trabalho-escritorio-vieira-marques.webp", [480, 800, 1200], "mesa-de-trabalho-escritorio-de-advocacia-boituva-v2"),
-    "equipe-reuniao": (f"{SRC}/reuniao-equipe-vieira-marques-advogados.webp", [480, 800, 1228], "reuniao-equipe-vieira-marques-advogados-v2"),
+    "equipe-reuniao": (f"{SRC}/reuniao-equipe-vieira-marques-advogados.webp", [480, 800, 1228, 1672], "reuniao-equipe-vieira-marques-advogados-v2"),
     "carteira-trabalho": (f"{SRC}/carteira-de-trabalho-ctps.webp", [360, 600], "carteira-de-trabalho-ctps-verbas-rescisorias"),
-    "escritorio-interno": (f"{SRC}/escritorio-interno-vieira-marques-advogados.webp", [480, 800, 1200, 1600], "escritorio-de-advocacia-vieira-marques-boituva-sp-v2"),
+    "escritorio-interno": (f"{SRC}/escritorio-interno-vieira-marques-advogados.webp", [480, 800, 1200, 1600, 1672], "escritorio-de-advocacia-vieira-marques-boituva-sp-v2"),
     "oscar-moreira-vieira": (f"{SRC}/oscar-moreira-vieira-advogado.webp", [360, 600, 900], "oscar-moreira-vieira-advogado-v2"),
     "jislana-marques": (f"{SRC}/jislana-marques-advogada.webp", [360, 600], "jislana-marques-advogada-v2"),
     "leticia-pereira-de-abreu": (f"{SRC}/leticia-pereira-de-abreu-advogada.webp", [360, 600, 900], "leticia-pereira-de-abreu-advogada-v2"),
@@ -77,11 +77,10 @@ def save_variants(src, widths, slug):
     im.load()
     im = im.convert("RGB")
     variants = []
-    for w in widths:
-        w = min(w, im.width)
+    for w in dict.fromkeys(min(w, im.width) for w in widths):
         h = round(im.height * w / im.width)
         out = f"{slug}-{w}.webp"
-        im.resize((w, h), Image.LANCZOS).save(os.path.join(OUT_DIR, out), "WEBP", quality=78, method=6)
+        im.resize((w, h), Image.LANCZOS).save(os.path.join(OUT_DIR, out), "WEBP", quality=90, method=6)
         variants.append({"src": f"/assets/img/{out}", "w": w, "h": h})
     return {"width": im.width, "height": im.height, "variants": variants}
 

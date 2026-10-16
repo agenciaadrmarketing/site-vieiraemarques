@@ -38,27 +38,32 @@
         "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-1228.webp",
         "w": 1228,
         "h": 691
+      },
+      {
+        "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-1672.webp",
+        "w": 1672,
+        "h": 941
       }
     ]
   },
   "sala-atendimento": {
-    "width": 1536,
-    "height": 1024,
+    "width": 980,
+    "height": 941,
     "variants": [
       {
         "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-480.webp",
         "w": 480,
-        "h": 320
+        "h": 461
       },
       {
         "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-800.webp",
         "w": 800,
-        "h": 533
+        "h": 768
       },
       {
-        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-1228.webp",
-        "w": 1228,
-        "h": 819
+        "src": "/assets/img/sala-de-atendimento-advogados-boituva-v2-980.webp",
+        "w": 980,
+        "h": 941
       }
     ]
   },
@@ -80,6 +85,11 @@
         "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-1228.webp",
         "w": 1228,
         "h": 690
+      },
+      {
+        "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v2-1350.webp",
+        "w": 1350,
+        "h": 759
       }
     ]
   },
@@ -101,6 +111,11 @@
         "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-1228.webp",
         "w": 1228,
         "h": 691
+      },
+      {
+        "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-1672.webp",
+        "w": 1672,
+        "h": 941
       }
     ]
   },
@@ -143,6 +158,11 @@
         "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-1228.webp",
         "w": 1228,
         "h": 691
+      },
+      {
+        "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-1672.webp",
+        "w": 1672,
+        "h": 941
       }
     ]
   },
@@ -164,6 +184,11 @@
         "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-1228.webp",
         "w": 1228,
         "h": 691
+      },
+      {
+        "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v2-1672.webp",
+        "w": 1672,
+        "h": 941
       }
     ]
   },
@@ -206,6 +231,11 @@
         "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-1228.webp",
         "w": 1228,
         "h": 691
+      },
+      {
+        "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-1672.webp",
+        "w": 1672,
+        "h": 941
       }
     ]
   },
