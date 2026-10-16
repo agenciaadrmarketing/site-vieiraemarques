@@ -69,6 +69,10 @@ export const SITE = {
   googleReviews: true,
   // Mapa "Como chegar" acima do rodapé: o Google Maps só é carregado quando o visitante clica.
   mapEmbed: true,
+  // Total de avaliações no Google informado pelo escritório (conferir e atualizar). Enquanto a API
+  // (api/google-reviews.php) não estiver configurada, este valor aparece escrito à mão; com a API
+  // ativa, o número e a nota passam a vir do Google.
+  googleReviewsCount: 180,
   measurement: { googleSiteVerification: "", ga4: "", metaPixel: "" },
 
   oabNotice:

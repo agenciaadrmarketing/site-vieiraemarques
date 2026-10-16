@@ -8,6 +8,7 @@ import { AREA_LP } from "../data/area-lp.mjs";
 import { HERO_MOBILE, lpHero, lpCta, lpTeam, lpStructure, lpReach } from "../partials/lp.mjs";
 import { imgPreload } from "../partials/media.mjs";
 import { serviceHref } from "../data/services/index.mjs";
+import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { icon } from "../partials/icons.mjs";
 import { faqSchema, articleRow } from "../partials/components.mjs";
@@ -170,6 +171,7 @@ export function renderService(p) {
 ${hero(p, crumbs)}
 ${join(blockTones(p.blocks), renderBlock)}
 ${lpTeam({ people: [...people, ...team.filter((t) => !people.includes(t))] })}
+${googleReviews()}
 ${related(p)}
 ${SITE.forms ? formSection(p) : whatsappSection(p)}
 ${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").replace("<a ", '<a data-sticky-cta data-hidden="true" hidden ')}
@@ -177,6 +179,7 @@ ${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").re
 
   const url = SITE.origin + p.path;
   return page({
+    scripts: SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [],
     title: serviceTitle(p.seo.title),
     description: p.seo.description,
     path: p.path,

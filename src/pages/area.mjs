@@ -8,6 +8,7 @@ import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { page } from "../partials/layout.mjs";
 import { imgPreload } from "../partials/media.mjs";
+import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { icon } from "../partials/icons.mjs";
 import { faqSchema, articleRow, sectionHead } from "../partials/components.mjs";
 import { img } from "../partials/media.mjs";
@@ -91,6 +92,8 @@ ${faqs.length ? lpFaq({ title: faqTitle(area), lead: lp.faqLead, items: faqs, me
 
 ${lpAbout({ person: people[0], areaTitle: area.title, people: [...people, ...team.filter((p) => !people.includes(p))] })}
 
+${googleReviews()}
+
 ${related.length ? `<section class="lp-sec lp-sec--white" aria-labelledby="conteudos-titulo">
   <div class="container container--narrow">
     ${lpHead({ eyebrow: "Base de conhecimento", title: `Conteúdos sobre <span class="grad">${esc(area.shortTitle)}.</span>`, id: "conteudos-titulo" })}
@@ -108,6 +111,7 @@ ${related.length ? lpOtherAreas(area.id) : ""}
 ${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandImage ? { image: lp.bandImage, position: "center 55%" } : {}) })}`;
 
   return page({
+    scripts: SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [],
     title: `${area.title} em Boituva/SP | Vieira & Marques`,
     description: description(area),
     path,

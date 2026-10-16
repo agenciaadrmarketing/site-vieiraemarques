@@ -268,6 +268,7 @@ const mapSection = () => {
         <address class="visit__address">${esc(u.street)}<br>${esc(u.district)} — ${esc(u.city)}/${esc(u.region)}<br>CEP ${esc(u.postalCode)}</address>
         ${isPending(SITE.hours) ? "" : `<p class="muted">${esc(SITE.hours)}</p>`}
         <p class="muted">Atendimento presencial também em Sorocaba, com horário combinado. Para as demais cidades, reuniões por vídeo.</p>
+        ${SITE.googleReviewsCount ? `<p class="visit__rating"><a class="text-link" href="${esc(u.mapsUrl)}" target="_blank" rel="noopener noreferrer" data-track="google_review_click">${SITE.googleReviewsCount} avaliações no Google</a></p>` : ""}
         <div class="btn-row">
           <a class="btn" href="${esc(u.mapsUrl)}" target="_blank" rel="noopener noreferrer">Abrir no Google Maps <span class="btn__arrow">${icon.arrowUpRight(16)}</span></a>
           <a class="btn btn--ghost" href="${route}" target="_blank" rel="noopener noreferrer" data-track="map_route_click">Traçar rota</a>

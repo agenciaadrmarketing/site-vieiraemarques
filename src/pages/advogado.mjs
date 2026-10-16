@@ -8,6 +8,7 @@ import { page, breadcrumbs } from "../partials/layout.mjs";
 import { img, imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
 import { sectionHead, articleCard, waButton } from "../partials/components.mjs";
+import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { lpCta } from "../partials/lp.mjs";
 
 // Perfil individual do profissional (/advogados/<slug>/). Todo o conteúdo vem de
@@ -105,6 +106,8 @@ ${when(own.length, `<section class="section section--white" aria-labelledby="con
 
 ${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a nossa equipe.</span>`, text: "A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao profissional responsável pela área.", message: msg })}
 
+${googleReviews()}
+
 ${when(others.length, `<section class="section section--white" aria-labelledby="equipe-titulo">
   <div class="container">
     ${sectionHead({ eyebrow: "Equipe", id: "equipe-titulo", title: `Conheça também <span class="grad">outros profissionais.</span>` })}
@@ -118,6 +121,7 @@ ${when(others.length, `<section class="section section--white" aria-labelledby="
 
   const desc = `${name}, ${title(p).toLowerCase()} da Vieira & Marques: atuação em ${areas.map((a) => a.title).join(" e ")}. Formação, áreas de atuação e contato com a equipe.`;
   return page({
+    scripts: SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [],
     title: `${name} | ${title(p)} | Vieira & Marques`,
     description: desc.length <= 160 ? desc : `${name}, ${title(p).toLowerCase()} da Vieira & Marques, em ${areas.map((a) => a.title).join(" e ")}. Formação e áreas de atuação.`,
     path,
