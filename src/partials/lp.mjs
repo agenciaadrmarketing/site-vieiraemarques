@@ -475,12 +475,12 @@ export function lpFaq({ id = "perguntas", title, lead, items, message, ctaText =
 
 /* ---------- Cartões das áreas (preto, 3 colunas) ---------- */
 const AREA_ICON = { familia: "users", sucessorio: "home", trabalhista: "briefcase", criminal: "scale", saude: "pulse", bancario: "bank", imobiliario: "building", previdenciario: "shield" };
-export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação", title, lead, tone = "white" } = {}) {
+export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação", title, lead, tone = "muted", currentId = null } = {}) {
   return `<section class="lp-sec lp-sec--${tone} lp-areas" id="${id}" aria-labelledby="${id}-titulo">
   <div class="container">
     ${lpHead({ eyebrow, title, lead, id: `${id}-titulo` })}
     <ul class="lp-areas__grid" data-reveal>
-      ${join(practiceAreas, (a) => `<li class="lp-areas__card">
+      ${join(practiceAreas.filter((a) => a.id !== currentId), (a) => `<li class="lp-areas__card">
         <div class="lp-areas__top"><span class="lp-areas__icon">${(icon[AREA_ICON[a.id]] ?? icon.doc)(22)}</span><span class="lp-areas__num">${a.number}</span></div>
         <h3 class="lp-areas__title"><a href="${areaUrl(a)}">${esc(a.title)}</a></h3>
         <p class="lp-areas__text">${esc(a.summary)}</p>
@@ -493,11 +493,6 @@ export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação
 }
 
 /* ---------- Outras áreas ---------- */
-export function lpOtherAreas(currentId, { tone = "white", title = "Outras áreas de atuação" } = {}) {
-  return `<nav class="lp-sec lp-sec--${tone} lp-others" aria-labelledby="outras-areas-titulo">
-  <div class="container">
-    <h2 class="lp-eyebrow" id="outras-areas-titulo">${esc(title)}</h2>
-    <ul class="lp-others__list" data-reveal>${join(practiceAreas.filter((a) => a.id !== currentId), (a) => `<li><a href="${areaUrl(a)}"><span class="lp-others__num">${a.number}</span>${esc(a.title)} ${icon.arrow(14)}</a></li>`)}</ul>
-  </div>
-</nav>`;
+export function lpOtherAreas(currentId, { tone = "muted", title = `Outras áreas <span class="grad">de atuação.</span>` } = {}) {
+  return lpAreaCards({ id: "outras-areas", eyebrow: "Continue explorando", title, tone, currentId });
 }
