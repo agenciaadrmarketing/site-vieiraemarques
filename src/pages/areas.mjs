@@ -2,6 +2,7 @@ import { imgPreload } from "../partials/media.mjs";
 import { lpCta, lpReach, lpHero } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
+import { profilePath } from "../data/team.mjs";
 import { practiceAreas, areaUrl, areaHubAnchor } from "../data/areas.mjs";
 import { hasPage, serviceHref } from "../data/services/index.mjs";
 import { teamByArea } from "../data/team.mjs";
@@ -47,16 +48,14 @@ function areaBlock(area) {
     <div class="stack">
       ${when(people.length, `<div class="stack-sm">
         <h3 class="eyebrow">Profissionais da área</h3>
-        <p class="area-block__team">${people.map((p) => `<a href="/escritorio/#${p.id}">${esc(p.name)}</a>`).join("")}</p>
+        <p class="area-block__team">${people.map((p) => `<a href="${p.hasProfile ? profilePath(p) : `/escritorio/#${p.id}`}">${esc(p.name)}</a>`).join("")}</p>
       </div>`)}
       ${when(related.length, `<div class="stack-sm">
         <h3 class="eyebrow">Conteúdos relacionados</h3>
         <ul class="checklist">${join(related, (a) => `<li>${icon.arrowUpRight(16)}<a class="text-link" href="${esc(a.url)}">${esc(a.title)}</a></li>`)}</ul>
       </div>`)}
       <div class="btn-row">
-        ${SITE.forms
-          ? `<a class="btn" href="/contato/?area=${area.id}">Falar sobre ${esc(area.shortTitle === "Médico e Saúde" ? "Saúde" : area.shortTitle)} <span class="btn__arrow">${icon.arrow(16)}</span></a>`
-          : `<a class="btn" href="${whatsappUrl(waMessage(area.title))}" target="_blank" rel="noopener">${icon.whatsapp(18)} Falar sobre ${esc(area.shortTitle === "Médico e Saúde" ? "Saúde" : area.shortTitle)}</a>`}
+        <a class="btn" href="${areaUrl(area)}">Conhecer a área<span class="sr-only"> ${esc(area.title)}</span> <span class="btn__arrow">${icon.arrow(16)}</span></a>
       </div>
     </div>
   </div>

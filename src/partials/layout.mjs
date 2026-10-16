@@ -88,6 +88,7 @@ ${SITE.measurement.googleSiteVerification ? `<meta name="google-site-verificatio
 <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/assets/icons/favicon-16.png" sizes="16x16">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <script src="/assets/js/gate.js?v=${ASSET_VERSION}"></script>
 <link rel="preload" href="/assets/fonts/lexend-deca-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${join(preload, (p) => `<link rel="preload" as="image"${attrs(p)}>\n`)}<link rel="stylesheet" href="/assets/css/site.css?v=${ASSET_VERSION}">
@@ -139,7 +140,7 @@ const mobileLinks = (current) =>
 
 function header(current, whatsappMessage) {
   return `<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-<div class="topbar">
+<aside class="topbar" aria-label="Atendimento e contato">
   <div class="container">
     <p class="topbar__note">Presencial em Boituva e Sorocaba · online em São Paulo e todo o Brasil</p>
     <div class="topbar__links">
@@ -147,7 +148,7 @@ function header(current, whatsappMessage) {
       ${join(SITE.social, (s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`)}
     </div>
   </div>
-</div>
+</aside>
 <header class="site-header" data-header>
   <div class="container site-header__bar">
     <a class="site-header__logo" href="/" aria-label="${esc(SITE.name)} — página inicial">${logo("claro", 170)}</a>

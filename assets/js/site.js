@@ -156,7 +156,15 @@
     toggle.addEventListener("click", function () { setOpen(toggle.getAttribute("aria-expanded") !== "true"); });
     menu.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") { setOpen(false); toggle.focus(); }
+      if (toggle.getAttribute("aria-expanded") !== "true") return;
+      if (e.key === "Escape") { setOpen(false); toggle.focus(); return; }
+      // Foco preso no menu aberto (botão de fechar + links do menu): Tab não escapa para a página atrás.
+      if (e.key !== "Tab") return;
+      var items = [toggle].concat([].slice.call(menu.querySelectorAll("a[href], button:not([disabled]), summary")).filter(function (el) { return el.offsetParent !== null; }));
+      var i = items.indexOf(document.activeElement);
+      var next = e.shiftKey ? (i <= 0 ? items.length - 1 : i - 1) : (i === items.length - 1 ? 0 : i + 1);
+      e.preventDefault();
+      items[next].focus();
     });
     window.addEventListener("resize", function () {
       if (window.innerWidth >= 1080 && toggle.getAttribute("aria-expanded") === "true") setOpen(false);
@@ -523,7 +531,7 @@
   })();
   function track(event, params) {
     window.dataLayer = window.dataLayer || [];
-    var data = { event: event, page_path: window.location.pathname };
+    var data = { event: event, page_path: window.location.pathname, page_title: document.title };
     if (pageCtx) { data.practice_area = pageCtx.practice_area; data.service = pageCtx.service; }
     Object.keys(params || {}).forEach(function (k) { data[k] = params[k]; });
     window.dataLayer.push(data);
@@ -970,6 +978,17 @@
       if (cta && pageCtx) track("service_cta_click", { cta_position: cta.getAttribute("data-cta") });
       var tracked = e.target.closest("[data-track]");
       if (tracked) track(tracked.getAttribute("data-track"), { link_url: tracked.href || "" });
+      // Eventos de navegação (poucos e úteis): e-mail, área, serviço, advogado, conhecimento e avaliações.
+      var l = e.target.closest('a[href]');
+      if (l) {
+        var href = l.getAttribute("href") || "";
+        if (href.indexOf("mailto:") === 0) track("email_click", { link_url: href });
+        else if (l.hasAttribute("data-reviews-link") || l.closest(".g-review")) track("google_review_click", { link_url: l.href });
+        else if (/^\/advogados\/[^/]+\/?$/.test(href)) track("lawyer_profile_click", { link_url: href });
+        else if (/^\/areas\/[^/]+\/?$/.test(href)) track("practice_area_click", { link_url: href });
+        else if (/^\/areas\/[^/]+\/[^/]+\/?$/.test(href)) track("service_click", { link_url: href });
+        else if (/^\/conhecimento\//.test(href) || /\/guias\/.*\.pdf$/.test(href)) track("knowledge_click", { link_url: href });
+      }
       var a = e.target.closest('a[href^="https://wa.me/"], a[href^="tel:"]');
       if (a) {
         var isPhone = a.href.indexOf("tel:") === 0;

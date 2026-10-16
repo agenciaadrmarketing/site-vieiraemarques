@@ -18,7 +18,7 @@ export function googleReviews({ id = "avaliacoes", muted = true } = {}) {
         <p class="g-reviews__summary" data-reviews-summary hidden><span class="g-reviews__stars" data-reviews-stars aria-hidden="true"></span><strong data-reviews-rating></strong><span data-reviews-count></span></p>
         <p class="g-reviews__fallback lead" data-reviews-fallback hidden>Avaliações dos nossos clientes no Google.</p>
       </div>
-      <a class="btn btn--ghost" data-reviews-link href="#" target="_blank" rel="noopener noreferrer" hidden>Ver todas no Google ${icon.arrowUpRight(16)}</a>
+      <a class="btn btn--ghost" data-reviews-link href="${SITE.units[0].mapsUrl}" target="_blank" rel="noopener noreferrer" hidden>Ver todas no Google ${icon.arrowUpRight(16)}</a>
     </div>
     <div class="g-reviews__carousel" data-reviews-carousel hidden>
       <div class="g-reviews__track" data-reviews-track tabindex="0" role="region" aria-label="Avaliações de clientes no Google" aria-roledescription="carrossel"></div>

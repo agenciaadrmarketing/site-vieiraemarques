@@ -57,10 +57,10 @@ const BLOCKS = {
   table: (b) =>
     section(b, `${head(b)}
 ${when(b.columns.length > 3, `<p class="svc-table-hint" aria-hidden="true">Deslize para ver todas as colunas →</p>`)}
-<div class="svc-table-wrap${b.columns.length > 3 ? " svc-table-wrap--wide" : ""}" data-reveal role="region" aria-labelledby="${b.id}-titulo" tabindex="0">
+<div class="svc-table-wrap${b.columns.length > 3 ? " svc-table-wrap--wide" : ""}" data-reveal role="region" aria-label="Tabela comparativa (rolável)" tabindex="0">
   <table class="svc-table">
     ${when(b.caption, `<caption class="sr-only">${esc(b.caption)}</caption>`)}
-    <thead><tr>${join(b.columns, (c, i) => `<th scope="col"${i === 0 ? ' class="svc-table__rowhead"' : ""}>${esc(c)}</th>`)}</tr></thead>
+    <thead><tr>${join(b.columns, (c, i) => `<th scope="col"${i === 0 ? ' class="svc-table__rowhead"' : ""}>${c ? esc(c) : '<span class="sr-only">Critério</span>'}</th>`)}</tr></thead>
     <tbody>${join(b.rows, (r) => `<tr><th scope="row" class="svc-table__rowhead">${esc(r[0])}</th>${join(r.slice(1), (c, i) => `<td data-label="${esc(b.columns[i + 1])}">${c}</td>`)}</tr>`)}</tbody>
   </table>
 </div>

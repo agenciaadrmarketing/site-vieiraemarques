@@ -10,7 +10,7 @@ export const p = (...paragraphs) => join(paragraphs.filter(Boolean), (t) => `<p>
 export const h3 = (t) => `<h3>${t}</h3>`;
 export const list = (items) => `<ul class="legal-list">${join(items, (t) => `<li>${t}</li>`)}</ul>`;
 export const steps = (items) => `<ol class="legal-steps">${join(items, (t) => `<li>${t}</li>`)}</ol>`;
-export const callout = (title, html) => `<aside class="legal-callout"><p class="legal-callout__title">${title}</p>${html}</aside>`;
+export const callout = (title, html) => `<div class="legal-callout" role="note"><p class="legal-callout__title">${title}</p>${html}</div>`;
 // Tabela de duas colunas; vira lista de pares no mobile (td::before com o rótulo).
 export const table = ({ caption, head, rows }) => `<div class="legal-table"><table>
   <caption class="sr-only">${esc(caption)}</caption>
@@ -44,12 +44,12 @@ export function legalPage({ path, label, title, description, eyebrow, h1, intro,
 
 <section class="section section--white legal">
   <div class="container legal__grid">
-    <aside class="legal__aside" data-lenis-prevent>
+    <div class="legal__aside" data-lenis-prevent>
       <details class="legal-toc" data-toc>
         <summary class="legal-toc__title">Nesta página</summary>
         <ol>${join(sections, (s) => `<li><a href="#${s.id}">${esc(s.title)}</a></li>`)}</ol>
       </details>
-    </aside>
+    </div>
     <article class="legal__body">
       ${join(sections, (s, i) => `<section class="legal-section" id="${s.id}" aria-labelledby="${s.id}-titulo">
         <h2 class="legal-section__title" id="${s.id}-titulo"><span class="legal-section__num">${String(i + 1).padStart(2, "0")}</span>${esc(s.title)}</h2>
