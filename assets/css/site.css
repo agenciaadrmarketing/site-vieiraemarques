@@ -1065,10 +1065,10 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
   animation: vm-loader-out .4s ease 2.5s forwards;
 }
 .vm-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-/* Anéis: cada um pulsa com atraso crescente; só transform anima (GPU), sem repintar sombras. */
+/* Quadrados concêntricos: cada um pulsa com atraso crescente; só transform anima (GPU), sem repintar sombras. */
 .vm-ripple { --size: min(56vw, 232px); --dur: 2s; position: relative; width: var(--size); aspect-ratio: 1; }
 .vm-ripple__ring {
-  position: absolute; border-radius: 50%;
+  position: absolute; border-radius: 4px;
   background: linear-gradient(0deg, rgba(255,255,255,.025), rgba(255,255,255,.085));
   border-top: 1px solid rgba(255,255,255,.22);
   box-shadow: 0 14px 22px -10px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.04);
