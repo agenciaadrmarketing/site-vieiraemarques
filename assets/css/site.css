@@ -1940,3 +1940,6 @@ a.g-review__name:hover { text-decoration: underline; }
 :is(.split, .lp-split) .section-head:not(.section-head--row) { justify-items: start; text-align: left; }
 :is(.split, .lp-split) .section-head:not(.section-head--row) .stack-sm { justify-items: start; }
 :is(.split, .lp-split) .section-head:not(.section-head--row) .lead { margin-inline: 0; }
+
+/* Lista de áreas em fundo escuro: o hover clareia só levemente (texto claro continua legível) */
+:is(.section--dark, .on-dark) .area-index__item a:hover { background: rgba(255,255,255,.08); }
