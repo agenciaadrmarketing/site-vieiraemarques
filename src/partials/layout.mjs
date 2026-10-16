@@ -303,7 +303,11 @@ export const waFloat = (message, phrases = DEFAULT_PHRASES) => {
     <p class="wa-float__title" data-wa-bubble-title>${esc(first.t)}</p>
     <p class="wa-float__text" data-wa-bubble-text>${esc(first.s)}</p>
   </div>
-  ${waButton(message, "Falar pelo WhatsApp", { cta: "flutuante" })}
+  <a class="wa-float__avatar" href="${whatsappUrl(message)}" target="_blank" rel="noopener" data-cta="flutuante" aria-label="Falar pelo WhatsApp com a equipe de atendimento">
+    <span class="wa-float__ring" aria-hidden="true"></span><span class="wa-float__ring wa-float__ring--2" aria-hidden="true"></span>
+    ${img("atendente", { alt: "", sizes: "72px" })}
+    <span class="wa-float__dot" aria-hidden="true"></span>
+  </a>
 </div>`;
 };
 

@@ -1057,6 +1057,22 @@
       }
     ]
   },
+  "atendente": {
+    "width": 170,
+    "height": 170,
+    "variants": [
+      {
+        "src": "/assets/img/atendimento-vieira-marques-whatsapp-96.webp",
+        "w": 96,
+        "h": 96
+      },
+      {
+        "src": "/assets/img/atendimento-vieira-marques-whatsapp-170.webp",
+        "w": 170,
+        "h": 170
+      }
+    ]
+  },
   "bandeira": {
     "width": 1672,
     "height": 941,

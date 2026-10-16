@@ -1962,3 +1962,56 @@ a.g-review__name:hover { text-decoration: underline; }
   .g-reviews__bar { justify-content: center; text-align: center; }
   .g-reviews__summary { justify-content: center; }
 }
+
+/* ---------- Padronização dos botões: formato de pílula; WhatsApp sempre verde ---------- */
+.btn-wa, .btn.btn--whatsapp, .btn-wa::before, .btn.btn--whatsapp::before { border-radius: 999px; }
+.btn-wa--lg { padding: 18px 34px; }
+.lp-card__link--wa svg, .btn--whatsapp svg { color: inherit; }
+
+/* ---------- Efeito metálico nos demais botões (aro cromado girando + brilho) ---------- */
+@property --mt-ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@keyframes mt-spin { to { --mt-ang: 360deg; } }
+@keyframes mt-ripple { from { transform: translate(-50%, -50%) scale(0); opacity: .5; } to { transform: translate(-50%, -50%) scale(4); opacity: 0; } }
+.btn:not(.btn--whatsapp) {
+  position: relative; isolation: isolate; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.35), 0 18px 12px -12px rgba(0,0,0,.18), 0 6px 8px -4px rgba(0,0,0,.2), 0 2px 4px rgba(0,0,0,.18);
+  transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .8s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease;
+}
+.btn:not(.btn--whatsapp)::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit; padding: 2px;
+  background: conic-gradient(from var(--mt-ang), #8c8c8c, #FFFFFF 9%, #2b2b2b 21%, #d2d2d2 34%, #3b3b3b 49%, #FFFFFF 61%, #474747 77%, #c4c4c4 90%, #8c8c8c);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: mt-spin 7s linear infinite;
+}
+.btn:not(.btn--whatsapp)::after {
+  content: ""; position: absolute; inset: 2px; z-index: 0; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 46%);
+}
+.btn:not(.btn--ghost):not(.btn--ghost-light):not(.btn--light) { background: linear-gradient(180deg, #202020 0%, #000000 100%); text-shadow: 0 1px 2px rgba(0,0,0,.5); }
+.btn--light { background: linear-gradient(180deg, #FFFFFF 0%, #E4E4E4 100%); }
+.btn--light::after { background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0) 50%) !important; }
+.btn > * { position: relative; z-index: 2; }
+.btn:not(.btn--whatsapp):hover::before { animation-duration: 2.4s; }
+.btn:not(.btn--whatsapp):hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 12px 6px 0 rgba(0,0,0,.05), 0 8px 5px rgba(0,0,0,.1), 0 4px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.2); }
+.btn:not(.btn--whatsapp):active { transform: translateY(1px) scale(.98); box-shadow: 0 0 0 1px rgba(0,0,0,.5), 0 1px 2px rgba(0,0,0,.3); }
+.btn__ripple { position: absolute; z-index: 3; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 70%); animation: mt-ripple .6s ease-out forwards; }
+.is-offscreen .btn::before { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .btn:not(.btn--whatsapp)::before { animation: none; } .btn__ripple { display: none; } }
+
+/* ---------- WhatsApp flutuante: foto da equipe de atendimento com anéis e ponto online ---------- */
+.wa-float { align-items: flex-end; }
+.wa-float__avatar { position: relative; display: grid; place-items: center; flex: none; width: 68px; height: 68px; margin: 8px 8px 4px 0; border-radius: 50%; }
+.wa-float__avatar img { position: relative; z-index: 2; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 20%; border: 3px solid #FFFFFF; background: #F4F4F4; box-shadow: 0 10px 24px -8px rgba(0,0,0,.55); transition: transform .3s cubic-bezier(.22,1,.36,1); }
+.wa-float__avatar:hover img { transform: scale(1.06); }
+.wa-float__ring { position: absolute; inset: -9px; z-index: 1; border-radius: 50%; border: 2px solid rgba(37,211,102,.75); animation: wa-ring 2.6s ease-out infinite; }
+.wa-float__ring--2 { inset: -9px; animation-delay: 1.3s; }
+.wa-float__dot { position: absolute; z-index: 3; right: -2px; bottom: 2px; width: 17px; height: 17px; border-radius: 50%; background: #22C55E; border: 3px solid #FFFFFF; }
+.wa-float__avatar:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 5px; box-shadow: 0 0 0 7px #168A43; }
+@keyframes wa-ring { 0% { transform: scale(.82); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .wa-float__ring { animation: none; opacity: .5; } }
+@media (max-width: 720px) {
+  .wa-float { left: auto; right: 14px; bottom: 14px; align-items: flex-end; max-width: calc(100vw - 28px); }
+  .wa-float__bubble { width: min(290px, calc(100vw - 44px)); }
+  .wa-float__avatar { width: 60px; height: 60px; }
+}

@@ -4,6 +4,7 @@ import { areaUrl, areaFaqUrl, AREAS_HUB, areaById } from "../data/areas.mjs";
 import { articles } from "../data/articles.mjs";
 import { faqByArea } from "../data/faq.mjs";
 import { team, teamByArea } from "../data/team.mjs";
+import { SERVICE_PHRASES } from "../data/float-phrases.mjs";
 import { AREA_LP } from "../data/area-lp.mjs";
 import { HERO_MOBILE, lpHero, lpCta, lpTeam, lpStructure, lpReach } from "../partials/lp.mjs";
 import { imgPreload } from "../partials/media.mjs";
@@ -184,7 +185,7 @@ ${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").re
     description: p.seo.description,
     path: p.path,
     crumbs,
-    floatPhrases: [
+    floatPhrases: SERVICE_PHRASES[`${p.area}/${p.service}`] ?? [
       { t: `Dúvida sobre ${p.serviceData.title.toLowerCase()}?`, s: "Envie as informações para uma análise inicial pela nossa equipe de atendimento." },
       ...AREA_LP[p.area].phrases,
     ],

@@ -73,6 +73,19 @@
     document.addEventListener("touchstart", hint, { passive: true });
   }
 
+  /* ---------- Onda ao clicar nos botões (efeito metálico) ---------- */
+  function initButtonRipple() {
+    if (reduceMotion) return;
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest && e.target.closest(".btn:not(.btn--whatsapp)");
+      if (!b) return;
+      var r = b.getBoundingClientRect(), s = document.createElement("span");
+      s.className = "btn__ripple"; s.style.left = (e.clientX - r.left) + "px"; s.style.top = (e.clientY - r.top) + "px";
+      b.appendChild(s);
+      setTimeout(function () { s.remove(); }, 650);
+    }, { passive: true });
+  }
+
   /* ---------- Pausa animações fora da tela ---------- */
   // Animações contínuas (botão verde, mapa, linhas) só rodam nas seções visíveis.
   function initOffscreenPause() {
@@ -317,13 +330,23 @@
       void bubble.offsetWidth; // reinicia a animação de entrada
       bubble.classList.add("is-swap");
     }
-    function openBubble() {
-      if (!bubble || closed || !shown) return;
+    // Uma mensagem por vez: aparece, some e, depois de um intervalo, surge a próxima.
+    // Os intervalos variam (12 s, 22 s, 35 s e 50 s) e se repetem em ciclo.
+    var GAPS = [12000, 22000, 35000, 50000], VISIBLE = 8000, cycle = 0;
+    function hideBubble() { if (bubble) bubble.hidden = true; }
+    function nextBubble() {
+      if (!bubble || closed || !shown || !phrases.length) return;
+      index = cycle % phrases.length;
+      setPhrase(index);
       bubble.hidden = false;
-      if (phrases.length > 1 && !reduceMotion && !rotate) {
-        rotate = setInterval(function () { index = (index + 1) % phrases.length; setPhrase(index); }, 7000);
-      }
+      var gap = GAPS[cycle % GAPS.length];
+      cycle++;
+      rotate = setTimeout(function () {
+        hideBubble();
+        rotate = setTimeout(nextBubble, gap);
+      }, VISIBLE);
     }
+    function openBubble() { nextBubble(); }
     function update() {
       ticking = false;
       var show = window.scrollY > window.innerHeight * 0.6;
@@ -337,7 +360,7 @@
       bubble.querySelector("[data-wa-bubble-close]").addEventListener("click", function () {
         closed = true;
         bubble.hidden = true;
-        clearInterval(rotate);
+        clearTimeout(rotate);
         if (link) link.focus({ preventScroll: true });
       });
     }
@@ -1001,6 +1024,6 @@
   initReveal();
   initTeamPanels();
   // Uma tarefa ociosa por inicializador: nenhuma tarefa longa segura a thread principal.
-  [initFloat, initClickTracking, initPrefetch, initVisitMap, initCardFx, initOffscreenPause, initConsent, initSignals, initLightbox,
+  [initButtonRipple, initFloat, initClickTracking, initPrefetch, initVisitMap, initCardFx, initOffscreenPause, initConsent, initSignals, initLightbox,
     initMap, initHub, initFilters, initLeadForm, initToc, initStickyCta, initTocSpy, initFooter].forEach(function (fn) { idle(fn); });
 })();
