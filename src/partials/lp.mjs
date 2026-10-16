@@ -493,6 +493,18 @@ export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação
 </section>`;
 }
 
+/* ---------- Perfil atendido (lista de verificação) ---------- */
+export function lpChecklist({ id = "para-quem", eyebrow = "Identifique o seu caso", title, lead, points, note, message, cta = "Falar com a equipe", tone = "white" }) {
+  return `<section class="lp-sec lp-sec--${tone} lp-check${tone === "dark" ? " on-dark" : ""}" id="${id}" aria-labelledby="${id}-titulo">
+  <div class="container container--narrow">
+    ${lpHead({ eyebrow, title, lead, id: `${id}-titulo` })}
+    <ul class="lp-check__list" data-reveal>${join(points, (t) => `<li><span class="lp-check__tick" aria-hidden="true">${icon.check(18)}</span><span>${esc(t)}</span></li>`)}</ul>
+    <p class="lp-check__note" data-reveal>${esc(note)}</p>
+    <div class="lp-check__cta" data-reveal>${waButton(message, cta, { cta: "perfil" })}</div>
+  </div>
+</section>`;
+}
+
 /* ---------- Outras áreas ---------- */
 export function lpOtherAreas(currentId, { tone = "muted", title = `Outras áreas <span class="grad">de atuação.</span>` } = {}) {
   return lpAreaCards({ id: "outras-areas", eyebrow: "Continue explorando", title, tone, currentId });

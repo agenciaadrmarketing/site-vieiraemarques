@@ -9,6 +9,7 @@ import { ROUTES } from "./routes.mjs";
 import { LEGAL_REVIEW } from "./data/legal.mjs";
 import { cspHeader } from "./data/csp.mjs";
 import { LANDING_PAGES } from "./data/landing-pages.mjs";
+import { LANDINGS } from "./data/landings.mjs";
 import { buildBundle, usedTokens } from "./tools/css-bundle.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -48,9 +49,10 @@ function sitemap() {
 // Páginas geradas em memória; depois cada grupo recebe um CSS só com o que usa (src/tools/css-bundle.mjs).
 const rendered = ROUTES.map((r) => ({ file: outFile(r.path), path: r.path, html: r.render() }));
 rendered.push({ file: join(ROOT, "404.html"), path: "/404.html", html: notFound() });
+const LANDING_PATHS = new Set(LANDINGS.map((l) => l.path));
 const groupOf = (p) =>
   p === "/" ? "home" : p === "/404.html" ? "erro" : p === "/escritorio/" ? "escritorio" : p === "/areas-de-atuacao/" ? "hub" :
-  p === "/conhecimento/" ? "conhecimento" : p === "/contato/" ? "contato" : p.startsWith("/advogados/") ? "advogado" :
+  p === "/conhecimento/" ? "conhecimento" : p === "/contato/" ? "contato" : p.startsWith("/advogados/") ? "advogado" : LANDING_PATHS.has(p) ? "landing" :
   p.startsWith("/areas/") ? (p.split("/").filter(Boolean).length === 2 ? "area" : "servico") : "legal";
 const jsTokens = ["site.js", "reviews.js", "gate.js"].map((f) => readFileSync(join(ROOT, "assets/js", f), "utf8"));
 const groups = {};

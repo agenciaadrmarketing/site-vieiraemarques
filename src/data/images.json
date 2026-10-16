@@ -1147,6 +1147,32 @@
       }
     ]
   },
+  "lp-divorcio": {
+    "width": 2752,
+    "height": 1536,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-480.webp",
+        "w": 480,
+        "h": 268
+      },
+      {
+        "src": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-800.webp",
+        "w": 800,
+        "h": 447
+      },
+      {
+        "src": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-1280.webp",
+        "w": 1280,
+        "h": 714
+      },
+      {
+        "src": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-1920.webp",
+        "w": 1920,
+        "h": 1072
+      }
+    ]
+  },
   "bandeira": {
     "width": 1672,
     "height": 941,

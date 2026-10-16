@@ -74,6 +74,7 @@ SOURCES = {
     "hero-area-familia": (f"{SRC}/hero-area-familia-advogado-escritorio.webp", [800, 1280, 1672], "hero-area-familia-advogados-vieira-marques-v1"),
     "hero-area-criminal": (f"{SRC}/hero-area-criminal-advogada-escritorio.webp", [800, 1280, 1672], "hero-area-criminal-advogados-vieira-marques-v1"),
     "hero-area-saude": (f"{SRC}/hero-area-saude-advogada-escritorio.webp", [800, 1280, 1672], "hero-area-saude-advogados-vieira-marques-v1"),
+    "lp-divorcio": (f"{SRC}/lp-divorcio-advogado-orienta-casal.webp", [480, 800, 1280, 1920], "advogado-divorcio-orientacao-casal-vieira-marques-v1"),
     "bandeira": (f"{SRC}/bandeira-do-brasil-fundo.webp", [960, 1672], "bandeira-do-brasil-fundo-v2"),
 }
 
