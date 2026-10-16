@@ -1795,3 +1795,29 @@ a.g-review__name:hover { text-decoration: underline; }
 .visit__facade-text { font-size: 14.5px; font-weight: 300; color: #B4B4B4; }
 .visit__load { margin-top: 10px; }
 .visit__note { font-size: 12.5px; color: #A3A3A3; }
+.visit__grid > * { min-width: 0; }
+.visit__map { width: 100%; }
+.visit .btn-row { flex-wrap: wrap; }
+
+/* ---------- Efeitos em cartões (portados de spotlight-card e border-beam-panel, sem React) ---------- */
+/* Spotlight: brilho no contorno e leve luz no fundo que seguem o cursor (só com mouse). */
+@media (hover: hover) and (pointer: fine) {
+  .fx-spot { position: relative; --mx: -999px; --my: -999px; --spot: 255, 255, 255; }
+  .fx-spot--light { --spot: 11, 11, 11; }
+  .fx-spot::before, .fx-spot::after { content: ""; position: absolute; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .35s ease; }
+  .fx-spot::before { inset: -1px; padding: 1.5px; background: radial-gradient(240px circle at var(--mx) var(--my), rgba(var(--spot), .85), transparent 70%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; }
+  .fx-spot::after { inset: 0; background: radial-gradient(280px circle at var(--mx) var(--my), rgba(var(--spot), .07), transparent 70%); }
+  .fx-spot:hover::before, .fx-spot:hover::after { opacity: 1; }
+}
+/* Border beam: dois cometas (branco e verde da marca) percorrem o contorno de cartões escuros. */
+@property --bb-a { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@keyframes bb-spin { to { --bb-a: 360deg; } }
+.fx-beam { position: relative; isolation: isolate; }
+.fx-beam::before { content: ""; position: absolute; inset: -1px; padding: 2px; border-radius: inherit; pointer-events: none; z-index: 1;
+  background: conic-gradient(from var(--bb-a), transparent 0deg, transparent 14deg, rgba(255,255,255,.14) 62deg, #FFFFFF 114deg, transparent 120deg, transparent 194deg, rgba(74,222,128,.16) 242deg, #4ADE80 294deg, transparent 300deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+  animation: bb-spin 8s linear infinite; }
+.fx-beam:hover::before, .fx-beam:focus-within::before { animation-duration: 3s; }
+@media (prefers-reduced-motion: reduce) { .fx-beam::before { animation: none; --bb-a: 40deg; } }
+@media (forced-colors: active) { .fx-beam::before, .fx-spot::before, .fx-spot::after { display: none; } }
