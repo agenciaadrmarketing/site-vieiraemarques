@@ -205,7 +205,7 @@ const sede = SITE.units[0];
 export const STRUCTURE = [
   { image: "recepcao", title: "Recepção em Boituva/SP", caption: `${sede.street} — ${sede.district}`, alt: "Recepção do escritório Vieira & Marques, com o logotipo na parede", wide: true },
   { image: "equipe", title: "A equipe", caption: "Profissionais que acompanham cada caso", alt: "Equipe da Vieira & Marques reunida na sede, em Boituva", position: "50% 35%" },
-  { image: "sala-atendimento", title: "Sala de atendimento", caption: "Atendimento presencial ou online", alt: "Poltrona, planta e mesa de vidro no escritório, em Boituva" },
+  { image: "sala-atendimento", title: "Sala de atendimento", caption: "Atendimento presencial ou online", alt: "Poltrona de couro, planta e porta-retrato no escritório, em Boituva" },
   { image: "atendimento-mesa", title: "Como trabalhamos", caption: "Cada caso analisado a partir dos documentos", alt: "Advogada à mesa de trabalho, na sede do escritório", wide: true, position: "50% 40%" },
 ];
 
