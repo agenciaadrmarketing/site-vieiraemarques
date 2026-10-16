@@ -481,6 +481,7 @@ export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação
     ${lpHead({ eyebrow, title, lead, id: `${id}-titulo` })}
     <ul class="lp-areas__grid" data-reveal>
       ${join(practiceAreas.filter((a) => a.id !== currentId), (a) => `<li class="lp-areas__card">
+        <span class="lp-areas__glow" aria-hidden="true"><i></i></span>
         <div class="lp-areas__top"><span class="lp-areas__icon">${(icon[AREA_ICON[a.id]] ?? icon.doc)(22)}</span><span class="lp-areas__num">${a.number}</span></div>
         <h3 class="lp-areas__title"><a href="${areaUrl(a)}">${esc(a.title)}</a></h3>
         <p class="lp-areas__text">${esc(a.summary)}</p>
