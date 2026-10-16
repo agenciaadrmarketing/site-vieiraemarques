@@ -2040,3 +2040,10 @@ a.g-review__name:hover { text-decoration: underline; }
 .lp-areas__card.is-tilt .lp-areas__glow { opacity: 1; }
 .lp-areas__card > :not(.lp-areas__glow) { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { .lp-areas__card { transition: none; } }
+
+/* Lista de verificação das landing pages (perfil atendido) */
+.lp-check__list { list-style: none; display: grid; gap: 12px; margin-top: clamp(24px, 4vw, 40px); }
+.lp-check__list li { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border: 1px solid var(--c-line-light); border-radius: 14px; background: var(--c-paper); font-size: 16.5px; color: var(--c-ink); }
+.lp-check__tick { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--c-ink); color: #FFFFFF; }
+.lp-check__note { margin-top: 22px; font-size: 14.5px; line-height: 1.65; color: var(--c-text-dark-2); text-align: center; }
+.lp-check__cta { display: flex; justify-content: center; margin-top: 26px; }
