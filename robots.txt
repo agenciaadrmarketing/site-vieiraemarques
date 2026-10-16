@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /src/
 Disallow: /design/
+Disallow: /api/
 
 Sitemap: https://vieiraemarquesadvogados.com/sitemap.xml
