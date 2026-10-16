@@ -155,6 +155,27 @@
     });
   }
 
+  /* ---------- Efeitos em cartões: spotlight (segue o cursor) e border beam ---------- */
+  function initCardFx() {
+    document.querySelectorAll(".lp-card:not(.lp-card--cta), .article-card, .adv-area, .adv-other").forEach(function (el) { el.classList.add("fx-spot", "fx-spot--light"); });
+    document.querySelectorAll(".hub-guide").forEach(function (el) { el.classList.add("fx-spot"); });
+    document.querySelectorAll(".lp-card--cta, .wa-panel, .article-feature").forEach(function (el) { el.classList.add("fx-beam"); });
+    if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    var raf = 0, last = null;
+    document.addEventListener("pointermove", function (e) {
+      var el = e.target.closest && e.target.closest(".fx-spot");
+      if (!el) return;
+      last = { el: el, x: e.clientX, y: e.clientY };
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = 0;
+        var r = last.el.getBoundingClientRect();
+        last.el.style.setProperty("--mx", (last.x - r.left).toFixed(1) + "px");
+        last.el.style.setProperty("--my", (last.y - r.top).toFixed(1) + "px");
+      });
+    }, { passive: true });
+  }
+
   /* ---------- Menu mobile ---------- */
   function initMenu() {
     var toggle = document.querySelector("[data-menu-toggle]");
@@ -1022,6 +1043,7 @@
   initLoader();
   initPrefetch();
   initVisitMap();
+  initCardFx();
   initOffscreenPause();
   initSmoothScroll();
   initMenu();
