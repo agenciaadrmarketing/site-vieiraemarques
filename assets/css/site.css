@@ -1040,6 +1040,9 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
   /* Cartões com rolagem lateral */
   .team-panels { overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 6px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); scrollbar-width: none; }
   .team-panels::-webkit-scrollbar { display: none; }
+  /* Encaixe só depois do primeiro toque: o reencaixe automático durante a carga rolava o carrossel
+     e o Chrome encerrava a medição do LCP (PageSpeed: NO_LCP). site.js adiciona .is-snap. */
+  .team-panels:not(.is-snap) { scroll-snap-type: none; }
   .team-panel { flex: 0 0 min(80%, 320px); scroll-snap-align: start; background: var(--c-paper); color: var(--c-ink); border: 1px solid var(--c-line-light); }
   .team-panel__photo { aspect-ratio: 4 / 4.2; }
   .team-panel__vertical { display: none; }
@@ -2047,3 +2050,8 @@ a.g-review__name:hover { text-decoration: underline; }
 .lp-check__tick { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--c-ink); color: #FFFFFF; }
 .lp-check__note { margin-top: 22px; font-size: 14.5px; line-height: 1.65; color: var(--c-text-dark-2); text-align: center; }
 .lp-check__cta { display: flex; justify-content: center; margin-top: 26px; }
+
+/* O primeiro cartão começa exatamente na posição de encaixe: sem isso o navegador rolava o carrossel
+   2 px ao montar a página, e o Chrome encerrava a medição do LCP nessa rolagem (PageSpeed: NO_LCP). */
+.g-reviews__track { scroll-padding-inline: 2px; }
+.g-reviews__track:not(.is-snap) { scroll-snap-type: none; }

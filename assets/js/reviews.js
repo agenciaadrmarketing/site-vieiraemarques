@@ -23,7 +23,9 @@
   function perView() { return Math.max(1, Math.round(track.clientWidth / step())); }
   function pages() { return Math.max(1, cards().length - perView() + 1); }
   function current() { return Math.min(pages() - 1, Math.round(track.scrollLeft / step())); }
-  function go(i) { track.scrollTo({ left: i * step() }); }
+  function snapOn() { track.classList.add("is-snap"); }
+  ["pointerdown", "touchstart", "wheel", "keydown"].forEach(function (ev) { track.addEventListener(ev, snapOn, { once: true, passive: true }); });
+  function go(i) { snapOn(); track.scrollTo({ left: i * step() }); }
   function mark() {
     var a = current();
     if (pos) pos.textContent = (a + 1) + " / " + pages();

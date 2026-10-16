@@ -981,7 +981,10 @@
     var dots = [].slice.call(controls.querySelectorAll("[data-team-dot]"));
     var current = 0;
     function isCarousel() { return window.matchMedia("(max-width: 899px)").matches; }
+    function snapOn() { group.classList.add("is-snap"); }
+    ["pointerdown", "touchstart", "wheel", "keydown"].forEach(function (ev) { group.addEventListener(ev, snapOn, { once: true, passive: true }); });
     function go(i) {
+      snapOn();
       i = Math.max(0, Math.min(panels.length - 1, i));
       var pad = parseFloat(getComputedStyle(group).scrollPaddingLeft) || 0;
       group.scrollTo({ left: panels[i].offsetLeft - group.offsetLeft - pad, behavior: reduceMotion ? "auto" : "smooth" });
