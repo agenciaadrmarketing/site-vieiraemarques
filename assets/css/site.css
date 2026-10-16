@@ -1064,6 +1064,7 @@ textarea.field__control { min-height: 140px; resize: vertical; line-height: 1.6;
   /* Segurança: se o JS falhar, some sozinha. O site.js cancela isto ao assumir o controle. */
   animation: vm-loader-out .4s ease 2.5s forwards;
 }
+.no-intro .vm-loader { display: none; }
 .vm-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 /* Quadrados concêntricos: cada um pulsa com atraso crescente; só transform anima (GPU), sem repintar sombras. */
 .vm-ripple { --size: min(56vw, 232px); --dur: 2s; position: relative; width: var(--size); aspect-ratio: 1; }
@@ -1771,3 +1772,15 @@ a.g-review__name:hover { text-decoration: underline; }
 /* Endereços longos (e-mail) não estouram a largura em telas estreitas */
 .contact-item > div { min-width: 0; }
 .contact-item__value a { overflow-wrap: anywhere; }
+
+/* Animações contínuas pausam nas seções fora da tela */
+.is-offscreen, .is-offscreen *, .is-offscreen *::before, .is-offscreen *::after { animation-play-state: paused !important; }
+/* Botão do cabeçalho: o brilho em volta só aparece ao passar o mouse (sempre visível = repintura constante) */
+.site-header .btn-wa:not(:hover):not(:focus-visible) { animation: none; }
+.site-header .btn-wa:not(:hover):not(:focus-visible)::after { animation: none; }
+
+/* Troca de página com transição suave (Chrome/Edge/Safari recentes; os demais navegam direto) */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .28s; animation-timing-function: cubic-bezier(.22,.61,.36,1); }
+}
