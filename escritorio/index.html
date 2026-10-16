@@ -28,10 +28,10 @@
 <link rel="icon" type="image/png" href="/assets/icons/favicon-16.png" sizes="16x16">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<script src="/assets/js/gate.js?v=ecad09d1fe"></script>
+<script src="/assets/js/gate.js?v=4f29ea425b"></script>
 <link rel="preload" href="/assets/fonts/lexend-deca-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/assets/img/equipe-de-advogados-vieira-marques-boituva-800.webp" imagesrcset="/assets/img/equipe-de-advogados-vieira-marques-boituva-480.webp 480w, /assets/img/equipe-de-advogados-vieira-marques-boituva-800.webp 800w, /assets/img/equipe-de-advogados-vieira-marques-boituva-1228.webp 1228w" imagesizes="100vw" fetchpriority="high">
-<link rel="stylesheet" href="/assets/css/site.css?v=ecad09d1fe">
+<link rel="stylesheet" href="/assets/css/site.css?v=4f29ea425b">
 <noscript><style>.vm-loader{display:none}</style></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LegalService","Organization"],"@id":"https://vieiraemarquesadvogados.com/#org","name":"Vieira & Marques Sociedade de Advogados","url":"https://vieiraemarquesadvogados.com/","logo":"https://vieiraemarquesadvogados.com/assets/img/logo-vieira-marques-advogados-preto-603.webp","image":"https://vieiraemarquesadvogados.com/assets/img/vieira-marques-advogados-boituva-sp.jpg","telephone":"+551533470189","email":"vieiraemarques.advogados@gmail.com","taxID":"58.433.320/0001-15","address":{"@type":"PostalAddress","streetAddress":"Rua Benedita Sanson Labronici, 180","addressLocality":"Boituva","addressRegion":"SP","postalCode":"18556-048","addressCountry":"BR"},"geo":{"@type":"GeoCoordinates","latitude":-23.2886185,"longitude":-47.6805114},"hasMap":"https://www.google.com/maps?cid=14980209794321835232","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},"areaServed":["Boituva","Sorocaba","São Paulo","Brasil"],"knowsAbout":["Direito de Família","Direito Sucessório e Herança","Direito Trabalhista","Direito Criminal","Direito Médico e da Saúde","Direito Bancário","Direito Imobiliário","Direito Previdenciário"],"employee":[{"@id":"https://vieiraemarquesadvogados.com/advogados/oscar-moreira-vieira/#pessoa"},{"@id":"https://vieiraemarquesadvogados.com/advogados/jislana-marques/#pessoa"},{"@id":"https://vieiraemarquesadvogados.com/advogados/gledie-camargo/#pessoa"},{"@id":"https://vieiraemarquesadvogados.com/advogados/natalia-okumura/#pessoa"}],"sameAs":["https://www.instagram.com/vieiraemarques.advogados/","https://www.facebook.com/vieiraemarques.advogados"]},{"@type":"AboutPage","@id":"https://vieiraemarquesadvogados.com/escritorio/#pagina","name":"O Escritório","about":{"@id":"https://vieiraemarquesadvogados.com/#org"}},{"@type":"Person","@id":"https://vieiraemarquesadvogados.com/advogados/oscar-moreira-vieira/#pessoa","url":"https://vieiraemarquesadvogados.com/advogados/oscar-moreira-vieira/","name":"Oscar Moreira Vieira","jobTitle":"Sócio fundador","worksFor":{"@id":"https://vieiraemarquesadvogados.com/#org"}},{"@type":"Person","@id":"https://vieiraemarquesadvogados.com/advogados/jislana-marques/#pessoa","url":"https://vieiraemarquesadvogados.com/advogados/jislana-marques/","name":"Jislana Marques","jobTitle":"Sócia fundadora","worksFor":{"@id":"https://vieiraemarquesadvogados.com/#org"}},{"@type":"Person","name":"Leticia Pereira de Abreu","jobTitle":"Advogada","worksFor":{"@id":"https://vieiraemarquesadvogados.com/#org"}},{"@type":"Person","@id":"https://vieiraemarquesadvogados.com/advogados/gledie-camargo/#pessoa","url":"https://vieiraemarquesadvogados.com/advogados/gledie-camargo/","name":"Glediê Camargo","jobTitle":"Advogada","worksFor":{"@id":"https://vieiraemarquesadvogados.com/#org"}},{"@type":"Person","@id":"https://vieiraemarquesadvogados.com/advogados/natalia-okumura/#pessoa","url":"https://vieiraemarquesadvogados.com/advogados/natalia-okumura/","name":"Natália Okumura","jobTitle":"Advogada","worksFor":{"@id":"https://vieiraemarquesadvogados.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://vieiraemarquesadvogados.com/"},{"@type":"ListItem","position":2,"name":"O Escritório","item":"https://vieiraemarquesadvogados.com/escritorio/"}]}]}</script>
 </head>
@@ -387,25 +387,41 @@
 </section>
 
 <div class="g-reviews__sentinel" data-reviews-sentinel aria-hidden="true"></div>
-<section class="section section--white g-reviews" id="avaliacoes" aria-labelledby="avaliacoes-titulo" data-reviews data-endpoint="/api/google-reviews.php" data-state="idle" hidden>
+<section class="section section--white g-reviews" id="avaliacoes" aria-labelledby="avaliacoes-titulo" data-reviews data-endpoint="/api/google-reviews.php" data-state="static">
   <div class="container">
     <div class="g-reviews__head">
       <div class="stack-sm">
         <p class="eyebrow">Avaliações</p>
         <h2 class="h-section" id="avaliacoes-titulo">O que dizem sobre <span class="grad">nosso atendimento.</span></h2>
-        <p class="g-reviews__summary" data-reviews-summary hidden><span class="g-reviews__stars" data-reviews-stars aria-hidden="true"></span><strong data-reviews-rating></strong><span data-reviews-count></span></p>
-        <p class="g-reviews__fallback lead" data-reviews-fallback hidden>Avaliações dos nossos clientes no Google.</p>
+        <p class="g-reviews__summary" data-reviews-summary><span class="g-reviews__stars" data-reviews-stars aria-hidden="true" hidden></span><strong data-reviews-rating hidden></strong><span data-reviews-count>180 avaliações no Google</span></p>
       </div>
-      <a class="btn btn--ghost" data-reviews-link href="https://www.google.com/maps?cid=14980209794321835232" target="_blank" rel="noopener noreferrer" hidden>Ver todas no Google <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      <a class="btn btn--ghost" data-reviews-link href="https://www.google.com/maps?cid=14980209794321835232" target="_blank" rel="noopener noreferrer">Ver todas no Google <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
     </div>
-    <div class="g-reviews__carousel" data-reviews-carousel hidden>
-      <div class="g-reviews__track" data-reviews-track tabindex="0" role="region" aria-label="Avaliações de clientes no Google" aria-roledescription="carrossel"></div>
-      <div class="g-reviews__controls">
+    <div class="g-reviews__carousel" data-reviews-carousel>
+      <div class="g-reviews__track" data-reviews-track tabindex="0" role="region" aria-label="Avaliações de clientes no Google" aria-roledescription="carrossel">
+        <article class="g-review">
+          <div class="g-review__top"><span class="g-review__src">Avaliação no Google</span></div>
+          <p class="g-review__text">Gostaria de agradecer pelo excelente trabalho e profissionalismo. Sua dedicação, competência e atenção fizeram toda a diferença.</p>
+          <button class="g-review__more" type="button" aria-expanded="false" hidden>Ler mais</button>
+          <div class="g-review__who"><span class="g-review__ini" aria-hidden="true">TP</span><span class="g-review__meta"><strong class="g-review__name">Thaís Pontes</strong></span></div>
+        </article><article class="g-review">
+          <div class="g-review__top"><span class="g-review__src">Avaliação no Google</span></div>
+          <p class="g-review__text">Atenderam ao meu caso com rapidez e muito atenciosos ao meu caso.</p>
+          <button class="g-review__more" type="button" aria-expanded="false" hidden>Ler mais</button>
+          <div class="g-review__who"><span class="g-review__ini" aria-hidden="true">AB</span><span class="g-review__meta"><strong class="g-review__name">Adalberto Borba</strong></span></div>
+        </article><article class="g-review">
+          <div class="g-review__top"><span class="g-review__src">Avaliação no Google</span></div>
+          <p class="g-review__text">Atendimento rápido e individualizado, com soluções adaptadas à minha necessidade. Recomendo o escritório.</p>
+          <button class="g-review__more" type="button" aria-expanded="false" hidden>Ler mais</button>
+          <div class="g-review__who"><span class="g-review__ini" aria-hidden="true">GM</span><span class="g-review__meta"><strong class="g-review__name">Gaaby Moreenah</strong></span></div>
+        </article>
+      </div>
+      <div class="g-reviews__controls" hidden>
         <button class="team-carousel__arrow" type="button" data-reviews-prev aria-label="Avaliações anteriores"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <button class="team-carousel__arrow" type="button" data-reviews-next aria-label="Próximas avaliações"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
-    <p class="g-reviews__note">Avaliações publicadas por clientes no Google, exibidas como recebidas. Ordem definida pelo Google.</p>
+    <p class="g-reviews__note">Avaliações publicadas por clientes no Google. O total informado é do Perfil da Empresa.</p>
   </div>
 </section>
 
@@ -461,6 +477,7 @@
         <address class="visit__address">Rua Benedita Sanson Labronici, 180<br>Chácara Labronici — Boituva/SP<br>CEP 18556-048</address>
         <p class="muted">Segunda a sexta, das 8h às 18h</p>
         <p class="muted">Atendimento presencial também em Sorocaba, com horário combinado. Para as demais cidades, reuniões por vídeo.</p>
+        <p class="visit__rating"><a class="text-link" href="https://www.google.com/maps?cid=14980209794321835232" target="_blank" rel="noopener noreferrer" data-track="google_review_click">180 avaliações no Google</a></p>
         <div class="btn-row">
           <a class="btn" href="https://www.google.com/maps?cid=14980209794321835232" target="_blank" rel="noopener noreferrer">Abrir no Google Maps <span class="btn__arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
           <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=-23.2886185,-47.6805114" target="_blank" rel="noopener noreferrer" data-track="map_route_click">Traçar rota</a>
@@ -536,7 +553,7 @@
   <a class="btn-wa" href="https://wa.me/551533470189?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Vieira%20%26%20Marques%2C%20conheci%20o%20escrit%C3%B3rio%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" data-cta="flutuante"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 00-8.5 15l-1.4 5 5.1-1.3A9.9 9.9 0 1012.04 2zm0 18.1a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1114.4-4.6 8.2 8.2 0 01-7.5 8.4zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 000-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Falar pelo WhatsApp</span></a>
 </div>
 
-<script src="/assets/js/site.js?v=ecad09d1fe" data-lenis="/assets/js/vendor/lenis.min.js?v=ecad09d1fe" defer></script>
-<script src="/assets/js/reviews.js?v=ecad09d1fe" defer></script>
+<script src="/assets/js/site.js?v=4f29ea425b" data-lenis="/assets/js/vendor/lenis.min.js?v=4f29ea425b" defer></script>
+<script src="/assets/js/reviews.js?v=4f29ea425b" defer></script>
 </body>
 </html>
