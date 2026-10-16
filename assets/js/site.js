@@ -73,6 +73,27 @@
     document.addEventListener("touchstart", hint, { passive: true });
   }
 
+  /* ---------- Cartões das áreas: inclinação 3D e luz que segue o mouse ---------- */
+  function initAreaTilt() {
+    if (reduceMotion || !window.matchMedia || !window.matchMedia("(pointer: fine)").matches) return;
+    var LIMIT = 9, SCALE = 1.03;
+    document.querySelectorAll(".lp-areas__card").forEach(function (el) {
+      var glow = el.querySelector(".lp-areas__glow"), spot = glow && glow.firstElementChild, raf = 0, ev;
+      function apply() {
+        raf = 0;
+        var r = el.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width, py = (ev.clientY - r.top) / r.height;
+        el.style.transform = "perspective(1200px) rotateX(" + ((py - 0.5) * LIMIT * -2).toFixed(2) + "deg) rotateY(" + ((px - 0.5) * LIMIT * 2).toFixed(2) + "deg) scale3d(" + SCALE + "," + SCALE + "," + SCALE + ")";
+        if (spot) { spot.style.left = (px * 100).toFixed(1) + "%"; spot.style.top = (py * 100).toFixed(1) + "%"; }
+      }
+      el.addEventListener("pointerenter", function () { el.classList.add("is-tilt"); });
+      el.addEventListener("pointermove", function (e) { ev = e; if (!raf) raf = requestAnimationFrame(apply); }, { passive: true });
+      el.addEventListener("pointerleave", function () {
+        el.classList.remove("is-tilt");
+        el.style.transform = "";
+      });
+    });
+  }
+
   /* ---------- Onda ao clicar nos botões (efeito metálico) ---------- */
   function initButtonRipple() {
     if (reduceMotion) return;
@@ -1033,6 +1054,6 @@
   initReveal();
   initTeamPanels();
   // Uma tarefa ociosa por inicializador: nenhuma tarefa longa segura a thread principal.
-  [initButtonRipple, initFloat, initClickTracking, initPrefetch, initVisitMap, initCardFx, initOffscreenPause, initConsent, initSignals, initLightbox,
+  [initButtonRipple, initAreaTilt, initFloat, initClickTracking, initPrefetch, initVisitMap, initCardFx, initOffscreenPause, initConsent, initSignals, initLightbox,
     initMap, initHub, initFilters, initLeadForm, initToc, initStickyCta, initTocSpy, initFooter].forEach(function (fn) { idle(fn); });
 })();
