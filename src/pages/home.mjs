@@ -20,7 +20,7 @@ export default function home() {
   const body = `
 <section class="hero on-dark" aria-labelledby="hero-titulo">
   <div class="hero__frame">
-    <div class="hero__media">${img("hero-home", { alt: "Mesa de trabalho do escritório Vieira & Marques, em Boituva - SP", sizes: HERO_SIZES, priority: true })}</div>
+    <div class="hero__media">${img("hero-home", { alt: "Mesa de trabalho com notebook exibindo a marca Vieira & Marques, no escritório em Boituva - SP", sizes: HERO_SIZES, priority: true })}</div>
     <p class="hero__badge">Sociedade de Advogados · OAB/SP</p>
     <div class="hero__inner">
       <h1 class="hero__title" id="hero-titulo">

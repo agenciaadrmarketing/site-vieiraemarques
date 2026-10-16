@@ -68,7 +68,7 @@ SOURCES = {
     "jislana-marques-fundo": (f"{SRC}/jislana-marques-fundo.webp", [768, 1280, 1672], "jislana-marques-advogada-estudio-v2"),
     "natalia-okumura-fundo": (f"{SRC}/natalia-okumura-fundo.webp", [768, 1280, 1536], "natalia-okumura-advogada-escritorio-v2"),
     "gledie-camargo-fundo": (f"{SRC}/gledie-camargo-fundo.webp", [768, 1280, 1536], "gledie-camargo-advogada-escritorio-v2"),
-    "hero-home": (f"{SRC}/estacao-de-trabalho-escritorio-vieira-marques.webp", [800, 1280, 1672], "escritorio-vieira-marques-advogados-mesa-de-trabalho-hero"),
+    "hero-home": (f"{SRC}/hero-home-notebook-vieira-marques.webp", [800, 1280, 1672, 2000], "escritorio-vieira-marques-advogados-mesa-de-trabalho-hero"),
     "bandeira": (f"{SRC}/bandeira-do-brasil-fundo.webp", [960, 1600], "bandeira-do-brasil-fundo"),
 }
 
