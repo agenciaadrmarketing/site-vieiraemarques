@@ -144,9 +144,9 @@ ${lpReach()}`;
 
   return page({
     scripts: SITE_SCRIPTS,
-    title: "Vieira & Marques Advogados | Boituva, Sorocaba e todo o Brasil",
+    title: "Vieira & Marques Advogados | Boituva, Sorocaba e Online",
     description:
-      "Advogados em Boituva e Sorocaba (SP) e online em todo o Brasil: Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS.",
+      "Advogados em Boituva e Sorocaba (SP) e online em todo o Brasil: Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS. Fale com a equipe.",
     path: "/",
     preload: [imgPreload("fachada", HERO_SIZES)],
     schema: [

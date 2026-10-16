@@ -134,7 +134,7 @@ ${lpReach()}`;
 
   return page({
     scripts: SITE_SCRIPTS,
-    title: "O Escritório | Vieira & Marques",
+    title: "Escritório de Advocacia em Boituva/SP | Vieira & Marques",
     description:
       "História, forma de atuação e equipe da Vieira & Marques Sociedade de Advogados: presencial em Boituva e Sorocaba e online em todo o Brasil.",
     path: PATH,

@@ -20,7 +20,9 @@ import { HERO_MOBILE, lpHero, lpServices, lpSteps, lpProof, lpAbout, lpStructure
 
 const description = (area) => {
   const base = `${area.summary.replace(/\s+—\s+/, ": ")} Presencial em Boituva e Sorocaba; online em todo o Brasil.`;
-  return base.length <= 160 ? base : `${area.summary} Presencial em Boituva e Sorocaba e online.`;
+  const out = base.length <= 160 ? base : `${area.summary} Presencial em Boituva e Sorocaba e online.`;
+  const more = " Orientação inicial pela equipe de atendimento.";
+  return out.length < 135 && out.length + more.length <= 160 ? out + more : out;
 };
 
 const faqTitle = (area) => `Perguntas sobre <span class="grad">${esc(area.shortTitle === "Médico e Saúde" ? "Direito Médico e da Saúde" : area.title)}</span>`;

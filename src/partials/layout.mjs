@@ -67,7 +67,7 @@ function head({ title, description, path, ogType = "website", schema = [], crumb
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(url)}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0B0B0B">
 ${SITE.measurement.googleSiteVerification ? `<meta name="google-site-verification" content="${esc(SITE.measurement.googleSiteVerification)}">\n` : ""}
 <meta property="og:type" content="${ogType}">
@@ -81,6 +81,9 @@ ${SITE.measurement.googleSiteVerification ? `<meta name="google-site-verificatio
 <meta property="og:image:height" content="${images.og.h}">
 <meta property="og:image:alt" content="Fachada do escritório Vieira &amp; Marques em Boituva - SP">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${esc(abs(images.og.src))}">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/assets/icons/favicon-16.png" sizes="16x16">

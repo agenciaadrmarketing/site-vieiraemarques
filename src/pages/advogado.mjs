@@ -116,10 +116,10 @@ ${when(others.length, `<section class="section section--white" aria-labelledby="
   </div>
 </section>`)}`;
 
-  const desc = `${name}, ${title(p).toLowerCase()} da Vieira & Marques: atuação em ${areas.map((a) => a.shortTitle).join(" e ")}. Formação, áreas de atuação e contato com a equipe.`;
+  const desc = `${name}, ${title(p).toLowerCase()} da Vieira & Marques: atuação em ${areas.map((a) => a.title).join(" e ")}. Formação, áreas de atuação e contato com a equipe.`;
   return page({
     title: `${name} | ${title(p)} | Vieira & Marques`,
-    description: desc.length <= 160 ? desc : `${name}, ${title(p).toLowerCase()} da Vieira & Marques, em ${areas.map((a) => a.shortTitle).join(" e ")}. Formação e áreas de atuação.`,
+    description: desc.length <= 160 ? desc : `${name}, ${title(p).toLowerCase()} da Vieira & Marques, em ${areas.map((a) => a.title).join(" e ")}. Formação e áreas de atuação.`,
     path,
     crumbs,
     preload: [imgPreload(p.photo, "(min-width: 900px) 440px, 90vw")],

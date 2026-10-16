@@ -132,6 +132,12 @@ function whatsappSection(p) {
 </section>`;
 }
 
+// Título: assunto + local + marca, no máximo ~60 caracteres (cai para versões mais curtas se passar).
+const serviceTitle = (seoTitle) => {
+  const name = seoTitle.replace(/\s*\|\s*Vieira & Marques$/, "");
+  return [`${name} em Boituva/SP e online | Vieira & Marques`, `${name} em Boituva/SP | Vieira & Marques`, `${name} | Vieira & Marques`].find((t) => t.length <= 60) ?? `${name} | Vieira & Marques`;
+};
+
 export function renderService(p) {
   const crumbs = [
     { label: "Início", href: "/" },
@@ -156,7 +162,7 @@ ${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").re
 
   const url = SITE.origin + p.path;
   return page({
-    title: p.seo.title,
+    title: serviceTitle(p.seo.title),
     description: p.seo.description,
     path: p.path,
     crumbs,

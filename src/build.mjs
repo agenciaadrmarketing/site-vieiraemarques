@@ -32,7 +32,7 @@ function notFound() {
     <div class="btn-row"><a class="btn btn--light" href="/">Página inicial</a><a class="btn btn--ghost-light" href="/areas-de-atuacao/">Áreas de atuação</a><a class="btn btn--ghost-light" href="/contato/">Contato</a></div>
   </div></div>
 </div></section>`,
-  }).replace('<meta name="robots" content="index, follow">', '<meta name="robots" content="noindex">');
+  }).replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex">');
 }
 
 function sitemap() {
