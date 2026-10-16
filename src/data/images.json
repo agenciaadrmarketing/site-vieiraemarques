@@ -1053,18 +1053,18 @@
     ]
   },
   "bandeira": {
-    "width": 1920,
-    "height": 900,
+    "width": 1672,
+    "height": 941,
     "variants": [
       {
-        "src": "/assets/img/bandeira-do-brasil-fundo-960.webp",
+        "src": "/assets/img/bandeira-do-brasil-fundo-v2-960.webp",
         "w": 960,
-        "h": 450
+        "h": 540
       },
       {
-        "src": "/assets/img/bandeira-do-brasil-fundo-1600.webp",
-        "w": 1600,
-        "h": 750
+        "src": "/assets/img/bandeira-do-brasil-fundo-v2-1672.webp",
+        "w": 1672,
+        "h": 941
       }
     ]
   },
