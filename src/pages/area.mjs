@@ -67,8 +67,9 @@ ${lpHero({
   image: lp.image,
   alt: lp.alt,
   position: lp.position,
-  imageMobile: lp.imageMobile,
+  imageMobile: lp.photo ? undefined : lp.imageMobile,
   positionMobile: lp.positionMobile,
+  photo: Boolean(lp.photo),
 })}
 
 ${lpSignals({ title: lp.signalsTitle, items: lp.signals })}
@@ -117,10 +118,12 @@ ${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandIma
     description: description(area),
     path,
     crumbs,
-    preload: [
-      { ...imgPreload(lp.image, "100vw"), media: "(min-width: 721px)" },
-      { ...imgPreload(lp.imageMobile, "100vw"), media: HERO_MOBILE },
-    ],
+    preload: lp.photo
+      ? [imgPreload(lp.image, "100vw")]
+      : [
+          { ...imgPreload(lp.image, "100vw"), media: "(min-width: 721px)" },
+          { ...imgPreload(lp.imageMobile, "100vw"), media: HERO_MOBILE },
+        ],
     whatsappMessage: msg,
     floatPhrases: [...lp.phrases, ...(AREA_EXTRA_PHRASES[area.id] ?? [])],
     schema: [

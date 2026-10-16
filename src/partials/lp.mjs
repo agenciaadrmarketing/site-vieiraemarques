@@ -39,10 +39,10 @@ const dots = (items) =>
 // aside: conteúdo opcional à direita (ex.: resumo e índice das páginas de serviço).
 // imageMobile: versão vertical para telas estreitas (enquadramento próprio, via <picture>).
 export const HERO_MOBILE = "(max-width: 720px)";
-export function lpHero({ crumbs, badge, title, text, message, cta = "Falar no WhatsApp", secondary, note = [], image, alt, position = "60% 40%", imageMobile, positionMobile = "50% 50%", aside }) {
+export function lpHero({ crumbs, badge, title, text, message, cta = "Falar no WhatsApp", secondary, note = [], image, alt, position = "60% 40%", imageMobile, positionMobile = "50% 50%", aside, photo = false }) {
   const mobile = imageMobile ? images[imageMobile] : null;
   const bg = img(image, { alt, sizes: "100vw", priority: true, className: "lp-hero__bg", style: `object-position:${position};--pos-m:${positionMobile}` });
-  return `<section class="lp-hero on-dark" aria-labelledby="page-titulo">
+  return `<section class="lp-hero${photo ? " lp-hero--photo" : ""} on-dark" aria-labelledby="page-titulo">
   <div class="lp-hero__media" aria-hidden="true">${mobile
     ? `<picture><source media="${HERO_MOBILE}" srcset="${mobile.variants.map((v) => `${v.src} ${v.w}w`).join(", ")}" sizes="100vw" width="${mobile.variants.at(-1).w}" height="${mobile.variants.at(-1).h}">${bg}</picture>`
     : bg}</div>

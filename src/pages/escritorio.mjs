@@ -46,7 +46,9 @@ ${lpHero({
   note: ["Atendimento sigiloso", "Presencial em Boituva e Sorocaba", "Online em São Paulo e todo o Brasil"],
   image: "equipe",
   alt: "Equipe de advogados da Vieira & Marques no escritório de Boituva",
-  position: "50% 30%",
+  position: "40% 35%",
+  positionMobile: "48% 50%",
+  photo: true,
 })}
 
 <section class="section section--white" aria-labelledby="historia-titulo">

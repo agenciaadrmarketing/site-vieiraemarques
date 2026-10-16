@@ -37,9 +37,11 @@ ${lpHero({
   cta: "Falar com a equipe",
   secondary: { href: "#guias", label: "Ver guias e artigos" },
   note: ["Atendimento sigiloso", "Presencial em Boituva e Sorocaba", "Online em São Paulo e todo o Brasil"],
-  image: "mesa-trabalho",
-  alt: "Mesa de trabalho do escritório Vieira & Marques",
-  position: "55% 50%",
+  image: "hero-conhecimento",
+  alt: "Advogada da Vieira & Marques à mesa de trabalho, no escritório em Boituva",
+  position: "50% 40%",
+  positionMobile: "56% 50%",
+  photo: true,
 })}
 
 <section class="section section--white" aria-labelledby="conteudos-titulo" data-filter-scope>
@@ -125,7 +127,7 @@ ${lpCta({ title: `Leu sobre o seu caso e ficou com dúvida? <span class="grad">F
     description:
       "Artigos e perguntas frequentes sobre Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário, pela equipe da Vieira & Marques.",
     path: PATH,
-    preload: [imgPreload("mesa-trabalho", "100vw")],
+    preload: [imgPreload("hero-conhecimento", "100vw")],
     crumbs: CRUMBS,
     whatsappMessage: "Olá! Vim pela Base de Conhecimento do site da Vieira & Marques e gostaria de orientação sobre o meu caso.",
     schema: [

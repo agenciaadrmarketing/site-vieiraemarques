@@ -73,9 +73,11 @@ ${lpHero({
   message: waMessage(),
   cta: "Falar com a equipe",
   note: ["Atendimento sigiloso", "Presencial em Boituva e Sorocaba", "Online em São Paulo e todo o Brasil"],
-  image: "escritorio-interno",
-  alt: "Ambiente interno do escritório Vieira & Marques em Boituva",
-  position: "60% 55%",
+  image: "equipe-reuniao",
+  alt: "Equipe da Vieira & Marques reunida na sala de reunião do escritório",
+  position: "68% 45%",
+  positionMobile: "46% 50%",
+  photo: true,
 })}
 
 <section class="section section--white" aria-labelledby="diretorio-titulo">
@@ -109,7 +111,7 @@ ${lpCta({ title: `Não sabe em qual área seu caso se encaixa? <span class="grad
     description:
       "Família, Sucessório, Trabalhista, Criminal, Médico e Saúde, Bancário, Imobiliário e Previdenciário: as áreas e os serviços da Vieira & Marques Advogados.",
     path: PATH,
-    preload: [imgPreload("escritorio-interno", "100vw")],
+    preload: [imgPreload("equipe-reuniao", "100vw")],
     crumbs: CRUMBS,
     schema: [
       {

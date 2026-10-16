@@ -1063,6 +1063,90 @@
       }
     ]
   },
+  "hero-conhecimento": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-1280.webp",
+        "w": 1280,
+        "h": 720
+      },
+      {
+        "src": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-1672.webp",
+        "w": 1672,
+        "h": 941
+      }
+    ]
+  },
+  "hero-area-familia": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "src": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-800.webp",
+        "w": 800,
+        "h": 450
+      },
+      {
+        "src": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-1280.webp",
+        "w": 1280,
+        "h": 720
+      },
+      {
+        "src": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-1672.webp",
+        "w": 1672,
+        "h": 941
+      }
+    ]
+  },
+  "hero-area-criminal": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-800.webp",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-1280.webp",
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "src": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-1536.webp",
+        "w": 1536,
+        "h": 1024
+      }
+    ]
+  },
+  "hero-area-saude": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-800.webp",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-1280.webp",
+        "w": 1280,
+        "h": 853
+      },
+      {
+        "src": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-1536.webp",
+        "w": 1536,
+        "h": 1024
+      }
+    ]
+  },
   "bandeira": {
     "width": 1672,
     "height": 941,

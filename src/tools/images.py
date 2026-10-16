@@ -70,6 +70,10 @@ SOURCES = {
     "gledie-camargo-fundo": (f"{SRC}/gledie-camargo-fundo.webp", [768, 1280, 1536], "gledie-camargo-advogada-escritorio-v2"),
     "hero-home": (f"{SRC}/hero-home-notebook-vieira-marques.webp", [800, 1280, 1672, 2000], "escritorio-vieira-marques-advogados-mesa-de-trabalho-hero"),
     "atendente": (f"{SRC}/atendente-avatar.webp", [96, 170], "atendimento-vieira-marques-whatsapp"),
+    "hero-conhecimento": (f"{SRC}/hero-conhecimento-advogada-escritorio.webp", [800, 1280, 1672], "hero-conhecimento-advogados-vieira-marques-v1"),
+    "hero-area-familia": (f"{SRC}/hero-area-familia-advogado-escritorio.webp", [800, 1280, 1672], "hero-area-familia-advogados-vieira-marques-v1"),
+    "hero-area-criminal": (f"{SRC}/hero-area-criminal-advogada-escritorio.webp", [800, 1280, 1672], "hero-area-criminal-advogados-vieira-marques-v1"),
+    "hero-area-saude": (f"{SRC}/hero-area-saude-advogada-escritorio.webp", [800, 1280, 1672], "hero-area-saude-advogados-vieira-marques-v1"),
     "bandeira": (f"{SRC}/bandeira-do-brasil-fundo.webp", [960, 1672], "bandeira-do-brasil-fundo-v2"),
 }
 
