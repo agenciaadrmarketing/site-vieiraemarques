@@ -60,11 +60,7 @@ function areaBlock(area) {
       </div>
     </div>
   </div>
-</section>
-
-${lpCta({ title: `Não sabe em qual área seu caso se encaixa? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. A equipe de atendimento faz a triagem e encaminha o caso à área adequada.", message: waMessage() })}
-
-${lpReach()}`;
+</section>`;
 }
 
 export default function areas() {
@@ -95,7 +91,11 @@ ${lpHero({
       ${join(practiceAreas, areaBlock)}
     </div>
   </div>
-</div>`;
+</div>
+
+${lpCta({ title: `Não sabe em qual área seu caso se encaixa? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. A equipe de atendimento faz a triagem e encaminha o caso à área adequada.", message: waMessage() })}
+
+${lpReach()}`;
 
   return page({
     title: "Áreas de Atuação | Vieira & Marques",

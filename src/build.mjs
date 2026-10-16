@@ -52,7 +52,7 @@ const ht = readFileSync(htaccess, "utf8");
 const csp = ht.replace(/Header always set Content-Security-Policy "[^"]*"/, `Header always set Content-Security-Policy "${cspHeader()}"`);
 if (csp !== ht) writeFileSync(htaccess, csp);
 write(join(ROOT, "sitemap.xml"), sitemap());
-write(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /design/\n\nSitemap: ${SITE.origin}/sitemap.xml\n`);
+write(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /design/\nDisallow: /api/\n\nSitemap: ${SITE.origin}/sitemap.xml\n`);
 
 console.log(`Build: ${ROUTES.length} páginas + 404, sitemap.xml e robots.txt`);
 if (LEGAL_REVIEW.length) {

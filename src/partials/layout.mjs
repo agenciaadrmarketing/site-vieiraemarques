@@ -1,6 +1,7 @@
 import { esc, attrs, join, jsonLd, when } from "../lib/html.mjs";
 import { SITE, NAV, isPending, whatsappUrl, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
+import { teamWithProfile, profilePath } from "../data/team.mjs";
 import { LEGAL_PATHS } from "../data/legal.mjs";
 import { MENUS } from "../data/menu.mjs";
 import { img, logo } from "./media.mjs";
@@ -41,8 +42,12 @@ export const organizationSchema = () => {
       postalCode: sede.postalCode,
       addressCountry: "BR",
     },
+    geo: { "@type": "GeoCoordinates", latitude: sede.geo.latitude, longitude: sede.geo.longitude },
+    hasMap: sede.mapsUrl,
+    ...(isPending(SITE.hours) ? {} : { openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: SITE.hoursSpec.days, opens: SITE.hoursSpec.opens, closes: SITE.hoursSpec.closes } }),
     areaServed: ["Boituva", "Sorocaba", "São Paulo", "Brasil"],
     knowsAbout: practiceAreas.map((a) => a.title),
+    employee: teamWithProfile.map((p) => ({ "@id": `${SITE.origin}${profilePath(p)}#pessoa` })),
     sameAs: SITE.social.map((s) => s.url),
   };
 };

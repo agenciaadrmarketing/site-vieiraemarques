@@ -18,6 +18,7 @@ export const SITE = {
   email: "vieiraemarques.advogados@gmail.com",
   // Horário de atendimento confirmado pelo escritório (vale para a equipe comercial).
   hours: "Segunda a sexta, das 8h às 18h",
+  hoursSpec: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "18:00" },
 
   // Endereço físico confirmado: somente a sede em Boituva. Sorocaba é região atendida;
   // só publicar uma "Unidade Sorocaba" depois de o escritório confirmar rua, número,
@@ -32,8 +33,9 @@ export const SITE = {
       street: "Rua Benedita Sanson Labronici, 180",
       district: "Chácara Labronici",
       postalCode: "18556-048",
-      mapsUrl:
-        "https://www.google.com/maps/search/?api=1&query=Vieira+e+Marques+Sociedade+de+Advogados+Rua+Benedita+Sanson+Labronici+180+Boituva+SP",
+      // Ficha oficial no Google Maps (CID informado pelo escritório) e coordenadas da ficha.
+      mapsUrl: "https://www.google.com/maps?cid=14980209794321835232",
+      geo: { latitude: -23.2886185, longitude: -47.6805114 },
     },
   ],
 

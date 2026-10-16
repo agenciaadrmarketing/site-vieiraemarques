@@ -73,6 +73,27 @@
     });
   }
 
+  /* ---------- Pré-carregamento ao passar o mouse / tocar (navegação quase instantânea) ---------- */
+  // Só links internos de páginas HTML, uma vez por link, e nunca com "economia de dados" ligada.
+  function initPrefetch() {
+    var conn = navigator.connection || {};
+    if (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "")) return;
+    var done = {};
+    function hint(e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download")) return;
+      var url;
+      try { url = new URL(a.getAttribute("href"), location.href); } catch (err) { return; }
+      if (url.origin !== location.origin || url.pathname === location.pathname || /\.[a-z0-9]{2,4}$/i.test(url.pathname) || done[url.pathname]) return;
+      done[url.pathname] = 1;
+      var l = document.createElement("link");
+      l.rel = "prefetch"; l.href = url.pathname; l.as = "document";
+      document.head.appendChild(l);
+    }
+    document.addEventListener("pointerover", function (e) { if (e.pointerType === "mouse") hint(e); }, { passive: true });
+    document.addEventListener("touchstart", hint, { passive: true });
+  }
+
   /* ---------- Rolagem suave (Lenis) ---------- */
   // Só com mouse/trackpad: no toque a rolagem nativa já é suave. Carrega sob demanda.
   function initSmoothScroll() {
@@ -961,6 +982,7 @@
 
   if (document.body.hasAttribute("data-forms")) captureOrigin();
   initLoader();
+  initPrefetch();
   initSmoothScroll();
   initMenu();
   initNav();
