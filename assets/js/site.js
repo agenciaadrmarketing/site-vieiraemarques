@@ -313,7 +313,7 @@
       if (el.closest(".page-hero, .hero, .lp-hero, .site-footer")) return;
       el.setAttribute("data-reveal-stagger", "");
       if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
-      [].forEach.call(el.children, function (child, i) { child.style.setProperty("--i", Math.min(i, 9)); });
+      // o atraso de cada filho (--i) vem do CSS (:nth-child), sem escrever estilo item a item
     });
     document.querySelectorAll(MEDIA).forEach(function (el) {
       if (el.closest(".page-hero, .hero")) return;
@@ -335,16 +335,19 @@
       if (!el.hasAttribute("data-reveal-stagger")) return;
       setTimeout(function () { el.setAttribute("data-revealed", ""); }, ms);
     }
+    // Sem leituras de layout aqui: o observador informa o que já está na tela (ou acima dela, ao abrir por
+    // âncora) logo no primeiro quadro, e o que está abaixo entra ao rolar.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); settle(entry.target, 1700); io.unobserve(entry.target); }
+        var passed = entry.boundingClientRect.bottom < 0;
+        if (entry.isIntersecting || passed) {
+          entry.target.classList.add("is-visible");
+          settle(entry.target, passed ? 0 : 1700);
+          io.unobserve(entry.target);
+        }
       });
     }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
-    items.forEach(function (el) {
-      // Conteúdo acima da dobra ao abrir a página por âncora não deve ficar oculto.
-      if (el.getBoundingClientRect().bottom < window.innerHeight) { el.classList.add("is-visible"); settle(el, 0); }
-      else io.observe(el);
-    });
+    items.forEach(function (el) { io.observe(el); });
   }
 
   /* ---------- WhatsApp flutuante (botão + balão) ---------- */
@@ -1040,28 +1043,19 @@
   }
 
   if (document.body.hasAttribute("data-forms")) captureOrigin();
+  // Essenciais (menu, revelação, tela de abertura, painéis da equipe) rodam já; o restante, em ociosidade,
+  // para liberar a thread principal durante o carregamento (TBT/INP).
+  var idle = window.requestIdleCallback
+    ? function (fn) { window.requestIdleCallback(fn, { timeout: 700 }); }
+    : function (fn) { window.setTimeout(fn, 120); };
   initLoader();
-  initPrefetch();
-  initVisitMap();
-  initCardFx();
-  initOffscreenPause();
   initSmoothScroll();
   initMenu();
   initNav();
   initMobileSubmenus();
   initReveal();
-  initConsent();
-  initFloat();
-  initSignals();
-  initLightbox();
-  initMap();
-  initHub();
-  initFilters();
-  initLeadForm();
-  initToc();
-  initStickyCta();
-  initTocSpy();
-  initFooter();
   initTeamPanels();
-  initClickTracking();
+  // Uma tarefa ociosa por inicializador: nenhuma tarefa longa segura a thread principal.
+  [initFloat, initClickTracking, initPrefetch, initVisitMap, initCardFx, initOffscreenPause, initConsent, initSignals, initLightbox,
+    initMap, initHub, initFilters, initLeadForm, initToc, initStickyCta, initTocSpy, initFooter].forEach(function (fn) { idle(fn); });
 })();

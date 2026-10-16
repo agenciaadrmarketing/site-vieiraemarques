@@ -5,22 +5,27 @@ import { teamWithProfile, profilePath } from "../data/team.mjs";
 import { LEGAL_PATHS } from "../data/legal.mjs";
 import { MENUS } from "../data/menu.mjs";
 import { img, logo } from "./media.mjs";
+import { GATE_JS } from "../data/gate.mjs";
 import { icon } from "./icons.mjs";
 import { waButton } from "./components.mjs";
 import { DEFAULT_PHRASES } from "../data/area-lp.mjs";
 import images from "../data/images.json" with { type: "json" };
 
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 
 // Versão de cache = hash do conteúdo; muda sozinha quando CSS/JS mudam.
 const ROOT_URL = new URL("../../", import.meta.url);
 const ASSET_VERSION = createHash("sha256")
   .update(readFileSync(new URL("assets/css/site.css", ROOT_URL)))
   .update(readFileSync(new URL("assets/js/site.js", ROOT_URL)))
+  .update(readFileSync(new URL("assets/js/reviews.js", ROOT_URL)))
+  .update(existsSync(new URL("assets/js/site.min.js", ROOT_URL)) ? readFileSync(new URL("assets/js/site.min.js", ROOT_URL)) : "")
   .digest("hex")
   .slice(0, 10);
 const abs = (path) => SITE.origin + path;
+// Usa o .min.js (npm run minify) quando existir; senão, o arquivo legível.
+const jsFile = (name) => (existsSync(new URL(`assets/js/${name}.min.js`, ROOT_URL)) ? `${name}.min.js` : `${name}.js`);
 
 export const organizationSchema = () => {
   const sede = SITE.units[0];
@@ -89,7 +94,7 @@ ${SITE.measurement.googleSiteVerification ? `<meta name="google-site-verificatio
 <link rel="icon" type="image/png" href="/assets/icons/favicon-16.png" sizes="16x16">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<script src="/assets/js/gate.js?v=${ASSET_VERSION}"></script>
+<script>${GATE_JS}</script>
 <link rel="preload" href="/assets/fonts/lexend-deca-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${join(preload, (p) => `<link rel="preload" as="image"${attrs(p)}>\n`)}<link rel="stylesheet" href="/assets/css/site.css?v=${ASSET_VERSION}">
 <noscript><style>.vm-loader{display:none}</style></noscript>
@@ -339,8 +344,8 @@ ${mapSection()}
 ${footer(whatsappMessage)}
 ${floatingWhatsapp ? waFloat(whatsappMessage, floatPhrases) : ""}
 ${MEASURING ? consentBanner() : ""}
-<script src="/assets/js/site.js?v=${ASSET_VERSION}" data-lenis="/assets/js/vendor/lenis.min.js?v=${ASSET_VERSION}" defer></script>
-${join(scripts, (s) => `<script src="${s}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
+<script src="/assets/js/${jsFile("site")}?v=${ASSET_VERSION}" data-lenis="/assets/js/vendor/lenis.min.js?v=${ASSET_VERSION}" defer></script>
+${join(scripts, (s) => `<script src="${s.replace(/\/(\w+)\.js$/, (m, n) => `/${jsFile(n)}`)}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
 </html>
 `;
 }

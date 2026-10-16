@@ -1385,9 +1385,9 @@ html:not(.js) .nav__item--menu:hover > .nav__panel, html:not(.js) .nav__item--me
 .lp-hero__note { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 30px; font-size: 13.5px; font-weight: 300; color: #A3A3A3; }
 .lp-hero__note li { display: inline-flex; align-items: center; gap: 8px; }
 .lp-hero__note li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--c-whatsapp); }
-.lp-hero__aside { padding: 24px; border: 1px solid rgba(255,255,255,.14); border-radius: 14px; background: rgba(17,17,17,.78); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-.js .lp-hero__bg { animation: lp-zoom 2.2s cubic-bezier(.22,.7,.2,1) both; }
-.js .lp-hero__in > *, .js .lp-hero__aside { animation: lp-in .85s cubic-bezier(.22,.7,.2,1) both; }
+.lp-hero__aside { padding: 24px; border: 1px solid rgba(255,255,255,.14); border-radius: 14px; background: rgba(17,17,17,.9); }
+.js .lp-hero__bg { animation: lp-zoom 1.5s cubic-bezier(.22,.7,.2,1) both; }
+.js .lp-hero__in > *, .js .lp-hero__aside { animation: lp-in .7s cubic-bezier(.22,.7,.2,1) both; }
 .js .lp-hero__in > :nth-child(2) { animation-delay: .1s; }
 .js .lp-hero__in > :nth-child(3) { animation-delay: .2s; }
 .js .lp-hero__in > :nth-child(4) { animation-delay: .3s; }
@@ -1855,3 +1855,16 @@ a.g-review__name:hover { text-decoration: underline; }
 .section--white .contact-item__value, .section--white .contact-item .text-link { color: var(--c-ink); }
 .g-review__ini { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--c-ink); color: #FFFFFF; font-size: 13px; font-weight: 600; letter-spacing: .04em; }
 .g-reviews__carousel[hidden] { display: none; }
+
+
+/* Atraso em cascata da revelação (antes definido por JS) */
+[data-reveal-stagger] > :nth-child(1){ --i: 0; }
+[data-reveal-stagger] > :nth-child(2){ --i: 1; }
+[data-reveal-stagger] > :nth-child(3){ --i: 2; }
+[data-reveal-stagger] > :nth-child(4){ --i: 3; }
+[data-reveal-stagger] > :nth-child(5){ --i: 4; }
+[data-reveal-stagger] > :nth-child(6){ --i: 5; }
+[data-reveal-stagger] > :nth-child(7){ --i: 6; }
+[data-reveal-stagger] > :nth-child(8){ --i: 7; }
+[data-reveal-stagger] > :nth-child(9){ --i: 8; }
+[data-reveal-stagger] > :nth-child(n + 10) { --i: 9; }

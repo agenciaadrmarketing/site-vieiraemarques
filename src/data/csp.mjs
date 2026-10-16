@@ -1,11 +1,12 @@
 import { SITE } from "./site.mjs";
+import { GATE_HASH } from "./gate.mjs";
 
 // Content-Security-Policy do .htaccess, gerada no build a partir da configuração.
 // Base: nenhum script de terceiros. Medição ativa (SITE.measurement) libera só os domínios
 // necessários para o Google Analytics 4 e o Pixel da Meta.
 export function cspHeader() {
   const { ga4, metaPixel } = SITE.measurement;
-  const script = ["'self'"], img = ["'self'", "data:", "https://script.google.com", "https://script.googleusercontent.com"], connect = ["'self'", "https://script.google.com", "https://script.googleusercontent.com"];
+  const script = ["'self'", `'${GATE_HASH}'`], img = ["'self'", "data:", "https://script.google.com", "https://script.googleusercontent.com"], connect = ["'self'", "https://script.google.com", "https://script.googleusercontent.com"];
   // Fotos de perfil dos autores das avaliações do Google (carregadas pelo navegador).
   if (SITE.googleReviews) img.push("https://lh3.googleusercontent.com");
   if (ga4) {

@@ -1,5 +1,6 @@
 // Gera as páginas estáticas a partir de src/. Sem dependências: `node src/build.mjs`.
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SITE } from "./data/site.mjs";
@@ -8,6 +9,7 @@ import { ROUTES } from "./routes.mjs";
 import { LEGAL_REVIEW } from "./data/legal.mjs";
 import { cspHeader } from "./data/csp.mjs";
 import { LANDING_PAGES } from "./data/landing-pages.mjs";
+import { buildBundle, usedTokens } from "./tools/css-bundle.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -43,8 +45,23 @@ function sitemap() {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
 
-for (const route of ROUTES) write(outFile(route.path), route.render());
-write(join(ROOT, "404.html"), notFound());
+// Páginas geradas em memória; depois cada grupo recebe um CSS só com o que usa (src/tools/css-bundle.mjs).
+const rendered = ROUTES.map((r) => ({ file: outFile(r.path), path: r.path, html: r.render() }));
+rendered.push({ file: join(ROOT, "404.html"), path: "/404.html", html: notFound() });
+const groupOf = (p) =>
+  p === "/" ? "home" : p === "/404.html" ? "erro" : p === "/escritorio/" ? "escritorio" : p === "/areas-de-atuacao/" ? "hub" :
+  p === "/conhecimento/" ? "conhecimento" : p === "/contato/" ? "contato" : p.startsWith("/advogados/") ? "advogado" :
+  p.startsWith("/areas/") ? (p.split("/").filter(Boolean).length === 2 ? "area" : "servico") : "legal";
+const jsTokens = ["site.js", "reviews.js", "gate.js"].map((f) => readFileSync(join(ROOT, "assets/js", f), "utf8"));
+const groups = {};
+for (const p of rendered) (groups[groupOf(p.path)] ??= []).push(p);
+for (const [name, pages] of Object.entries(groups)) {
+  const size = buildBundle(join(ROOT, "assets/css/site.css"), join(ROOT, `assets/css/${name}.css`), usedTokens(pages.map((p) => p.html), jsTokens));
+  const v = createHash("sha256").update(readFileSync(join(ROOT, `assets/css/${name}.css`))).digest("hex").slice(0, 10); // versão = hash do próprio arquivo
+  for (const p of pages) p.html = p.html.replace(/href="\/assets\/css\/site\.css\?v=\w+/, `href="/assets/css/${name}.css?v=${v}`);
+  process.stdout.write(`css ${name}: ${(size / 1024).toFixed(1)} KB\n`);
+}
+for (const p of rendered) write(p.file, p.html);
 
 // CSP do .htaccess acompanha a configuração de medição (src/data/csp.mjs).
 const htaccess = join(ROOT, ".htaccess");
