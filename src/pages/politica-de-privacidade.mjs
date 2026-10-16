@@ -169,6 +169,9 @@ export default function politicaDePrivacidade() {
             "O site registra eventos de navegação — como cliques em botões — em uma variável interna da página, preparada para uma futura ferramenta de medição. Esses eventos não saem do seu navegador e não são enviados a nenhum serviço.",
             "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
           ) +
+          (SITE.mapEmbed
+            ? p("O mapa “Como chegar”, acima do rodapé, só é carregado se você clicar em “Carregar mapa interativo”. Nesse momento o Google Maps passa a fornecer o mapa e pode receber o seu endereço IP e usar cookies, conforme a política do Google. Sem o clique, nenhum serviço do Google é acionado por esse mapa.")
+            : "") +
           (SITE.googleReviews
             ? p("A seção de avaliações exibe comentários publicados por clientes no Google. Eles são consultados pelo servidor do site, sem o seu navegador acessar o Google para isso; apenas as fotos de perfil dos autores, quando existirem, são carregadas dos servidores do Google, que pode receber o seu endereço IP nessa requisição.")
             : ""),

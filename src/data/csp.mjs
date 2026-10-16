@@ -18,5 +18,5 @@ export function cspHeader() {
     img.push("https://www.facebook.com");
     connect.push("https://www.facebook.com", "https://connect.facebook.net");
   }
-  return `default-src 'self'; script-src ${script.join(" ")}; style-src 'self' 'unsafe-inline'; img-src ${img.join(" ")}; connect-src ${connect.join(" ")}; font-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'`;
+  return `default-src 'self'; script-src ${script.join(" ")}; style-src 'self' 'unsafe-inline'; img-src ${img.join(" ")}; connect-src ${connect.join(" ")}; font-src 'self'; ${SITE.mapEmbed ? "frame-src https://www.google.com https://maps.google.com; " : ""}form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'`;
 }

@@ -67,6 +67,8 @@ export const SITE = {
   // Avaliações do Google via api/google-reviews.php (servidor, com cache). A seção só aparece se a API
   // estiver configurada no servidor (GOOGLE_PLACES_API_KEY e GOOGLE_PLACE_ID); sem isso, fica oculta.
   googleReviews: true,
+  // Mapa "Como chegar" acima do rodapé: o Google Maps só é carregado quando o visitante clica.
+  mapEmbed: true,
   measurement: { googleSiteVerification: "", ga4: "", metaPixel: "" },
 
   oabNotice:

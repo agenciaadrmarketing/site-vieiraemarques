@@ -250,6 +250,43 @@ const loader = () => `<div class="vm-loader" role="status" aria-label="Carregand
   </div>
 </div>`;
 
+
+// "Como chegar": cartão com endereço e rotas. O mapa interativo do Google só é inserido (iframe)
+// quando o visitante clica em "Carregar mapa", então nada de terceiros carrega junto com a página.
+const mapSection = () => {
+  if (!SITE.mapEmbed) return "";
+  const u = SITE.units[0];
+  const { latitude: lat, longitude: lng } = u.geo;
+  const embed = `https://maps.google.com/maps?q=${lat},${lng}&z=16&hl=pt-BR&output=embed`;
+  const route = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  return `<section class="section section--white visit" aria-labelledby="como-chegar-titulo" data-visit>
+  <div class="container">
+    <div class="visit__grid">
+      <div class="stack" data-reveal>
+        <p class="eyebrow">Como chegar</p>
+        <h2 class="h-section" id="como-chegar-titulo">Sede em <span class="grad">Boituva/SP.</span></h2>
+        <address class="visit__address">${esc(u.street)}<br>${esc(u.district)} — ${esc(u.city)}/${esc(u.region)}<br>CEP ${esc(u.postalCode)}</address>
+        ${isPending(SITE.hours) ? "" : `<p class="muted">${esc(SITE.hours)}</p>`}
+        <p class="muted">Atendimento presencial também em Sorocaba, com horário combinado. Para as demais cidades, reuniões por vídeo.</p>
+        <div class="btn-row">
+          <a class="btn" href="${esc(u.mapsUrl)}" target="_blank" rel="noopener noreferrer">Abrir no Google Maps <span class="btn__arrow">${icon.arrowUpRight(16)}</span></a>
+          <a class="btn btn--ghost" href="${route}" target="_blank" rel="noopener noreferrer" data-track="map_route_click">Traçar rota</a>
+        </div>
+      </div>
+      <div class="visit__map" data-reveal>
+        <div class="visit__facade" data-visit-facade>
+          <span class="visit__pin" aria-hidden="true">${icon.pin(30)}</span>
+          <p class="visit__facade-title">Vieira &amp; Marques</p>
+          <p class="visit__facade-text">${esc(u.street)}, ${esc(u.city)}/${esc(u.region)}</p>
+          <button class="btn btn--light visit__load" type="button" data-visit-load data-embed="${esc(embed)}">Carregar mapa interativo</button>
+          <p class="visit__note">Ao carregar, o mapa é fornecido pelo Google.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>`;
+};
+
 // WhatsApp flutuante no padrão das LPs: botão verde e balão com frases da página
 // (alternam a cada poucos segundos; o "×" fecha o balão nesta página). site.js controla.
 export const waFloat = (message, phrases = DEFAULT_PHRASES) => {
@@ -297,6 +334,7 @@ ${header(path, whatsappMessage)}
 <main id="conteudo" tabindex="-1">
 ${body}
 </main>
+${mapSection()}
 ${footer(whatsappMessage)}
 ${floatingWhatsapp ? waFloat(whatsappMessage, floatPhrases) : ""}
 ${MEASURING ? consentBanner() : ""}

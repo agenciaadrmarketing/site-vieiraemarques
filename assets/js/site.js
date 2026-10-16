@@ -137,6 +137,24 @@
     document.querySelectorAll("main > section, main > div, .site-footer").forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Mapa "Como chegar" (carrega o Google Maps só ao clicar) ---------- */
+  function initVisitMap() {
+    var btn = document.querySelector("[data-visit-load]");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var facade = document.querySelector("[data-visit-facade]");
+      var f = document.createElement("iframe");
+      f.src = btn.getAttribute("data-embed");
+      f.title = "Mapa: sede da Vieira & Marques em Boituva/SP";
+      f.loading = "lazy";
+      f.referrerPolicy = "no-referrer-when-downgrade";
+      f.setAttribute("allowfullscreen", "");
+      f.className = "visit__iframe";
+      facade.replaceWith(f);
+      f.focus();
+    });
+  }
+
   /* ---------- Menu mobile ---------- */
   function initMenu() {
     var toggle = document.querySelector("[data-menu-toggle]");
@@ -1003,6 +1021,7 @@
   if (document.body.hasAttribute("data-forms")) captureOrigin();
   initLoader();
   initPrefetch();
+  initVisitMap();
   initOffscreenPause();
   initSmoothScroll();
   initMenu();
