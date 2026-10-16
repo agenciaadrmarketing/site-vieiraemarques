@@ -31,7 +31,7 @@
     var root = document.documentElement;
     function ready() { root.classList.add("is-ready"); }
     if (!el) { ready(); return; }
-    if (root.classList.contains("no-intro")) { el.remove(); ready(); return; }
+    if (root.classList.contains("no-intro")) { el.style.display = "none"; ready(); return; }
     el.style.animation = "none"; // o JS assume o controle (cancela o fallback do CSS)
     var start = Date.now();
     var hidden = false;
@@ -40,7 +40,7 @@
       hidden = true;
       el.classList.add("is-hidden");
       ready();
-      setTimeout(function () { el.remove(); }, 600);
+      setTimeout(function () { el.style.display = "none"; }, 600); // fica no DOM (sem remover) para não invalidar o cálculo do LCP
     }
     // Não espera as imagens (evento "load"): sai assim que o HTML/JS está pronto (mín. 0,25 s) e,
     // no máximo, em 0,9 s. Em rede lenta, a tela não atrasa a pintura do conteúdo principal.
@@ -49,7 +49,7 @@
     else document.addEventListener("DOMContentLoaded", done);
     setTimeout(hide, 900);
     // Página restaurada do cache (botão voltar): nunca deixar a tela por cima.
-    window.addEventListener("pageshow", function (e) { if (e.persisted) { el.remove(); ready(); } });
+    window.addEventListener("pageshow", function (e) { if (e.persisted) { el.style.display = "none"; ready(); } });
   }
 
   /* ---------- Pré-carregamento ao passar o mouse / tocar (navegação quase instantânea) ---------- */
