@@ -79,7 +79,7 @@ SOURCES = {
 
 
 def save_variants(src, widths, slug):
-    quality = 96 if slug.endswith("-hero") else 93
+    quality = 84 if slug.endswith("-hero") else 90
     im = Image.open(os.path.join(ROOT, src))
     im.load()
     im = im.convert("RGB")
