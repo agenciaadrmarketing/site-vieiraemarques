@@ -2,3 +2,4 @@ dist/
 api/config.php
 api/.cache/
 .env
+_t/
