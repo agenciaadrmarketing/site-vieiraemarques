@@ -203,3 +203,28 @@ export const FAQ_JUROS = [
     "O tempo varia de acordo com a complexidade do contrato e o andamento processual. Quando cabível, é possível pedir medidas de urgência para reduzir o impacto da dívida enquanto o processo corre, sem garantia de resultado."
   ]
 ];
+
+// LP Golpe do Pix: perguntas da página de campanha anterior, com a redação ajustada (sem promessa de
+// resultado) e a do prazo do MED, que segue a página de serviço.
+export const FAQ_GOLPE = [
+  [
+    "O que devo fazer imediatamente se cair em um golpe do Pix?",
+    "Entre em contato com o seu banco o mais rápido possível, pelos canais oficiais, para registrar a contestação (Mecanismo Especial de Devolução — MED), e faça um boletim de ocorrência detalhado. Em seguida, busque orientação de um advogado para avaliar a responsabilidade da instituição financeira pela falha na segurança da transação."
+  ],
+  [
+    "Existe prazo para pedir a devolução pelo MED?",
+    "Sim. A contestação deve ser feita em até 80 dias da transação, conforme as regras do Banco Central. Comunicar logo aumenta a chance de ainda existir saldo na conta que recebeu o valor."
+  ],
+  [
+    "É possível reaver o dinheiro perdido em fraudes eletrônicas?",
+    "Depende do caso. A jurisprudência pode responsabilizar as instituições financeiras quando há falhas nos sistemas de segurança, como a abertura de contas usadas por golpistas ou transferências fora do perfil do cliente. Cada caso é analisado individualmente, sem garantia de resultado."
+  ],
+  [
+    "Como identificar e contestar um empréstimo consignado fraudulento?",
+    "Fique atento a descontos desconhecidos no contracheque ou no benefício do INSS, especialmente parcelas pequenas com prazos longos. Se você não contratou o empréstimo, o contrato pode ser contestado, com pedido de anulação e, conforme o caso, de indenização."
+  ],
+  [
+    "Quanto tempo o processo pode levar?",
+    "O tempo varia de acordo com a complexidade do caso e o andamento processual. Quando cabível, é possível pedir medidas de urgência logo no início do processo, sem garantia de resultado."
+  ]
+];

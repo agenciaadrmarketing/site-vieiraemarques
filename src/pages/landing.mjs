@@ -17,6 +17,7 @@ const CRUMB = {
   "divorcio-sao-paulo": "Divórcio em São Paulo",
   "divorcio-sem-filhos-sem-bens": "Divórcio sem filhos e sem bens",
   "juros-abusivos": "Juros abusivos",
+  "golpe-do-pix": "Golpe do Pix",
 };
 
 export function renderLanding(c) {

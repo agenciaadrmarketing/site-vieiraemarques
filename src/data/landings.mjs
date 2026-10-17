@@ -1,7 +1,7 @@
 // Landing pages de campanha, reconstruídas em HTML estático no desenho do site (mesmos componentes das
 // páginas de área). Texto, perguntas e mensagens de WhatsApp vêm das páginas originais; foram retiradas
 // promessas de resultado, avaliações de clientes com nome repetido e expressões de urgência.
-import { FAQ_DIVORCIO, FAQ_BOITUVA, FAQ_SP, FAQ_SEM_FILHOS, FAQ_JUROS } from "./landing-faq.mjs";
+import { FAQ_DIVORCIO, FAQ_BOITUVA, FAQ_SP, FAQ_SEM_FILHOS, FAQ_JUROS, FAQ_GOLPE } from "./landing-faq.mjs";
 
 const NOTE_BASE = ["Atendimento sigiloso"];
 
@@ -199,5 +199,55 @@ export const LANDINGS = [
     whatsapp: "Oi, vim pelo site e quero uma análise do meu contrato.",
     reach: { scope: "sp", title: `Atendimento em todo o estado <span class="grad">de São Paulo.</span>`, text: "Atendimento presencial em Boituva e Sorocaba e online em todo o estado de São Paulo — da capital ao interior e ao litoral. A análise do contrato pode ser feita remotamente, com documentos enviados por meio digital." },
     structureText: "Endereço físico em Boituva/SP, com atendimento presencial ou por reunião online para as demais cidades do estado.",
+  },
+  {
+    path: "/golpe-do-pix/",
+    slug: "golpe-do-pix",
+    area: "bancario",
+    seoTitle: "Advogado Golpe do Pix e Fraude Bancária | Vieira & Marques",
+    description: "Caiu em golpe do Pix ou fraude bancária? Envie as informações para uma análise inicial com a equipe da Vieira & Marques e entenda os caminhos possíveis.",
+    badge: "Golpe do Pix · Fraude bancária",
+    h1: `Caiu em um golpe de Pix ou fraude bancária superior a R$ 10.000? <span class="grad">Não enfrente isso sozinho.</span>`,
+    text: "Pix enviado para criminosos, empréstimo consignado indevido ou falsa venda de veículo: envie as informações para uma análise inicial e entenda quais caminhos podem existir.",
+    cta: "Falar com a nossa equipe",
+    note: [...NOTE_BASE, "Atendimento online em todo o Brasil", "Não pedimos senhas nem códigos"],
+    image: "lp-golpe",
+    imageAlt: "Advogado atendendo vítima de golpe do Pix",
+    services: [
+      { id: "pix", icon: "bank", title: "Assessoria jurídica em golpe do Pix", text: "Orientação para acionar o Mecanismo Especial de Devolução (MED) e análise da responsabilidade da instituição financeira por falhas na segurança." },
+      { id: "consignado", icon: "doc", title: "Defesa em empréstimos consignados fraudulentos", text: "Pedido de anulação de contratos de crédito não solicitados e de descontos indevidos em benefícios ou na folha de pagamento." },
+      { id: "veiculo", icon: "alert", title: "Suporte legal em falsas vendas de veículos", text: "Análise das medidas para buscar os valores pagos em negociações falsas na internet." },
+      { id: "responsabilidade", icon: "scale", title: "Responsabilidade civil bancária", text: "Ações de reparação de danos materiais e morais contra bancos, quando há falha no dever de segurança contra fraudes." },
+      { id: "cibernetico", icon: "shield", title: "Representação em crimes cibernéticos", text: "Acompanhamento técnico e, quando cabível, pedido de medidas judiciais de urgência, como o bloqueio das contas que receberam os valores." },
+    ],
+    servicesTitle: `Como podemos ajudar <span class="grad">depois de uma fraude.</span>`,
+    servicesLead: "Atuamos nas frentes em que o dinheiro ainda pode ser rastreado e a responsabilidade da instituição financeira, discutida.",
+    servicesCta: { text: "Não sabe em qual situação o seu caso se encaixa?", label: "Quero uma análise do meu caso" },
+    steps: [
+      { title: "Você envia as informações", text: "Tipo de fraude, data, valor, instituições envolvidas e o que já foi comunicado ao banco." },
+      { title: "Verificação das medidas iniciais", text: "Se o MED foi aberto, se há boletim de ocorrência e quais prazos estão em curso." },
+      { title: "Análise de responsabilidade", text: "Conduta das instituições envolvidas, à luz dos documentos e das regras do Banco Central." },
+      { title: "Definição do caminho", text: "Reclamação administrativa, ação judicial com pedido de urgência quando cabível — ou a orientação de que não há medida útil." },
+    ],
+    stepsTitle: `Do relato <span class="grad">à definição do caminho.</span>`,
+    stepsLead: "Como a equipe analisa o caso depois que você envia as informações — sem promessa de resultado.",
+    signalsTitle: `Fraudes que <span class="grad">envolvem Pix</span>`,
+    signals: [
+      { title: "Falso familiar ou amigo", text: "Mensagem de número desconhecido, com foto de alguém próximo, pedindo uma transferência urgente." },
+      { title: "Falsa central de atendimento", text: "Contato que se apresenta como banco e induz a transferências ou à instalação de aplicativos." },
+      { title: "Falsa venda ou compra", text: "Anúncio em marketplace ou rede social, inclusive de veículos, com pagamento antecipado." },
+      { title: "Crédito não contratado", text: "Empréstimo ou consignado em seu nome, seguido de transferência do valor liberado." },
+    ],
+    about: { areaTitle: "Direito Bancário" },
+    aboutPoints: ["Atendimento humanizado, ético e sigiloso.", "Orientação sobre as primeiras medidas após o golpe.", "Análise de documentos, extratos e comprovantes."],
+    faq: FAQ_GOLPE,
+    faqLead: "O essencial sobre golpe do Pix, prazos e responsabilidade dos bancos — sem juridiquês.",
+    ctaTitle: `Foi vítima de um golpe recente? <span class="grad">Fale com a equipe.</span>`,
+    ctaText: "Comunicar o banco e reunir os comprovantes logo no início ajuda na análise do caso. Clique abaixo e fale diretamente com a nossa equipe.",
+    phrasesKey: "bancario/golpe-do-pix",
+    serviceHref: "/areas/direito-bancario/golpe-do-pix/",
+    whatsapp: "Oi, vim pelo site e preciso de orientação sobre golpe do Pix.",
+    reach: { scope: "brasil" },
+    structureText: "Endereço físico em Boituva/SP, com atendimento presencial ou por reunião online para clientes de todo o Brasil.",
   },
 ];

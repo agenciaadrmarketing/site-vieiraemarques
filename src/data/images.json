@@ -1194,6 +1194,32 @@
       }
     ]
   },
+  "lp-golpe": {
+    "width": 2000,
+    "height": 1117,
+    "variants": [
+      {
+        "src": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-480.webp",
+        "w": 480,
+        "h": 268
+      },
+      {
+        "src": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-800.webp",
+        "w": 800,
+        "h": 447
+      },
+      {
+        "src": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-1280.webp",
+        "w": 1280,
+        "h": 715
+      },
+      {
+        "src": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-1920.webp",
+        "w": 1920,
+        "h": 1072
+      }
+    ]
+  },
   "bandeira": {
     "width": 1672,
     "height": 941,

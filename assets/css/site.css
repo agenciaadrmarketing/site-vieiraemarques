@@ -8,6 +8,19 @@
 @font-face { font-family: "Lexend Deca"; font-style: normal; font-weight: 300 600; font-display: swap;
   src: url("/assets/fonts/lexend-deca-latin-ext.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+/* Fonte reserva com as medidas da Lexend Deca (Arial ajustada por faixa de peso): enquanto a fonte
+   carrega, o texto já ocupa o mesmo espaço e quebra as linhas no mesmo ponto, e a troca não desloca o
+   layout (CLS). Larguras medidas no navegador com os textos do site; altura pelas métricas da Lexend. */
+@font-face { font-family: "Lexend Deca Fallback"; font-weight: 300 324; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 105.65%; ascent-override: 94.65%; descent-override: 23.66%; line-gap-override: 0%; }
+@font-face { font-family: "Lexend Deca Fallback"; font-weight: 325 374; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 107.05%; ascent-override: 93.41%; descent-override: 23.35%; line-gap-override: 0%; }
+@font-face { font-family: "Lexend Deca Fallback"; font-weight: 375 449; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 108.46%; ascent-override: 92.20%; descent-override: 23.05%; line-gap-override: 0%; }
+@font-face { font-family: "Lexend Deca Fallback"; font-weight: 450 549; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
+  size-adjust: 110.61%; ascent-override: 90.41%; descent-override: 22.60%; line-gap-override: 0%; }
+@font-face { font-family: "Lexend Deca Fallback"; font-weight: 550 700; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Helvetica Bold");
+  size-adjust: 105.68%; ascent-override: 94.63%; descent-override: 23.66%; line-gap-override: 0%; }
 
 /* ---------- Tokens ---------- */
 :root {
@@ -32,7 +45,7 @@
   /* Fundo de botão com texto branco: contraste 5:1 (WCAG AA). */
   --c-whatsapp-btn: #15803D;
 
-  --font: "Lexend Deca", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font: "Lexend Deca", "Lexend Deca Fallback", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --fs-xs: 12px;
   --fs-sm: 14px;
   --fs-base: 16px;
