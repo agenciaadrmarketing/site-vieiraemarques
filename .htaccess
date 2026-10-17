@@ -15,6 +15,12 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP_HOST} ^novosite\. [NC]
   RewriteRule ^robots\.txt$ /robots-staging.txt [L]
 
+  # Landing pages de campanha (lista gerada pelo build): CSP própria, ver mod_headers abaixo.
+  # >>> LPs (gerado por src/build.mjs)
+  RewriteCond %{REQUEST_URI} ^/(divorcio|divorcio-boituva|divorcio-sao-paulo|divorcio-sem-filhos-sem-bens|juros-abusivos|golpe-do-pix)(/|$)
+  RewriteRule ^ - [E=VM_LP:1]
+  # <<< LPs
+
   # Fontes do build, arquivo de design e metadados não são públicos.
   RewriteRule ^(src|design)(/|$) - [R=404,L]
   RewriteRule ^(package\.json|\.git.*)$ - [R=404,L]
@@ -74,7 +80,10 @@ AddType application/manifest+json .webmanifest
   # script-src: nenhum script inline executável (JSON-LD não é executado).
   # img/connect-src: Google Apps Script do formulário de leads.
   # Linha gerada pelo build (src/data/csp.mjs): ferramentas de medição liberam os próprios domínios.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-IfKentR/yddKVUInkVYYOD6EDV6mtPWTgRqZco887BY='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://script.google.com https://script.googleusercontent.com https://lh3.googleusercontent.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com; font-src 'self'; frame-src https://www.google.com https://maps.google.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  # >>> CSP (gerado por src/build.mjs a partir de src/data/csp.mjs)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-IfKentR/yddKVUInkVYYOD6EDV6mtPWTgRqZco887BY='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://script.google.com https://script.googleusercontent.com https://lh3.googleusercontent.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com; font-src 'self'; frame-src https://www.google.com https://maps.google.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'" env=!VM_LP
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:; font-src 'self' data: https:; frame-src https:; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'" env=VM_LP
+  # <<< CSP
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"

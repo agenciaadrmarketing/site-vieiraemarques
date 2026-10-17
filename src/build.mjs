@@ -69,20 +69,17 @@ for (const [name, pages] of Object.entries(groups)) {
 }
 for (const p of rendered) write(p.file, p.html);
 
-// CSP do .htaccess acompanha a configuração de medição (src/data/csp.mjs).
+// CSP do .htaccess acompanha a configuração de medição (src/data/csp.mjs). As landing pages de
+// campanha (VM_LP) recebem uma CSP mais aberta para as tags que o Google Tag Manager carrega depois
+// do aceite no aviso de cookies; sem GTM configurado, valem as mesmas regras do site.
 const htaccess = join(ROOT, ".htaccess");
 const ht = readFileSync(htaccess, "utf8");
-const csp = ht.replace(/Header always set Content-Security-Policy "[^"]*"/, `Header always set Content-Security-Policy "${cspHeader()}"`);
-if (csp !== ht) writeFileSync(htaccess, csp);
-// Landing pages de campanha: o Google Tag Manager (carregado só depois do aceite no aviso de cookies)
-// injeta tags de terceiros que a CSP do site bloquearia. Cada pasta de LP recebe uma CSP própria,
-// mais aberta para scripts e conexões em HTTPS, mantendo as demais proteções.
 const LP_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:; font-src 'self' data: https:; frame-src https:; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'";
-for (const l of LANDINGS) {
-  write(join(ROOT, l.path, ".htaccess"), SITE.measurement.gtm
-    ? `# Gerado por src/build.mjs. Landing page de campanha com Google Tag Manager (após o aceite de cookies):\n# CSP própria, mais aberta para as tags de terceiros que o GTM carrega.\n<IfModule mod_headers.c>\n  Header always set Content-Security-Policy "${LP_CSP}"\n</IfModule>\n`
-    : "# Gerado por src/build.mjs. Sem Google Tag Manager: vale a CSP do site.\n");
-}
+const lpPattern = LANDINGS.map((l) => l.path.replace(/^\/|\/$/g, "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+const nextHt = ht
+  .replace(/(# >>> LPs[^\n]*\n)[\s\S]*?(  # <<< LPs)/, `$1  RewriteCond %{REQUEST_URI} ^/(${lpPattern})(/|$)\n  RewriteRule ^ - [E=VM_LP:1]\n$2`)
+  .replace(/(# >>> CSP[^\n]*\n)[\s\S]*?(  # <<< CSP)/, () => `# >>> CSP (gerado por src/build.mjs a partir de src/data/csp.mjs)\n  Header always set Content-Security-Policy "${cspHeader()}" env=!VM_LP\n  Header always set Content-Security-Policy "${SITE.measurement.gtm ? LP_CSP : cspHeader()}" env=VM_LP\n  # <<< CSP`);
+if (nextHt !== ht) writeFileSync(htaccess, nextHt);
 write(join(ROOT, "sitemap.xml"), sitemap());
 write(join(ROOT, "robots.txt"), robotsTxt());
 write(join(ROOT, "robots-staging.txt"), robotsStagingTxt());
