@@ -1,5 +1,0 @@
-# Landing page de campanha (runtime próprio, Google Tag Manager e scripts inline):
-# a Content-Security-Policy do site principal não se aplica a esta pasta.
-<IfModule mod_headers.c>
-  Header always unset Content-Security-Policy
-</IfModule>

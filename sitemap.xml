@@ -281,6 +281,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vieiraemarquesadvogados.com/golpe-do-pix/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vieiraemarquesadvogados.com/politica-de-privacidade/</loc>
     <lastmod>2026-10-17</lastmod>
     <priority>0.2</priority>
@@ -289,10 +294,5 @@
     <loc>https://vieiraemarquesadvogados.com/termos-de-uso/</loc>
     <lastmod>2026-10-17</lastmod>
     <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://vieiraemarquesadvogados.com/golpe-do-pix/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <priority>0.6</priority>
   </url>
 </urlset>
