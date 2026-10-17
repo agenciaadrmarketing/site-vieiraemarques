@@ -125,7 +125,7 @@ ${lpCta({ title: `Leu sobre o seu caso e ficou com dúvida? <span class="grad">F
   return page({
     title: "Base de Conhecimento Jurídico | Vieira & Marques",
     description:
-      "Artigos e perguntas frequentes sobre Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário, pela equipe da Vieira & Marques.",
+      "Artigos e perguntas frequentes sobre Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS, escritos pela equipe da Vieira & Marques.",
     path: PATH,
     preload: [imgPreload("hero-conhecimento", "100vw")],
     crumbs: CRUMBS,

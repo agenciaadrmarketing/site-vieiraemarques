@@ -11,6 +11,7 @@ import { cspHeader } from "./data/csp.mjs";
 import { LANDING_PAGES } from "./data/landing-pages.mjs";
 import { LANDINGS } from "./data/landings.mjs";
 import { buildBundle, usedTokens } from "./tools/css-bundle.mjs";
+import { llmsTxt, robotsTxt, robotsStagingTxt } from "./tools/llms.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -59,8 +60,11 @@ const groups = {};
 for (const p of rendered) (groups[groupOf(p.path)] ??= []).push(p);
 for (const [name, pages] of Object.entries(groups)) {
   const size = buildBundle(join(ROOT, "assets/css/site.css"), join(ROOT, `assets/css/${name}.css`), usedTokens(pages.map((p) => p.html), jsTokens));
-  const v = createHash("sha256").update(readFileSync(join(ROOT, `assets/css/${name}.css`))).digest("hex").slice(0, 10); // versão = hash do próprio arquivo
-  for (const p of pages) p.html = p.html.replace(/href="\/assets\/css\/site\.css\?v=\w+/, `href="/assets/css/${name}.css?v=${v}`);
+  // CSS embutido no <head> em vez de <link>: sem requisição bloqueando a renderização, a primeira
+  // pintura sai junto com o HTML. Com o CSS externo, o Chrome gerava quadros vazios enquanto o arquivo
+  // carregava e passava a limitar a página a 1 quadro/s (PageSpeed: primeira pintura em ~2,4 s).
+  const css = readFileSync(join(ROOT, `assets/css/${name}.css`), "utf8");
+  for (const p of pages) p.html = p.html.replace(/<link rel="stylesheet" href="\/assets\/css\/site\.css\?v=\w+">/, () => `<style>${css}</style>`);
   process.stdout.write(`css ${name}: ${(size / 1024).toFixed(1)} KB\n`);
 }
 for (const p of rendered) write(p.file, p.html);
@@ -71,7 +75,9 @@ const ht = readFileSync(htaccess, "utf8");
 const csp = ht.replace(/Header always set Content-Security-Policy "[^"]*"/, `Header always set Content-Security-Policy "${cspHeader()}"`);
 if (csp !== ht) writeFileSync(htaccess, csp);
 write(join(ROOT, "sitemap.xml"), sitemap());
-write(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /design/\nDisallow: /api/\n\nSitemap: ${SITE.origin}/sitemap.xml\n`);
+write(join(ROOT, "robots.txt"), robotsTxt());
+write(join(ROOT, "robots-staging.txt"), robotsStagingTxt());
+write(join(ROOT, "llms.txt"), llmsTxt());
 
 console.log(`Build: ${ROUTES.length} páginas + 404, sitemap.xml e robots.txt`);
 if (LEGAL_REVIEW.length) {

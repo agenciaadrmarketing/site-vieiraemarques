@@ -50,7 +50,7 @@ export default [
     h1: "Reajuste de plano de saúde",
     grad: "Entenda o que pode ser revisto.",
     lede: "Como funcionam os reajustes anuais e por faixa etária, as diferenças entre planos individuais e coletivos e quando o aumento pode ser questionado.",
-    description: "Reajuste de plano de saúde: anual, por faixa etária e por sinistralidade, diferenças entre planos individuais e coletivos e quando o aumento pode ser questionado.",
+    description: "Reajuste de plano de saúde anual, por idade ou sinistralidade: diferenças entre planos individuais e coletivos e quando o aumento pode ser questionado.",
     topic: "reajuste de plano de saúde",
     facts: [
       { label: "Individuais", text: "Reajuste anual limitado ao percentual autorizado pela ANS." },
@@ -91,7 +91,7 @@ export default [
     h1: "Erro médico ou odontológico",
     grad: "Como a responsabilidade é avaliada.",
     lede: "O que caracteriza o erro médico ou odontológico, a responsabilidade de profissionais e hospitais, os prazos e as provas necessárias.",
-    description: "Erro médico ou odontológico: como a responsabilidade é analisada, papel do prontuário e da perícia, prazos e indenizações por danos morais, materiais e estéticos.",
+    description: "Erro médico ou odontológico: como a responsabilidade é analisada, o papel do prontuário e da perícia, prazos e indenização por dano moral, material e estético.",
     topic: "erro médico ou odontológico",
     facts: [
       { label: "Profissional", text: "Responde, em regra, quando há culpa comprovada." },

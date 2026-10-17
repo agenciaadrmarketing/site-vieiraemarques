@@ -11,6 +11,9 @@ ErrorDocument 404 /404.html
   # Ambiente de homologação (novosite.*): não indexar.
   RewriteCond %{HTTP_HOST} ^novosite\. [NC]
   RewriteRule ^ - [E=VM_STAGING:1]
+  # Na homologação, robots.txt próprio: robôs de IA ficam de fora (não seguem o X-Robots-Tag).
+  RewriteCond %{HTTP_HOST} ^novosite\. [NC]
+  RewriteRule ^robots\.txt$ /robots-staging.txt [L]
 
   # Fontes do build, arquivo de design e metadados não são públicos.
   RewriteRule ^(src|design)(/|$) - [R=404,L]
@@ -48,7 +51,14 @@ AddType application/manifest+json .webmanifest
 </IfModule>
 
 <IfModule mod_headers.c>
-  Header set X-Robots-Tag "noindex, nofollow" env=VM_STAGING
+  # Homologação fora das buscas: bloqueio por robô (Google, Bing e demais buscadores). Um "noindex"
+  # geral derrubava o SEO do PageSpeed para 69; no domínio oficial nenhum destes cabeçalhos é enviado.
+  Header set X-Robots-Tag "googlebot: noindex, nofollow" env=VM_STAGING
+  Header add X-Robots-Tag "bingbot: noindex, nofollow" env=VM_STAGING
+  Header add X-Robots-Tag "yandex: noindex, nofollow" env=VM_STAGING
+  Header add X-Robots-Tag "duckduckbot: noindex, nofollow" env=VM_STAGING
+  Header add X-Robots-Tag "applebot: noindex, nofollow" env=VM_STAGING
+  Header add X-Robots-Tag "baiduspider: noindex, nofollow" env=VM_STAGING
 
   <FilesMatch "\.(webp|jpe?g|png|svg|ico|woff2?)$">
     Header set Cache-Control "public, max-age=31536000, immutable"

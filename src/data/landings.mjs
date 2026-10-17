@@ -154,7 +154,7 @@ export const LANDINGS = [
     slug: "juros-abusivos",
     area: "bancario",
     seoTitle: "Revisão de Contrato com Juros Abusivos | Vieira & Marques",
-    description: "Parcela que não diminui, dívida que só cresce, nome negativado? Veja como a equipe analisa o seu contrato em busca de juros e encargos que podem ser questionados.",
+    description: "Parcela que não diminui, dívida que só cresce, nome negativado? Veja como a equipe analisa o contrato em busca de juros e encargos que podem ser questionados.",
     badge: "Ação revisional · Juros abusivos",
     h1: `Sua parcela nunca diminui e a dívida só cresce? <span class="grad">Seu contrato pode estar sendo cobrado de forma abusiva.</span>`,
     text: "Juros acima do combinado, seguros e tarifas embutidos, capitalização de juros sobre juros: analisamos o seu contrato para verificar quais cobranças podem ser questionadas e quais caminhos existem, sem promessa de resultado.",

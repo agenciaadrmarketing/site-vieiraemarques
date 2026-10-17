@@ -53,7 +53,8 @@ export const organizationSchema = () => {
     areaServed: ["Boituva", "Sorocaba", "São Paulo", "Brasil"],
     knowsAbout: practiceAreas.map((a) => a.title),
     employee: teamWithProfile.map((p) => ({ "@id": `${SITE.origin}${profilePath(p)}#pessoa` })),
-    sameAs: SITE.social.map((s) => s.url),
+    // Perfil da Empresa no Google junto das redes: ajuda o Google a ligar o site à ficha do escritório.
+    sameAs: [...SITE.social.map((s) => s.url), sede.mapsUrl].filter(Boolean),
   };
 };
 

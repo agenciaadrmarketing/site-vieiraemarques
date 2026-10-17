@@ -53,7 +53,7 @@ for (const [path, html] of Object.entries(pages)) {
   }
 
   if (/\[INFORMAÇÃO PENDENTE\]/.test(html)) err("placeholder [INFORMAÇÃO PENDENTE] exposto");
-  const visible = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "").replace(/\sdata-[a-z-]+="[^"]*"/g, "");
+  const visible = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "").replace(/<style>[\s\S]*?<\/style>/g, "").replace(/\sdata-[a-z-]+="[^"]*"/g, "");
   if (/\{\{|\}\}/.test(visible)) err("resto de template {{ }}");
   if (/lorem ipsum/i.test(html)) err("lorem ipsum");
   if (/\bundefined\b|\bNaN\b|\[object Object\]/.test(html)) err("valor indefinido renderizado");

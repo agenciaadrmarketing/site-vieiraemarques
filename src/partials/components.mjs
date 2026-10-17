@@ -118,7 +118,7 @@ export function teamPanels(people, { profileLinks = false, headingLevel = 3 } = 
       <${h} class="team-panel__name" id="painel-${p.id}">${esc(p.name)}</${h}>
       <p class="team-panel__bio">${esc(p.summary ?? p.bio)}</p>
       ${when(p.tags?.length, `<ul class="team-panel__tags" aria-label="Temas">${join(p.tags ?? [], (t) => `<li>${esc(t)}</li>`)}</ul>`)}
-      ${when(profileLinks && p.hasProfile, `<a class="team-panel__link" href="/advogados/${p.slug}/">Ver perfil completo <span aria-hidden="true">→</span></a>`)}
+      ${when(profileLinks && p.hasProfile, `<a class="team-panel__link" href="/advogados/${p.slug}/">Ver perfil completo<span class="sr-only"> de ${esc(p.name)}</span> <span aria-hidden="true">→</span></a>`)}
     </div>
   </article>`)}
 </div>

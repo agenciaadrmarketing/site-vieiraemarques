@@ -150,8 +150,27 @@ ${googleReviews()}
         jobTitle: `${p.role}`,
         url: SITE.origin + path,
         image: photoUrl,
-        identifier: p.oab,
-        knowsAbout: areas.map((a) => a.title),
+        description: p.summary,
+        // Inscrição, formação e entidade de classe estruturadas: o Google e as IAs ligam a pessoa
+        // ao registro na OAB e às instituições de ensino (mesmos dados exibidos na página).
+        identifier: { "@type": "PropertyValue", propertyID: "OAB/SP", value: p.oab.replace(/^OAB\/SP\s*/, "") },
+        memberOf: { "@type": "Organization", name: "Ordem dos Advogados do Brasil — Seção São Paulo (OAB/SP)" },
+        hasCredential: [
+          {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "Inscrição profissional",
+            name: p.oab,
+            recognizedBy: { "@type": "Organization", name: "Ordem dos Advogados do Brasil — Seção São Paulo" },
+          },
+          ...(p.education ?? []).filter((e) => !/andamento/i.test(e.level)).map((e) => ({
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: e.level,
+            name: e.course,
+            ...(e.institution ? { recognizedBy: { "@type": "CollegeOrUniversity", name: e.institution } } : {}),
+          })),
+        ],
+        alumniOf: (p.education ?? []).filter((e) => e.institution && !/andamento/i.test(e.level)).map((e) => ({ "@type": "CollegeOrUniversity", name: e.institution })),
+        knowsAbout: [...areas.map((a) => a.title), ...(p.tags ?? [])],
         worksFor: { "@id": `${SITE.origin}/#org` },
       },
     ],
