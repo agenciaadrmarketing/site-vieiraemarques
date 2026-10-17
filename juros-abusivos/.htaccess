@@ -1,0 +1,5 @@
+# Gerado por src/build.mjs. Landing page de campanha com Google Tag Manager (após o aceite de cookies):
+# CSP própria, mais aberta para as tags de terceiros que o GTM carrega.
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:; font-src 'self' data: https:; frame-src https:; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+</IfModule>
