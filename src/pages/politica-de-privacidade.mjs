@@ -12,6 +12,8 @@ export default function politicaDePrivacidade() {
   const tools = [...DATA_FLOWS.analytics, ...DATA_FLOWS.advertising];
   const measuring = tools.length > 0;
   const toolList = tools.join(" e ");
+  // Só o GTM das landing pages ativo: o aviso de cookies aparece apenas nas páginas de campanha.
+  const campaignOnly = Boolean(SITE.measurement.gtm) && !SITE.measurement.ga4 && !SITE.measurement.metaPixel;
   const hosting = isPending(LEGAL.hostingProvider) ? "" : esc(LEGAL.hostingProvider);
   const mail = `<a class="text-link" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`;
   const phone = `<a class="text-link" href="${SITE.phone.href}">${SITE.phone.display}</a>`;
@@ -142,39 +144,44 @@ export default function politicaDePrivacidade() {
             ["Defender direitos em eventual processo administrativo ou judicial", "Exercício regular de direitos"],
           ],
         }) +
-        p("Os dados não são vendidos nem utilizados para envio de publicidade."),
+        p(`Os dados que você informa não são vendidos nem utilizados para envio de publicidade.${DATA_FLOWS.advertising.length ? " As ferramentas de campanha descritas na seção de cookies servem para medir o resultado dos anúncios e só são ativadas com a sua autorização." : ""}`),
     },
     {
       id: "cookies",
       title: "Cookies e tecnologias semelhantes",
-      body: measuring
-        ? p(
-            `O site não cria cookies próprios. Com a sua autorização, utiliza ferramentas de medição de terceiros — ${esc(toolList)} — que usam cookies e identificadores para gerar estatísticas de uso${DATA_FLOWS.advertising.length ? " e medir o resultado de campanhas" : ""}.`,
-            "Essas ferramentas só são carregadas depois que você clica em “Aceitar” no aviso exibido na primeira visita. Se recusar, nenhuma delas é ativada e o site funciona normalmente.",
-            "A sua escolha fica guardada no armazenamento do navegador (localStorage), sem identificar você, e pode ser alterada a qualquer momento em “Preferências de cookies”, no rodapé.",
-            "As fontes, as imagens e os demais scripts do site — inclusive a biblioteca de código aberto usada na rolagem suave — são servidos pelo próprio site."
-          )
-        : p(
-            "O site não cria cookies próprios e não utiliza, atualmente, ferramentas de análise de audiência, de publicidade, de mapas de calor ou de gravação de sessão — como Google Analytics, Google Tag Manager, Google Ads ou Meta Pixel. As fontes, as imagens e os scripts — inclusive a biblioteca de código aberto usada na rolagem suave — são servidos pelo próprio site, sem incorporações de serviços de terceiros."
-          ) +
-          (forms
-            ? p("O site usa o armazenamento de sessão do navegador (sessionStorage), que é apagado quando a aba é fechada, para:") +
-              list([
-                "<strong>Origem do acesso</strong> — guardar a página de entrada, a página anterior e os parâmetros de campanha descritos na seção 2;",
-                "<strong>Proteção contra envios repetidos</strong> — registrar o horário do último envio de formulário, evitando duplicidades.",
-                "<strong>Animação de abertura</strong> — lembrar, durante a visita, que a tela de abertura já foi exibida, sem identificar você.",
-              ])
-            : p("O site usa o armazenamento de sessão do navegador (sessionStorage) apenas para lembrar, durante a visita, que a animação de abertura já foi exibida. Esse marcador não identifica você e é apagado quando a aba é fechada.")) +
-          p(
-            "O site registra eventos de navegação — como cliques em botões — em uma variável interna da página, preparada para uma futura ferramenta de medição. Esses eventos não saem do seu navegador e não são enviados a nenhum serviço.",
-            "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
-          ) +
-          (SITE.mapEmbed
-            ? p("O mapa “Como chegar”, acima do rodapé, só é carregado se você clicar em “Carregar mapa interativo”. Nesse momento o Google Maps passa a fornecer o mapa e pode receber o seu endereço IP e usar cookies, conforme a política do Google. Sem o clique, nenhum serviço do Google é acionado por esse mapa.")
-            : "") +
-          (SITE.googleReviews
-            ? p("A seção de avaliações exibe comentários publicados por clientes no Google. Eles são consultados pelo servidor do site, sem o seu navegador acessar o Google para isso; apenas as fotos de perfil dos autores, quando existirem, são carregadas dos servidores do Google, que pode receber o seu endereço IP nessa requisição.")
-            : ""),
+      // Com ferramentas de medição, o texto descreve o aviso de cookies; sem elas, informa que não há
+      // aviso. Os parágrafos de armazenamento de sessão, mapa e avaliações valem nos dois casos.
+      body:
+        (measuring
+          ? p(
+              `O site não cria cookies próprios. Com a sua autorização, utiliza ferramentas de medição de terceiros — ${esc(toolList)} — que usam cookies e identificadores para gerar estatísticas de uso${DATA_FLOWS.advertising.length ? " e medir o resultado de campanhas" : ""}.`,
+              `Essas ferramentas só são carregadas depois que você clica em “Aceitar” no aviso exibido na primeira visita${campaignOnly ? " a uma página de campanha" : ""}. Se recusar, nenhuma delas é ativada e o site funciona normalmente.`,
+              `A sua escolha fica guardada no armazenamento do navegador (localStorage), sem identificar você, e pode ser alterada a qualquer momento em “Preferências de cookies”, no rodapé${campaignOnly ? " das páginas de campanha" : ""}.`,
+              "As fontes, as imagens e os demais scripts do site — inclusive a biblioteca de código aberto usada na rolagem suave — são servidos pelo próprio site."
+            )
+          : p(
+              "O site não cria cookies próprios e não utiliza, atualmente, ferramentas de análise de audiência, de publicidade, de mapas de calor ou de gravação de sessão — como Google Analytics, Google Tag Manager, Google Ads ou Meta Pixel. As fontes, as imagens e os scripts — inclusive a biblioteca de código aberto usada na rolagem suave — são servidos pelo próprio site, sem incorporações de serviços de terceiros."
+            )) +
+        (forms
+          ? p("O site usa o armazenamento de sessão do navegador (sessionStorage), que é apagado quando a aba é fechada, para:") +
+            list([
+              "<strong>Origem do acesso</strong> — guardar a página de entrada, a página anterior e os parâmetros de campanha descritos na seção 2;",
+              "<strong>Proteção contra envios repetidos</strong> — registrar o horário do último envio de formulário, evitando duplicidades.",
+              "<strong>Animação de abertura</strong> — lembrar, durante a visita, que a tela de abertura já foi exibida, sem identificar você.",
+            ])
+          : p("O site usa o armazenamento de sessão do navegador (sessionStorage) apenas para lembrar, durante a visita, que a animação de abertura já foi exibida. Esse marcador não identifica você e é apagado quando a aba é fechada.")) +
+        (measuring
+          ? p(`O site registra eventos de navegação — como cliques em botões — em uma variável interna da página. Esses eventos só são enviados às ferramentas de medição${campaignOnly ? ", nas páginas de campanha," : ""} depois do seu aceite; sem ele, não saem do seu navegador.`)
+          : p(
+              "O site registra eventos de navegação — como cliques em botões — em uma variável interna da página, preparada para uma futura ferramenta de medição. Esses eventos não saem do seu navegador e não são enviados a nenhum serviço.",
+              "Por não haver cookies ou tecnologias de rastreamento não essenciais, o site não exibe aviso de consentimento de cookies. Se ferramentas desse tipo forem adotadas, esta Política será atualizada e você poderá aceitá-las ou recusá-las antes de serem ativadas."
+            )) +
+        (SITE.mapEmbed
+          ? p("O mapa “Como chegar”, acima do rodapé, só é carregado se você clicar em “Carregar mapa interativo”. Nesse momento o Google Maps passa a fornecer o mapa e pode receber o seu endereço IP e usar cookies, conforme a política do Google. Sem o clique, nenhum serviço do Google é acionado por esse mapa.")
+          : "") +
+        (SITE.googleReviews
+          ? p("A seção de avaliações exibe comentários publicados por clientes no Google. Eles são consultados pelo servidor do site, sem o seu navegador acessar o Google para isso; apenas as fotos de perfil dos autores, quando existirem, são carregadas dos servidores do Google, que pode receber o seu endereço IP nessa requisição.")
+          : ""),
     },
     {
       id: "compartilhamento",

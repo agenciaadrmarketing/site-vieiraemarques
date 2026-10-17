@@ -6,7 +6,7 @@ import { SITE, PENDING, isPending } from "./site.mjs";
 
 export const LEGAL = {
   // Data exibida como "Última atualização" nas duas páginas. Atualizar a cada revisão.
-  lastUpdated: "2026-10-15",
+  lastUpdated: "2026-10-17",
   // Encarregado pelo tratamento de dados: [ENCARREGADO NÃO DEFINIDO / VALIDAR COM O ESCRITÓRIO].
   // Não há nome confirmado; a Política não indica encarregado enquanto for null.
   dpo: null,
@@ -26,7 +26,11 @@ export const DATA_FLOWS = {
   // Com formulário ativo e endpoint configurado, os dados vão para planilha (Google Apps Script).
   leadSheet: SITE.forms && !isPending(SITE.leadEndpoint),
   analytics: SITE.measurement.ga4 ? ["Google Analytics 4"] : [],
-  advertising: SITE.measurement.metaPixel ? ["Pixel da Meta"] : [],
+  advertising: [
+    ...(SITE.measurement.metaPixel ? ["Pixel da Meta"] : []),
+    // GTM só nas landing pages de campanha (src/pages/landing.mjs).
+    ...(SITE.measurement.gtm ? ["Google Tag Manager e Google Ads (somente nas páginas de campanha)"] : []),
+  ],
 };
 
 // Pendências para a revisão jurídica interna. Impressas pelo build; não vão para o HTML.

@@ -82,6 +82,8 @@ ${lpReach(c.reach)}
 ${lpCta({ title: c.ctaTitle, text: c.ctaText, message: msg })}`;
 
   return page({
+    // Página de campanha: Google Tag Manager depois do aceite no aviso de cookies.
+    tagManager: true,
     scripts: SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [],
     title: c.seoTitle,
     description: c.description,

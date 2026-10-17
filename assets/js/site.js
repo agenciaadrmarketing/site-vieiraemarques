@@ -588,8 +588,9 @@
   function initConsent() {
     var ga = document.body.getAttribute("data-ga4");
     var px = document.body.getAttribute("data-pixel");
+    var gtm = document.body.getAttribute("data-gtm");
     var box = document.querySelector("[data-consent]");
-    if ((!ga && !px) || !box) return;
+    if ((!ga && !px && !gtm) || !box) return;
     var KEY = "vm-consentimento";
     var loaded = false;
     function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
@@ -606,6 +607,16 @@
         s.async = true;
         s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ga);
         document.head.appendChild(s);
+      }
+      if (gtm) {
+        // Google Tag Manager das campanhas (landing pages). Os eventos já registrados em dataLayer
+        // pela página (whatsapp_click, phone_click etc.) ficam disponíveis para os gatilhos do GTM.
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var g = document.createElement("script");
+        g.async = true;
+        g.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(gtm);
+        document.head.appendChild(g);
       }
       if (px) {
         var f = window.fbq = function () { f.callMethod ? f.callMethod.apply(f, arguments) : f.queue.push(arguments); };

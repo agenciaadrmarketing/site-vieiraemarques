@@ -74,6 +74,15 @@ const htaccess = join(ROOT, ".htaccess");
 const ht = readFileSync(htaccess, "utf8");
 const csp = ht.replace(/Header always set Content-Security-Policy "[^"]*"/, `Header always set Content-Security-Policy "${cspHeader()}"`);
 if (csp !== ht) writeFileSync(htaccess, csp);
+// Landing pages de campanha: o Google Tag Manager (carregado só depois do aceite no aviso de cookies)
+// injeta tags de terceiros que a CSP do site bloquearia. Cada pasta de LP recebe uma CSP própria,
+// mais aberta para scripts e conexões em HTTPS, mantendo as demais proteções.
+const LP_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:; font-src 'self' data: https:; frame-src https:; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'";
+for (const l of LANDINGS) {
+  write(join(ROOT, l.path, ".htaccess"), SITE.measurement.gtm
+    ? `# Gerado por src/build.mjs. Landing page de campanha com Google Tag Manager (após o aceite de cookies):\n# CSP própria, mais aberta para as tags de terceiros que o GTM carrega.\n<IfModule mod_headers.c>\n  Header always set Content-Security-Policy "${LP_CSP}"\n</IfModule>\n`
+    : "# Gerado por src/build.mjs. Sem Google Tag Manager: vale a CSP do site.\n");
+}
 write(join(ROOT, "sitemap.xml"), sitemap());
 write(join(ROOT, "robots.txt"), robotsTxt());
 write(join(ROOT, "robots-staging.txt"), robotsStagingTxt());

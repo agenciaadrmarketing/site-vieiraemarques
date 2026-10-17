@@ -74,7 +74,12 @@ export const SITE = {
   // ativa, o número e a nota passam a vir do Google.
   googleReviewsCount: 180,
   googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJL36YRqjjxZQR4GRhe3Bl5M8", // mesmo link já usado na LP de Boituva; conferir o Place ID
-  measurement: { googleSiteVerification: "", ga4: "", metaPixel: "" },
+  measurement: {
+    googleSiteVerification: "", ga4: "", metaPixel: "",
+    // Google Tag Manager das campanhas (mesmo contêiner das LPs anteriores). Só nas landing pages
+    // (src/pages/landing.mjs) e só depois do "Aceitar" no aviso de cookies.
+    gtm: "GTM-WP9XSL6K",
+  },
 
   oabNotice:
     "Conteúdo de caráter informativo, em conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021. Não há oferta de serviços, captação de clientela ou promessa de resultado. Cada caso é analisado individualmente.",

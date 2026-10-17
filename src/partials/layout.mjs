@@ -209,7 +209,7 @@ const giantWordmark = () => {
 // Rodapé global: fechamento editorial (frase + um CTA), colunas de navegação,
 // letreiro "VIEIRA & MARQUES" em baixo contraste e barra final com "voltar ao topo".
 // Movimento só por CSS + IntersectionObserver (site.js), respeitando prefers-reduced-motion.
-export function footer(whatsappMessage = waMessage()) {
+export function footer(whatsappMessage = waMessage(), { consent = MEASURING } = {}) {
   const sede = SITE.units[0];
   const col = (title, inner, extra = "") => `<div class="site-footer__col${extra}" data-reveal>
         <h2 class="site-footer__title">${title}</h2>
@@ -237,7 +237,7 @@ export function footer(whatsappMessage = waMessage()) {
       ${col("Legal", `<ul class="site-footer__list">
           <li>${link(LEGAL_PATHS.privacy, "Política de Privacidade")}</li>
           <li>${link(LEGAL_PATHS.terms, "Termos de Uso")}</li>
-          ${SITE.measurement.ga4 || SITE.measurement.metaPixel ? `<li><button class="site-footer__link site-footer__prefs" type="button" data-consent-open>Preferências de cookies</button></li>` : ""}
+          ${consent ? `<li><button class="site-footer__link site-footer__prefs" type="button" data-consent-open>Preferências de cookies</button></li>` : ""}
         </ul>`)}
     </div>
 
@@ -324,37 +324,41 @@ export function breadcrumbs(crumbs) {
 </nav>`;
 }
 
-// Aviso de consentimento: só existe com ferramentas de medição configuradas.
+// Aviso de consentimento: só existe com ferramentas de medição configuradas. O Google Tag Manager
+// das campanhas entra apenas nas landing pages (opção tagManager de page()).
 const MEASURING = Boolean(SITE.measurement.ga4 || SITE.measurement.metaPixel);
-const consentBanner = () => {
-  const tools = [SITE.measurement.ga4 && "Google Analytics", SITE.measurement.metaPixel && "Pixel da Meta"].filter(Boolean).join(" e ");
+const consentBanner = (tagManager) => {
+  const tools = [SITE.measurement.ga4 && "Google Analytics", SITE.measurement.metaPixel && "Pixel da Meta", tagManager && "Google Tag Manager e Google Ads"].filter(Boolean).join(" e ");
+  const goal = tagManager && !MEASURING ? "medir o resultado das campanhas de anúncios" : tagManager ? "entender como o site é usado e medir o resultado das campanhas" : "entender como o site é usado";
   return `<div class="consent on-dark" data-consent hidden role="region" aria-label="Preferências de cookies">
-  <p class="consent__text">Com a sua autorização, usamos ferramentas de medição (${esc(tools)}) para entender como o site é usado. <a class="text-link" href="${LEGAL_PATHS.privacy}#cookies">Saiba mais</a></p>
+  <p class="consent__text">Com a sua autorização, usamos ferramentas de medição (${esc(tools)}) para ${goal}. <a class="text-link" href="${LEGAL_PATHS.privacy}#cookies">Saiba mais</a></p>
   <div class="consent__actions">
     <button class="btn btn--ghost-light btn--plain" type="button" data-consent-choice="recusado">Recusar</button>
     <button class="btn btn--light btn--plain" type="button" data-consent-choice="aceito">Aceitar</button>
   </div>
 </div>`;
 };
-const bodyAttrs = () =>
+const bodyAttrs = (tagManager) =>
   (SITE.forms ? " data-forms" : "") +
   (SITE.measurement.ga4 ? ` data-ga4="${esc(SITE.measurement.ga4)}"` : "") +
-  (SITE.measurement.metaPixel ? ` data-pixel="${esc(SITE.measurement.metaPixel)}"` : "");
+  (SITE.measurement.metaPixel ? ` data-pixel="${esc(SITE.measurement.metaPixel)}"` : "") +
+  (tagManager ? ` data-gtm="${esc(SITE.measurement.gtm)}"` : "");
 
-export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage(), floatPhrases }) {
+export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage(), floatPhrases, tagManager = false }) {
+  const gtm = Boolean(tagManager && SITE.measurement.gtm);
   return `<!DOCTYPE html>
 <html lang="${SITE.lang}">
 ${head({ title, description, path, schema, crumbs, preload })}
-<body${bodyAttrs()}>
+<body${bodyAttrs(gtm)}>
 ${loader()}
 ${header(path, whatsappMessage)}
 <main id="conteudo" tabindex="-1">
 ${body}
 </main>
 ${mapSection()}
-${footer(whatsappMessage)}
+${footer(whatsappMessage, { consent: MEASURING || gtm })}
 ${floatingWhatsapp ? waFloat(whatsappMessage, floatPhrases) : ""}
-${MEASURING ? consentBanner() : ""}
+${MEASURING || gtm ? consentBanner(gtm) : ""}
 <script src="/assets/js/${jsFile("site")}?v=${ASSET_VERSION}" defer></script>
 ${join(scripts, (s) => `<script src="${s.replace(/\/(\w+)\.js$/, (m, n) => `/${jsFile(n)}`)}?v=${ASSET_VERSION}" defer></script>\n`)}</body>
 </html>
