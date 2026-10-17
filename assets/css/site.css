@@ -1274,6 +1274,8 @@ html:not(.js) .nav__item--menu:hover > .nav__panel, html:not(.js) .nav__item--me
   .team-panels { scroll-behavior: smooth; }
   .team-panel { transition: transform .35s var(--ease), opacity .35s ease; }
   .team-panel:not(.is-current) { opacity: .72; transform: scale(.97); }
+  /* Em fundo escuro a transparência acinzentava o cartão branco (texto sem contraste): só a escala muda. */
+  :is(.on-dark, .section--dark, .lp-sec--dark) .team-panel:not(.is-current) { opacity: 1; }
 }
 @media (max-width: 899px) and (prefers-reduced-motion: reduce) { .team-panels { scroll-behavior: auto; } .team-panel:not(.is-current) { transform: none; } }
 
