@@ -288,7 +288,7 @@ const mapSection = () => {
         <h2 class="h-section" id="como-chegar-titulo">Sede em <span class="grad">Boituva/SP.</span></h2>
         <address class="visit__address">${esc(u.street)}<br>${esc(u.district)} — ${esc(u.city)}/${esc(u.region)}<br>CEP ${esc(u.postalCode)}</address>
         ${isPending(SITE.hours) ? "" : `<p class="muted">${esc(SITE.hours)}</p>`}
-        <p class="muted">Atendimento presencial também em Sorocaba, com horário combinado. Para as demais cidades, reuniões por vídeo.</p>
+        <p class="muted">Atendimento presencial também em Sorocaba, com horário combinado. Para as demais cidades, reuniões por vídeo. <a class="text-link" href="${CITIES_HUB}" data-track="regional_hub_click">Ver as cidades atendidas</a>.</p>
         ${SITE.googleReviewsCount ? `<p class="visit__rating"><a class="text-link" href="${esc(u.mapsUrl)}" target="_blank" rel="noopener noreferrer" data-track="google_review_click">${SITE.googleReviewsCount} avaliações no Google</a></p>` : ""}
         <div class="btn-row">
           <a class="btn" href="${esc(u.mapsUrl)}" target="_blank" rel="noopener noreferrer">Abrir no Google Maps <span class="btn__arrow">${icon.arrowUpRight(16)}</span></a>
@@ -353,7 +353,9 @@ const bodyAttrs = (tagManager) =>
   (SITE.measurement.metaPixel ? ` data-pixel="${esc(SITE.measurement.metaPixel)}"` : "") +
   (tagManager ? ` data-gtm="${esc(SITE.measurement.gtm)}"` : "");
 
-export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage(), floatPhrases, tagManager = false, ogImage, ogAlt }) {
+// visit: bloco "Como chegar" após o conteúdo. Páginas que já mostram a sede no mapa de "Onde atendemos"
+// passam visit: false, para não repetir o endereço na mesma página.
+export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage(), floatPhrases, tagManager = false, ogImage, ogAlt, visit = true }) {
   const gtm = Boolean(tagManager && SITE.measurement.gtm);
   return `<!DOCTYPE html>
 <html lang="${SITE.lang}">
@@ -364,7 +366,7 @@ ${header(path, whatsappMessage)}
 <main id="conteudo" tabindex="-1">
 ${body}
 </main>
-${mapSection()}
+${visit ? mapSection() : ""}
 ${footer(whatsappMessage, { consent: MEASURING || gtm })}
 ${floatingWhatsapp ? waFloat(whatsappMessage, floatPhrases) : ""}
 ${MEASURING || gtm ? consentBanner(gtm) : ""}

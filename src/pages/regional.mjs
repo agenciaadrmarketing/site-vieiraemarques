@@ -5,6 +5,7 @@ import { serviceHref } from "../data/services/index.mjs";
 import { articles } from "../data/articles.mjs";
 import { guides } from "../data/guides.mjs";
 import { REGIONAL, REGIONAL_GROUPS, CITIES_HUB, regionalPath } from "../data/regional.mjs";
+import { teamWithProfile, profilePath } from "../data/team.mjs";
 import { page } from "../partials/layout.mjs";
 import { imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
@@ -131,12 +132,18 @@ export function renderRegional(c) {
   const msg = message(c);
   const title = c.title ?? `Advogado em ${label(c)} | Vieira & Marques`;
   const alt = ALT[c.image];
+  // Profissionais das áreas destacadas na página (mesma relação área → advogado das páginas-pilar).
+  const areas = new Set([...c.services.map(([a]) => a), ...c.content]);
+  const pros = teamWithProfile.filter((p) => p.areas.some((a) => areas.has(a)));
+  const prosText = pros.length ? ` Profissionais das áreas desta página: ${pros.map((p) => `<a class="text-link" href="${profilePath(p)}">${esc(p.name)}</a>`).join(", ")}.` : "";
   const structure = c.mode === "sede"
-    ? {}
+    ? { text: `Sede em Boituva/SP, com recepção e salas de reunião. <a class="text-link" href="/escritorio/">Conheça o escritório</a>.${prosText}` }
     : {
         title: `Quem atende os clientes <span class="grad">de ${esc(c.city)}.</span>`,
-        text: `A Vieira &amp; Marques Sociedade de Advogados tem sede em Boituva/SP e advogados inscritos na OAB/SP, com atuação dividida por áreas. <a class="text-link" href="/escritorio/">Conheça o escritório</a> e a <a class="text-link" href="/escritorio/#equipe">equipe</a>.`,
+        text: `A Vieira &amp; Marques Sociedade de Advogados tem sede em Boituva/SP e advogados inscritos na OAB/SP, com atuação dividida por áreas. <a class="text-link" href="/escritorio/">Conheça o escritório</a>.${prosText}`,
       };
+  // Cidades vizinhas (as 3 mais próximas no mapa): navegação entre regionais sem depender só do índice.
+  const near = REGIONAL.filter((o) => o !== c).map((o) => [Math.hypot(o.coords[0] - c.coords[0], o.coords[1] - c.coords[1]), o]).sort((a, b) => a[0] - b[0]).slice(0, 3).map(([, o]) => o);
 
   const body = `
 <div hidden data-city-page="${esc(c.city)}"></div>
@@ -168,9 +175,14 @@ ${knowledge(c)}
 
 ${lpFaq({ title: `Perguntas frequentes <span class="grad">— ${esc(c.city)}.</span>`, lead: "Respostas gerais e informativas. Cada caso depende da análise dos fatos e dos documentos.", items: c.faq, message: msg, ctaLabel: "Entrar em contato" })}
 
-${lpCta({ title: c.cta.title, text: esc(c.cta.text), message: msg, label: "Solicitar atendimento" })}`;
+${lpCta({ title: c.cta.title, text: esc(c.cta.text), message: msg, label: "Solicitar atendimento" })}
+
+<nav class="reg-near" aria-label="Cidades próximas">
+  <div class="container"><p><span class="reg-near__label">Cidades próximas:</span> ${near.map((o) => `<a class="text-link" href="${regionalPath(o)}">${esc(o.city)}</a>`).join(" · ")} · <a class="text-link" href="${CITIES_HUB}">todas as cidades atendidas</a></p></div>
+</nav>`;
 
   return page({
+    visit: false,
     title,
     description: c.description,
     path,
@@ -253,6 +265,7 @@ ${lpAreaCards({ title: `Oito áreas de atuação, <span class="grad">em todas as
 ${lpCta({ title: `Não encontrou a sua cidade? <span class="grad">Fale com nossa equipe.</span>`, text: "O atendimento online alcança qualquer cidade do estado e do país. A equipe de atendimento faz a triagem e indica o formato de reunião.", message: msg, label: "Solicitar atendimento" })}`;
 
   return page({
+    visit: false,
     title: "Cidades Atendidas em São Paulo | Vieira & Marques",
     description: "Cidades atendidas pela Vieira & Marques no estado de São Paulo: sede em Boituva, presencial em Sorocaba e online na capital, em Campinas, Santos e região.",
     path: CITIES_HUB,

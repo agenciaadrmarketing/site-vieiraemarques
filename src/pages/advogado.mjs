@@ -15,6 +15,7 @@ import { lpCta, lpHead } from "../partials/lp.mjs";
 
 // Perfil individual do profissional (/advogados/<slug>/). Todo o conteúdo vem de
 // src/data/team.mjs: seções sem dado confirmado não são exibidas.
+// Jornada: pessoa (hero) → sobre → áreas → formação → conteúdos → avaliações → demais profissionais → chamada.
 // Trechos entre **asteriscos** no texto "Sobre" (src/data/team.mjs) aparecem em negrito.
 const bold = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 const female = (p) => p.name.startsWith("Dra.");
@@ -115,8 +116,6 @@ ${when(own.length, `<section class="section section--white" aria-labelledby="con
   </div>
 </section>`)}
 
-${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a nossa equipe.</span>`, text: "A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao profissional responsável pela área.", message: msg })}
-
 ${googleReviews()}
 
 <section class="lp-sec lp-sec--dark lp-team on-dark" aria-labelledby="equipe-titulo">
@@ -124,7 +123,9 @@ ${googleReviews()}
     ${lpHead({ eyebrow: "Equipe", title: `Conheça também <span class="grad">os demais profissionais.</span>`, id: "equipe-titulo" })}
     ${teamPanels(team.filter((o) => o.slug !== p.slug), { profileLinks: true, headingLevel: 3 })}
   </div>
-</section>`;
+</section>
+
+${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a nossa equipe.</span>`, text: "A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao profissional responsável pela área.", message: msg })}`;
 
   const desc = `${name}, ${title(p).toLowerCase()} da Vieira & Marques: atuação em ${areas.map((a) => a.title).join(" e ")}. Formação, áreas de atuação e contato com a equipe.`;
   return page({

@@ -15,9 +15,9 @@ import { faqSchema, articleRow, sectionHead } from "../partials/components.mjs";
 import { img } from "../partials/media.mjs";
 import { HERO_MOBILE, lpHero, lpServices, lpSteps, lpProof, lpAbout, lpStructure, lpCta, lpSignals, lpReach, lpFaq, lpHead, lpOtherAreas } from "../partials/lp.mjs";
 
-// Página própria de cada área (página-pilar), no mesmo desenho das landing pages
-// publicadas: hero com a pergunta do cliente, serviços, como funciona, equipe,
-// estrutura, faixa de chamada, pontos de atenção, onde atendemos e perguntas.
+// Página própria de cada área (página-pilar), no mesmo desenho das landing pages publicadas.
+// Jornada: hero (pergunta do cliente) → pontos de atenção → serviços → como funciona → documentos
+// → profissional responsável → avaliações → onde atendemos → conteúdos → perguntas → outras áreas → chamada.
 // Mãe das páginas /areas/<área>/<serviço>/.
 
 const description = (area) => {
@@ -90,11 +90,11 @@ ${lpSteps(lp.stepsTex ? { tex: lp.stepsTex } : {})}
 
 ${lpProof({ ...lp.proof, message: waMessage(`${area.title} e quero enviar documentos para análise inicial`), tex: lp.tex })}
 
-${faqs.length ? lpFaq({ title: faqTitle(area), lead: lp.faqLead, items: faqs, message: waMessage(`uma dúvida sobre ${area.title}`) }) : ""}
-
 ${lpAbout({ person: people[0], areaTitle: area.title, people: [...people, ...team.filter((p) => !people.includes(p))] })}
 
 ${googleReviews()}
+
+${lpReach()}
 
 ${related.length ? `<section class="lp-sec lp-sec--white" aria-labelledby="conteudos-titulo">
   <div class="container container--narrow">
@@ -104,15 +104,14 @@ ${related.length ? `<section class="lp-sec lp-sec--white" aria-labelledby="conte
   </div>
 </section>` : ""}
 
-${related.length ? "" : lpOtherAreas(area.id)}
+${faqs.length ? lpFaq({ title: faqTitle(area), lead: lp.faqLead, items: faqs, message: waMessage(`uma dúvida sobre ${area.title}`) }) : ""}
 
-${lpReach()}
-
-${related.length ? lpOtherAreas(area.id) : ""}
+${lpOtherAreas(area.id)}
 
 ${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandImage ? { image: lp.bandImage, position: "center 55%" } : {}) })}`;
 
   return page({
+    visit: false,
     ogImage: lp.image,
     ogAlt: lp.alt,
     scripts: SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [],

@@ -107,6 +107,7 @@ ${lpSteps({ eyebrow: "Como encontrar a área", title: `Do primeiro contato <span
 ${lpCta({ title: `Não sabe em qual área seu caso se encaixa? <span class="grad">Fale com a nossa equipe.</span>`, text: "Descreva a situação em linguagem comum. A equipe de atendimento faz a triagem e encaminha o caso à área adequada.", message: waMessage() })}`;
 
   return page({
+    visit: false,
     ogImage: "equipe-reuniao",
     ogAlt: "Equipe da Vieira & Marques reunida na sala de reunião do escritório",
     title: "Áreas de Atuação | Vieira & Marques",

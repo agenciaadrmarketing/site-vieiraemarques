@@ -1,6 +1,6 @@
 import { esc, join } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
-import { lpSteps, lpCta, lpReach, lpStructure } from "../partials/lp.mjs";
+import { lpCta, lpReach } from "../partials/lp.mjs";
 import { practiceAreas, areaUrl, AREAS_HUB } from "../data/areas.mjs";
 import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { team, teamRecognitions } from "../data/team.mjs";
@@ -101,8 +101,6 @@ ${trustBar()}
   </div>
 </section>
 
-
-${lpSteps({ title: `Como funciona <span class="grad">o primeiro contato.</span>` })}
 ${lpReach()}
 
 ${googleReviews()}
@@ -126,6 +124,7 @@ ${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nos
 `;
 
   return page({
+    visit: false,
     ogImage: "hero-home",
     ogAlt: "Mesa de trabalho com notebook exibindo a marca Vieira & Marques, no escritório em Boituva - SP",
     scripts: SITE_SCRIPTS,

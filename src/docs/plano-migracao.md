@@ -17,9 +17,14 @@ Alternativa de menor risco: manter o blog num subdomínio/diretório próprio. *
 
 ## 1. Ambiente de homologação
 
-- `novosite.*` envia `X-Robots-Tag: noindex, nofollow` pelo `.htaccess` (regra por host `^novosite\.`). Em produção a regra não dispara.
-- Os canonicals, Open Graph e o sitemap já usam `https://vieiraemarquesadvogados.com/`.
-- Verificação P0 pós-migração: `curl -sI https://vieiraemarquesadvogados.com/ | grep -i x-robots` deve vir vazio e nenhuma página pode ter `<meta name="robots" content="noindex">` (a 404 é a única).
+- `novosite.*` fica fora das buscas por três mecanismos do `.htaccess`, todos condicionados ao host `^novosite\.` (variável `VM_STAGING`): cabeçalhos `X-Robots-Tag` por robô (googlebot, bingbot, yandex, duckduckbot, applebot, baiduspider), `robots.txt` reescrito para `robots-staging.txt` (robôs de IA bloqueados) e nada mais. Em produção nenhuma dessas regras dispara.
+- Os canonicals e o sitemap já usam `https://vieiraemarquesadvogados.com/`; as prévias de link (`og:url`, imagem) usam `shareOrigin` (novosite) até a migração — ver item 7 do checklist.
+- **Validação P0 pós-migração (robots/indexação)** — executar no domínio oficial, antes de enviar o sitemap:
+  1. `curl -sI https://vieiraemarquesadvogados.com/ | grep -i x-robots` → vazio (nenhum cabeçalho por robô).
+  2. `curl -s https://vieiraemarquesadvogados.com/robots.txt` → deve ser o `robots.txt` normal (começa com `User-agent: *` / `Allow: /` e lista os robôs de IA com `Allow`), **não** o `robots-staging.txt` (que começa com o comentário "Homologação").
+  3. Nenhuma página com `<meta name="robots" content="noindex">` além da 404: `grep -rl 'content="noindex"' --include=index.html .` no pacote deve retornar vazio.
+  4. Teste de URL ao vivo no Search Console para `/`, uma área, um serviço e uma regional: "Indexação permitida".
+  5. Se o `novosite.` continuar no ar depois da troca, mantê-lo com as regras de homologação (ou redirecioná-lo 301 para o domínio oficial) para não gerar conteúdo duplicado.
 
 ## 2. DNS e hospedagem (apenas documentação)
 
@@ -53,5 +58,9 @@ URLs de artigos do blog **não entram** no mapa.
 5. `sitemap.xml` com o domínio final; enviar no Search Console; pedir indexação das páginas principais.
 6. Configurar `api/config.php` (avaliações do Google) e testar `/api/google-reviews.php`.
 7. Conferir que nenhum link interno aponta para `novosite.`.
+   - Medição: o Google Tag Manager (LPs) e eventuais GA4/Pixel em `src/data/site.mjs` precisam ter o domínio oficial autorizado nos respectivos painéis; conferir no DebugView que `page_path`, `cidade_pagina` e `utm_*` chegam.
+   - Search Console: adicionar a propriedade de domínio (se ainda não existir), enviar `sitemap.xml` e, após 48 h, conferir que as 32 regionais e o índice `/cidades-atendidas/` foram descobertos.
+   - Formulários/WhatsApp: abrir uma regional, uma área e um serviço e conferir que a mensagem pré-preenchida do WhatsApp identifica a página; se `SITE.forms` for ativado, testar o envio e a captura de origem (URL, área, serviço, UTMs).
+   - DNS: a troca de apontamento do domínio principal só depois dos itens 1 a 6; conferir MX/e-mail antes e depois.
    - Antes de gerar o pacote final, trocar `shareOrigin` em `src/data/site.mjs` para o domínio oficial (o mesmo valor de `origin`): é o endereço usado nas prévias de link (`og:url` e imagem). Depois de publicar, testar um link no WhatsApp e passar as páginas principais no Depurador de Compartilhamento do Facebook ("Extrair novamente") para atualizar as prévias guardadas.
 8. Acompanhar Search Console (cobertura, erros 404/soft 404) por 30 dias.

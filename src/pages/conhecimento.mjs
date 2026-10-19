@@ -6,6 +6,7 @@ import { practiceAreas, areaById, areaFaqUrl } from "../data/areas.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
 import { guides as pdfGuides } from "../data/guides.mjs";
 import { faqByArea } from "../data/faq.mjs";
+import { teamWithProfile, profilePath } from "../data/team.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { icon } from "../partials/icons.mjs";
 import { sectionHead, articleFeature, articleCard } from "../partials/components.mjs";
@@ -115,6 +116,8 @@ ${lpHero({
       lead: "Os artigos completos estão publicados no blog do escritório, organizados por área e atualizados pela equipe.",
       aside: `<a class="btn" href="${SITE.blogBase}/blog/" target="_blank" rel="noopener">Abrir o blog <span class="btn__arrow">${icon.arrowUpRight(16)}</span></a>`,
     })}
+    <p class="lp-text mt-lg" data-reveal>Os conteúdos são escritos pela equipe do escritório. Conheça quem assina:</p>
+    <ul class="reg-cities reg-cities--dark" data-reveal aria-label="Profissionais que escrevem os conteúdos">${join(teamWithProfile, (p) => `<li><a href="${profilePath(p)}" data-track="lawyer_profile_click">${esc(p.name)} <span class="reg-cities__sub">· ${esc(p.focus)}</span> ${icon.arrow(12)}</a></li>`)}</ul>
   </div>
 </section>
 
