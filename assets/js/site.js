@@ -1084,6 +1084,55 @@
   var idle = window.requestIdleCallback
     ? function (fn) { window.requestIdleCallback(fn, { timeout: 700 }); }
     : function (fn) { window.setTimeout(fn, 120); };
+  /* ---------- Âncora vinda de outra página (ex.: /areas/x/#perguntas) ---------- */
+  // O navegador rola até o alvo antes de as seções acima terminarem de assumir a altura final
+  // (fontes, painéis da equipe, renderização sob demanda) e o alvo saía do lugar. Reposiciona sem
+  // animação depois do carregamento, uma única vez, e só se o visitante ainda não tiver rolado.
+  function initHashLanding() {
+    var id = decodeURIComponent((location.hash || "").slice(1));
+    var target = id && document.getElementById(id);
+    if (!target) return;
+    var moved = false;
+    function stop() { moved = true; }
+    window.addEventListener("wheel", stop, { passive: true, once: true });
+    window.addEventListener("touchstart", stop, { passive: true, once: true });
+    window.addEventListener("keydown", stop, { once: true });
+    function land() {
+      if (moved) return;
+      var root = document.documentElement, prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start" });
+      root.style.scrollBehavior = prev;
+    }
+    window.addEventListener("load", function () {
+      var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      fonts.then(function () { requestAnimationFrame(function () { land(); setTimeout(land, 350); }); });
+    }, { once: true });
+  }
+
+  // Mesmo ajuste para links internos da página (índice "Nesta página", "Ver serviços"...): com as seções
+  // renderizadas sob demanda, a rolagem suave usa alturas estimadas e podia parar fora do alvo.
+  function initAnchorFix() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      var id = a && decodeURIComponent(a.getAttribute("href").slice(1));
+      var target = id && document.getElementById(id);
+      if (!target) return;
+      var done = false;
+      function fix() {
+        if (done) return; done = true;
+        var pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+        var off = target.getBoundingClientRect().top - pad;
+        var bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        if (Math.abs(off) > 24 && !(bottom && off > 0)) target.scrollIntoView({ block: "start", behavior: "smooth" });
+      }
+      if ("onscrollend" in window) window.addEventListener("scrollend", fix, { once: true });
+      setTimeout(fix, 1200);
+    });
+  }
+
+  initHashLanding();
+  initAnchorFix();
   initLoader();
   initMenu();
   initNav();

@@ -2304,3 +2304,9 @@ a.g-review__name:hover { text-decoration: underline; }
 .reg-cities--dark a { background: transparent; border-color: rgba(255,255,255,.22); color: #FFFFFF; }
 .reg-cities--dark a:hover { border-color: #FFFFFF; }
 .reg-cities__sub { font-weight: 400; color: var(--c-text-light-3); }
+
+/* ---------- Renderização sob demanda das seções abaixo da dobra ---------- */
+/* O navegador só calcula estilo, layout e pintura destas seções quando chegam perto da tela; o tamanho
+   real fica memorizado (auto) depois da primeira renderização. Fora: hero (LCP) e "Onde atendemos",
+   cuja textura usa position: fixed (a contenção a prenderia à seção). */
+:is(.section, .lp-sec, .lp-cta, .g-reviews, .visit, .site-footer):not(.lp-reach) { content-visibility: auto; contain-intrinsic-size: auto 900px; }
