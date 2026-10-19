@@ -2297,3 +2297,8 @@ a.g-review__name:hover { text-decoration: underline; }
   .reg-cities { justify-content: center; }
   .lp-reach__hub { display: flex; width: fit-content; margin-inline: auto; }
 }
+.reg-near { padding-block: 22px; background: #F4F4F4; border-top: 1px solid var(--c-line-light); font-size: 15px; color: var(--c-text-dark-2); text-align: center; }
+.reg-near__label { font-weight: 600; }
+.reg-cities--dark a { background: transparent; border-color: rgba(255,255,255,.22); color: #FFFFFF; }
+.reg-cities--dark a:hover { border-color: #FFFFFF; }
+.reg-cities__sub { font-weight: 400; color: var(--c-text-light-3); }
