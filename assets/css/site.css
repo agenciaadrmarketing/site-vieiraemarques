@@ -12,7 +12,7 @@
    carrega, o texto já ocupa o mesmo espaço e quebra as linhas no mesmo ponto, e a troca não desloca o
    layout (CLS). Larguras medidas no navegador com os textos do site; altura pelas métricas da Lexend. */
 @font-face { font-family: "Lexend Deca Fallback"; font-weight: 300 324; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
-  size-adjust: 105.65%; ascent-override: 94.65%; descent-override: 23.66%; line-gap-override: 0%; }
+  size-adjust: 105.95%; ascent-override: 94.38%; descent-override: 23.60%; line-gap-override: 0%; }
 @font-face { font-family: "Lexend Deca Fallback"; font-weight: 325 374; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
   size-adjust: 107.05%; ascent-override: 93.41%; descent-override: 23.35%; line-gap-override: 0%; }
 @font-face { font-family: "Lexend Deca Fallback"; font-weight: 375 449; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
@@ -20,7 +20,7 @@
 @font-face { font-family: "Lexend Deca Fallback"; font-weight: 450 549; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Helvetica");
   size-adjust: 110.61%; ascent-override: 90.41%; descent-override: 22.60%; line-gap-override: 0%; }
 @font-face { font-family: "Lexend Deca Fallback"; font-weight: 550 700; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Helvetica Bold");
-  size-adjust: 105.68%; ascent-override: 94.63%; descent-override: 23.66%; line-gap-override: 0%; }
+  size-adjust: 106.25%; ascent-override: 94.12%; descent-override: 23.53%; line-gap-override: 0%; }
 
 /* ---------- Tokens ---------- */
 :root {
@@ -76,6 +76,8 @@ body {
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 img { max-width: 100%; height: auto; display: block; }
+/* <picture> (AVIF + WebP) não participa do layout: o <img> continua sendo o filho direto para grid, flex e posicionamento. */
+picture { display: contents; }
 figure { margin: 0; }
 [hidden] { display: none !important; }
 a { color: inherit; text-decoration: none; }
