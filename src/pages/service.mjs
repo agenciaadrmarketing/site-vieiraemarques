@@ -180,6 +180,8 @@ ${contactCta(p, "sticky", "svc-sticky-cta", SITE.forms ? icon.arrow(16) : "").re
 
   const url = SITE.origin + p.path;
   return page({
+    ogImage: p.hero.image ?? lp.legacy?.image ?? lp.image,
+    ogAlt: p.hero.imageAlt ?? lp.legacy?.alt ?? lp.alt,
     scripts: SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [],
     title: serviceTitle(p.seo.title),
     description: p.seo.description,

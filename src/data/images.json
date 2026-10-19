@@ -1275,6 +1275,116 @@
     "w": 1200,
     "h": 630
   },
+  "og:hero-home": {
+    "src": "/assets/img/og-escritorio-vieira-marques-advogados-mesa-de-trabalho-hero.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:equipe": {
+    "src": "/assets/img/og-equipe-de-advogados-vieira-marques-boituva-v2.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:fachada": {
+    "src": "/assets/img/og-fachada-escritorio-vieira-marques-advogados-boituva-sp.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:hero-conhecimento": {
+    "src": "/assets/img/og-hero-conhecimento-advogados-vieira-marques-v1.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:equipe-reuniao": {
+    "src": "/assets/img/og-reuniao-equipe-vieira-marques-advogados-v2.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:hero-area-familia": {
+    "src": "/assets/img/og-hero-area-familia-advogados-vieira-marques-v1.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:area-sucessorio-wide": {
+    "src": "/assets/img/og-advogado-direito-sucessorio-heranca-inventario-boituva.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:hero-trabalhista": {
+    "src": "/assets/img/og-advogado-direito-do-trabalho-carteira-de-trabalho-boituva.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:hero-area-criminal": {
+    "src": "/assets/img/og-hero-area-criminal-advogados-vieira-marques-v1.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:hero-area-saude": {
+    "src": "/assets/img/og-hero-area-saude-advogados-vieira-marques-v1.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:hero-bancario": {
+    "src": "/assets/img/og-advogado-direito-bancario-revisao-financiamento-boituva.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:area-imobiliario-wide": {
+    "src": "/assets/img/og-advogado-direito-imobiliario-imovel-boituva.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:area-previdenciario-wide": {
+    "src": "/assets/img/og-advogado-direito-previdenciario-inss-boituva.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:hero-familia": {
+    "src": "/assets/img/og-advogado-divorcio-acordo-partilha-guarda-boituva.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:area-criminal-wide": {
+    "src": "/assets/img/og-advogado-direito-criminal-defesa-boituva.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:area-saude-wide": {
+    "src": "/assets/img/og-advogado-direito-medico-saude-plano-de-saude-boituva.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:lp-divorcio": {
+    "src": "/assets/img/og-advogado-divorcio-orientacao-casal-vieira-marques-v1.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:lp-golpe": {
+    "src": "/assets/img/og-advogado-golpe-do-pix-atendimento-vieira-marques-v1.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:oscar-moreira-vieira-fundo": {
+    "src": "/assets/img/og-oscar-moreira-vieira-advogado-escritorio-v2.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:jislana-marques-fundo": {
+    "src": "/assets/img/og-jislana-marques-advogada-estudio-v2.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:gledie-camargo-fundo": {
+    "src": "/assets/img/og-gledie-camargo-advogada-escritorio-v2.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:natalia-okumura-fundo": {
+    "src": "/assets/img/og-natalia-okumura-advogada-escritorio-v2.jpg",
+    "w": 1200,
+    "h": 630
+  },
   "monograma-mascara": {
     "src": "/assets/img/monograma-vieira-marques-mascara.webp",
     "w": 128,

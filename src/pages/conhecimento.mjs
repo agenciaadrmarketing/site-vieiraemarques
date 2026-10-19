@@ -123,6 +123,8 @@ ${lpAreaCards({ eyebrow: "Por área de atuação", title: `Conteúdos e serviço
 ${lpCta({ title: `Leu sobre o seu caso e ficou com dúvida? <span class="grad">Fale com a nossa equipe.</span>`, text: "Os conteúdos são informativos e não substituem a análise do caso concreto. Envie as informações para uma análise inicial.", message: waMessage() })}`;
 
   return page({
+    ogImage: "hero-conhecimento",
+    ogAlt: "Advogada da Vieira & Marques à mesa de trabalho, no escritório em Boituva",
     title: "Base de Conhecimento Jurídico | Vieira & Marques",
     description:
       "Artigos e perguntas frequentes sobre Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS, escritos pela equipe da Vieira & Marques.",

@@ -8,6 +8,11 @@ export const SITE = {
   cnpj: "58.433.320/0001-15",
   shortName: "Vieira & Marques",
   origin: "https://vieiraemarquesadvogados.com",
+  // Endereço em que o site está publicado agora, usado só nas prévias de link (WhatsApp, Facebook,
+  // LinkedIn, Outlook): og:url e a imagem da prévia precisam existir nesse endereço. Enquanto o site
+  // novo estiver no novosite, o domínio oficial ainda é o WordPress; na migração, trocar para o mesmo
+  // valor de `origin` (src/docs/plano-migracao.md). Canonical, sitemap e dados estruturados usam `origin`.
+  shareOrigin: "https://novosite.vieiraemarquesadvogados.com",
   locale: "pt_BR",
   lang: "pt-BR",
   description:

@@ -157,6 +157,8 @@ ${googleReviews({ muted: false })}
 ${lpCta({ title: `Quer conversar sobre o seu caso? <span class="grad">Fale com a nossa equipe.</span>`, text: "A equipe de atendimento faz a triagem inicial e, quando aplicável, encaminha o caso ao advogado responsável pela área.", message: waMessage() })}`;
 
   return page({
+    ogImage: "equipe",
+    ogAlt: "Equipe de advogados da Vieira & Marques no escritório de Boituva",
     scripts: SITE_SCRIPTS,
     title: "Escritório de Advocacia em Boituva/SP | Vieira & Marques",
     description:

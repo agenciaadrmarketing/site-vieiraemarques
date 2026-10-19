@@ -88,6 +88,8 @@ ${lpSteps({ eyebrow: "Depois do contato", title: `O que acontece <span class="gr
 ${lpReach()}`;
 
   return page({
+    ogImage: "fachada",
+    ogAlt: "Fachada do escritório Vieira & Marques em Boituva",
     title: "Contato | Vieira & Marques Sociedade de Advogados",
     description:
       "Fale com a Vieira & Marques: presencial em Boituva e Sorocaba e online em todo o Brasil. Telefone e WhatsApp (15) 3347-0189.",

@@ -148,6 +148,44 @@ def og_image():
     return {"src": f"/assets/img/{name}", "w": 1200, "h": 630}
 
 
+# Prévia de link por página (WhatsApp, Facebook, LinkedIn, Outlook): JPEG 1200×630 a partir da foto
+# principal de cada página. Lista = imagens das heros (áreas, serviços, LPs, perfis e institucionais);
+# o build cai na imagem padrão ("og") se uma página pedir uma chave que não esteja aqui.
+OG_KEYS = {
+    "hero-home": 0.5, "equipe": 0.4, "fachada": 0.5, "hero-conhecimento": 0.5, "equipe-reuniao": 0.4,
+    "hero-area-familia": 0.5, "area-sucessorio-wide": 0.5, "hero-trabalhista": 0.5, "hero-area-criminal": 0.5,
+    "hero-area-saude": 0.5, "hero-bancario": 0.5, "area-imobiliario-wide": 0.5, "area-previdenciario-wide": 0.5,
+    "hero-familia": 0.5, "area-criminal-wide": 0.5, "area-saude-wide": 0.5, "lp-divorcio": 0.45, "lp-golpe": 0.5,
+    # Perfis: recorte mais alto para manter o rosto.
+    "oscar-moreira-vieira-fundo": 0.3, "jislana-marques-fundo": 0.3, "gledie-camargo-fundo": 0.3, "natalia-okumura-fundo": 0.3,
+}
+
+
+def og_crop(path, focal_y=0.5):
+    im = Image.open(os.path.join(ROOT, path)).convert("RGB")
+    ratio = 1200 / 630
+    w, h = im.size
+    if w / h > ratio:  # mais larga que 1,91:1 — corta as laterais
+        new_w = round(h * ratio)
+        left = (w - new_w) // 2
+        im = im.crop((left, 0, left + new_w, h))
+    else:  # corta em cima/embaixo em torno do ponto focal
+        new_h = round(w / ratio)
+        top = min(max(0, round(h * focal_y - new_h / 2)), h - new_h)
+        im = im.crop((0, top, w, top + new_h))
+    return im.resize((1200, 630), Image.LANCZOS)
+
+
+def og_variants():
+    out = {}
+    for key, focal in OG_KEYS.items():
+        src, _, slug = SOURCES[key]
+        name = f"og-{slug}.jpg"
+        og_crop(src, focal).save(os.path.join(OUT_DIR, name), "JPEG", quality=80, optimize=True, progressive=True)
+        out[f"og:{key}"] = {"src": f"/assets/img/{name}", "w": 1200, "h": 630}
+    return out
+
+
 def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     # Saída 100% gerada: limpa variantes antigas antes de gerar.
@@ -158,6 +196,7 @@ def main():
     manifest = {name: save_variants(src, widths, slug) for name, (src, widths, slug) in SOURCES.items()}
     manifest.update(logo_variants())
     manifest["og"] = og_image()
+    manifest.update(og_variants())
     manifest["monograma-mascara"] = monogram_mask()
     with open(MANIFEST, "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=2)

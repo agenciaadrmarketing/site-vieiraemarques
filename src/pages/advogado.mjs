@@ -128,6 +128,8 @@ ${googleReviews()}
 
   const desc = `${name}, ${title(p).toLowerCase()} da Vieira & Marques: atuação em ${areas.map((a) => a.title).join(" e ")}. Formação, áreas de atuação e contato com a equipe.`;
   return page({
+    ogImage: p.hero ?? p.photo,
+    ogAlt: `${name}, ${title(p).toLowerCase()} da Vieira & Marques`,
     scripts: SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [],
     title: `${name} | ${title(p)} | Vieira & Marques`,
     description: desc.length <= 160 ? desc : `${name}, ${title(p).toLowerCase()} da Vieira & Marques, em ${areas.map((a) => a.title).join(" e ")}. Formação e áreas de atuação.`,

@@ -24,6 +24,7 @@ const ASSET_VERSION = createHash("sha256")
   .digest("hex")
   .slice(0, 10);
 const abs = (path) => SITE.origin + path;
+const shareUrl = (path) => (SITE.shareOrigin || SITE.origin) + path;
 // Usa o .min.js (npm run minify) quando existir; senão, o arquivo legível.
 const jsFile = (name) => (existsSync(new URL(`assets/js/${name}.min.js`, ROOT_URL)) ? `${name}.min.js` : `${name}.js`);
 
@@ -63,8 +64,12 @@ const breadcrumbSchema = (crumbs) => ({
   itemListElement: crumbs.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.label, item: abs(c.href) })),
 });
 
-function head({ title, description, path, ogType = "website", schema = [], crumbs, preload = [] }) {
+function head({ title, description, path, ogType = "website", schema = [], crumbs, preload = [], ogImage, ogAlt }) {
   const url = abs(path);
+  // Prévia de link: imagem 1200×630 própria da página (src/tools/images.py, OG_KEYS) ou a padrão.
+  const own = ogImage && images[`og:${ogImage}`];
+  const og = own || images.og;
+  const ogAltText = own && ogAlt ? ogAlt : "Fachada do escritório Vieira & Marques em Boituva - SP";
   const graph = [organizationSchema(), ...schema];
   if (crumbs && crumbs.length > 1) graph.push(breadcrumbSchema(crumbs));
   return `<head>
@@ -81,15 +86,18 @@ ${SITE.measurement.googleSiteVerification ? `<meta name="google-site-verificatio
 <meta property="og:site_name" content="${esc(SITE.name)}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
-<meta property="og:url" content="${esc(url)}">
-<meta property="og:image" content="${esc(abs(images.og.src))}">
-<meta property="og:image:width" content="${images.og.w}">
-<meta property="og:image:height" content="${images.og.h}">
-<meta property="og:image:alt" content="Fachada do escritório Vieira &amp; Marques em Boituva - SP">
+<meta property="og:url" content="${esc(shareUrl(path))}">
+<meta property="og:image" content="${esc(shareUrl(og.src))}">
+<meta property="og:image:secure_url" content="${esc(shareUrl(og.src))}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="${og.w}">
+<meta property="og:image:height" content="${og.h}">
+<meta property="og:image:alt" content="${esc(ogAltText)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
-<meta name="twitter:image" content="${esc(abs(images.og.src))}">
+<meta name="twitter:image" content="${esc(shareUrl(og.src))}">
+<meta name="twitter:image:alt" content="${esc(ogAltText)}">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/assets/icons/favicon-16.png" sizes="16x16">
@@ -344,11 +352,11 @@ const bodyAttrs = (tagManager) =>
   (SITE.measurement.metaPixel ? ` data-pixel="${esc(SITE.measurement.metaPixel)}"` : "") +
   (tagManager ? ` data-gtm="${esc(SITE.measurement.gtm)}"` : "");
 
-export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage(), floatPhrases, tagManager = false }) {
+export function page({ title, description, path, crumbs, schema, preload, body, scripts = [], floatingWhatsapp = true, whatsappMessage = waMessage(), floatPhrases, tagManager = false, ogImage, ogAlt }) {
   const gtm = Boolean(tagManager && SITE.measurement.gtm);
   return `<!DOCTYPE html>
 <html lang="${SITE.lang}">
-${head({ title, description, path, schema, crumbs, preload })}
+${head({ title, description, path, schema, crumbs, preload, ogImage, ogAlt })}
 <body${bodyAttrs(gtm)}>
 ${loader()}
 ${header(path, whatsappMessage)}

@@ -9,7 +9,7 @@ O blog hoje responde no mesmo domínio, em caminhos na raiz (ex.: `/construcao-n
 Publicar o pacote do novo site na raiz do `public_html` do domínio principal pode afetá-lo de quatro formas:
 
 1. **`.htaccess` substitui o do WordPress.** O arquivo do pacote não tem o bloco `# BEGIN WordPress`; sem ele, os links permanentes do blog deixam de funcionar. Na migração, manter o bloco do WordPress e inserir as regras do novo site **antes** dele.
-2. **Cabeçalho de segurança (CSP) aplicado ao domínio inteiro.** O `.htaccess` do novo site define `Content-Security-Policy` com `script-src 'self'` para todas as respostas; isso quebra scripts do WordPress (admin, temas, plugins). Na migração, aplicar a CSP só aos arquivos `.html` do novo site (`<FilesMatch "\.html$">`) e repetir o `Header always unset Content-Security-Policy` dentro das pastas das LPs; testar antes de publicar.
+2. **Cabeçalho de segurança (CSP) aplicado ao domínio inteiro.** O `.htaccess` do novo site define `Content-Security-Policy` com `script-src 'self'` para todas as respostas; isso quebra scripts do WordPress (admin, temas, plugins). Na migração, aplicar a CSP só aos arquivos `.html` do novo site (`<FilesMatch "\.html$">`). As LPs recebem a CSP própria (mais aberta para o Google Tag Manager) pela variável `VM_LP`, definida no próprio `.htaccess` principal — manter o bloco `# >>> LPs` junto das regras do novo site; testar antes de publicar.
 3. **`robots.txt` e `sitemap.xml` físicos** passam a ter precedência sobre os virtuais do WordPress/SEO plugin. Decidir com o cliente se o `robots.txt` final referencia também o sitemap do blog (referenciar não altera o blog).
 4. **Páginas do WordPress com o mesmo endereço** de páginas novas (ex.: `/contato/`, `/escritorio/`) deixam de aparecer, porque o arquivo estático vence a regra do WordPress. É o efeito desejado para as páginas institucionais, mas precisa de conferência página a página.
 
@@ -53,4 +53,5 @@ URLs de artigos do blog **não entram** no mapa.
 5. `sitemap.xml` com o domínio final; enviar no Search Console; pedir indexação das páginas principais.
 6. Configurar `api/config.php` (avaliações do Google) e testar `/api/google-reviews.php`.
 7. Conferir que nenhum link interno aponta para `novosite.`.
+   - Antes de gerar o pacote final, trocar `shareOrigin` em `src/data/site.mjs` para o domínio oficial (o mesmo valor de `origin`): é o endereço usado nas prévias de link (`og:url` e imagem). Depois de publicar, testar um link no WhatsApp e passar as páginas principais no Depurador de Compartilhamento do Facebook ("Extrair novamente") para atualizar as prévias guardadas.
 8. Acompanhar Search Console (cobertura, erros 404/soft 404) por 30 dias.

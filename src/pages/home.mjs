@@ -126,6 +126,8 @@ ${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nos
 `;
 
   return page({
+    ogImage: "hero-home",
+    ogAlt: "Mesa de trabalho com notebook exibindo a marca Vieira & Marques, no escritório em Boituva - SP",
     scripts: SITE_SCRIPTS,
     title: "Vieira & Marques Advogados | Boituva, Sorocaba e Online",
     description:

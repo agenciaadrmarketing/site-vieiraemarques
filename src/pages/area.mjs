@@ -113,6 +113,8 @@ ${related.length ? lpOtherAreas(area.id) : ""}
 ${lpCta({ title: lp.band.title, text: lp.band.text, message: msg, ...(lp.bandImage ? { image: lp.bandImage, position: "center 55%" } : {}) })}`;
 
   return page({
+    ogImage: lp.image,
+    ogAlt: lp.alt,
     scripts: SITE.googleReviews ? [GOOGLE_REVIEWS_SCRIPT] : [],
     title: `${area.title} em Boituva/SP | Vieira & Marques`,
     description: description(area),
