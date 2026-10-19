@@ -156,6 +156,8 @@ OG_KEYS = {
     "hero-area-familia": 0.5, "area-sucessorio-wide": 0.5, "hero-trabalhista": 0.5, "hero-area-criminal": 0.5,
     "hero-area-saude": 0.5, "hero-bancario": 0.5, "area-imobiliario-wide": 0.5, "area-previdenciario-wide": 0.5,
     "hero-familia": 0.5, "area-criminal-wide": 0.5, "area-saude-wide": 0.5, "lp-divorcio": 0.45, "lp-golpe": 0.5,
+    # Páginas regionais (fotos da sede).
+    "recepcao": 0.5, "sala-reuniao": 0.5, "escritorio-interno": 0.55, "mesa-trabalho": 0.5,
     # Perfis: recorte mais alto para manter o rosto.
     "oscar-moreira-vieira-fundo": 0.3, "jislana-marques-fundo": 0.3, "gledie-camargo-fundo": 0.3, "natalia-okumura-fundo": 0.3,
 }

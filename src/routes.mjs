@@ -13,6 +13,8 @@ import { renderArea } from "./pages/area.mjs";
 import { practiceAreas, areaUrl } from "./data/areas.mjs";
 import { LANDINGS } from "./data/landings.mjs";
 import { renderLanding } from "./pages/landing.mjs";
+import { REGIONAL, CITIES_HUB, regionalPath } from "./data/regional.mjs";
+import { renderRegional, renderRegionalHub } from "./pages/regional.mjs";
 
 export const ROUTES = [
   { path: "/", render: home, priority: "1.0" },
@@ -23,6 +25,9 @@ export const ROUTES = [
   ...practiceAreas.map((a) => ({ path: areaUrl(a), render: () => renderArea(a), priority: "0.9" })),
   ...servicePages.map((p) => ({ path: p.path, render: () => renderService(p), priority: "0.8" })),
   ...teamWithProfile.map((p) => ({ path: profilePath(p), render: () => renderAdvogado(p), priority: "0.7" })),
+  // Páginas regionais: índice das cidades e uma página por cidade (src/data/regional.mjs).
+  { path: CITIES_HUB, render: renderRegionalHub, priority: "0.7" },
+  ...REGIONAL.map((c) => ({ path: regionalPath(c), render: () => renderRegional(c), priority: "0.7" })),
   ...LANDINGS.map((l) => ({ path: l.path, render: () => renderLanding(l), priority: "0.6" })),
   { path: "/politica-de-privacidade/", render: politicaDePrivacidade, priority: "0.2" },
   { path: "/termos-de-uso/", render: termosDeUso, priority: "0.2" },

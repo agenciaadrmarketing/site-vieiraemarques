@@ -3,6 +3,7 @@ import { SITE, NAV, isPending, whatsappUrl, waMessage } from "../data/site.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
 import { teamWithProfile, profilePath } from "../data/team.mjs";
 import { LEGAL_PATHS } from "../data/legal.mjs";
+import { CITIES_HUB } from "../data/regional.mjs";
 import { MENUS } from "../data/menu.mjs";
 import { img, logo } from "./media.mjs";
 import { GATE_JS } from "../data/gate.mjs";
@@ -234,7 +235,7 @@ export function footer(whatsappMessage = waMessage(), { consent = MEASURING } = 
     </div>
 
     <div class="site-footer__cols">
-      ${col("Navegação", `<nav aria-label="Rodapé"><ul class="site-footer__list">${join(NAV, (i) => `<li>${link(i.href, i.label)}</li>`)}</ul></nav>`)}
+      ${col("Navegação", `<nav aria-label="Rodapé"><ul class="site-footer__list">${join(NAV, (i) => `<li>${link(i.href, i.label)}</li>`)}<li>${link(CITIES_HUB, "Cidades atendidas")}</li></ul></nav>`)}
       ${col("Áreas", `<ul class="site-footer__list site-footer__list--2">${join(practiceAreas, (a) => `<li>${link(areaUrl(a), a.title)}</li>`)}</ul>`, " site-footer__col--areas")}
       ${col("Contato", `<ul class="site-footer__list">
           <li class="site-footer__address site-footer__ic">${icon.pin(16)}<span>${esc(sede.street)}<br>${esc(sede.city)}/${esc(sede.region)}</span></li>

@@ -1365,6 +1365,26 @@
     "w": 1200,
     "h": 630
   },
+  "og:recepcao": {
+    "src": "/assets/img/og-recepcao-escritorio-de-advocacia-vieira-marques-v2.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:sala-reuniao": {
+    "src": "/assets/img/og-sala-de-reuniao-vieira-marques-advogados-v3.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:escritorio-interno": {
+    "src": "/assets/img/og-escritorio-de-advocacia-vieira-marques-boituva-sp-v3.jpg",
+    "w": 1200,
+    "h": 630
+  },
+  "og:mesa-trabalho": {
+    "src": "/assets/img/og-mesa-de-trabalho-escritorio-de-advocacia-boituva-v2.jpg",
+    "w": 1200,
+    "h": 630
+  },
   "og:oscar-moreira-vieira-fundo": {
     "src": "/assets/img/og-oscar-moreira-vieira-advogado-escritorio-v2.jpg",
     "w": 1200,

@@ -1,5 +1,5 @@
-# LP desativada: redireciona (301) para a página equivalente do site novo.
+# LP desativada ("Advogado em Boituva/SP"): redireciona (301) para a página regional equivalente.
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteRule ^ https://vieiraemarquesadvogados.com/ [R=301,L]
+  RewriteRule ^ https://vieiraemarquesadvogados.com/advogado-boituva/ [R=301,L]
 </IfModule>

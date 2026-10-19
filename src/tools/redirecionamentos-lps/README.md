@@ -13,7 +13,7 @@ desativar uma LP** e levar o visitante para a página equivalente do site novo (
 
 | Subdomínio | Destino no site novo | Arquivo |
 |---|---|---|
-| boituva.vieiraemarquesadvogados.com | / (página inicial) | `boituva.htaccess` |
+| boituva.vieiraemarquesadvogados.com | /advogado-boituva/ (página regional de Boituva) | `boituva.htaccess` |
 | divorcio.vieiraemarquesadvogados.com | /divorcio/ (mesma LP, no domínio principal) | `divorcio.htaccess` |
 | divorcio-sp.vieiraemarquesadvogados.com | /divorcio-sao-paulo/ (mesma LP) | `divorcio-sp.htaccess` |
 | divorcio-boituva.vieiraemarquesadvogados.com | /divorcio-boituva/ (mesma LP) | `divorcio-boituva.htaccess` |

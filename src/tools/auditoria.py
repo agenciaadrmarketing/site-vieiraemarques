@@ -13,6 +13,7 @@ def kind(u):
     if u in ("/",): return "home"
     if u.startswith("/advogados/"): return "advogado"
     if u.strip("/") in LPS: return "landing"
+    if u.startswith("/advogado-") or u == "/cidades-atendidas/": return "regional"
     if u.startswith("/areas/") and u.count("/") == 3: return "area"
     if u.startswith("/areas/"): return "servico"
     if u in ("/escritorio/", "/contato/", "/areas-de-atuacao/"): return "institucional"

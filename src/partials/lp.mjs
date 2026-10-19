@@ -9,6 +9,7 @@ import { teamPanels, faqList, waButton } from "./components.mjs";
 import images from "../data/images.json" with { type: "json" };
 import mapa from "../data/mapa-sp.json" with { type: "json" };
 import mapaBr from "../data/mapa-brasil.json" with { type: "json" };
+import { CITIES_HUB } from "../data/regional.mjs";
 
 export { waButton };
 
@@ -305,18 +306,51 @@ const CITIES = [
   ["Dracena", -51.53, -21.48], ["Lins", -49.74, -21.68], ["Jaú", -48.56, -22.3],
 ];
 
-function mapSp() {
+// city (páginas regionais): { name, coords: [lon, lat], label: "up"|"down" } destaca a cidade da página.
+// Boituva (sede) e São Paulo (capital) já têm marcador próprio; nas demais, a cidade ganha um ponto
+// com rótulo, e o rótulo da sede muda de lado quando a cidade fica ao sul, para não se sobreporem.
+function cityMarker(city, [sx, sy]) {
+  const [x, y] = project(city.coords);
+  const south = city.label ? city.label === "down" : city.coords[1] < SEDE[1] - 0.12;
+  const dir = south ? 1 : -1;
+  const ly = y + dir * 40;
+  return `<g class="lp-map__dest lp-map__dest--city">
+      <circle class="lp-map__pulse" cx="${x}" cy="${y}" r="5" fill="#FFF"/>
+      <circle cx="${x}" cy="${y}" r="5" fill="#FFF" stroke="#1EA94F" stroke-width="2.5"><title>${esc(city.name)}</title></circle>
+      <line x1="${x}" y1="${y + dir * 7}" x2="${x}" y2="${ly - dir * (south ? 14 : 4)}" stroke="rgba(255,255,255,.5)"/>
+      <text x="${x}" y="${south ? ly + 4 : ly - 22}" class="lp-map__label2" text-anchor="middle">Atendimento</text>
+      <text x="${x}" y="${south ? ly + 22 : ly - 4}" class="lp-map__label" text-anchor="middle">${esc(city.name)}</text>
+    </g>`;
+}
+
+// legend: legenda em HTML sob o mapa (páginas regionais): no celular, os rótulos do SVG ficam pequenos.
+function mapLegend(city) {
+  const own = city?.name;
+  const items = [
+    own && !["Boituva", "São Paulo"].includes(own) && ["city", `${own} — cidade desta página`],
+    ["sede", own === "Boituva" ? "Boituva — sede do escritório e cidade desta página" : "Boituva — sede do escritório"],
+    ["cap", own === "São Paulo" ? "São Paulo — capital e cidade desta página, atendimento online" : "São Paulo — capital, atendimento online"],
+  ].filter(Boolean);
+  return `<figcaption class="lp-map__legend"><ul>${join(items, ([k, t]) => `<li><span class="lp-map__key lp-map__key--${k}" aria-hidden="true"></span>${esc(t)}</li>`)}</ul></figcaption>`;
+}
+
+function mapSp(city, legend = false) {
   const [cx, cy] = project(CAPITAL);
   const [sx, sy] = project(SEDE);
+  const marked = city && !["Boituva", "São Paulo"].includes(city.name);
+  const sedeUp = marked && (city.label ? city.label === "down" : city.coords[1] < SEDE[1] - 0.12);
+  // Cidade logo abaixo e à direita da capital (ex.: Santos): o rótulo da capital sobe para não cruzar o marcador.
+  const [mx, my] = marked ? project(city.coords) : [0, 0];
+  const capUp = marked && mx > cx - 10 && mx < cx + 120 && my > cy && my < cy + 100;
   const cities = join(CITIES, ([name, lon, lat], i) => {
     const [x, y] = project([lon, lat]);
     return `<circle cx="${x}" cy="${y}" r="2.2" style="--d:${(1.5 + (i % 20) * 0.05).toFixed(2)}s"><title>${esc(name)}</title></circle>`;
   });
-  return `<figure class="lp-map" data-map data-reveal>
+  return `<figure class="lp-map${legend ? " lp-map--legend" : ""}" data-map data-reveal>
   <div class="lp-map__halo" aria-hidden="true"></div>
   <svg viewBox="0 0 ${mapa.width} ${mapa.height}" role="img" aria-labelledby="mapa-sp-titulo mapa-sp-desc" focusable="false">
     <title id="mapa-sp-titulo">Mapa do estado de São Paulo</title>
-    <desc id="mapa-sp-desc">Sede do escritório em Boituva e atendimento online em todo o estado, com destaque para a capital.</desc>
+    <desc id="mapa-sp-desc">${marked ? `${esc(city.name)}, cidade atendida, e a sede do escritório em Boituva` : "Sede do escritório em Boituva"}; atendimento online em todo o estado, com destaque para a capital.</desc>
     <defs>
       <linearGradient id="mapa-sp-grad" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#4A4A4A"/><stop offset=".55" stop-color="#232323"/><stop offset="1" stop-color="#0B0B0B"/></linearGradient>
       <filter id="mapa-sp-sombra" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".65"/></filter>
@@ -327,20 +361,30 @@ function mapSp() {
     <image class="lp-map__mun" data-map-mesh="/assets/img/mapa-sp-municipios.svg" x="0" y="0" width="${mapa.width}" height="${mapa.height}" clip-path="url(#mapa-sp-clip)"/>
     <use class="lp-map__outline" href="#mapa-sp-uf"/>
     <g class="lp-map__cities" fill="rgba(255,255,255,.45)">${cities}</g>
+    ${marked ? cityMarker(city, [sx, sy]) : ""}
     <g class="lp-map__dest">
       <circle class="lp-map__pulse" cx="${cx}" cy="${cy}" r="6" fill="#1EA94F"/>
       <circle cx="${cx}" cy="${cy}" r="6.5" fill="#1EA94F" stroke="#0B0B0B" stroke-width="1.5"><title>São Paulo — capital</title></circle>
-      <line x1="${cx + 8}" y1="${cy + 8}" x2="${cx + 46}" y2="${cy + 62}" stroke="rgba(255,255,255,.5)"/>
+      ${capUp
+        ? `<line x1="${cx + 8}" y1="${cy - 8}" x2="${cx + 40}" y2="${cy - 48}" stroke="rgba(255,255,255,.5)"/>
+      <text x="${cx + 46}" y="${cy - 70}" class="lp-map__label2">Atendimento online</text>
+      <text x="${cx + 46}" y="${cy - 51}" class="lp-map__label">São Paulo · capital</text>`
+        : `<line x1="${cx + 8}" y1="${cy + 8}" x2="${cx + 46}" y2="${cy + 62}" stroke="rgba(255,255,255,.5)"/>
       <text x="${cx + 52}" y="${cy + 66}" class="lp-map__label2">Atendimento online</text>
-      <text x="${cx + 52}" y="${cy + 85}" class="lp-map__label">São Paulo · capital</text>
+      <text x="${cx + 52}" y="${cy + 85}" class="lp-map__label">São Paulo · capital</text>`}
     </g>
     <g class="lp-map__dest">
       <circle cx="${sx}" cy="${sy}" r="4.5" fill="#FFF" stroke="#0B0B0B" stroke-width="1.5"><title>Boituva — sede do escritório</title></circle>
-      <line x1="${sx - 7}" y1="${sy + 7}" x2="${sx - 30}" y2="${sy + 40}" stroke="rgba(255,255,255,.4)"/>
+      ${sedeUp
+        ? `<line x1="${sx - 7}" y1="${sy - 7}" x2="${sx - 30}" y2="${sy - 40}" stroke="rgba(255,255,255,.4)"/>
+      <text x="${sx - 34}" y="${sy - 62}" class="lp-map__label2" text-anchor="end">Sede</text>
+      <text x="${sx - 34}" y="${sy - 45}" class="lp-map__label lp-map__label--sm" text-anchor="end">Boituva</text>`
+        : `<line x1="${sx - 7}" y1="${sy + 7}" x2="${sx - 30}" y2="${sy + 40}" stroke="rgba(255,255,255,.4)"/>
       <text x="${sx - 34}" y="${sy + 56}" class="lp-map__label2" text-anchor="end">Sede</text>
-      <text x="${sx - 34}" y="${sy + 73}" class="lp-map__label lp-map__label--sm" text-anchor="end">Boituva</text>
+      <text x="${sx - 34}" y="${sy + 73}" class="lp-map__label lp-map__label--sm" text-anchor="end">Boituva</text>`}
     </g>
   </svg>
+  ${legend ? mapLegend(city) : ""}
 </figure>`;
 }
 
@@ -435,7 +479,8 @@ export const REACH_REGIONAL = {
 export const REACH_POINTS = REACH_REGIONAL.points;
 
 // scope: "brasil" (padrão: institucionais, áreas e serviços) ou "sp" (páginas locais/nichadas).
-export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", scope = "brasil", title, text, points } = {}) {
+// city: cidade destacada no mapa de SP (páginas regionais). hub: link para a lista de cidades atendidas.
+export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", scope = "brasil", title, text, points, city, hub = true, legend = Boolean(city) } = {}) {
   const copy = scope === "sp" ? REACH_REGIONAL : REACH_NATIONAL;
   return `<section class="lp-sec lp-sec--dark lp-reach on-dark" id="${id}" aria-labelledby="${id}-titulo">
   <div class="lp-flag" aria-hidden="true">${img("bandeira", { alt: "", sizes: "100vw", style: "object-position:50% 40%" })}</div>
@@ -444,16 +489,17 @@ export function lpReach({ id = "onde-atendemos", eyebrow = "Onde atendemos", sco
       <div>
         ${lpHead({ eyebrow, title: title ?? copy.title, lead: text ?? copy.text, id: `${id}-titulo`, align: "left" })}
         <div data-reveal>
-          ${dots((points ?? copy.points).map(esc))}
+          ${(points ?? copy.points).length ? dots((points ?? copy.points).map(esc)) : ""}
           <div class="lp-reach__card">
             <p class="lp-reach__card-title">${icon.pin(16)} Sede — ${esc(sede.city)}/${esc(sede.region)}</p>
             <address>${esc(sede.street)} — ${esc(sede.district)}<br>${esc(sede.city)}/${esc(sede.region)} · CEP ${esc(sede.postalCode)}</address>
             ${when(!isPending(SITE.hours), `<p class="lp-reach__hours">${icon.clock(14)} ${esc(SITE.hours)}</p>`)}
             <a class="lp-reach__route" href="${esc(sede.mapsUrl)}" target="_blank" rel="noopener">Como chegar <span aria-hidden="true">↗</span><span class="sr-only"> (abre o Google Maps em nova aba)</span></a>
           </div>
+          ${hub ? `<a class="link-arrow lp-reach__hub" href="${CITIES_HUB}" data-track="regional_hub_click">Ver as cidades atendidas em São Paulo ${icon.arrow(14)}</a>` : ""}
         </div>
       </div>
-      ${scope === "sp" ? mapSp() : mapBrasil()}
+      ${scope === "sp" ? mapSp(city, legend) : mapBrasil()}
     </div>
   </div>
 </section>`;

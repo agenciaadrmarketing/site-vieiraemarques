@@ -77,7 +77,7 @@ ${lpStructure({ text: c.structureText })}
 
 ${googleReviews()}
 
-${lpReach(c.reach)}
+${lpReach({ ...c.reach, hub: false })}
 
 ${lpCta({ title: c.ctaTitle, text: c.ctaText, message: msg })}`;
 

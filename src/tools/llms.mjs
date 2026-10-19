@@ -7,6 +7,7 @@ import { servicePages } from "../data/services/index.mjs";
 import { team, profilePath } from "../data/team.mjs";
 import { articles } from "../data/articles.mjs";
 import { LEGAL_PATHS } from "../data/legal.mjs";
+import { REGIONAL, CITIES_HUB, regionalPath } from "../data/regional.mjs";
 
 const abs = (path) => SITE.origin + path;
 const link = (label, path, text) => `- [${label}](${abs(path)})${text ? `: ${text}` : ""}`;
@@ -40,6 +41,11 @@ export function llmsTxt() {
     "## Guias por assunto",
     "",
     ...servicePages.map((p) => link(p.seo.title.replace(/ \| Vieira & Marques$/, ""), p.path, p.seo.description)),
+    "",
+    "## Cidades atendidas",
+    "",
+    link("Cidades atendidas em São Paulo", CITIES_HUB, "endereço físico somente na sede, em Boituva; presencial também em Sorocaba, com horário combinado; demais cidades por vídeo"),
+    ...REGIONAL.map((c) => link(`Advogado em ${c.city}/SP`, regionalPath(c), c.description)),
     "",
     "## Equipe",
     "",

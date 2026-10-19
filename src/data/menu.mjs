@@ -4,6 +4,7 @@ import { SITE } from "./site.mjs";
 import { practiceAreas, areaUrl, AREAS_HUB } from "./areas.mjs";
 import { servicePages } from "./services/index.mjs";
 import { articles } from "./articles.mjs";
+import { CITIES_HUB } from "./regional.mjs";
 
 // "Divórcio, pensão, guarda e união estável — decisões que…" -> parte antes do travessão.
 const short = (text) => text.split(" — ")[0].replace(/\.$/, "");
@@ -19,6 +20,7 @@ export const MENUS = {
       { title: "Princípios", desc: "Missão, visão e valores do escritório.", href: "/escritorio/#principios-titulo" },
       { title: "Equipe", desc: "Advogados, inscrição na OAB e formação.", href: "/escritorio/#equipe" },
       { title: "Estrutura", desc: "A sede em Boituva por dentro.", href: "/escritorio/#estrutura-titulo" },
+      { title: "Cidades atendidas", desc: "Presencial em Boituva e Sorocaba, online em SP.", href: CITIES_HUB },
     ],
     footer: { text: `Sede em ${SITE.units[0].city}/${SITE.units[0].region}`, label: "Como chegar", href: SITE.units[0].mapsUrl, external: true },
   },

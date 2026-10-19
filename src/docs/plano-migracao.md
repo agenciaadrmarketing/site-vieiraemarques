@@ -39,7 +39,7 @@ Alternativa de menor risco: manter o blog num subdomínio/diretório próprio. *
 | `/direito-criminal/` | `/areas/direito-criminal/` | `.htaccess` |
 | `/direito-trabalhista/` | `/areas/direito-trabalhista/` | `.htaccess` |
 | `/direito-previdenciario/` | `/areas/direito-previdenciario/` | `.htaccess` |
-| `divorcio.` → `/divorcio/` · `divorcio-sp.` → `/divorcio-sao-paulo/` · `divorcio-boituva.` → `/divorcio-boituva/` · `divorcio-semfilhos.` → `/divorcio-sem-filhos-sem-bens/` · `juros-abusivos.` → `/juros-abusivos/` · `advogado-golpedopix.` → `/golpe-do-pix/` | | `redirecionamentos-lps/` |
+| `divorcio.` → `/divorcio/` · `divorcio-sp.` → `/divorcio-sao-paulo/` · `divorcio-boituva.` → `/divorcio-boituva/` · `divorcio-semfilhos.` → `/divorcio-sem-filhos-sem-bens/` · `juros-abusivos.` → `/juros-abusivos/` · `advogado-golpedopix.` → `/golpe-do-pix/` · `boituva.` → `/advogado-boituva/` | | `redirecionamentos-lps/` |
 
 **Pendente — [VALIDAÇÃO DO CLIENTE NECESSÁRIA]:** a lista completa de URLs do site institucional atual (não há acesso ao domínio a partir deste ambiente). Exportar em *Search Console → Páginas* ou *WordPress → Páginas* (somente leitura) e completar a tabela. Regras: cada URL antiga aponta para a página equivalente mais relevante, nunca para a Home sem motivo, sem cadeias (A → B → C).
 URLs de artigos do blog **não entram** no mapa.

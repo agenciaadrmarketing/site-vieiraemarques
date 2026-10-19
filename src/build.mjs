@@ -12,6 +12,7 @@ import { LANDING_PAGES } from "./data/landing-pages.mjs";
 import { LANDINGS } from "./data/landings.mjs";
 import { buildBundle, usedTokens } from "./tools/css-bundle.mjs";
 import { llmsTxt, robotsTxt, robotsStagingTxt } from "./tools/llms.mjs";
+import { REGIONAL, CITIES_HUB, regionalPath } from "./data/regional.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -51,9 +52,10 @@ function sitemap() {
 const rendered = ROUTES.map((r) => ({ file: outFile(r.path), path: r.path, html: r.render() }));
 rendered.push({ file: join(ROOT, "404.html"), path: "/404.html", html: notFound() });
 const LANDING_PATHS = new Set(LANDINGS.map((l) => l.path));
+const REGIONAL_PATHS = new Set([CITIES_HUB, ...REGIONAL.map(regionalPath)]);
 const groupOf = (p) =>
   p === "/" ? "home" : p === "/404.html" ? "erro" : p === "/escritorio/" ? "escritorio" : p === "/areas-de-atuacao/" ? "hub" :
-  p === "/conhecimento/" ? "conhecimento" : p === "/contato/" ? "contato" : p.startsWith("/advogados/") ? "advogado" : LANDING_PATHS.has(p) ? "landing" :
+  p === "/conhecimento/" ? "conhecimento" : p === "/contato/" ? "contato" : p.startsWith("/advogados/") ? "advogado" : LANDING_PATHS.has(p) ? "landing" : REGIONAL_PATHS.has(p) ? "regional" :
   p.startsWith("/areas/") ? (p.split("/").filter(Boolean).length === 2 ? "area" : "servico") : "legal";
 const jsTokens = ["site.js", "reviews.js", "gate.js"].map((f) => readFileSync(join(ROOT, "assets/js", f), "utf8"));
 const groups = {};

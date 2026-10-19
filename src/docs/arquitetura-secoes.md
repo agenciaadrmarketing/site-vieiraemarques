@@ -52,8 +52,13 @@ Hero E → Filtros + guias + artigos + perguntas C → Blog E → Conteúdos e s
 ## Contato (agir)
 Hero E → Canais e painel de WhatsApp C (painel escuro dentro) → O que acontece a seguir E → Dúvidas C → Onde atendemos E.
 
-## Regionais / LPs
-`/divorcio-sao-paulo/`, `/divorcio-boituva/` e demais LPs rodam em runtime próprio (não pelo gerador do site). **Não alteradas nesta etapa**; reorganizar exige trabalhar o template de cada LP — [PÁGINA PENDENTE DE REVISÃO].
+## Páginas regionais (32 cidades de SP)
+`/advogado-<cidade>/`, geradas por um único modelo (`src/pages/regional.mjs`) a partir de `src/data/regional.mjs` (texto, perguntas e temas próprios de cada cidade). Índice em `/cidades-atendidas/` (nível intermediário da trilha: Início → Cidades atendidas em SP → Cidade).
+Hero local E → Como funciona o atendimento C → Mapa de SP com a cidade destacada E → Áreas C → Serviços relacionados C → O escritório E → Conteúdos C → Perguntas da cidade C → Chamada final E.
+Veracidade: endereço físico só o da sede (Boituva); Sorocaba com atendimento presencial agendado, sem endereço; demais cidades por vídeo, com reunião presencial em Sorocaba ou na sede. Sem "unidade" ou "escritório em X". Schema: WebPage + Service (areaServed = cidade, provider = organização) + FAQPage; sem LocalBusiness por cidade.
+
+## Landing pages de campanha
+`/divorcio/`, `/divorcio-sao-paulo/`, `/divorcio-boituva/`, `/divorcio-sem-filhos-sem-bens/`, `/juros-abusivos/` e `/golpe-do-pix/`: geradas por `src/pages/landing.mjs` (dados em `src/data/landings.mjs`), com Google Tag Manager após o aceite de cookies.
 
 ## Verificação
 axe-core (WCAG A/AA + boas práticas) com 0 violações em 54 páginas (inclui contraste das variantes escuras); varredura em 360/414/768/1440 px sem erro de JavaScript, imagem quebrada ou rolagem horizontal.
