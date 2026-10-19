@@ -2,7 +2,7 @@ import { trustBar } from "./trust-bar.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, isPending, whatsappUrl } from "../data/site.mjs";
 import { practiceAreas, areaUrl } from "../data/areas.mjs";
-import { img } from "./media.mjs";
+import { img, imgSources } from "./media.mjs";
 import { icon } from "./icons.mjs";
 import { breadcrumbs } from "./layout.mjs";
 import { teamPanels, faqList, waButton } from "./components.mjs";
@@ -43,10 +43,10 @@ const dots = (items) =>
 export const HERO_MOBILE = "(max-width: 720px)";
 export function lpHero({ crumbs, badge, title, text, message, cta = "Falar no WhatsApp", secondary, note = [], image, alt, position = "60% 40%", imageMobile, positionMobile = "50% 50%", aside, photo = false }) {
   const mobile = imageMobile ? images[imageMobile] : null;
-  const bg = img(image, { alt, sizes: "100vw", priority: true, className: "lp-hero__bg", style: `object-position:${position};--pos-m:${positionMobile}` });
+  const bg = img(image, { alt, sizes: "100vw", priority: true, className: "lp-hero__bg", style: `object-position:${position};--pos-m:${positionMobile}`, picture: !mobile });
   return `<section class="lp-hero${photo ? " lp-hero--photo" : ""} on-dark" aria-labelledby="page-titulo">
   <div class="lp-hero__media" aria-hidden="true">${mobile
-    ? `<picture><source media="${HERO_MOBILE}" srcset="${mobile.variants.map((v) => `${v.src} ${v.w}w`).join(", ")}" sizes="100vw" width="${mobile.variants.at(-1).w}" height="${mobile.variants.at(-1).h}">${bg}</picture>`
+    ? `<picture>${imgSources(imageMobile, { media: HERO_MOBILE })}${imgSources(image)}${bg}</picture>`
     : bg}</div>
   <div class="lp-hero__veil" aria-hidden="true"></div>
   <div class="container lp-hero__container">

@@ -5,16 +5,19 @@
     "variants": [
       {
         "src": "/assets/img/fachada-escritorio-vieira-marques-advogados-boituva-sp-480.webp",
+        "avif": "/assets/img/fachada-escritorio-vieira-marques-advogados-boituva-sp-480.avif",
         "w": 480,
         "h": 320
       },
       {
         "src": "/assets/img/fachada-escritorio-vieira-marques-advogados-boituva-sp-800.webp",
+        "avif": "/assets/img/fachada-escritorio-vieira-marques-advogados-boituva-sp-800.avif",
         "w": 800,
         "h": 534
       },
       {
         "src": "/assets/img/fachada-escritorio-vieira-marques-advogados-boituva-sp-1228.webp",
+        "avif": "/assets/img/fachada-escritorio-vieira-marques-advogados-boituva-sp-1228.avif",
         "w": 1228,
         "h": 819
       }
@@ -26,21 +29,25 @@
     "variants": [
       {
         "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-480.webp",
+        "avif": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-480.avif",
         "w": 480,
         "h": 270
       },
       {
         "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-800.webp",
+        "avif": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-800.avif",
         "w": 800,
         "h": 450
       },
       {
         "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-1228.webp",
+        "avif": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-1228.avif",
         "w": 1228,
         "h": 691
       },
       {
         "src": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-1672.webp",
+        "avif": "/assets/img/recepcao-escritorio-de-advocacia-vieira-marques-v2-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -52,11 +59,13 @@
     "variants": [
       {
         "src": "/assets/img/sala-de-atendimento-advogados-boituva-v3-480.webp",
+        "avif": "/assets/img/sala-de-atendimento-advogados-boituva-v3-480.avif",
         "w": 480,
         "h": 480
       },
       {
         "src": "/assets/img/sala-de-atendimento-advogados-boituva-v3-700.webp",
+        "avif": "/assets/img/sala-de-atendimento-advogados-boituva-v3-700.avif",
         "w": 700,
         "h": 700
       }
@@ -68,16 +77,19 @@
     "variants": [
       {
         "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-480.webp",
+        "avif": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-480.avif",
         "w": 480,
         "h": 338
       },
       {
         "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-800.webp",
+        "avif": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-800.avif",
         "w": 800,
         "h": 564
       },
       {
         "src": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-1022.webp",
+        "avif": "/assets/img/sala-de-reuniao-vieira-marques-advogados-v3-1022.avif",
         "w": 1022,
         "h": 720
       }
@@ -89,21 +101,25 @@
     "variants": [
       {
         "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-480.webp",
+        "avif": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-480.avif",
         "w": 480,
         "h": 270
       },
       {
         "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-800.webp",
+        "avif": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-800.avif",
         "w": 800,
         "h": 450
       },
       {
         "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-1228.webp",
+        "avif": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-1228.avif",
         "w": 1228,
         "h": 691
       },
       {
         "src": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-1672.webp",
+        "avif": "/assets/img/estacao-de-trabalho-escritorio-de-advocacia-v2-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -115,16 +131,19 @@
     "variants": [
       {
         "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-480.webp",
+        "avif": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-480.avif",
         "w": 480,
         "h": 240
       },
       {
         "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-800.webp",
+        "avif": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-800.avif",
         "w": 800,
         "h": 400
       },
       {
         "src": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-1200.webp",
+        "avif": "/assets/img/letreiro-vieira-marques-sociedade-de-advogados-v2-1200.avif",
         "w": 1200,
         "h": 600
       }
@@ -136,21 +155,25 @@
     "variants": [
       {
         "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-480.webp",
+        "avif": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-480.avif",
         "w": 480,
         "h": 270
       },
       {
         "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-800.webp",
+        "avif": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-800.avif",
         "w": 800,
         "h": 450
       },
       {
         "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-1228.webp",
+        "avif": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-1228.avif",
         "w": 1228,
         "h": 691
       },
       {
         "src": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-1672.webp",
+        "avif": "/assets/img/equipe-de-advogados-vieira-marques-boituva-v2-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -162,21 +185,25 @@
     "variants": [
       {
         "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-480.webp",
+        "avif": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-480.avif",
         "w": 480,
         "h": 198
       },
       {
         "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-800.webp",
+        "avif": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-800.avif",
         "w": 800,
         "h": 330
       },
       {
         "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-1228.webp",
+        "avif": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-1228.avif",
         "w": 1228,
         "h": 507
       },
       {
         "src": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-1552.webp",
+        "avif": "/assets/img/atendimento-juridico-vieira-marques-advogados-v3-1552.avif",
         "w": 1552,
         "h": 641
       }
@@ -188,16 +215,19 @@
     "variants": [
       {
         "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-480.webp",
+        "avif": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-480.avif",
         "w": 480,
         "h": 270
       },
       {
         "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-800.webp",
+        "avif": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-800.avif",
         "w": 800,
         "h": 451
       },
       {
         "src": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-1200.webp",
+        "avif": "/assets/img/mesa-de-trabalho-escritorio-de-advocacia-boituva-v2-1200.avif",
         "w": 1200,
         "h": 676
       }
@@ -209,21 +239,25 @@
     "variants": [
       {
         "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-480.webp",
+        "avif": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-480.avif",
         "w": 480,
         "h": 270
       },
       {
         "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-800.webp",
+        "avif": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-800.avif",
         "w": 800,
         "h": 450
       },
       {
         "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-1228.webp",
+        "avif": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-1228.avif",
         "w": 1228,
         "h": 691
       },
       {
         "src": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-1672.webp",
+        "avif": "/assets/img/reuniao-equipe-vieira-marques-advogados-v2-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -235,11 +269,13 @@
     "variants": [
       {
         "src": "/assets/img/carteira-de-trabalho-ctps-verbas-rescisorias-360.webp",
+        "avif": "/assets/img/carteira-de-trabalho-ctps-verbas-rescisorias-360.avif",
         "w": 360,
         "h": 523
       },
       {
         "src": "/assets/img/carteira-de-trabalho-ctps-verbas-rescisorias-600.webp",
+        "avif": "/assets/img/carteira-de-trabalho-ctps-verbas-rescisorias-600.avif",
         "w": 600,
         "h": 871
       }
@@ -251,16 +287,19 @@
     "variants": [
       {
         "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-480.webp",
+        "avif": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-480.avif",
         "w": 480,
         "h": 428
       },
       {
         "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-800.webp",
+        "avif": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-800.avif",
         "w": 800,
         "h": 714
       },
       {
         "src": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-852.webp",
+        "avif": "/assets/img/escritorio-de-advocacia-vieira-marques-boituva-sp-v3-852.avif",
         "w": 852,
         "h": 760
       }
@@ -272,16 +311,19 @@
     "variants": [
       {
         "src": "/assets/img/oscar-moreira-vieira-advogado-v2-360.webp",
+        "avif": "/assets/img/oscar-moreira-vieira-advogado-v2-360.avif",
         "w": 360,
         "h": 480
       },
       {
         "src": "/assets/img/oscar-moreira-vieira-advogado-v2-600.webp",
+        "avif": "/assets/img/oscar-moreira-vieira-advogado-v2-600.avif",
         "w": 600,
         "h": 800
       },
       {
         "src": "/assets/img/oscar-moreira-vieira-advogado-v2-706.webp",
+        "avif": "/assets/img/oscar-moreira-vieira-advogado-v2-706.avif",
         "w": 706,
         "h": 941
       }
@@ -293,16 +335,19 @@
     "variants": [
       {
         "src": "/assets/img/jislana-marques-advogada-v2-360.webp",
+        "avif": "/assets/img/jislana-marques-advogada-v2-360.avif",
         "w": 360,
         "h": 480
       },
       {
         "src": "/assets/img/jislana-marques-advogada-v2-600.webp",
+        "avif": "/assets/img/jislana-marques-advogada-v2-600.avif",
         "w": 600,
         "h": 800
       },
       {
         "src": "/assets/img/jislana-marques-advogada-v2-706.webp",
+        "avif": "/assets/img/jislana-marques-advogada-v2-706.avif",
         "w": 706,
         "h": 941
       }
@@ -314,16 +359,19 @@
     "variants": [
       {
         "src": "/assets/img/leticia-pereira-de-abreu-advogada-v2-360.webp",
+        "avif": "/assets/img/leticia-pereira-de-abreu-advogada-v2-360.avif",
         "w": 360,
         "h": 480
       },
       {
         "src": "/assets/img/leticia-pereira-de-abreu-advogada-v2-600.webp",
+        "avif": "/assets/img/leticia-pereira-de-abreu-advogada-v2-600.avif",
         "w": 600,
         "h": 800
       },
       {
         "src": "/assets/img/leticia-pereira-de-abreu-advogada-v2-706.webp",
+        "avif": "/assets/img/leticia-pereira-de-abreu-advogada-v2-706.avif",
         "w": 706,
         "h": 941
       }
@@ -335,16 +383,19 @@
     "variants": [
       {
         "src": "/assets/img/gledie-camargo-advogada-v2-360.webp",
+        "avif": "/assets/img/gledie-camargo-advogada-v2-360.avif",
         "w": 360,
         "h": 480
       },
       {
         "src": "/assets/img/gledie-camargo-advogada-v2-600.webp",
+        "avif": "/assets/img/gledie-camargo-advogada-v2-600.avif",
         "w": 600,
         "h": 800
       },
       {
         "src": "/assets/img/gledie-camargo-advogada-v2-706.webp",
+        "avif": "/assets/img/gledie-camargo-advogada-v2-706.avif",
         "w": 706,
         "h": 941
       }
@@ -356,16 +407,19 @@
     "variants": [
       {
         "src": "/assets/img/natalia-okumura-advogada-v3-360.webp",
+        "avif": "/assets/img/natalia-okumura-advogada-v3-360.avif",
         "w": 360,
         "h": 360
       },
       {
         "src": "/assets/img/natalia-okumura-advogada-v3-600.webp",
+        "avif": "/assets/img/natalia-okumura-advogada-v3-600.avif",
         "w": 600,
         "h": 601
       },
       {
         "src": "/assets/img/natalia-okumura-advogada-v3-940.webp",
+        "avif": "/assets/img/natalia-okumura-advogada-v3-940.avif",
         "w": 940,
         "h": 941
       }
@@ -377,21 +431,25 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-480.webp",
+        "avif": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-480.avif",
         "w": 480,
         "h": 269
       },
       {
         "src": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-800.webp",
+        "avif": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-800.avif",
         "w": 800,
         "h": 449
       },
       {
         "src": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-1280.webp",
+        "avif": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-1280.avif",
         "w": 1280,
         "h": 718
       },
       {
         "src": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-1920.webp",
+        "avif": "/assets/img/advogado-direito-do-trabalho-carteira-de-trabalho-boituva-1920.avif",
         "w": 1920,
         "h": 1077
       }
@@ -403,6 +461,7 @@
     "variants": [
       {
         "src": "/assets/img/direito-do-trabalho-livros-ctps-640.webp",
+        "avif": "/assets/img/direito-do-trabalho-livros-ctps-640.avif",
         "w": 640,
         "h": 359
       }
@@ -414,6 +473,7 @@
     "variants": [
       {
         "src": "/assets/img/direito-do-trabalho-balanca-relogio-640.webp",
+        "avif": "/assets/img/direito-do-trabalho-balanca-relogio-640.avif",
         "w": 640,
         "h": 359
       }
@@ -425,21 +485,25 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-480.webp",
+        "avif": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-480.avif",
         "w": 480,
         "h": 270
       },
       {
         "src": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-800.webp",
+        "avif": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-800.avif",
         "w": 800,
         "h": 450
       },
       {
         "src": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-1280.webp",
+        "avif": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-1280.avif",
         "w": 1280,
         "h": 720
       },
       {
         "src": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-1672.webp",
+        "avif": "/assets/img/advogado-direito-bancario-revisao-financiamento-boituva-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -451,16 +515,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-golpe-do-pix-boituva-480.webp",
+        "avif": "/assets/img/advogado-golpe-do-pix-boituva-480.avif",
         "w": 480,
         "h": 268
       },
       {
         "src": "/assets/img/advogado-golpe-do-pix-boituva-800.webp",
+        "avif": "/assets/img/advogado-golpe-do-pix-boituva-800.avif",
         "w": 800,
         "h": 447
       },
       {
         "src": "/assets/img/advogado-golpe-do-pix-boituva-1280.webp",
+        "avif": "/assets/img/advogado-golpe-do-pix-boituva-1280.avif",
         "w": 1280,
         "h": 715
       }
@@ -472,21 +539,25 @@
     "variants": [
       {
         "src": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-480.webp",
+        "avif": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-480.avif",
         "w": 480,
         "h": 270
       },
       {
         "src": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-800.webp",
+        "avif": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-800.avif",
         "w": 800,
         "h": 450
       },
       {
         "src": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-1280.webp",
+        "avif": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-1280.avif",
         "w": 1280,
         "h": 720
       },
       {
         "src": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-1920.webp",
+        "avif": "/assets/img/advogado-divorcio-acordo-partilha-guarda-boituva-1920.avif",
         "w": 1920,
         "h": 1080
       }
@@ -498,16 +569,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-de-familia-atendimento-480.webp",
+        "avif": "/assets/img/advogado-direito-de-familia-atendimento-480.avif",
         "w": 480,
         "h": 268
       },
       {
         "src": "/assets/img/advogado-direito-de-familia-atendimento-800.webp",
+        "avif": "/assets/img/advogado-direito-de-familia-atendimento-800.avif",
         "w": 800,
         "h": 446
       },
       {
         "src": "/assets/img/advogado-direito-de-familia-atendimento-1400.webp",
+        "avif": "/assets/img/advogado-direito-de-familia-atendimento-1400.avif",
         "w": 1400,
         "h": 781
       }
@@ -519,16 +593,19 @@
     "variants": [
       {
         "src": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-480.webp",
+        "avif": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-480.avif",
         "w": 480,
         "h": 268
       },
       {
         "src": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-800.webp",
+        "avif": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-800.avif",
         "w": 800,
         "h": 446
       },
       {
         "src": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-1400.webp",
+        "avif": "/assets/img/divorcio-pensao-alimenticia-guarda-aliancas-1400.avif",
         "w": 1400,
         "h": 781
       }
@@ -540,16 +617,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-de-familia-boituva-768.webp",
+        "avif": "/assets/img/advogado-direito-de-familia-boituva-768.avif",
         "w": 768,
         "h": 254
       },
       {
         "src": "/assets/img/advogado-direito-de-familia-boituva-1152.webp",
+        "avif": "/assets/img/advogado-direito-de-familia-boituva-1152.avif",
         "w": 1152,
         "h": 381
       },
       {
         "src": "/assets/img/advogado-direito-de-familia-boituva-1536.webp",
+        "avif": "/assets/img/advogado-direito-de-familia-boituva-1536.avif",
         "w": 1536,
         "h": 508
       }
@@ -561,11 +641,13 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-de-familia-boituva-sp-384.webp",
+        "avif": "/assets/img/advogado-direito-de-familia-boituva-sp-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/advogado-direito-de-familia-boituva-sp-768.webp",
+        "avif": "/assets/img/advogado-direito-de-familia-boituva-sp-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -577,16 +659,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-768.webp",
+        "avif": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-768.avif",
         "w": 768,
         "h": 254
       },
       {
         "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-1152.webp",
+        "avif": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-1152.avif",
         "w": 1152,
         "h": 381
       },
       {
         "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-1536.webp",
+        "avif": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-1536.avif",
         "w": 1536,
         "h": 508
       }
@@ -598,11 +683,13 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-sp-384.webp",
+        "avif": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-sp-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-sp-768.webp",
+        "avif": "/assets/img/advogado-direito-sucessorio-heranca-inventario-boituva-sp-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -614,16 +701,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-trabalhista-boituva-768.webp",
+        "avif": "/assets/img/advogado-direito-trabalhista-boituva-768.avif",
         "w": 768,
         "h": 250
       },
       {
         "src": "/assets/img/advogado-direito-trabalhista-boituva-1152.webp",
+        "avif": "/assets/img/advogado-direito-trabalhista-boituva-1152.avif",
         "w": 1152,
         "h": 375
       },
       {
         "src": "/assets/img/advogado-direito-trabalhista-boituva-1536.webp",
+        "avif": "/assets/img/advogado-direito-trabalhista-boituva-1536.avif",
         "w": 1536,
         "h": 500
       }
@@ -635,11 +725,13 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-trabalhista-boituva-sp-384.webp",
+        "avif": "/assets/img/advogado-direito-trabalhista-boituva-sp-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/advogado-direito-trabalhista-boituva-sp-768.webp",
+        "avif": "/assets/img/advogado-direito-trabalhista-boituva-sp-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -651,16 +743,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-criminal-defesa-boituva-768.webp",
+        "avif": "/assets/img/advogado-direito-criminal-defesa-boituva-768.avif",
         "w": 768,
         "h": 250
       },
       {
         "src": "/assets/img/advogado-direito-criminal-defesa-boituva-1152.webp",
+        "avif": "/assets/img/advogado-direito-criminal-defesa-boituva-1152.avif",
         "w": 1152,
         "h": 375
       },
       {
         "src": "/assets/img/advogado-direito-criminal-defesa-boituva-1536.webp",
+        "avif": "/assets/img/advogado-direito-criminal-defesa-boituva-1536.avif",
         "w": 1536,
         "h": 500
       }
@@ -672,11 +767,13 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-criminal-defesa-boituva-sp-384.webp",
+        "avif": "/assets/img/advogado-direito-criminal-defesa-boituva-sp-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/advogado-direito-criminal-defesa-boituva-sp-768.webp",
+        "avif": "/assets/img/advogado-direito-criminal-defesa-boituva-sp-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -688,16 +785,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-768.webp",
+        "avif": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-768.avif",
         "w": 768,
         "h": 250
       },
       {
         "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-1152.webp",
+        "avif": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-1152.avif",
         "w": 1152,
         "h": 375
       },
       {
         "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-1536.webp",
+        "avif": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-1536.avif",
         "w": 1536,
         "h": 500
       }
@@ -709,11 +809,13 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-sp-384.webp",
+        "avif": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-sp-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-sp-768.webp",
+        "avif": "/assets/img/advogado-direito-medico-saude-plano-de-saude-boituva-sp-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -725,16 +827,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-768.webp",
+        "avif": "/assets/img/advogado-direito-bancario-financiamento-boituva-768.avif",
         "w": 768,
         "h": 250
       },
       {
         "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-1152.webp",
+        "avif": "/assets/img/advogado-direito-bancario-financiamento-boituva-1152.avif",
         "w": 1152,
         "h": 375
       },
       {
         "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-1536.webp",
+        "avif": "/assets/img/advogado-direito-bancario-financiamento-boituva-1536.avif",
         "w": 1536,
         "h": 500
       }
@@ -746,11 +851,13 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-sp-384.webp",
+        "avif": "/assets/img/advogado-direito-bancario-financiamento-boituva-sp-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/advogado-direito-bancario-financiamento-boituva-sp-768.webp",
+        "avif": "/assets/img/advogado-direito-bancario-financiamento-boituva-sp-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -762,16 +869,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-768.webp",
+        "avif": "/assets/img/advogado-direito-imobiliario-imovel-boituva-768.avif",
         "w": 768,
         "h": 250
       },
       {
         "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-1152.webp",
+        "avif": "/assets/img/advogado-direito-imobiliario-imovel-boituva-1152.avif",
         "w": 1152,
         "h": 375
       },
       {
         "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-1536.webp",
+        "avif": "/assets/img/advogado-direito-imobiliario-imovel-boituva-1536.avif",
         "w": 1536,
         "h": 500
       }
@@ -783,11 +893,13 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-sp-384.webp",
+        "avif": "/assets/img/advogado-direito-imobiliario-imovel-boituva-sp-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/advogado-direito-imobiliario-imovel-boituva-sp-768.webp",
+        "avif": "/assets/img/advogado-direito-imobiliario-imovel-boituva-sp-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -799,16 +911,19 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-768.webp",
+        "avif": "/assets/img/advogado-direito-previdenciario-inss-boituva-768.avif",
         "w": 768,
         "h": 250
       },
       {
         "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-1152.webp",
+        "avif": "/assets/img/advogado-direito-previdenciario-inss-boituva-1152.avif",
         "w": 1152,
         "h": 375
       },
       {
         "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-1536.webp",
+        "avif": "/assets/img/advogado-direito-previdenciario-inss-boituva-1536.avif",
         "w": 1536,
         "h": 500
       }
@@ -820,11 +935,13 @@
     "variants": [
       {
         "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-sp-384.webp",
+        "avif": "/assets/img/advogado-direito-previdenciario-inss-boituva-sp-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/advogado-direito-previdenciario-inss-boituva-sp-768.webp",
+        "avif": "/assets/img/advogado-direito-previdenciario-inss-boituva-sp-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -836,11 +953,13 @@
     "variants": [
       {
         "src": "/assets/img/direito-de-familia-vieira-marques-384.webp",
+        "avif": "/assets/img/direito-de-familia-vieira-marques-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/direito-de-familia-vieira-marques-768.webp",
+        "avif": "/assets/img/direito-de-familia-vieira-marques-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -852,11 +971,13 @@
     "variants": [
       {
         "src": "/assets/img/heranca-inventario-testamento-vieira-marques-384.webp",
+        "avif": "/assets/img/heranca-inventario-testamento-vieira-marques-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/heranca-inventario-testamento-vieira-marques-768.webp",
+        "avif": "/assets/img/heranca-inventario-testamento-vieira-marques-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -868,11 +989,13 @@
     "variants": [
       {
         "src": "/assets/img/justica-direito-criminal-vieira-marques-384.webp",
+        "avif": "/assets/img/justica-direito-criminal-vieira-marques-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/justica-direito-criminal-vieira-marques-768.webp",
+        "avif": "/assets/img/justica-direito-criminal-vieira-marques-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -884,11 +1007,13 @@
     "variants": [
       {
         "src": "/assets/img/direito-medico-saude-vieira-marques-384.webp",
+        "avif": "/assets/img/direito-medico-saude-vieira-marques-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/direito-medico-saude-vieira-marques-768.webp",
+        "avif": "/assets/img/direito-medico-saude-vieira-marques-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -900,11 +1025,13 @@
     "variants": [
       {
         "src": "/assets/img/revisao-contrato-bancario-vieira-marques-384.webp",
+        "avif": "/assets/img/revisao-contrato-bancario-vieira-marques-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/revisao-contrato-bancario-vieira-marques-768.webp",
+        "avif": "/assets/img/revisao-contrato-bancario-vieira-marques-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -916,11 +1043,13 @@
     "variants": [
       {
         "src": "/assets/img/direito-imobiliario-chaves-imovel-vieira-marques-384.webp",
+        "avif": "/assets/img/direito-imobiliario-chaves-imovel-vieira-marques-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/direito-imobiliario-chaves-imovel-vieira-marques-768.webp",
+        "avif": "/assets/img/direito-imobiliario-chaves-imovel-vieira-marques-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -932,11 +1061,13 @@
     "variants": [
       {
         "src": "/assets/img/beneficio-inss-previdenciario-vieira-marques-384.webp",
+        "avif": "/assets/img/beneficio-inss-previdenciario-vieira-marques-384.avif",
         "w": 384,
         "h": 512
       },
       {
         "src": "/assets/img/beneficio-inss-previdenciario-vieira-marques-768.webp",
+        "avif": "/assets/img/beneficio-inss-previdenciario-vieira-marques-768.avif",
         "w": 768,
         "h": 1024
       }
@@ -948,16 +1079,19 @@
     "variants": [
       {
         "src": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-768.webp",
+        "avif": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-768.avif",
         "w": 768,
         "h": 432
       },
       {
         "src": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-1280.webp",
+        "avif": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-1280.avif",
         "w": 1280,
         "h": 720
       },
       {
         "src": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-1672.webp",
+        "avif": "/assets/img/oscar-moreira-vieira-advogado-escritorio-v2-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -969,16 +1103,19 @@
     "variants": [
       {
         "src": "/assets/img/jislana-marques-advogada-estudio-v2-768.webp",
+        "avif": "/assets/img/jislana-marques-advogada-estudio-v2-768.avif",
         "w": 768,
         "h": 432
       },
       {
         "src": "/assets/img/jislana-marques-advogada-estudio-v2-1280.webp",
+        "avif": "/assets/img/jislana-marques-advogada-estudio-v2-1280.avif",
         "w": 1280,
         "h": 720
       },
       {
         "src": "/assets/img/jislana-marques-advogada-estudio-v2-1672.webp",
+        "avif": "/assets/img/jislana-marques-advogada-estudio-v2-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -990,16 +1127,19 @@
     "variants": [
       {
         "src": "/assets/img/natalia-okumura-advogada-escritorio-v2-768.webp",
+        "avif": "/assets/img/natalia-okumura-advogada-escritorio-v2-768.avif",
         "w": 768,
         "h": 512
       },
       {
         "src": "/assets/img/natalia-okumura-advogada-escritorio-v2-1280.webp",
+        "avif": "/assets/img/natalia-okumura-advogada-escritorio-v2-1280.avif",
         "w": 1280,
         "h": 853
       },
       {
         "src": "/assets/img/natalia-okumura-advogada-escritorio-v2-1536.webp",
+        "avif": "/assets/img/natalia-okumura-advogada-escritorio-v2-1536.avif",
         "w": 1536,
         "h": 1024
       }
@@ -1011,16 +1151,19 @@
     "variants": [
       {
         "src": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-768.webp",
+        "avif": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-768.avif",
         "w": 768,
         "h": 512
       },
       {
         "src": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-1280.webp",
+        "avif": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-1280.avif",
         "w": 1280,
         "h": 853
       },
       {
         "src": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-1536.webp",
+        "avif": "/assets/img/leticia-pereira-de-abreu-advogada-escritorio-v1-1536.avif",
         "w": 1536,
         "h": 1024
       }
@@ -1032,16 +1175,19 @@
     "variants": [
       {
         "src": "/assets/img/gledie-camargo-advogada-escritorio-v2-768.webp",
+        "avif": "/assets/img/gledie-camargo-advogada-escritorio-v2-768.avif",
         "w": 768,
         "h": 512
       },
       {
         "src": "/assets/img/gledie-camargo-advogada-escritorio-v2-1280.webp",
+        "avif": "/assets/img/gledie-camargo-advogada-escritorio-v2-1280.avif",
         "w": 1280,
         "h": 853
       },
       {
         "src": "/assets/img/gledie-camargo-advogada-escritorio-v2-1536.webp",
+        "avif": "/assets/img/gledie-camargo-advogada-escritorio-v2-1536.avif",
         "w": 1536,
         "h": 1024
       }
@@ -1053,16 +1199,19 @@
     "variants": [
       {
         "src": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-800.webp",
+        "avif": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-800.avif",
         "w": 800,
         "h": 600
       },
       {
         "src": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-1280.webp",
+        "avif": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-1280.avif",
         "w": 1280,
         "h": 960
       },
       {
         "src": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-1448.webp",
+        "avif": "/assets/img/escritorio-vieira-marques-advogados-mesa-de-trabalho-hero-1448.avif",
         "w": 1448,
         "h": 1086
       }
@@ -1074,11 +1223,13 @@
     "variants": [
       {
         "src": "/assets/img/atendimento-vieira-marques-whatsapp-96.webp",
+        "avif": "/assets/img/atendimento-vieira-marques-whatsapp-96.avif",
         "w": 96,
         "h": 96
       },
       {
         "src": "/assets/img/atendimento-vieira-marques-whatsapp-170.webp",
+        "avif": "/assets/img/atendimento-vieira-marques-whatsapp-170.avif",
         "w": 170,
         "h": 170
       }
@@ -1090,16 +1241,19 @@
     "variants": [
       {
         "src": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-800.webp",
+        "avif": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-800.avif",
         "w": 800,
         "h": 450
       },
       {
         "src": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-1280.webp",
+        "avif": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-1280.avif",
         "w": 1280,
         "h": 720
       },
       {
         "src": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-1672.webp",
+        "avif": "/assets/img/hero-conhecimento-advogados-vieira-marques-v1-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -1111,16 +1265,19 @@
     "variants": [
       {
         "src": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-800.webp",
+        "avif": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-800.avif",
         "w": 800,
         "h": 450
       },
       {
         "src": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-1280.webp",
+        "avif": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-1280.avif",
         "w": 1280,
         "h": 720
       },
       {
         "src": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-1672.webp",
+        "avif": "/assets/img/hero-area-familia-advogados-vieira-marques-v1-1672.avif",
         "w": 1672,
         "h": 941
       }
@@ -1132,16 +1289,19 @@
     "variants": [
       {
         "src": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-800.webp",
+        "avif": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-800.avif",
         "w": 800,
         "h": 533
       },
       {
         "src": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-1280.webp",
+        "avif": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-1280.avif",
         "w": 1280,
         "h": 853
       },
       {
         "src": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-1536.webp",
+        "avif": "/assets/img/hero-area-criminal-advogados-vieira-marques-v1-1536.avif",
         "w": 1536,
         "h": 1024
       }
@@ -1153,16 +1313,19 @@
     "variants": [
       {
         "src": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-800.webp",
+        "avif": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-800.avif",
         "w": 800,
         "h": 533
       },
       {
         "src": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-1280.webp",
+        "avif": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-1280.avif",
         "w": 1280,
         "h": 853
       },
       {
         "src": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-1536.webp",
+        "avif": "/assets/img/hero-area-saude-advogados-vieira-marques-v1-1536.avif",
         "w": 1536,
         "h": 1024
       }
@@ -1174,21 +1337,25 @@
     "variants": [
       {
         "src": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-480.webp",
+        "avif": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-480.avif",
         "w": 480,
         "h": 268
       },
       {
         "src": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-800.webp",
+        "avif": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-800.avif",
         "w": 800,
         "h": 447
       },
       {
         "src": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-1280.webp",
+        "avif": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-1280.avif",
         "w": 1280,
         "h": 714
       },
       {
         "src": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-1920.webp",
+        "avif": "/assets/img/advogado-divorcio-orientacao-casal-vieira-marques-v1-1920.avif",
         "w": 1920,
         "h": 1072
       }
@@ -1200,21 +1367,25 @@
     "variants": [
       {
         "src": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-480.webp",
+        "avif": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-480.avif",
         "w": 480,
         "h": 268
       },
       {
         "src": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-800.webp",
+        "avif": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-800.avif",
         "w": 800,
         "h": 447
       },
       {
         "src": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-1280.webp",
+        "avif": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-1280.avif",
         "w": 1280,
         "h": 715
       },
       {
         "src": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-1920.webp",
+        "avif": "/assets/img/advogado-golpe-do-pix-atendimento-vieira-marques-v1-1920.avif",
         "w": 1920,
         "h": 1072
       }
@@ -1225,14 +1396,16 @@
     "height": 941,
     "variants": [
       {
-        "src": "/assets/img/bandeira-do-brasil-fundo-v2-960.webp",
+        "src": "/assets/img/bandeira-do-brasil-fundo-v3-960.webp",
+        "avif": "/assets/img/bandeira-do-brasil-fundo-v3-960.avif",
         "w": 960,
         "h": 540
       },
       {
-        "src": "/assets/img/bandeira-do-brasil-fundo-v2-1672.webp",
-        "w": 1672,
-        "h": 941
+        "src": "/assets/img/bandeira-do-brasil-fundo-v3-1440.webp",
+        "avif": "/assets/img/bandeira-do-brasil-fundo-v3-1440.avif",
+        "w": 1440,
+        "h": 810
       }
     ]
   },

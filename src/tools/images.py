@@ -1,4 +1,4 @@
-"""Gera as variantes responsivas (WebP) usadas pelo site e o manifesto lido pelo build.
+"""Gera as variantes responsivas (AVIF + WebP) usadas pelo site e o manifesto lido pelo build.
 
 Uso: python3 src/tools/images.py   (a partir da raiz do repositório)
 """
@@ -77,21 +77,34 @@ SOURCES = {
     "hero-area-saude": (f"{SRC}/hero-area-saude-advogada-escritorio.webp", [800, 1280, 1672], "hero-area-saude-advogados-vieira-marques-v1"),
     "lp-divorcio": (f"{SRC}/lp-divorcio-advogado-orienta-casal.webp", [480, 800, 1280, 1920], "advogado-divorcio-orientacao-casal-vieira-marques-v1"),
     "lp-golpe": (f"{SRC}/lp-golpe-advogado-atendendo-vitima.webp", [480, 800, 1280, 1920], "advogado-golpe-do-pix-atendimento-vieira-marques-v1"),
-    "bandeira": (f"{SRC}/bandeira-do-brasil-fundo.webp", [960, 1672], "bandeira-do-brasil-fundo-v2"),
+    "bandeira": (f"{SRC}/bandeira-do-brasil-fundo.webp", [960, 1440], "bandeira-do-brasil-fundo-v3"),
 }
 
+# Qualidade: fotos em WebP 80 / AVIF 55 (sem diferença visível nas larguras exibidas). A bandeira é
+# textura a 3,5% de opacidade sob véu escuro: compressão forte, invisível na tela (era 369 KB por página).
+QUALITY = {"bandeira": (35, 25)}
+# Desfoque antes de comprimir: a textura não precisa de detalhe e o ruído da foto era o que pesava.
+BLUR = {"bandeira": 3}
+DEFAULT_QUALITY = (80, 55)
 
-def save_variants(src, widths, slug):
-    quality = 84 if slug.endswith("-hero") else 90
+
+def save_variants(src, widths, slug, key):
+    q_webp, q_avif = QUALITY.get(key, DEFAULT_QUALITY)
     im = Image.open(os.path.join(ROOT, src))
     im.load()
     im = im.convert("RGB")
+    if key in BLUR:
+        from PIL import ImageFilter
+        im = im.filter(ImageFilter.GaussianBlur(BLUR[key]))
     variants = []
     for w in dict.fromkeys(min(w, im.width) for w in widths):
         h = round(im.height * w / im.width)
+        small = im.resize((w, h), Image.LANCZOS)
         out = f"{slug}-{w}.webp"
-        im.resize((w, h), Image.LANCZOS).save(os.path.join(OUT_DIR, out), "WEBP", quality=quality, method=6)
-        variants.append({"src": f"/assets/img/{out}", "w": w, "h": h})
+        small.save(os.path.join(OUT_DIR, out), "WEBP", quality=q_webp, method=6)
+        avif = f"{slug}-{w}.avif"
+        small.save(os.path.join(OUT_DIR, avif), "AVIF", quality=q_avif, speed=4)
+        variants.append({"src": f"/assets/img/{out}", "avif": f"/assets/img/{avif}", "w": w, "h": h})
     return {"width": im.width, "height": im.height, "variants": variants}
 
 
@@ -195,7 +208,7 @@ def main():
         if f.endswith(".svg"):  # mapa gerado por src/tools/mapa-sp.mjs
             continue
         os.remove(os.path.join(OUT_DIR, f))
-    manifest = {name: save_variants(src, widths, slug) for name, (src, widths, slug) in SOURCES.items()}
+    manifest = {name: save_variants(src, widths, slug, name) for name, (src, widths, slug) in SOURCES.items()}
     manifest.update(logo_variants())
     manifest["og"] = og_image()
     manifest.update(og_variants())
