@@ -572,10 +572,26 @@
     var el = document.querySelector("[data-service-page]");
     return el ? { practice_area: el.getAttribute("data-practice-area"), service: el.getAttribute("data-service") } : null;
   })();
+  // Páginas regionais: cidade da página em todos os eventos.
+  var cityCtx = (function () {
+    var el = document.querySelector("[data-city-page]");
+    return el ? el.getAttribute("data-city-page") : "";
+  })();
+  // Parâmetros de campanha lidos do endereço atual (nada é guardado no navegador).
+  var utm = (function () {
+    var out = {};
+    try {
+      var q = new URLSearchParams(window.location.search);
+      UTM_KEYS.forEach(function (k) { if (q.get(k)) out[k] = q.get(k).slice(0, 120); });
+    } catch (e) { /* URLSearchParams indisponível */ }
+    return out;
+  })();
   function track(event, params) {
     window.dataLayer = window.dataLayer || [];
-    var data = { event: event, page_path: window.location.pathname, page_title: document.title };
+    var data = { event: event, page_path: window.location.pathname, url_pagina: window.location.origin + window.location.pathname, page_title: document.title };
     if (pageCtx) { data.practice_area = pageCtx.practice_area; data.service = pageCtx.service; }
+    if (cityCtx) data.cidade_pagina = cityCtx;
+    Object.keys(utm).forEach(function (k) { data[k] = utm[k]; });
     Object.keys(params || {}).forEach(function (k) { data[k] = params[k]; });
     window.dataLayer.push(data);
     // Com a medição autorizada, os mesmos eventos seguem para o GA4 e o Pixel da Meta.
@@ -1029,12 +1045,19 @@
   /* ---------- Rastreio de cliques ---------- */
   function initClickTracking() {
     if (pageCtx) track("service_page_view");
+    if (cityCtx) track("regional_page_view");
     document.addEventListener("click", function (e) {
       if (!e.target.closest) return;
       var cta = e.target.closest("[data-cta]");
       if (cta && pageCtx) track("service_cta_click", { cta_position: cta.getAttribute("data-cta") });
+      if (cta && cityCtx) track("regional_cta_click", { cta_position: cta.getAttribute("data-cta") });
       var tracked = e.target.closest("[data-track]");
-      if (tracked) track(tracked.getAttribute("data-track"), { link_url: tracked.href || "" });
+      if (tracked) {
+        var extra = { link_url: tracked.href || "" };
+        if (tracked.hasAttribute("data-area")) extra.area = tracked.getAttribute("data-area");
+        if (tracked.hasAttribute("data-servico")) extra.servico = tracked.getAttribute("data-servico");
+        track(tracked.getAttribute("data-track"), extra);
+      }
       // Eventos de navegação (poucos e úteis): e-mail, área, serviço, advogado, conhecimento e avaliações.
       var l = e.target.closest('a[href]');
       if (l) {
