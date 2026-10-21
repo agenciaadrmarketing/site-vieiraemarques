@@ -1409,6 +1409,30 @@
       }
     ]
   },
+  "capa:a-policia-pode-entrar-na-minha-casa-sem-mandado-veja-quando-isso-e-permitido": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-a-policia-pode-entrar-na-minha-casa-sem-mandado-veja-quando-isso-e-permitido-400.webp",
+        "avif": "/assets/img/capa-a-policia-pode-entrar-na-minha-casa-sem-mandado-veja-quando-isso-e-permitido-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-a-policia-pode-entrar-na-minha-casa-sem-mandado-veja-quando-isso-e-permitido-800.webp",
+        "avif": "/assets/img/capa-a-policia-pode-entrar-na-minha-casa-sem-mandado-veja-quando-isso-e-permitido-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-a-policia-pode-entrar-na-minha-casa-sem-mandado-veja-quando-isso-e-permitido-1200.webp",
+        "avif": "/assets/img/capa-a-policia-pode-entrar-na-minha-casa-sem-mandado-veja-quando-isso-e-permitido-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
   "capa:advogados-desistem-o-que-fazer": {
     "width": 1536,
     "height": 1024,
@@ -1529,6 +1553,54 @@
       }
     ]
   },
+  "capa:impacto-criptoativos-defesa-criminal": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-impacto-criptoativos-defesa-criminal-400.webp",
+        "avif": "/assets/img/capa-impacto-criptoativos-defesa-criminal-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-impacto-criptoativos-defesa-criminal-800.webp",
+        "avif": "/assets/img/capa-impacto-criptoativos-defesa-criminal-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-impacto-criptoativos-defesa-criminal-1200.webp",
+        "avif": "/assets/img/capa-impacto-criptoativos-defesa-criminal-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:inquilino-nao-paga-aluguel-como-fazer-a-cobranca-e-pedir-despejo": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-inquilino-nao-paga-aluguel-como-fazer-a-cobranca-e-pedir-despejo-400.webp",
+        "avif": "/assets/img/capa-inquilino-nao-paga-aluguel-como-fazer-a-cobranca-e-pedir-despejo-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-inquilino-nao-paga-aluguel-como-fazer-a-cobranca-e-pedir-despejo-800.webp",
+        "avif": "/assets/img/capa-inquilino-nao-paga-aluguel-como-fazer-a-cobranca-e-pedir-despejo-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-inquilino-nao-paga-aluguel-como-fazer-a-cobranca-e-pedir-despejo-1200.webp",
+        "avif": "/assets/img/capa-inquilino-nao-paga-aluguel-como-fazer-a-cobranca-e-pedir-despejo-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
   "capa:inventario-com-testamento-como-funciona": {
     "width": 1536,
     "height": 1024,
@@ -1548,6 +1620,54 @@
       {
         "src": "/assets/img/capa-inventario-com-testamento-como-funciona-1200.webp",
         "avif": "/assets/img/capa-inventario-com-testamento-como-funciona-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:pagamentos-de-julho-beneficio-negado": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-pagamentos-de-julho-beneficio-negado-400.webp",
+        "avif": "/assets/img/capa-pagamentos-de-julho-beneficio-negado-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-pagamentos-de-julho-beneficio-negado-800.webp",
+        "avif": "/assets/img/capa-pagamentos-de-julho-beneficio-negado-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-pagamentos-de-julho-beneficio-negado-1200.webp",
+        "avif": "/assets/img/capa-pagamentos-de-julho-beneficio-negado-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:posso-me-divorciar-mesmo-sem-a-concordancia-do-meu-conjuge": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-posso-me-divorciar-mesmo-sem-a-concordancia-do-meu-conjuge-400.webp",
+        "avif": "/assets/img/capa-posso-me-divorciar-mesmo-sem-a-concordancia-do-meu-conjuge-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-posso-me-divorciar-mesmo-sem-a-concordancia-do-meu-conjuge-800.webp",
+        "avif": "/assets/img/capa-posso-me-divorciar-mesmo-sem-a-concordancia-do-meu-conjuge-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-posso-me-divorciar-mesmo-sem-a-concordancia-do-meu-conjuge-1200.webp",
+        "avif": "/assets/img/capa-posso-me-divorciar-mesmo-sem-a-concordancia-do-meu-conjuge-1200.avif",
         "w": 1200,
         "h": 800
       }
@@ -1668,6 +1788,54 @@
       {
         "src": "/assets/img/capa-seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente-1200.webp",
         "avif": "/assets/img/capa-seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:traicao-no-divorcio-partilha-bens-pensao": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-traicao-no-divorcio-partilha-bens-pensao-400.webp",
+        "avif": "/assets/img/capa-traicao-no-divorcio-partilha-bens-pensao-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-traicao-no-divorcio-partilha-bens-pensao-800.webp",
+        "avif": "/assets/img/capa-traicao-no-divorcio-partilha-bens-pensao-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-traicao-no-divorcio-partilha-bens-pensao-1200.webp",
+        "avif": "/assets/img/capa-traicao-no-divorcio-partilha-bens-pensao-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:voce-acha-que-inventario-no-cartorio-dispensa-advogado-entao-cuidado-com-esse-erro": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-voce-acha-que-inventario-no-cartorio-dispensa-advogado-entao-cuidado-com-esse-erro-400.webp",
+        "avif": "/assets/img/capa-voce-acha-que-inventario-no-cartorio-dispensa-advogado-entao-cuidado-com-esse-erro-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-voce-acha-que-inventario-no-cartorio-dispensa-advogado-entao-cuidado-com-esse-erro-800.webp",
+        "avif": "/assets/img/capa-voce-acha-que-inventario-no-cartorio-dispensa-advogado-entao-cuidado-com-esse-erro-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-voce-acha-que-inventario-no-cartorio-dispensa-advogado-entao-cuidado-com-esse-erro-1200.webp",
+        "avif": "/assets/img/capa-voce-acha-que-inventario-no-cartorio-dispensa-advogado-entao-cuidado-com-esse-erro-1200.avif",
         "w": 1200,
         "h": 800
       }
