@@ -1,7 +1,9 @@
 // Fonte única das áreas de atuação. Home, hub de áreas, base de conhecimento,
 // formulário e rodapé leem daqui. Para criar as páginas próprias no futuro
 // (/areas/<slug>/ e /areas/<slug>/<servico>/), basta trocar areaUrl/serviceUrl.
-export const practiceAreas = [
+// Todas as áreas; as marcadas com paused: true ficam fora do site (páginas, menus, listas, sitemap)
+// até serem reativadas — basta remover a marcação. O conteúdo continua aqui.
+const ALL_AREAS = [
   {
     id: "familia",
     number: "01",
@@ -406,7 +408,19 @@ export const practiceAreas = [
   },
 ];
 
+export const PAUSED_AREAS = new Set(ALL_AREAS.filter((a) => a.paused).map((a) => a.id));
+// Áreas publicadas, numeradas na ordem em que aparecem (01, 02...).
+export const practiceAreas = ALL_AREAS.filter((a) => !a.paused).map((a, i) => ({ ...a, number: String(i + 1).padStart(2, "0") }));
 export const areaById = Object.fromEntries(practiceAreas.map((a) => [a.id, a]));
+// Textos que citam as áreas acompanham as publicadas: "sete áreas", "Família, Sucessões ... e INSS".
+const COUNT_WORDS = ["nenhuma", "uma", "duas", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"];
+export const areaCountWord = COUNT_WORDS[practiceAreas.length];
+export const areaCountTitle = areaCountWord.charAt(0).toUpperCase() + areaCountWord.slice(1);
+// labels: { id: "rótulo" } na ordem desejada; só entram as áreas publicadas.
+export const areaNames = (labels) => {
+  const list = Object.entries(labels).filter(([id]) => areaById[id]).map(([, l]) => l);
+  return list.length > 1 ? `${list.slice(0, -1).join(", ")} e ${list.at(-1)}` : list.join("");
+};
 
 export const AREAS_HUB = "/areas-de-atuacao/";
 // Página própria de cada área (página-pilar), mãe das páginas de serviço.

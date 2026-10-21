@@ -3,7 +3,7 @@ import { lpCta, lpReach, lpHero, lpSteps } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage, whatsappUrl } from "../data/site.mjs";
 import { profilePath } from "../data/team.mjs";
-import { practiceAreas, areaUrl, areaHubAnchor } from "../data/areas.mjs";
+import { practiceAreas, areaUrl, areaHubAnchor, areaNames, areaCountTitle } from "../data/areas.mjs";
 import { hasPage, serviceHref } from "../data/services/index.mjs";
 import { teamByArea } from "../data/team.mjs";
 import { articles } from "../data/articles.mjs";
@@ -67,8 +67,8 @@ export default function areas() {
   const body = `
 ${lpHero({
   crumbs: CRUMBS,
-  badge: "Áreas de atuação · 8 áreas",
-  title: `Oito áreas do Direito, <span class="grad">organizadas pelo que você precisa resolver.</span>`,
+  badge: `Áreas de atuação · ${practiceAreas.length} áreas`,
+  title: `${areaCountTitle} áreas do Direito, <span class="grad">organizadas pelo que você precisa resolver.</span>`,
   text: "Cada área reúne as situações concretas que o escritório atende. Não sabe em qual delas o seu caso se encaixa? Descreva o que aconteceu — identificar o caminho faz parte da triagem inicial.",
   message: waMessage(),
   cta: "Falar com a equipe",
@@ -112,7 +112,7 @@ ${lpCta({ title: `Não sabe em qual área seu caso se encaixa? <span class="grad
     ogAlt: "Equipe da Vieira & Marques reunida na sala de reunião do escritório",
     title: "Áreas de Atuação | Vieira & Marques",
     description:
-      "Família, Sucessório, Trabalhista, Criminal, Médico e Saúde, Bancário, Imobiliário e Previdenciário: as áreas e os serviços da Vieira & Marques Advogados.",
+      `${areaNames({ familia: "Família", sucessorio: "Sucessório", trabalhista: "Trabalhista", criminal: "Criminal", saude: "Médico e Saúde", bancario: "Bancário", imobiliario: "Imobiliário", previdenciario: "Previdenciário" })}: as áreas e os serviços da Vieira & Marques Advogados.`,
     path: PATH,
     preload: [imgPreload("equipe-reuniao", "100vw")],
     crumbs: CRUMBS,

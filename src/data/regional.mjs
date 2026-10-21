@@ -12,7 +12,10 @@
 // near: nas cidades da região, ponto presencial citado primeiro ("sorocaba" ou "boituva").
 // coords: [longitude, latitude] para o marcador no mapa de SP; label: "down" força o rótulo abaixo.
 // services: [área, serviço] de src/data/areas.mjs; content: áreas dos artigos e guias relacionados.
+// faq: [pergunta, resposta, área?] — com a área indicada, a pergunta só aparece enquanto ela estiver publicada
+// (paused em areas.mjs). Serviços e conteúdos de áreas pausadas também saem sozinhos.
 import { SITE } from "./site.mjs";
+import { areaCountWord } from "./areas.mjs";
 
 export const CITIES_HUB = "/cidades-atendidas/";
 export const regionalPath = (c) => `/advogado-${c.slug}/`;
@@ -41,9 +44,9 @@ export const REGIONAL = [
     content: ["trabalhista", "familia", "previdenciario"],
     faq: [
       ["O escritório atende presencialmente em Sorocaba?", "Sim, com horário combinado. A sede da Vieira & Marques fica em Boituva; em Sorocaba, os encontros presenciais são agendados com a equipe de atendimento, que informa os detalhes ao confirmar a reunião. Também é possível fazer todo o atendimento por vídeo."],
-      ["Qual é o prazo para a empresa pagar as verbas rescisórias?", "A CLT prevê o pagamento em até 10 dias contados do fim do contrato, com multa quando o prazo é descumprido. Quem não recebeu tem, em regra, até 2 anos após o desligamento para entrar com ação, podendo cobrar valores dos últimos 5 anos."],
-      ["Uma ação trabalhista de quem trabalhou em Sorocaba tramita onde?", "Em regra, na Vara do Trabalho do local onde o serviço foi prestado. Sorocaba integra a área do Tribunal Regional do Trabalho da 15ª Região, e os processos são eletrônicos, o que permite o acompanhamento à distância."],
-      ["Como se comprova o direito ao adicional de insalubridade?", "Pela perícia técnica realizada no processo, que avalia o ambiente e os agentes a que o trabalhador estava exposto. Documentos como o PPP, laudos da empresa, fichas de entrega de EPI e testemunhas ajudam a reconstruir as condições de trabalho."],
+      ["Qual é o prazo para a empresa pagar as verbas rescisórias?", "A CLT prevê o pagamento em até 10 dias contados do fim do contrato, com multa quando o prazo é descumprido. Quem não recebeu tem, em regra, até 2 anos após o desligamento para entrar com ação, podendo cobrar valores dos últimos 5 anos.", "trabalhista"],
+      ["Uma ação trabalhista de quem trabalhou em Sorocaba tramita onde?", "Em regra, na Vara do Trabalho do local onde o serviço foi prestado. Sorocaba integra a área do Tribunal Regional do Trabalho da 15ª Região, e os processos são eletrônicos, o que permite o acompanhamento à distância.", "trabalhista"],
+      ["Como se comprova o direito ao adicional de insalubridade?", "Pela perícia técnica realizada no processo, que avalia o ambiente e os agentes a que o trabalhador estava exposto. Documentos como o PPP, laudos da empresa, fichas de entrega de EPI e testemunhas ajudam a reconstruir as condições de trabalho.", "trabalhista"],
     ],
     cta: { title: `Mora ou trabalha em Sorocaba? <span class="grad">Fale com nossa equipe.</span>`, text: "Conte a situação em poucas linhas. A equipe de atendimento faz a triagem e, quando aplicável, agenda a reunião presencial ou por vídeo com o profissional da área." },
   },
@@ -54,7 +57,7 @@ export const REGIONAL = [
     mode: "sede",
     image: "fachada",
     title: "Advogado em Boituva/SP | Sede da Vieira & Marques",
-    description: `Sede da Vieira & Marques em Boituva/SP, na ${sede.street}. Atendimento presencial com horário combinado e online, em oito áreas do Direito.`,
+    description: `Sede da Vieira & Marques em Boituva/SP, na ${sede.street}. Atendimento presencial com horário combinado e online, em ${areaCountWord} áreas do Direito.`,
     grad: "sede do escritório.",
     lead: `A sede da Vieira & Marques fica na ${sede.district}, em Boituva. Clientes da cidade podem ser atendidos presencialmente, com horário combinado, ou por videochamada — sempre a partir de uma triagem feita pela equipe de atendimento.`,
     intro: {
@@ -65,7 +68,7 @@ export const REGIONAL = [
       ],
     },
     services: [["familia", "divorcio"], ["sucessorio", "inventario"], ["trabalhista", "verbas-rescisorias"], ["previdenciario", "bpc-loas"], ["bancario", "golpe-do-pix"], ["imobiliario", "usucapiao"]],
-    servicesLead: "Alguns dos assuntos com página própria no site — família e sucessões, contrato de trabalho, benefícios do INSS, fraudes bancárias e regularização de imóveis. As oito áreas são atendidas na sede.",
+    servicesLead: `Alguns dos assuntos com página própria no site — família e sucessões, contrato de trabalho, benefícios do INSS, fraudes bancárias e regularização de imóveis. As ${areaCountWord} áreas são atendidas na sede.`,
     content: ["familia", "sucessorio", "previdenciario"],
     faq: [
       ["Onde fica a sede e como agendar uma reunião?", `A sede fica na ${sede.street} — ${sede.district}, em Boituva/SP, CEP ${sede.postalCode}. A reunião presencial é marcada com a equipe de atendimento pelo WhatsApp ou pelo telefone ${SITE.phone.display}, de acordo com a agenda do profissional responsável pela área.`],
@@ -97,7 +100,7 @@ export const REGIONAL = [
     content: ["familia", "previdenciario", "trabalhista"],
     faq: [
       ["Moro em Tatuí. Onde acontece a reunião presencial?", "Na sede, em Boituva, cidade vizinha, com horário combinado previamente. Se preferir, todo o atendimento pode ser feito por vídeo, sem deslocamento."],
-      ["Fui dispensada grávida. Tenho direito à estabilidade?", "A Constituição garante estabilidade à empregada gestante desde a confirmação da gravidez até cinco meses após o parto, mesmo que a empresa não soubesse da gestação na dispensa. Em regra, é possível pedir a reintegração ou a indenização do período."],
+      ["Fui dispensada grávida. Tenho direito à estabilidade?", "A Constituição garante estabilidade à empregada gestante desde a confirmação da gravidez até cinco meses após o parto, mesmo que a empresa não soubesse da gestação na dispensa. Em regra, é possível pedir a reintegração ou a indenização do período.", "trabalhista"],
       ["A guarda compartilhada é a regra?", "Sim. Pela lei, a guarda compartilhada é aplicada quando ambos os pais estão aptos a exercer o poder familiar, salvo se um deles declarar que não deseja a guarda. A convivência e a divisão de responsabilidades são definidas conforme o interesse da criança."],
       ["O auxílio por incapacidade exige carência?", "Em regra, sim: 12 contribuições mensais antes do afastamento. A carência é dispensada em acidentes de qualquer natureza e em doenças graves previstas em lei. Também é preciso manter a qualidade de segurado."],
     ],
@@ -125,7 +128,7 @@ export const REGIONAL = [
     content: ["imobiliario", "sucessorio", "trabalhista"],
     faq: [
       ["Como é o atendimento para quem mora em São Roque?", "Por videochamada, com envio digital de documentos, ou em reunião presencial com horário combinado — em Sorocaba ou na sede, em Boituva. A equipe de atendimento indica a opção mais adequada ao caso."],
-      ["Trabalhei em feriados sem folga compensatória. Isso deve ser pago?", "Segundo o entendimento do Tribunal Superior do Trabalho, o trabalho em feriado não compensado deve ser pago em dobro, sem prejuízo da remuneração do repouso. Escalas, controles de ponto e holerites ajudam a verificar o que foi pago."],
+      ["Trabalhei em feriados sem folga compensatória. Isso deve ser pago?", "Segundo o entendimento do Tribunal Superior do Trabalho, o trabalho em feriado não compensado deve ser pago em dobro, sem prejuízo da remuneração do repouso. Escalas, controles de ponto e holerites ajudam a verificar o que foi pago.", "trabalhista"],
       ["Aluguel por temporada tem regras próprias?", "Sim. A Lei do Inquilinato trata da locação para temporada, com prazo de até 90 dias, e permite que o aluguel seja cobrado antecipadamente. Contrato escrito, com descrição do imóvel e dos móveis, reduz conflitos na devolução."],
       ["Como fazer um testamento público?", "O testamento público é lavrado por tabelião de notas, na presença de duas testemunhas, a partir das declarações de quem testa. A orientação jurídica ajuda a respeitar a parte da herança reservada aos herdeiros necessários."],
     ],
@@ -210,8 +213,8 @@ export const REGIONAL = [
     content: ["trabalhista", "previdenciario"],
     faq: [
       ["Como funciona o atendimento para Alumínio?", "A conversa inicial é feita com a equipe de atendimento, pelo WhatsApp ou telefone. Depois, a reunião pode ser por vídeo ou presencial, com horário combinado, em Sorocaba ou na sede, em Boituva."],
-      ["Quem trabalha em turnos ininterruptos de revezamento tem jornada menor?", "A Constituição fixa jornada de seis horas para turnos ininterruptos de revezamento, salvo negociação coletiva. Quando a escala supera o limite sem respaldo válido, as horas excedentes podem ser cobradas como extras."],
-      ["Posso receber insalubridade e periculosidade ao mesmo tempo?", "Segundo o entendimento atual do Tribunal Superior do Trabalho, os dois adicionais não se acumulam: o trabalhador exposto às duas condições escolhe o mais vantajoso. A caracterização depende de perícia."],
+      ["Quem trabalha em turnos ininterruptos de revezamento tem jornada menor?", "A Constituição fixa jornada de seis horas para turnos ininterruptos de revezamento, salvo negociação coletiva. Quando a escala supera o limite sem respaldo válido, as horas excedentes podem ser cobradas como extras.", "trabalhista"],
+      ["Posso receber insalubridade e periculosidade ao mesmo tempo?", "Segundo o entendimento atual do Tribunal Superior do Trabalho, os dois adicionais não se acumulam: o trabalhador exposto às duas condições escolhe o mais vantajoso. A caracterização depende de perícia.", "trabalhista"],
       ["O que é o PPP e para que serve?", "O Perfil Profissiográfico Previdenciário é o documento em que a empresa registra as atividades e os agentes nocivos a que o trabalhador foi exposto. Ele é usado no pedido de aposentadoria especial e pode ser solicitado à empresa, inclusive no desligamento."],
     ],
     cta: { title: `Trabalha ou mora em Alumínio? <span class="grad">Fale com nossa equipe.</span>`, text: "Explique a situação e, se tiver, envie holerites, PPP ou documentos do INSS. A equipe organiza as informações e encaminha ao profissional da área." },
@@ -238,8 +241,8 @@ export const REGIONAL = [
     content: ["trabalhista", "familia"],
     faq: [
       ["Araçariguama é atendida presencialmente?", "O atendimento presencial acontece em Sorocaba, com horário combinado, ou na sede, em Boituva. Para quem mora em Araçariguama, a videochamada evita o deslocamento e permite tratar o caso do início ao fim."],
-      ["Trabalho como PJ, mas cumpro horário e recebo ordens. Posso ter vínculo de emprego?", "Pode. A CLT reconhece o vínculo quando há pessoalidade, habitualidade, remuneração e subordinação, independentemente do nome dado ao contrato. A análise considera mensagens, escalas, e-mails e a forma como o trabalho era cobrado."],
-      ["Sou terceirizado. Quem paga se a empresa contratante não pagar?", "A empresa prestadora de serviços é a responsável direta. Se ela não pagar, a tomadora dos serviços pode responder de forma subsidiária pelas verbas do período em que se beneficiou do trabalho."],
+      ["Trabalho como PJ, mas cumpro horário e recebo ordens. Posso ter vínculo de emprego?", "Pode. A CLT reconhece o vínculo quando há pessoalidade, habitualidade, remuneração e subordinação, independentemente do nome dado ao contrato. A análise considera mensagens, escalas, e-mails e a forma como o trabalho era cobrado.", "trabalhista"],
+      ["Sou terceirizado. Quem paga se a empresa contratante não pagar?", "A empresa prestadora de serviços é a responsável direta. Se ela não pagar, a tomadora dos serviços pode responder de forma subsidiária pelas verbas do período em que se beneficiou do trabalho.", "trabalhista"],
       ["O banco pode retomar o carro financiado por atraso?", "Nos contratos com alienação fiduciária, o atraso permite o pedido de busca e apreensão. Depois do cumprimento da liminar, o devedor tem cinco dias para pagar a integralidade da dívida e reaver o veículo; cláusulas e encargos podem ser questionados."],
     ],
     cta: { title: `Araçariguama: <span class="grad">atendimento sem deslocamento.</span>`, text: "Mande uma mensagem com o resumo do caso e os documentos que tiver. A equipe de atendimento responde e combina a reunião." },
@@ -322,8 +325,8 @@ export const REGIONAL = [
     content: ["trabalhista", "familia"],
     faq: [
       ["Quem mora em Cerquilho é atendido onde?", "Na sede, em Boituva, com horário combinado, ou por videochamada. Os documentos podem ser enviados em formato digital antes da reunião."],
-      ["O que recebo no acordo de demissão?", "No acordo previsto na CLT, o trabalhador recebe metade do aviso prévio indenizado e da multa do FGTS, as demais verbas integralmente e pode sacar até 80% do saldo do FGTS. Não há direito ao seguro-desemprego."],
-      ["A empresa não depositou meu FGTS. O que fazer?", "Confira o extrato no aplicativo do FGTS e guarde os comprovantes. A falta de depósitos pode ser cobrada judicialmente e, conforme a gravidade, fundamentar o pedido de rescisão indireta do contrato."],
+      ["O que recebo no acordo de demissão?", "No acordo previsto na CLT, o trabalhador recebe metade do aviso prévio indenizado e da multa do FGTS, as demais verbas integralmente e pode sacar até 80% do saldo do FGTS. Não há direito ao seguro-desemprego.", "trabalhista"],
+      ["A empresa não depositou meu FGTS. O que fazer?", "Confira o extrato no aplicativo do FGTS e guarde os comprovantes. A falta de depósitos pode ser cobrada judicialmente e, conforme a gravidade, fundamentar o pedido de rescisão indireta do contrato.", "trabalhista"],
       ["Bens adquiridos antes do casamento entram na partilha?", "No regime da comunhão parcial, o mais comum, os bens adquiridos antes do casamento não entram na partilha, assim como os recebidos por herança ou doação. A análise depende do regime escolhido e das provas de quando e como cada bem foi adquirido."],
     ],
     cta: { title: `Cerquilho: <span class="grad">tire as dúvidas sobre o seu caso.</span>`, text: "Descreva a situação e envie os documentos que tiver. A equipe faz a triagem e combina a reunião na sede ou por vídeo." },
@@ -406,7 +409,7 @@ export const REGIONAL = [
     content: ["previdenciario", "sucessorio", "familia"],
     faq: [
       ["Itapetininga é atendida à distância?", "Sim. O atendimento pode ser feito por vídeo, do primeiro contato à assinatura eletrônica dos documentos. A reunião presencial, quando necessária, acontece na sede, em Boituva, com horário combinado."],
-      ["Como é calculado o aviso prévio?", "O aviso prévio é de 30 dias para quem tem até um ano de empresa, com acréscimo de 3 dias por ano completo de serviço, até o limite de 90 dias. Quando indenizado, o período também conta para férias, 13º e FGTS."],
+      ["Como é calculado o aviso prévio?", "O aviso prévio é de 30 dias para quem tem até um ano de empresa, com acréscimo de 3 dias por ano completo de serviço, até o limite de 90 dias. Quando indenizado, o período também conta para férias, 13º e FGTS.", "trabalhista"],
       ["Existe prazo para pedir a revisão da aposentadoria?", "Em regra, o prazo para pedir a revisão do ato de concessão é de 10 anos, contados a partir do mês seguinte ao primeiro pagamento. Depois disso, a maior parte das revisões não é mais possível, por isso a carta de concessão deve ser analisada o quanto antes."],
       ["O plano de saúde negou uma cirurgia. O que fazer?", "Peça a negativa por escrito — a operadora deve informar o motivo quando solicitado — e reúna o relatório médico. A recusa pode ser questionada na ANS e na Justiça, inclusive com pedido de urgência, a depender do caso."],
     ],
@@ -434,8 +437,8 @@ export const REGIONAL = [
     content: ["trabalhista", "sucessorio", "familia"],
     faq: [
       ["Itu tem atendimento presencial?", "O atendimento presencial é feito em Sorocaba, com horário combinado, ou na sede, em Boituva. Para quem mora em Itu, também é possível tratar todo o caso por videochamada."],
-      ["As horas extras habituais aumentam outras verbas?", "Sim. Quando são frequentes, as horas extras refletem no descanso semanal remunerado, nas férias com um terço, no 13º salário e no FGTS. Por isso, a conferência dos holerites deve considerar esses reflexos."],
-      ["Como provar assédio moral no trabalho?", "Mensagens, e-mails, áudios em que a própria pessoa participa, testemunhas e registros médicos ajudam a demonstrar a conduta e seus efeitos. Anotar datas, situações e quem presenciou cada episódio facilita a análise."],
+      ["As horas extras habituais aumentam outras verbas?", "Sim. Quando são frequentes, as horas extras refletem no descanso semanal remunerado, nas férias com um terço, no 13º salário e no FGTS. Por isso, a conferência dos holerites deve considerar esses reflexos.", "trabalhista"],
+      ["Como provar assédio moral no trabalho?", "Mensagens, e-mails, áudios em que a própria pessoa participa, testemunhas e registros médicos ajudam a demonstrar a conduta e seus efeitos. Anotar datas, situações e quem presenciou cada episódio facilita a análise.", "trabalhista"],
       ["Existe multa se o inventário não for aberto no prazo?", "Em São Paulo, a lei do ITCMD prevê multa quando o inventário não é aberto em até 60 dias do falecimento, com percentual maior para atrasos superiores a 180 dias. O prazo vale tanto para o inventário judicial quanto para o feito em cartório."],
     ],
     cta: { title: `Itu: <span class="grad">conte o que está acontecendo.</span>`, text: "A equipe de atendimento lê a mensagem, faz a triagem e combina a reunião por vídeo ou presencial na região." },
@@ -490,7 +493,7 @@ export const REGIONAL = [
     content: ["trabalhista", "familia", "criminal"],
     faq: [
       ["Mairinque tem atendimento presencial?", "O atendimento presencial é feito em Sorocaba, com horário combinado, ou na sede, em Boituva. Todo o caso também pode ser conduzido por vídeo."],
-      ["Fui dispensado por justa causa. Posso contestar?", "Pode. A justa causa precisa estar ligada a uma falta grave prevista em lei e bem comprovada pela empresa. Se for revertida na Justiça, o trabalhador passa a ter direito às verbas da dispensa sem justa causa."],
+      ["Fui dispensado por justa causa. Posso contestar?", "Pode. A justa causa precisa estar ligada a uma falta grave prevista em lei e bem comprovada pela empresa. Se for revertida na Justiça, o trabalhador passa a ter direito às verbas da dispensa sem justa causa.", "trabalhista"],
       ["O valor da pensão pode ser revisto?", "Sim, quando há mudança na necessidade de quem recebe ou na possibilidade de quem paga — por exemplo, desemprego, novo emprego ou aumento de despesas. A revisão é pedida na Justiça e não acontece automaticamente."],
       ["Há descontos que não reconheço na minha aposentadoria. O que fazer?", "Verifique o extrato no Meu INSS, peça o cancelamento à instituição responsável e registre reclamação nos canais oficiais. Descontos de empréstimos ou mensalidades não autorizados podem gerar pedido de devolução e, conforme o caso, indenização."],
     ],
@@ -518,7 +521,7 @@ export const REGIONAL = [
     content: ["previdenciario", "sucessorio"],
     faq: [
       ["Como é o atendimento para Piedade?", "Por videochamada ou em reunião presencial com horário combinado, em Sorocaba ou na sede, em Boituva. A conversa começa com a equipe de atendimento, pelo WhatsApp ou telefone."],
-      ["Trabalhador rural sem carteira assinada tem direitos?", "Sim. O empregado rural tem os direitos previstos na lei do trabalho rural e na Constituição, como salário, férias, 13º e FGTS. Quando o registro não foi feito, o vínculo pode ser reconhecido na Justiça com testemunhas e outras provas."],
+      ["Trabalhador rural sem carteira assinada tem direitos?", "Sim. O empregado rural tem os direitos previstos na lei do trabalho rural e na Constituição, como salário, férias, 13º e FGTS. Quando o registro não foi feito, o vínculo pode ser reconhecido na Justiça com testemunhas e outras provas.", "trabalhista"],
       ["Tive um benefício negado pelo INSS. Recurso ou ação judicial?", "Depende do motivo da negativa e das provas disponíveis. O recurso administrativo tem prazo de 30 dias a partir da ciência da decisão; a ação judicial pode ser proposta mesmo sem recurso, conforme o caso."],
       ["Um dos herdeiros não concorda com a partilha. E agora?", "Sem acordo entre todos, o inventário não pode ser feito em cartório e segue pela via judicial, em que o juiz decide as divergências. Muitas vezes, uma negociação bem conduzida evita o prolongamento do processo."],
     ],
@@ -547,7 +550,7 @@ export const REGIONAL = [
     faq: [
       ["Pilar do Sul pode ser atendida por vídeo?", "Sim. Da primeira reunião ao envio dos documentos, o atendimento pode ser feito à distância. Encontros presenciais, quando necessários, são marcados em Sorocaba ou na sede, em Boituva."],
       ["O trabalhador rural se aposenta mais cedo?", "Na aposentadoria por idade rural, a idade mínima é cinco anos menor que a do trabalhador urbano: 60 anos para homens e 55 para mulheres, com comprovação da atividade rural pelo período exigido."],
-      ["Tenho estabilidade depois de um acidente de trabalho?", "O empregado que sofreu acidente de trabalho e recebeu auxílio por incapacidade acidentário tem garantia de emprego por 12 meses após o fim do benefício. A emissão da CAT e os documentos médicos são importantes para comprovar o caso."],
+      ["Tenho estabilidade depois de um acidente de trabalho?", "O empregado que sofreu acidente de trabalho e recebeu auxílio por incapacidade acidentário tem garantia de emprego por 12 meses após o fim do benefício. A emissão da CAT e os documentos médicos são importantes para comprovar o caso.", "trabalhista"],
       ["Posso me divorciar se o outro não concordar?", "Sim. O divórcio é um direito de cada cônjuge e não depende da concordância do outro. Sem acordo, ele é pedido na Justiça, onde também se discutem partilha, guarda e pensão, quando houver."],
     ],
     cta: { title: `Pilar do Sul: <span class="grad">fale com a equipe de atendimento.</span>`, text: "Mande uma mensagem com o resumo do caso. A equipe faz a triagem e combina a reunião por vídeo ou presencial." },
@@ -574,7 +577,7 @@ export const REGIONAL = [
     content: ["sucessorio", "familia", "trabalhista"],
     faq: [
       ["Porto Feliz é atendida na sede?", "Sim. A sede fica em Boituva, cidade vizinha, e a reunião presencial é marcada com antecedência pela equipe de atendimento. Também é possível fazer todo o atendimento por vídeo."],
-      ["Quanto vale o adicional noturno?", "Para o trabalhador urbano, o adicional é de, no mínimo, 20% sobre a hora diurna, entre 22h e 5h, com hora noturna reduzida. No trabalho rural, o adicional é de 25%, com horários próprios para lavoura e pecuária."],
+      ["Quanto vale o adicional noturno?", "Para o trabalhador urbano, o adicional é de, no mínimo, 20% sobre a hora diurna, entre 22h e 5h, com hora noturna reduzida. No trabalho rural, o adicional é de 25%, com horários próprios para lavoura e pecuária.", "trabalhista"],
       ["O imóvel ainda está em nome dos avós falecidos. Como regularizar?", "É preciso fazer o inventário dos avós e, se for o caso, também o dos herdeiros que já faleceram, o que em algumas situações pode ser organizado no mesmo procedimento. Benfeitorias feitas pela família devem ser documentadas antes da partilha."],
       ["O que é alienação parental?", "É a interferência na formação psicológica da criança promovida por um dos pais ou parentes para prejudicar o vínculo com o outro genitor. A lei prevê medidas que vão de advertência à alteração da guarda, conforme a gravidade."],
     ],
@@ -602,7 +605,7 @@ export const REGIONAL = [
     content: ["trabalhista", "imobiliario", "familia"],
     faq: [
       ["Salto tem atendimento presencial?", "O atendimento presencial é feito em Sorocaba, com horário combinado, ou na sede, em Boituva. Para quem mora em Salto, a reunião também pode ser por vídeo."],
-      ["Recebo menos que um colega que faz o mesmo trabalho. Posso pedir equiparação?", "Pode, se os requisitos da CLT estiverem presentes: mesma função, mesmo empregador e estabelecimento, trabalho de igual valor e diferença de tempo na função de até dois anos, entre outros. Holerites e a descrição das tarefas ajudam na análise."],
+      ["Recebo menos que um colega que faz o mesmo trabalho. Posso pedir equiparação?", "Pode, se os requisitos da CLT estiverem presentes: mesma função, mesmo empregador e estabelecimento, trabalho de igual valor e diferença de tempo na função de até dois anos, entre outros. Holerites e a descrição das tarefas ajudam na análise.", "trabalhista"],
       ["O inquilino parou de pagar. Como pedir o despejo?", "Por meio de ação de despejo por falta de pagamento, que pode incluir a cobrança dos aluguéis atrasados. Quando o contrato não tem garantia, a lei permite pedir a desocupação liminar, mediante caução."],
       ["Plano de saúde pode reajustar por idade depois dos 60 anos?", "Para contratos firmados a partir de 2004, as regras da ANS e o Estatuto da Pessoa Idosa impedem reajuste por mudança de faixa etária a partir dos 60 anos. Reajustes anuais e contratos antigos têm regras próprias, que devem ser analisadas."],
     ],
@@ -714,7 +717,7 @@ export const REGIONAL = [
     content: ["previdenciario", "familia"],
     faq: [
       ["Contratos e procurações podem ser assinados à distância?", "Sim. A assinatura eletrônica tem validade jurídica, e a maior parte dos documentos do atendimento pode ser assinada pelo celular, sem deslocamento até Sorocaba ou Boituva."],
-      ["Quais são os direitos da empregada doméstica?", "Desde a Lei Complementar 150/2015, o trabalho doméstico tem jornada limitada, horas extras, FGTS, seguro-desemprego e as demais garantias do contrato de trabalho. Quem trabalha mais de dois dias por semana na mesma casa, em regra, é empregado doméstico."],
+      ["Quais são os direitos da empregada doméstica?", "Desde a Lei Complementar 150/2015, o trabalho doméstico tem jornada limitada, horas extras, FGTS, seguro-desemprego e as demais garantias do contrato de trabalho. Quem trabalha mais de dois dias por semana na mesma casa, em regra, é empregado doméstico.", "trabalhista"],
       ["Quando cabe a aposentadoria por incapacidade permanente?", "Quando a perícia constata incapacidade total e definitiva para o trabalho, sem possibilidade de reabilitação para outra atividade. É preciso ter qualidade de segurado e, em regra, 12 contribuições, salvo em acidentes e doenças previstas em lei."],
       ["Como pedir pensão alimentícia morando longe do outro genitor?", "A ação pode ser proposta no foro do domicílio de quem pede os alimentos, mesmo que o outro genitor more em outra cidade ou estado. O processo é eletrônico, e muitas etapas podem ser acompanhadas à distância."],
     ],
@@ -742,9 +745,9 @@ export const REGIONAL = [
     content: ["sucessorio", "trabalhista"],
     faq: [
       ["Tietê é atendida na sede do escritório?", "Sim. A reunião presencial é marcada na sede, em Boituva, com horário combinado. Quem preferir pode ser atendido por vídeo, com documentos enviados digitalmente."],
-      ["Fui demitido durante um tratamento de saúde. A dispensa é válida?", "Depende. A dispensa de empregado com doença grave que gere estigma ou preconceito é presumida discriminatória pela Justiça do Trabalho, o que pode levar à reintegração ou à indenização. Em outras situações, a análise considera laudos, afastamentos e o momento da dispensa."],
+      ["Fui demitido durante um tratamento de saúde. A dispensa é válida?", "Depende. A dispensa de empregado com doença grave que gere estigma ou preconceito é presumida discriminatória pela Justiça do Trabalho, o que pode levar à reintegração ou à indenização. Em outras situações, a análise considera laudos, afastamentos e o momento da dispensa.", "trabalhista"],
       ["A holding familiar vale a pena?", "Depende do patrimônio, da família e dos objetivos. A holding pode facilitar a sucessão e a gestão dos bens, mas envolve custos, tributos e regras societárias que precisam ser comparados com alternativas como a doação e o testamento."],
-      ["Fui dispensado no contrato de experiência. Tenho direitos?", "Sim: saldo de salário, 13º e férias proporcionais com um terço e FGTS. Se a dispensa ocorrer antes do prazo combinado, sem justa causa, a lei prevê indenização de metade da remuneração a que o empregado teria direito até o fim do contrato, salvo cláusula de rescisão antecipada."],
+      ["Fui dispensado no contrato de experiência. Tenho direitos?", "Sim: saldo de salário, 13º e férias proporcionais com um terço e FGTS. Se a dispensa ocorrer antes do prazo combinado, sem justa causa, a lei prevê indenização de metade da remuneração a que o empregado teria direito até o fim do contrato, salvo cláusula de rescisão antecipada.", "trabalhista"],
     ],
     cta: { title: `Tietê: <span class="grad">combine a reunião com nossa equipe.</span>`, text: "Descreva a situação em uma mensagem. A equipe de atendimento faz a triagem e marca o encontro na sede ou por vídeo." },
   },
@@ -770,7 +773,7 @@ export const REGIONAL = [
     content: ["trabalhista", "familia", "criminal"],
     faq: [
       ["Moro em Votorantim. Posso ser atendido presencialmente em Sorocaba?", "Sim, com horário combinado previamente com a equipe de atendimento. Também é possível marcar a reunião na sede, em Boituva, ou fazer todo o atendimento por vídeo."],
-      ["Quando o banco de horas é válido?", "O banco de horas pode ser ajustado por acordo individual escrito, com compensação em até seis meses, ou por negociação coletiva, com prazo de até um ano. Horas não compensadas no prazo devem ser pagas como extras."],
+      ["Quando o banco de horas é válido?", "O banco de horas pode ser ajustado por acordo individual escrito, com compensação em até seis meses, ou por negociação coletiva, com prazo de até um ano. Horas não compensadas no prazo devem ser pagas como extras.", "trabalhista"],
       ["A pensão pode ser descontada direto do salário?", "Sim. Quando quem paga tem emprego formal, o juiz pode determinar o desconto em folha, e o empregador repassa o valor diretamente. É uma forma de reduzir atrasos e facilitar a cobrança."],
       ["Estou com muitas dívidas. Existe forma de renegociar tudo junto?", "A Lei do Superendividamento permite pedir a repactuação das dívidas de consumo em um plano de pagamento único, preservando o mínimo necessário para a subsistência. O pedido pode começar com uma audiência de conciliação com os credores."],
     ],
@@ -797,9 +800,9 @@ export const REGIONAL = [
     content: ["familia", "trabalhista", "sucessorio"],
     faq: [
       ["Quem mora em São Paulo é atendido como?", "De forma online: reunião por vídeo, documentos enviados digitalmente e assinatura eletrônica. Se preferir uma conversa presencial, ela pode ser marcada na sede, em Boituva, com horário combinado."],
-      ["Uma ação trabalhista da capital tramita em qual tribunal?", "Na capital, na Grande São Paulo e na Baixada Santista, a Justiça do Trabalho é organizada pelo Tribunal Regional do Trabalho da 2ª Região. Os processos são eletrônicos, o que permite o acompanhamento à distância."],
+      ["Uma ação trabalhista da capital tramita em qual tribunal?", "Na capital, na Grande São Paulo e na Baixada Santista, a Justiça do Trabalho é organizada pelo Tribunal Regional do Trabalho da 2ª Região. Os processos são eletrônicos, o que permite o acompanhamento à distância.", "trabalhista"],
       ["O plano de saúde negou um medicamento de alto custo. É possível contestar?", "Sim. A lei permite a cobertura de tratamentos fora do rol da ANS quando atendidos critérios técnicos, como prescrição fundamentada e eficácia comprovada. A negativa por escrito e o relatório médico são os primeiros documentos a reunir."],
-      ["A empresa propôs um acordo extrajudicial. Devo assinar?", "Antes de assinar, vale conferir se todas as verbas estão incluídas e o que o acordo quita. Pela CLT, o acordo extrajudicial precisa ser homologado pela Justiça do Trabalho, com advogados distintos para a empresa e para o trabalhador."],
+      ["A empresa propôs um acordo extrajudicial. Devo assinar?", "Antes de assinar, vale conferir se todas as verbas estão incluídas e o que o acordo quita. Pela CLT, o acordo extrajudicial precisa ser homologado pela Justiça do Trabalho, com advogados distintos para a empresa e para o trabalhador.", "trabalhista"],
     ],
     cta: { title: `Mora na capital? <span class="grad">Fale com nossa equipe online.</span>`, text: "Envie uma mensagem com o resumo do caso. A equipe de atendimento faz a triagem e agenda a reunião por vídeo." },
   },
@@ -824,7 +827,7 @@ export const REGIONAL = [
     content: ["trabalhista", "criminal", "familia"],
     faq: [
       ["Como é o atendimento para quem mora em Campinas?", "Online, com reunião por vídeo e documentos enviados e assinados digitalmente. Se o cliente preferir, é possível marcar um encontro presencial na sede, em Boituva."],
-      ["Se o TRT-15 fica em Campinas, a ação começa lá?", "Não necessariamente. Em regra, a ação trabalhista é proposta na Vara do Trabalho do local onde o serviço foi prestado; o tribunal, em Campinas, julga os recursos. Como o processo é eletrônico, o acompanhamento pode ser feito à distância."],
+      ["Se o TRT-15 fica em Campinas, a ação começa lá?", "Não necessariamente. Em regra, a ação trabalhista é proposta na Vara do Trabalho do local onde o serviço foi prestado; o tribunal, em Campinas, julga os recursos. Como o processo é eletrônico, o acompanhamento pode ser feito à distância.", "trabalhista"],
       ["Qual é o prazo para entrar com ação por erro médico?", "Em regra, nas relações com hospitais e profissionais privados, o prazo é de cinco anos a partir do conhecimento do dano e de quem o causou. Prontuário, exames e laudos são a base da análise."],
       ["Quando cabe a revisão criminal?", "Depois do trânsito em julgado da condenação, em hipóteses previstas em lei — como sentença contrária à prova dos autos, provas falsas ou novas provas de inocência. Pode ser pedida a qualquer tempo, inclusive após o cumprimento da pena."],
     ],
@@ -878,7 +881,7 @@ export const REGIONAL = [
     content: ["trabalhista", "familia", "sucessorio"],
     faq: [
       ["Como funciona o atendimento para São José dos Campos?", "É online: reunião por vídeo, envio digital de documentos e assinatura eletrônica. Quem preferir pode marcar uma reunião presencial na sede, em Boituva."],
-      ["A PLR é paga na rescisão?", "Segundo o entendimento do Tribunal Superior do Trabalho, o empregado desligado antes da data de distribuição tem direito à PLR proporcional aos meses trabalhados, quando o programa estiver em vigor. Os termos do acordo de PLR devem ser conferidos."],
+      ["A PLR é paga na rescisão?", "Segundo o entendimento do Tribunal Superior do Trabalho, o empregado desligado antes da data de distribuição tem direito à PLR proporcional aos meses trabalhados, quando o programa estiver em vigor. Os termos do acordo de PLR devem ser conferidos.", "trabalhista"],
       ["Posso manter o plano de saúde da empresa depois da demissão?", "O empregado demitido sem justa causa que contribuía para o plano pode mantê-lo, assumindo o pagamento integral, por um terço do tempo de contribuição, com mínimo de seis meses e máximo de dois anos. A empresa deve informar essa opção no desligamento."],
       ["A pensão alimentícia é sempre 30% do salário?", "Não. Não existe percentual fixo em lei: o valor é definido conforme a necessidade de quem recebe e a possibilidade de quem paga. O percentual de 30% é uma referência popular, mas não é regra."],
     ],

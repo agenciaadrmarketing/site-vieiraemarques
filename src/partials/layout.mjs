@@ -278,7 +278,9 @@ const mapSection = () => {
   if (!SITE.mapEmbed) return "";
   const u = SITE.units[0];
   const { latitude: lat, longitude: lng } = u.geo;
-  const embed = `https://maps.google.com/maps?q=${lat},${lng}&z=16&hl=pt-BR&output=embed`;
+  // Busca pelo nome + endereço (e não por coordenadas): o mapa abre com o pino da ficha do escritório.
+  const query = encodeURIComponent(`${SITE.name}, ${u.street}, ${u.city} - ${u.region}`);
+  const embed = `https://maps.google.com/maps?q=${query}&z=16&hl=pt-BR&output=embed`;
   const route = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
   return `<section class="section section--white visit" aria-labelledby="como-chegar-titulo" data-visit>
   <div class="container">

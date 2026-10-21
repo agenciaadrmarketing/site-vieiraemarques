@@ -19,10 +19,10 @@ export function trustBar({ person = team[0] } = {}) {
     <ul class="trust__list">
       <li class="trust__item trust__item--rating">
         <strong class="trust__score">5,0</strong>
-        <span class="trust__body"><span class="trust__stars" role="img" aria-label="Nota 5 de 5 no Google">${STAR.repeat(5)}</span><span class="trust__sub">${count ? `Com base em ${count} avaliações` : "Avaliações de clientes"}</span></span>
+        <span class="trust__body"><span class="trust__stars" role="img" aria-label="Nota 5 de 5 no Google">${STAR.repeat(5)}</span><span class="trust__sub">Nota máxima no Google</span></span>
       </li>
       <li class="trust__item">
-        <a class="trust__link" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${G}<span class="trust__body"><strong class="trust__title">Avaliações publicadas no Google</strong><span class="trust__sub">Ver no Google <span aria-hidden="true">↗</span></span></span></a>
+        <a class="trust__link" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${G}<span class="trust__body"><strong class="trust__title">${count ? `${count} clientes avaliaram o escritório` : "Avaliações de clientes"}</strong><span class="trust__sub">Ler as avaliações no Google <span aria-hidden="true">↗</span></span></span></a>
       </li>
       <li class="trust__item">
         <span class="trust__icon">${icon.shield(22)}</span>

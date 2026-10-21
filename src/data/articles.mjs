@@ -1,4 +1,5 @@
 import { SITE } from "./site.mjs";
+import { PAUSED_AREAS } from "./areas.mjs";
 
 // Somente artigos publicados no blog atual (as URLs antigas são preservadas em `path`). Quando a integração com o WordPress
 // (REST API em /wp-json/wp/v2/posts) estiver disponível, esta lista passa a ser
@@ -138,7 +139,9 @@ const raw = [
   },
 ];
 
+// Artigos de áreas pausadas continuam no blog, mas não são indicados no site.
 export const articles = raw
+  .filter((a) => !PAUSED_AREAS.has(a.area))
   .map((a) => ({ ...a, url: SITE.blogBase + a.path }))
   .sort((a, b) => b.date.localeCompare(a.date));
 

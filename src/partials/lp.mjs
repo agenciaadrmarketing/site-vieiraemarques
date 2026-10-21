@@ -523,7 +523,7 @@ export function lpFaq({ id = "perguntas", title, lead, items, message, ctaText =
 
 /* ---------- Cartões das áreas (preto, 3 colunas) ---------- */
 const AREA_ICON = { familia: "users", sucessorio: "home", trabalhista: "briefcase", criminal: "scale", saude: "pulse", bancario: "bank", imobiliario: "building", previdenciario: "shield" };
-export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação", title, lead, tone = "muted", currentId = null } = {}) {
+export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação", title, lead, tone = "muted", currentId = null, more } = {}) {
   return `<section class="lp-sec lp-sec--${tone} lp-areas" id="${id}" aria-labelledby="${id}-titulo">
   <div class="container">
     ${lpHead({ eyebrow, title, lead, id: `${id}-titulo` })}
@@ -537,6 +537,7 @@ export function lpAreaCards({ id = "areas-cards", eyebrow = "Áreas de atuação
         <span class="lp-areas__go">Conheça a área ${icon.arrow(14)}</span>
       </li>`)}
     </ul>
+    ${more ? `<p class="lp-areas__more"><a class="link-arrow" href="${more.href}">${esc(more.label)} ${icon.arrow(14)}</a></p>` : ""}
   </div>
 </section>`;
 }

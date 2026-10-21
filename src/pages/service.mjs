@@ -56,7 +56,8 @@ function hero(p, crumbs) {
 }
 
 function related(p) {
-  const services = (p.related?.services ?? []).map(([areaId, serviceId]) => {
+  // Serviços de áreas pausadas (areas.mjs) saem da lista.
+  const services = (p.related?.services ?? []).filter(([areaId]) => areaById[areaId]).map(([areaId, serviceId]) => {
     const area = areaById[areaId];
     const s = area.services.find((x) => x.id === serviceId);
     return { href: serviceHref(areaId, serviceId), title: s.title, area: area.title };

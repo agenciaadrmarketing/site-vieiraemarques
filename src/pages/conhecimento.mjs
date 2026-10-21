@@ -2,7 +2,7 @@ import { imgPreload } from "../partials/media.mjs";
 import { lpCta, lpReach, lpHero, lpAreaCards } from "../partials/lp.mjs";
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
-import { practiceAreas, areaById, areaFaqUrl } from "../data/areas.mjs";
+import { practiceAreas, areaById, areaFaqUrl, areaNames } from "../data/areas.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
 import { guides as pdfGuides } from "../data/guides.mjs";
 import { faqByArea } from "../data/faq.mjs";
@@ -130,7 +130,7 @@ ${lpCta({ title: `Leu sobre o seu caso e ficou com dúvida? <span class="grad">F
     ogAlt: "Advogada da Vieira & Marques à mesa de trabalho, no escritório em Boituva",
     title: "Base de Conhecimento Jurídico | Vieira & Marques",
     description:
-      "Artigos e perguntas frequentes sobre Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS, escritos pela equipe da Vieira & Marques.",
+      `Artigos e perguntas frequentes sobre ${areaNames({ familia: "Família", sucessorio: "Sucessões", trabalhista: "Trabalho", criminal: "Criminal", saude: "Saúde", bancario: "Bancário", imobiliario: "Imóveis", previdenciario: "INSS" })}, escritos pela equipe da Vieira & Marques.`,
     path: PATH,
     preload: [imgPreload("hero-conhecimento", "100vw")],
     crumbs: CRUMBS,

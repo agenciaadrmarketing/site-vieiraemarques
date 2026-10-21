@@ -1,7 +1,7 @@
 // Submenus do cabeçalho (desktop: painel flutuante; mobile: acordeão).
 // Chave = href do item em NAV. Itens sem submenu não aparecem aqui.
 import { SITE } from "./site.mjs";
-import { practiceAreas, areaUrl, AREAS_HUB } from "./areas.mjs";
+import { practiceAreas, areaUrl, AREAS_HUB, areaCountWord } from "./areas.mjs";
 import { servicePages } from "./services/index.mjs";
 import { articles } from "./articles.mjs";
 import { CITIES_HUB } from "./regional.mjs";
@@ -15,7 +15,7 @@ export const MENUS = {
     heading: "O escritório",
     sub: "Quem somos e como conduzimos cada caso",
     items: [
-      { title: "Quem somos", desc: "História, propósito e as oito áreas de atuação.", href: "/escritorio/#historia-titulo" },
+      { title: "Quem somos", desc: `História, propósito e as ${areaCountWord} áreas de atuação.`, href: "/escritorio/#historia-titulo" },
       { title: "Como atuamos", desc: "Do primeiro contato à definição do caminho.", href: "/escritorio/#metodo-titulo" },
       { title: "Princípios", desc: "Missão, visão e valores do escritório.", href: "/escritorio/#principios-titulo" },
       { title: "Equipe", desc: "Advogados, inscrição na OAB e formação.", href: "/escritorio/#equipe" },

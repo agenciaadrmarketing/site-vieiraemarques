@@ -1,7 +1,7 @@
 import { esc, join } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
-import { lpCta, lpReach } from "../partials/lp.mjs";
-import { practiceAreas, areaUrl, AREAS_HUB } from "../data/areas.mjs";
+import { lpCta, lpReach, lpAreaCards } from "../partials/lp.mjs";
+import { practiceAreas, areaUrl, AREAS_HUB, areaNames, areaCountTitle } from "../data/areas.mjs";
 import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { team, teamRecognitions } from "../data/team.mjs";
 import { articles, featuredArticle } from "../data/articles.mjs";
@@ -9,7 +9,7 @@ import { page } from "../partials/layout.mjs";
 import { img, imgPreload } from "../partials/media.mjs";
 import { icon } from "../partials/icons.mjs";
 import { trustBar } from "../partials/trust-bar.mjs";
-import { sectionHead, linkArrow, btn, teamPanels, recognitions, articleFeature, articleRow, facts } from "../partials/components.mjs";
+import { waButton, sectionHead, linkArrow, btn, teamPanels, recognitions, articleFeature, articleRow, facts } from "../partials/components.mjs";
 
 const HERO_SIZES = "(min-width: 1240px) 1212px, 100vw";
 
@@ -22,19 +22,20 @@ export default function home() {
 <section class="hero on-dark" aria-labelledby="hero-titulo">
   <div class="hero__frame">
     <div class="hero__media">${img("hero-home", { alt: "Mesa de trabalho com notebook exibindo a marca Vieira & Marques, no escritório em Boituva - SP", sizes: HERO_SIZES, priority: true })}</div>
-    <p class="hero__badge">Sociedade de Advogados · OAB/SP</p>
+    <p class="hero__badge">Sede em Boituva/SP · Atendimento online</p>
     <div class="hero__inner">
       <h1 class="hero__title" id="hero-titulo">
         <span>Vieira <span class="hero__amp">&amp;</span></span>
         <span>Marques</span>
-        <span class="sr-only">Sociedade de Advogados em Boituva - SP</span>
+        <span class="hero__sub">Sociedade de Advogados</span>
+        <span class="sr-only">em Boituva - SP</span>
       </h1>
       <div class="hero__panel">
         <p class="hero__lede">Clareza jurídica antes de qualquer decisão.</p>
-        <p class="hero__text">Família, Sucessões, Trabalhista, Criminal, Saúde, Bancário, Imobiliário e Previdenciário. Atendimento presencial em Boituva e Sorocaba e online em São Paulo e todo o Brasil.</p>
+        <p class="hero__text">${areaNames({ familia: "Família", sucessorio: "Sucessões", trabalhista: "Trabalhista", criminal: "Criminal", saude: "Saúde", bancario: "Bancário", imobiliario: "Imobiliário", previdenciario: "Previdenciário" })}. Atendimento presencial em Boituva e Sorocaba e online em São Paulo e todo o Brasil.</p>
         <div class="btn-row">
           ${btn(AREAS_HUB, "Conheça nossas áreas", "btn--light")}
-          <a class="btn btn--ghost-light" href="/contato/">Falar com a equipe</a>
+          ${waButton(waMessage(), "Falar com a equipe", { cta: "hero" })}
         </div>
       </div>
     </div>
@@ -42,23 +43,24 @@ export default function home() {
 </section>
 ${trustBar()}
 
-<section class="section section--dark on-dark" aria-labelledby="areas-titulo">
+${lpAreaCards({
+  id: "areas",
+  title: `${areaCountTitle} áreas, <span class="grad">um mesmo método de análise.</span>`,
+  lead: "Se você não souber onde o seu caso se encaixa, comece por qualquer uma delas — identificar o caminho aplicável faz parte da primeira conversa.",
+  tone: "white",
+  more: { href: AREAS_HUB, label: "Ver todas as áreas" },
+})}
+<section class="section section--dark on-dark" aria-labelledby="equipe-titulo">
   <div class="container">
     ${sectionHead({
-      eyebrow: "Áreas de atuação",
-      id: "areas-titulo",
-      title: `Oito áreas, <span class="grad">um mesmo método de análise.</span>`,
-      lead: "Se você não souber onde o seu caso se encaixa, comece por qualquer uma delas — identificar o caminho aplicável faz parte da primeira conversa.",
-      aside: linkArrow(AREAS_HUB, "Ver todas as áreas"),
+      eyebrow: "Equipe",
+      id: "equipe-titulo",
+      title: `Quem conduz <span class="grad">o atendimento.</span>`,
+      lead: "Formação, inscrição na OAB e área de atuação de cada profissional — informação verificável.",
+      aside: linkArrow("/escritorio/#equipe", "Conheça a equipe"),
     })}
-    <ol class="area-index" data-reveal>
-      ${join(practiceAreas, (a) => `<li class="area-index__item"><a href="${areaUrl(a)}">
-        <span class="area-index__num">${a.number}</span>
-        <h3 class="area-index__title">${esc(a.title)}</h3>
-        <p class="area-index__text">${esc(a.summary)}</p>
-        <span class="area-index__arrow">${icon.arrow(20)}</span>
-      </a></li>`)}
-    </ol>
+    ${teamPanels(team, { profileLinks: true })}
+    ${recognitions(teamRecognitions)}
   </div>
 </section>
 
@@ -87,25 +89,11 @@ ${trustBar()}
   </div>
 </section>
 
-<section class="section section--dark on-dark" aria-labelledby="equipe-titulo">
-  <div class="container">
-    ${sectionHead({
-      eyebrow: "Equipe",
-      id: "equipe-titulo",
-      title: `Quem conduz <span class="grad">o atendimento.</span>`,
-      lead: "Formação, inscrição na OAB e área de atuação de cada profissional — informação verificável.",
-      aside: linkArrow("/escritorio/#equipe", "Conheça a equipe"),
-    })}
-    ${teamPanels(team, { profileLinks: true })}
-    ${recognitions(teamRecognitions)}
-  </div>
-</section>
-
 ${lpReach()}
 
 ${googleReviews()}
 
-<section class="section section--white" aria-labelledby="conhecimento-titulo">
+<section class="section section--dark on-dark" aria-labelledby="conhecimento-titulo">
   <div class="container">
     ${sectionHead({
       eyebrow: "Base de conhecimento",
@@ -130,7 +118,7 @@ ${lpCta({ title: `Não sabe por onde começar? <span class="grad">Fale com a nos
     scripts: SITE_SCRIPTS,
     title: "Vieira & Marques Advogados | Boituva, Sorocaba e Online",
     description:
-      "Advogados em Boituva e Sorocaba (SP) e online em todo o Brasil: Família, Sucessões, Trabalho, Criminal, Saúde, Bancário, Imóveis e INSS. Fale com a equipe.",
+      `Advogados em Boituva e Sorocaba (SP) e online em todo o Brasil: ${areaNames({ familia: "Família", sucessorio: "Sucessões", trabalhista: "Trabalho", criminal: "Criminal", saude: "Saúde", bancario: "Bancário", imobiliario: "Imóveis", previdenciario: "INSS" })}. Fale com a equipe.`,
     path: "/",
     preload: [imgPreload("hero-home", HERO_SIZES)],
     schema: [

@@ -1,6 +1,6 @@
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE } from "../data/site.mjs";
-import { areaById } from "../data/areas.mjs";
+import { areaById, areaCountTitle } from "../data/areas.mjs";
 import { serviceHref } from "../data/services/index.mjs";
 import { articles } from "../data/articles.mjs";
 import { guides } from "../data/guides.mjs";
@@ -81,7 +81,8 @@ function attendance(c) {
 }
 
 function services(c) {
-  const items = c.services.map(([areaId, serviceId]) => {
+  // Serviços de áreas pausadas (areas.mjs) saem da lista.
+  const items = c.services.filter(([areaId]) => areaById[areaId]).map(([areaId, serviceId]) => {
     const area = areaById[areaId];
     const s = area.services.find((x) => x.id === serviceId);
     if (!s) throw new Error(`Serviço inexistente em ${c.slug}: ${areaId}/${serviceId}`);
@@ -98,12 +99,13 @@ function services(c) {
 
 // Artigos e guias das áreas da cidade, intercalados na ordem de c.content (sem repetir).
 function knowledge(c) {
-  const pools = c.content.map((id) => articles.filter((a) => a.area === id));
+  const content = c.content.filter((id) => areaById[id]);
+  const pools = content.map((id) => articles.filter((a) => a.area === id));
   const picked = [];
   for (let i = 0; picked.length < 3 && pools.some((p) => p[i]); i++) for (const p of pools) if (p[i] && picked.length < 3) picked.push(p[i]);
-  const gs = guides.filter((g) => c.content.includes(g.area)).slice(0, 2);
+  const gs = guides.filter((g) => content.includes(g.area)).slice(0, 2);
   if (!picked.length && !gs.length) return "";
-  const first = c.content[0];
+  const first = content[0];
   return `<section class="lp-sec lp-sec--muted" id="conteudos" aria-labelledby="conteudos-titulo">
   <div class="container">
     ${lpHead({ eyebrow: "Base de conhecimento", title: `Para ler antes <span class="grad">da primeira conversa.</span>`, lead: "Conteúdos informativos escritos pela equipe sobre os temas desta página.", id: "conteudos-titulo" })}
@@ -122,7 +124,9 @@ function knowledge(c) {
 </section>`;
 }
 
-export function renderRegional(c) {
+export function renderRegional(city) {
+  // Perguntas ligadas a uma área pausada (terceiro item) ficam de fora enquanto a área não volta.
+  const c = { ...city, faq: city.faq.filter(([, , area]) => !area || areaById[area]).map(([q, a]) => [q, a]) };
   const path = regionalPath(c);
   const crumbs = [
     { label: "Início", href: "/" },
@@ -133,7 +137,7 @@ export function renderRegional(c) {
   const title = c.title ?? `Advogado em ${label(c)} | Vieira & Marques`;
   const alt = ALT[c.image];
   // Profissionais das áreas destacadas na página (mesma relação área → advogado das páginas-pilar).
-  const areas = new Set([...c.services.map(([a]) => a), ...c.content]);
+  const areas = new Set([...c.services.map(([a]) => a), ...c.content].filter((a) => areaById[a]));
   const pros = teamWithProfile.filter((p) => p.areas.some((a) => areas.has(a)));
   const prosText = pros.length ? ` Profissionais das áreas desta página: ${pros.map((p) => `<a class="text-link" href="${profilePath(p)}">${esc(p.name)}</a>`).join(", ")}.` : "";
   const structure = c.mode === "sede"
@@ -260,7 +264,7 @@ ${lpHero({
 
 ${lpReach({ scope: "sp", hub: false, legend: true, title: `Sede em Boituva, <span class="grad">atendimento em todo o estado.</span>`, text: "Atendimento presencial na sede, em Boituva, e em Sorocaba, sempre com horário combinado. Para a capital, o interior e o litoral, as reuniões são por vídeo, com documentos digitais e assinatura eletrônica." })}
 
-${lpAreaCards({ title: `Oito áreas de atuação, <span class="grad">em todas as cidades.</span>` })}
+${lpAreaCards({ title: `${areaCountTitle} áreas de atuação, <span class="grad">em todas as cidades.</span>` })}
 
 ${lpCta({ title: `Não encontrou a sua cidade? <span class="grad">Fale com nossa equipe.</span>`, text: "O atendimento online alcança qualquer cidade do estado e do país. A equipe de atendimento faz a triagem e indica o formato de reunião.", message: msg, label: "Solicitar atendimento" })}`;
 

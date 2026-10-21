@@ -3,7 +3,7 @@ import { lpSteps, lpCta, lpReach, lpStructure, lpHero } from "../partials/lp.mjs
 import { esc, join, when } from "../lib/html.mjs";
 import { SITE, waMessage } from "../data/site.mjs";
 import { team, personName, profilePath } from "../data/team.mjs";
-import { areaById, areaUrl, AREAS_HUB } from "../data/areas.mjs";
+import { areaById, areaUrl, AREAS_HUB, areaNames, areaCountWord } from "../data/areas.mjs";
 import { googleReviews, GOOGLE_REVIEWS_SCRIPT } from "../partials/google-reviews.mjs";
 import { page, breadcrumbs } from "../partials/layout.mjs";
 import { img } from "../partials/media.mjs";
@@ -60,7 +60,7 @@ ${lpHero({
       </div>
       <div class="stack" data-reveal>
         <div class="prose">
-          <p>O escritório atua em oito áreas: Família, Sucessões, Trabalhista, Criminal, Médico e da Saúde, Bancário, Imobiliário e Previdenciário. Em todas, o compromisso é o mesmo: verdade, segurança e respeito aos direitos de quem nos procura.</p>
+          <p>O escritório atua em ${areaCountWord} áreas: ${areaNames({ familia: "Família", sucessorio: "Sucessões", trabalhista: "Trabalhista", criminal: "Criminal", saude: "Médico e da Saúde", bancario: "Bancário", imobiliario: "Imobiliário", previdenciario: "Previdenciário" })}. Em todas, o compromisso é o mesmo: verdade, segurança e respeito aos direitos de quem nos procura.</p>
           <p>Acreditamos que cada caso merece atenção individualizada. Por isso, ouvimos com cuidado, orientamos com clareza e atuamos com firmeza — sempre dentro dos princípios éticos da advocacia. A solução pode estar em um aconselhamento preventivo, em um acordo extrajudicial ou na representação judicial.</p>
           <p>A equipe reúne advogados com formação e áreas de atuação definidas, que unem conhecimento técnico e sensibilidade para lidar desde situações delicadas do dia a dia até disputas complexas.</p>
         </div>

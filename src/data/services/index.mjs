@@ -1,4 +1,4 @@
-import { areaById, servicePath, areaUrl } from "../areas.mjs";
+import { areaById, servicePath, areaUrl, PAUSED_AREAS } from "../areas.mjs";
 import divorcio from "./divorcio.mjs";
 import verbasRescisorias from "./verbas-rescisorias.mjs";
 import jurosAbusivos from "./juros-abusivos.mjs";
@@ -13,10 +13,11 @@ import outros from "./outros.mjs";
 // Páginas de serviço publicadas. Para publicar uma nova: criar o arquivo de conteúdo
 // (planejamento editorial próprio) e incluí-lo aqui.
 // As quatro primeiras têm planejamento editorial próprio e aparecem em destaque no menu.
-const FEATURED = [divorcio, verbasRescisorias, jurosAbusivos, golpeDoPix];
+const FEATURED = [divorcio, verbasRescisorias, jurosAbusivos, golpeDoPix].filter((p) => !PAUSED_AREAS.has(p.area));
 const PAGES = [...FEATURED, ...familia, ...sucessorio, ...trabalhista, ...criminal, ...saude, ...outros];
 
-export const servicePages = PAGES.map((p) => {
+// Páginas de áreas pausadas (areas.mjs) ficam fora do site junto com a área.
+export const servicePages = PAGES.filter((p) => !PAUSED_AREAS.has(p.area)).map((p) => {
   const area = areaById[p.area];
   const service = area?.services.find((s) => s.id === p.service);
   if (!area || !service) throw new Error(`Serviço inexistente: ${p.area}/${p.service}`);
