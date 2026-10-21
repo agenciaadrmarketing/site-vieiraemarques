@@ -1,5 +1,6 @@
 import { SITE } from "./site.mjs";
 import { PAUSED_AREAS } from "./areas.mjs";
+import images from "./images.json" with { type: "json" };
 
 // Somente artigos publicados no blog atual (as URLs antigas são preservadas em `path`). Quando a integração com o WordPress
 // (REST API em /wp-json/wp/v2/posts) estiver disponível, esta lista passa a ser
@@ -140,9 +141,12 @@ const raw = [
 ];
 
 // Artigos de áreas pausadas continuam no blog, mas não são indicados no site.
+// Capa do artigo, quando a cópia local existe em src/media/blog (ver src/tools/images.py).
+const coverOf = (path) => (images[`capa:${path.replace(/^\/|\/$/g, "")}`] ? `capa:${path.replace(/^\/|\/$/g, "")}` : null);
+
 export const articles = raw
   .filter((a) => !PAUSED_AREAS.has(a.area))
-  .map((a) => ({ ...a, url: SITE.blogBase + a.path }))
+  .map((a) => ({ ...a, url: SITE.blogBase + a.path, cover: coverOf(a.path) }))
   .sort((a, b) => b.date.localeCompare(a.date));
 
 export const featuredArticle = articles.find((a) => a.featured) ?? articles[0];

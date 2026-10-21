@@ -108,6 +108,24 @@ def save_variants(src, widths, slug, key):
     return {"width": im.width, "height": im.height, "variants": variants}
 
 
+# Capas dos artigos do blog (cópias locais, otimizadas): src/media/blog/<caminho-do-artigo>.webp|png|jpg,
+# com o mesmo nome do caminho do artigo em src/data/articles.mjs (sem barras). Chave no manifesto: "capa:<caminho>".
+BLOG_DIR = "src/media/blog"
+
+
+def cover_variants():
+    out = {}
+    folder = os.path.join(ROOT, BLOG_DIR)
+    if not os.path.isdir(folder):
+        return out
+    for f in sorted(os.listdir(folder)):
+        slug, ext = os.path.splitext(f)
+        if ext.lower() not in (".webp", ".png", ".jpg", ".jpeg"):
+            continue
+        out[f"capa:{slug}"] = save_variants(f"{BLOG_DIR}/{f}", [400, 800, 1200], f"capa-{slug}", "capa")
+    return out
+
+
 def logo_variants():
     im = Image.open(os.path.join(ROOT, f"{SRC}/logo-vieira-marques-advogados.webp")).convert("RGBA")
     bbox = im.getbbox()
@@ -209,6 +227,7 @@ def main():
             continue
         os.remove(os.path.join(OUT_DIR, f))
     manifest = {name: save_variants(src, widths, slug, name) for name, (src, widths, slug) in SOURCES.items()}
+    manifest.update(cover_variants())
     manifest.update(logo_variants())
     manifest["og"] = og_image()
     manifest.update(og_variants())

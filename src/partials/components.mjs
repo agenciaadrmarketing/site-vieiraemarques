@@ -32,9 +32,14 @@ const meta = (a) => {
   return `<p class="meta"><span>${esc(area ? area.shortTitle : "")}</span><time datetime="${a.date}">${formatDate(a.date)}</time>${a.type === "guia" ? "<span>Guia</span>" : ""}</p>`;
 };
 
+// Capa do artigo (cópia local otimizada, ver src/tools/images.py). A capa repete o título em arte,
+// então é decorativa (alt vazio): o título vem logo abaixo, em texto.
+const cover = (a, cls, sizes) => (a.cover ? `<span class="${cls}" aria-hidden="true">${img(a.cover, { alt: "", sizes })}</span>` : "");
+
 export function articleFeature(a, headingLevel = 3) {
   const h = `h${headingLevel}`;
-  return `<a class="article-feature" href="${esc(a.url)}" data-reveal data-area="${a.area}">
+  return `<a class="article-feature${a.cover ? " article-feature--cover" : ""}" href="${esc(a.url)}" data-reveal data-area="${a.area}">
+  ${cover(a, "article-feature__media", "(min-width: 960px) 700px, 100vw")}
   ${meta(a)}
   <${h} class="article-feature__title">${esc(a.title)}</${h}>
   ${when(a.excerpt, `<p class="article-feature__excerpt">${esc(a.excerpt)}</p>`)}
@@ -44,7 +49,8 @@ export function articleFeature(a, headingLevel = 3) {
 
 export function articleRow(a, headingLevel = 3) {
   const h = `h${headingLevel}`;
-  return `<li class="article-row" data-area="${a.area}"><a href="${esc(a.url)}">
+  return `<li class="article-row${a.cover ? " article-row--cover" : ""}" data-area="${a.area}"><a href="${esc(a.url)}">
+  ${cover(a, "article-row__thumb", "132px")}
   ${meta(a)}
   <${h} class="article-row__title">${esc(a.title)}</${h}>
 </a></li>`;
@@ -52,7 +58,8 @@ export function articleRow(a, headingLevel = 3) {
 
 export function articleCard(a, headingLevel = 3) {
   const h = `h${headingLevel}`;
-  return `<li data-area="${a.area}" data-type="${a.type}"><a class="article-card" href="${esc(a.url)}">
+  return `<li data-area="${a.area}" data-type="${a.type}"><a class="article-card${a.cover ? " article-card--cover" : ""}" href="${esc(a.url)}">
+  ${cover(a, "article-card__media", "(min-width: 700px) 380px, 100vw")}
   ${meta(a)}
   <${h} class="article-card__title">${esc(a.title)}</${h}>
   ${when(a.excerpt, `<p class="muted">${esc(a.excerpt)}</p>`)}

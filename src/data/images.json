@@ -1409,6 +1409,270 @@
       }
     ]
   },
+  "capa:advogados-desistem-o-que-fazer": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-advogados-desistem-o-que-fazer-400.webp",
+        "avif": "/assets/img/capa-advogados-desistem-o-que-fazer-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-advogados-desistem-o-que-fazer-800.webp",
+        "avif": "/assets/img/capa-advogados-desistem-o-que-fazer-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-advogados-desistem-o-que-fazer-1200.webp",
+        "avif": "/assets/img/capa-advogados-desistem-o-que-fazer-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:como-lidar-com-beneficio-negado-pelo-inss": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-como-lidar-com-beneficio-negado-pelo-inss-400.webp",
+        "avif": "/assets/img/capa-como-lidar-com-beneficio-negado-pelo-inss-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-como-lidar-com-beneficio-negado-pelo-inss-800.webp",
+        "avif": "/assets/img/capa-como-lidar-com-beneficio-negado-pelo-inss-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-como-lidar-com-beneficio-negado-pelo-inss-1200.webp",
+        "avif": "/assets/img/capa-como-lidar-com-beneficio-negado-pelo-inss-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:construcao-no-terreno-do-avo-inventario": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-construcao-no-terreno-do-avo-inventario-400.webp",
+        "avif": "/assets/img/capa-construcao-no-terreno-do-avo-inventario-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-construcao-no-terreno-do-avo-inventario-800.webp",
+        "avif": "/assets/img/capa-construcao-no-terreno-do-avo-inventario-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-construcao-no-terreno-do-avo-inventario-1200.webp",
+        "avif": "/assets/img/capa-construcao-no-terreno-do-avo-inventario-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:fim-da-justica-do-trabalho-afeta-direitos": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-fim-da-justica-do-trabalho-afeta-direitos-400.webp",
+        "avif": "/assets/img/capa-fim-da-justica-do-trabalho-afeta-direitos-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-fim-da-justica-do-trabalho-afeta-direitos-800.webp",
+        "avif": "/assets/img/capa-fim-da-justica-do-trabalho-afeta-direitos-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-fim-da-justica-do-trabalho-afeta-direitos-1200.webp",
+        "avif": "/assets/img/capa-fim-da-justica-do-trabalho-afeta-direitos-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:herdeiros-nao-fizerem-inventario": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-herdeiros-nao-fizerem-inventario-400.webp",
+        "avif": "/assets/img/capa-herdeiros-nao-fizerem-inventario-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-herdeiros-nao-fizerem-inventario-800.webp",
+        "avif": "/assets/img/capa-herdeiros-nao-fizerem-inventario-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-herdeiros-nao-fizerem-inventario-1200.webp",
+        "avif": "/assets/img/capa-herdeiros-nao-fizerem-inventario-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:inventario-com-testamento-como-funciona": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-inventario-com-testamento-como-funciona-400.webp",
+        "avif": "/assets/img/capa-inventario-com-testamento-como-funciona-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-inventario-com-testamento-como-funciona-800.webp",
+        "avif": "/assets/img/capa-inventario-com-testamento-como-funciona-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-inventario-com-testamento-como-funciona-1200.webp",
+        "avif": "/assets/img/capa-inventario-com-testamento-como-funciona-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:premio-recebido-durante-casamento-entra-na-divisao-de-bens": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-premio-recebido-durante-casamento-entra-na-divisao-de-bens-400.webp",
+        "avif": "/assets/img/capa-premio-recebido-durante-casamento-entra-na-divisao-de-bens-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-premio-recebido-durante-casamento-entra-na-divisao-de-bens-800.webp",
+        "avif": "/assets/img/capa-premio-recebido-durante-casamento-entra-na-divisao-de-bens-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-premio-recebido-durante-casamento-entra-na-divisao-de-bens-1200.webp",
+        "avif": "/assets/img/capa-premio-recebido-durante-casamento-entra-na-divisao-de-bens-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:quanto-tempo-demora-um-inventario-em-cartorio-e-quem-pode-fazer": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-quanto-tempo-demora-um-inventario-em-cartorio-e-quem-pode-fazer-400.webp",
+        "avif": "/assets/img/capa-quanto-tempo-demora-um-inventario-em-cartorio-e-quem-pode-fazer-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-quanto-tempo-demora-um-inventario-em-cartorio-e-quem-pode-fazer-800.webp",
+        "avif": "/assets/img/capa-quanto-tempo-demora-um-inventario-em-cartorio-e-quem-pode-fazer-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-quanto-tempo-demora-um-inventario-em-cartorio-e-quem-pode-fazer-1200.webp",
+        "avif": "/assets/img/capa-quanto-tempo-demora-um-inventario-em-cartorio-e-quem-pode-fazer-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:quem-pode-receber-salario-maternidade-em-2026-veja-se-voce-tem-direito": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-quem-pode-receber-salario-maternidade-em-2026-veja-se-voce-tem-direito-400.webp",
+        "avif": "/assets/img/capa-quem-pode-receber-salario-maternidade-em-2026-veja-se-voce-tem-direito-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-quem-pode-receber-salario-maternidade-em-2026-veja-se-voce-tem-direito-800.webp",
+        "avif": "/assets/img/capa-quem-pode-receber-salario-maternidade-em-2026-veja-se-voce-tem-direito-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-quem-pode-receber-salario-maternidade-em-2026-veja-se-voce-tem-direito-1200.webp",
+        "avif": "/assets/img/capa-quem-pode-receber-salario-maternidade-em-2026-veja-se-voce-tem-direito-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:quem-tem-direito-ao-loas": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-quem-tem-direito-ao-loas-400.webp",
+        "avif": "/assets/img/capa-quem-tem-direito-ao-loas-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-quem-tem-direito-ao-loas-800.webp",
+        "avif": "/assets/img/capa-quem-tem-direito-ao-loas-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-quem-tem-direito-ao-loas-1200.webp",
+        "avif": "/assets/img/capa-quem-tem-direito-ao-loas-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
+  "capa:seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "src": "/assets/img/capa-seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente-400.webp",
+        "avif": "/assets/img/capa-seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente-400.avif",
+        "w": 400,
+        "h": 267
+      },
+      {
+        "src": "/assets/img/capa-seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente-800.webp",
+        "avif": "/assets/img/capa-seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente-800.avif",
+        "w": 800,
+        "h": 533
+      },
+      {
+        "src": "/assets/img/capa-seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente-1200.webp",
+        "avif": "/assets/img/capa-seu-familiar-foi-preso-em-flagrante-o-que-fazer-imediatamente-1200.avif",
+        "w": 1200,
+        "h": 800
+      }
+    ]
+  },
   "logo-escuro": {
     "src": "/assets/img/logo-vieira-marques-advogados-preto-400.webp",
     "w": 603,
